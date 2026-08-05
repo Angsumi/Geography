@@ -6,6 +6,7 @@ import './index.css';
 import Flashcard from './Flashcard';
 import MatchGame from './MatchGame';
 import ExamineMCQ from './ExamineMCQ';
+import GeographyMap from './GeographyMap';
 
 // ─── localStorage helpers ───────────────────────────────
 function loadState(key, fallback) {
@@ -139,92 +140,6 @@ function getQAFromMCQs(mcqs) {
   }));
 }
 
-// ─── Interactive SVGs ───────────────────────────────────
-function IndianGeographyMap({ onSelectRegion, activeRegion }) {
-  const regions = [
-    { id: 'himalayas', name: 'The Northern Mountains (The Himalayas)', d: 'M 50,50 L 350,50 L 320,100 L 150,110 Z', color: '#60a5fa' },
-    { id: 'plains', name: 'The Northern Plains (Indo-Gangetic Plain)', d: 'M 80,115 L 310,105 L 300,160 L 100,160 Z', color: '#34d399' },
-    { id: 'desert', name: 'The Indian Desert (Thar Desert)', d: 'M 30,120 L 95,120 L 75,180 L 25,170 Z', color: '#fbbf24' },
-    { id: 'plateau', name: 'The Peninsular Plateau', d: 'M 100,170 L 290,170 L 200,320 Z', color: '#fb923c' },
-    { id: 'coasts', name: 'The Coastal Plains', d: 'M 85,170 L 100,175 L 200,328 L 205,328 L 295,175 L 305,170 L 210,340 Z', color: '#a78bfa' },
-    { id: 'islands', name: 'The Islands', d: 'M 50,300 A 10,10 0 1,1 50,301 M 330,280 A 8,8 0 1,1 330,281 M 340,310 A 12,12 0 1,1 340,311', color: '#f472b6' }
-  ];
-
-  return (
-    <div style={{ textAlign: 'center', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '16px', border: '1px solid var(--glass-border)' }}>
-      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Interactive physiographic map of India. Click a region to learn.</p>
-      <svg width="100%" height="280" viewBox="0 0 400 360" style={{ cursor: 'pointer' }}>
-        {/* Background Outline Grid */}
-        <rect width="100%" height="100%" fill="none" rx="10" />
-        
-        {regions.map(r => {
-          const isActive = activeRegion === r.name;
-          return (
-            <path
-              key={r.id}
-              d={r.d}
-              fill={isActive ? r.color : 'rgba(255,255,255,0.05)'}
-              stroke={isActive ? '#fff' : r.color}
-              strokeWidth={isActive ? 2 : 1.5}
-              onClick={() => onSelectRegion(r.name)}
-              style={{
-                transition: 'all 0.3s ease',
-              }}
-              className="map-path"
-            />
-          );
-        })}
-
-        {/* Labels on SVG */}
-        <text x="200" y="40" fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle">HIMALAYAS</text>
-        <text x="200" y="135" fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle">NORTHERN PLAINS</text>
-        <text x="60" y="145" fill="#fff" fontSize="9" fontWeight="bold" textAnchor="middle">THAR</text>
-        <text x="195" y="220" fill="#fff" fontSize="11" fontWeight="bold" textAnchor="middle">PENINSULAR PLATEAU</text>
-        <text x="320" y="325" fill="#fff" fontSize="8" fontWeight="bold">ANDAMAN & NICOBAR</text>
-        <text x="10" y="315" fill="#fff" fontSize="8" fontWeight="bold">LAKSHADWEEP</text>
-      </svg>
-    </div>
-  );
-}
-
-function AssamGeographyMap({ onSelectRegion, activeRegion }) {
-  const regions = [
-    { id: 'brahmaputra', name: 'Brahmaputra Valley (Sadiya to Dhubri, floods)', d: 'M 10,60 Q 200,30 390,50 L 380,85 Q 200,75 10,95 Z', color: '#34d399' },
-    { id: 'hills', name: 'Central Plateau/Hills (Karbi Anglong, Haflong)', d: 'M 150,96 L 300,86 L 270,140 L 160,130 Z', color: '#fb923c' },
-    { id: 'barak', name: 'Barak Valley', d: 'M 120,135 L 200,135 L 180,185 L 100,175 Z', color: '#60a5fa' }
-  ];
-
-  return (
-    <div style={{ textAlign: 'center', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '16px', border: '1px solid var(--glass-border)' }}>
-      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Interactive map of Assam regions. Click a region to learn.</p>
-      <svg width="100%" height="180" viewBox="0 0 400 200" style={{ cursor: 'pointer' }}>
-        <rect width="100%" height="100%" fill="none" rx="10" />
-        
-        {regions.map(r => {
-          const isActive = activeRegion === r.name || (r.name.startsWith('Brahmaputra Valley') && activeRegion?.startsWith('Brahmaputra Valley'));
-          return (
-            <path
-              key={r.id}
-              d={r.d}
-              fill={isActive ? r.color : 'rgba(255,255,255,0.05)'}
-              stroke={isActive ? '#fff' : r.color}
-              strokeWidth={isActive ? 2 : 1.5}
-              onClick={() => onSelectRegion(r.name)}
-              style={{
-                transition: 'all 0.3s ease',
-              }}
-              className="map-path"
-            />
-          );
-        })}
-
-        <text x="210" y="25" fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle">BRAHMAPUTRA VALLEY</text>
-        <text x="235" y="115" fill="#fff" fontSize="9" fontWeight="bold" textAnchor="middle">CENTRAL HILLS</text>
-        <text x="145" y="160" fill="#fff" fontSize="9" fontWeight="bold" textAnchor="middle">BARAK VALLEY</text>
-      </svg>
-    </div>
-  );
-}
 
 // ─── Main Component ─────────────────────────────────────
 export default function App() {
@@ -474,11 +389,11 @@ export default function App() {
                     <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                       🗺️ Interactive Region Selection
                     </h3>
-                    {activeChapter.includes('Indian') ? (
-                      <IndianGeographyMap onSelectRegion={handleRegionSelect} activeRegion={selectedSubtopic} />
-                    ) : (
-                      <AssamGeographyMap onSelectRegion={handleRegionSelect} activeRegion={selectedSubtopic} />
-                    )}
+                    <GeographyMap 
+                      onSelectRegion={handleRegionSelect} 
+                      activeRegion={selectedSubtopic} 
+                      isAssam={activeChapter.toLowerCase().includes('assam')} 
+                    />
                   </div>
 
                   {/* Regions List Fallback / Quick Grid */}
