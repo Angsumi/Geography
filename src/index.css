@@ -126,8 +126,230 @@ h2 { font-size: 2rem; margin-bottom: 0.75rem; }
   min-height: 100vh;
 }
 
+/* ─── Game Mode Selector ─────────────────── */
+.game-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.game-mode-card {
+  transition: all 0.3s ease;
+  padding: 2rem 1.5rem;
+}
+
+.game-mode-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-color: var(--secondary-glow) !important;
+}
+
+/* ─── Dashboard Stats ────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+/* ─── Dashboard Chapter Grid ─────────────── */
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* ─── Subtopic Buttons ───────────────────── */
+.subtopic-btn {
+  transition: all 0.25s ease;
+}
+
+.subtopic-btn:hover {
+  border-color: var(--secondary-glow) !important;
+  background: rgba(129, 140, 248, 0.08) !important;
+}
+
+/* ─── Drag Sorter Specifics ──────────────── */
+.drag-bucket {
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.drag-card {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+}
+
+/* ─── Flashcard Action Buttons ───────────── */
+.flashcard-actions .btn {
+  min-width: 140px;
+}
+
+/* ─── Match Columns ──────────────────────── */
+.match-columns .btn {
+  word-break: break-word;
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE
+   ═══════════════════════════════════════════ */
+
 @media (max-width: 900px) {
   .app-container {
     grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  /* Turn sidebar into horizontal nav on mobile */
+  .sidebar {
+    height: auto !important;
+    position: relative !important;
+    top: auto !important;
+    padding: 1rem !important;
+  }
+
+  .sidebar nav {
+    flex-direction: row !important;
+    overflow-x: auto;
+    gap: 0.4rem !important;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sidebar nav button {
+    white-space: nowrap;
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.85rem !important;
+    min-width: auto;
+    flex-shrink: 0;
+  }
+
+  /* Hide sidebar logo text and bottom score panel on mobile */
+  .sidebar > div:first-child h2 {
+    font-size: 1.1rem;
+  }
+
+  .sidebar > div:last-child {
+    position: relative !important;
+    bottom: auto !important;
+    width: 100% !important;
+    margin-top: 0.75rem;
+    flex-direction: row !important;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+
+  .glass-panel {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .game-selector-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .game-mode-card {
+    padding: 1.25rem 1rem;
+    display: flex !important;
+    flex-direction: row !important;
+    text-align: left !important;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .game-mode-card > div:first-child {
+    margin: 0 !important;
+    flex-shrink: 0;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* DragSorter buckets stack on mobile */
+  .sorter-buckets {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Match columns stack on mobile */
+  .match-columns {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  .match-columns > div::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Flashcard sizing */
+  .flashcard-actions {
+    flex-direction: column !important;
+  }
+
+  .flashcard-actions .btn {
+    width: 100%;
+    min-width: auto;
+  }
+
+  h1 { font-size: 1.6rem; }
+}
+
+/* ─── Scrollbar ──────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Focus Accessibility ────────────────── */
+.btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ─── Print styles (hide games) ──────────── */
+@media print {
+  body::before, body::after {
+    display: none;
   }
 }
