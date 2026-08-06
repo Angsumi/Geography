@@ -1,0 +1,225 @@
+{
+  "GeographySyllabus": [
+    {
+      "Subject": "Indian Geography & Environment",
+      "Topics": [
+        {
+          "TopicName": "Physiographic Divisions of India",
+          "Subtopics": [
+            {
+              "SubtopicName": "The Northern Mountains (The Himalayas)",
+              "Sections": [
+                {
+                  "SectionName": "General Structure",
+                  "Facts": [
+                    "A geologically young and structurally fold mountain system stretching along the northern borders.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Subdivisions (West to East)",
+                  "Facts": [
+                    "Suleyman (Karakoram).[cite: 1]",
+                    "Main Himalaya (Great Himalaya).[cite: 1]",
+                    "Purvanchal (Eastern Himalaya).[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Vertical Divisions (South to North)",
+                  "Facts": [
+                    "Himadri (Greater Himalayas): The innermost, continuous range containing the highest peaks like Mt. Everest and Kanchenjunga.[cite: 1]",
+                    "Himachal (Lesser Himalayas): Known for hill stations and rugged terrain like Pir Panjal and Dhaula Dhar.[cite: 1]",
+                    "Shiwaliks (Outer Himalayas): The outermost range composed of unconsolidated sediments.[cite: 1]"
+                  ]
+                }
+              ]
+            },
+            {
+              "SubtopicName": "The Northern Plains (Indo-Gangetic Plain)",
+              "Sections": [
+                {
+                  "SectionName": "Formation & Soil",
+                  "Facts": [
+                    "Formed by the interplay of three major river systems: the Indus, the Ganga, and the Brahmaputra, along with their tributaries.[cite: 1]",
+                    "Features highly fertile alluvial soil, making it the most agriculturally productive and densely populated region.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Regional Divisions",
+                  "Facts": [
+                    "Punjab Plains.[cite: 1]",
+                    "Ganga Plains.[cite: 1]",
+                    "Brahmaputra / Luit Valley.[cite: 1]"
+                  ]
+                }
+              ]
+            },
+            {
+              "SubtopicName": "The Peninsular Plateau (Including Central Territories)",
+              "Sections": [
+                {
+                  "SectionName": "Central Highlands (Midlands)",
+                  "Facts": [
+                    "Lies to the north of the Narmada river, bounded by the Vindhya range and Aravalis.[cite: 1]",
+                    "Includes the Malwa Plateau, Marwar Plateau, Bundelkhand, Baghelkhand, and Chotanagpur Plateau.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Deccan Plateau",
+                  "Facts": [
+                    "A triangular landmass situated to the south of the Narmada river, flanked by the Eastern and Western Ghats.[cite: 1]",
+                    "Rich in mineral resources and features black soil (Deccan Trap) ideal for cotton cultivation.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Mountain Ranges & Peaks",
+                  "Facts": [
+                    "Encompasses the Western Ghats and Eastern Ghats.[cite: 1]",
+                    "Nilgiri is the point where the Western and Eastern Ghats join.[cite: 1]",
+                    "Anaimudi is identified as the southernmost peak.[cite: 1]",
+                    "Jindagarha is the highest peak in Peninsular India.[cite: 1]"
+                  ]
+                }
+              ]
+            },
+            {
+              "SubtopicName": "The Indian Desert & Coastal Plains",
+              "Sections": [
+                {
+                  "SectionName": "The Indian Desert (Thar Desert)",
+                  "Facts": [
+                    "Lies towards the western margins of the Aravali Hills in Rajasthan.[cite: 1]",
+                    "Features an arid climate with low vegetation cover and very low annual rainfall (below 150 mm).[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Western Coastal Plains",
+                  "Facts": [
+                    "A narrow strip between the Western Ghats and the Arabian Sea.[cite: 1]",
+                    "Divided into Konkan, Kannad, and Malabar coasts.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Eastern Coastal Plains",
+                  "Facts": [
+                    "Broader plains between the Eastern Ghats and the Bay of Bengal, known for large river deltas.[cite: 1]",
+                    "Divided into Northern Circars and the Coromandel Coast.[cite: 1]"
+                  ]
+                }
+              ]
+            },
+            {
+              "SubtopicName": "The Islands",
+              "Sections": [
+                {
+                  "SectionName": "Major Island Groups",
+                  "Facts": [
+                    "Andaman and Nicobar (Bay of Bengal): Volcanic origin, larger in size, and rich in biodiversity.[cite: 1]",
+                    "Lakshadweep (Arabian Sea): Coral origin (atolls), covering a smaller geographical area.[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Major River Systems",
+          "Subtopics": [
+            {
+              "SubtopicName": "Himalayan River Systems (Perennial Rivers)",
+              "Sections": [
+                {
+                  "SectionName": "The Indus System",
+                  "Facts": [
+                    "Originates in Tibet near Lake Mansarovar.[cite: 1]",
+                    "Major tributaries include the Jhelum, Chenab, Ravi, Beas, and Sutlej.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "The Ganga System",
+                  "Facts": [
+                    "Originates as the Bhagirathi from the Gangotri glacier.[cite: 1]",
+                    "Major tributaries include the Yamuna, Ghaghara, Gandak, Kosi, and Son.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "The Brahmaputra System",
+                  "Facts": [
+                    "Originates in Tibet where it is known as Tsangpo.[cite: 1]",
+                    "Enters India through Arunachal Pradesh and forms a massive network in Assam.[cite: 1]"
+                  ]
+                }
+              ]
+            },
+            {
+              "SubtopicName": "Peninsular River Systems (Seasonal/Rain-fed Rivers)",
+              "Sections": [
+                {
+                  "SectionName": "West-Flowing Rivers",
+                  "Facts": [
+                    "Narmada & Tapi flow through rift valleys into the Arabian Sea.[cite: 1]",
+                    "They form estuaries instead of deltas.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "East-Flowing Rivers",
+                  "Facts": [
+                    "Mahanadi, Godavari, Krishna, and Cauvery flow into the Bay of Bengal and form large, fertile deltas at their mouths.[cite: 1]",
+                    "The Godavari is the largest peninsular river and is often called Dakshin Ganga.[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Ecological Markers & Conservation",
+          "Subtopics": [
+            {
+              "SubtopicName": "Biodiversity Hotspots (BH)",
+              "Sections": [
+                {
+                  "SectionName": "Overview & Indian Hotspots",
+                  "Facts": [
+                    "Biogeographic regions that are significant reservoirs of biodiversity threatened by human destruction.[cite: 1]",
+                    "India hosts 4 out of the 36 globally recognized hotspots.[cite: 1]",
+                    "The Himalayas hotspot includes the entire Indian Himalayan region.[cite: 1]",
+                    "Indo-Burma hotspot includes the entire North-Eastern India (except Assam and Andaman).[cite: 1]",
+                    "Western Ghats and Sri Lanka hotspot runs parallel to the western coast of the Indian peninsula.[cite: 1]",
+                    "Sundaland hotspot includes the Nicobar group of Islands.[cite: 1]"
+                  ]
+                }
+              ]
+            },
+            {
+              "SubtopicName": "World Natural Heritage Sites (WNHS)",
+              "Sections": [
+                {
+                  "SectionName": "Key Indian Sites",
+                  "Facts": [
+                    "Designated by UNESCO for outstanding universal value based on science, conservation, or natural beauty.[cite: 1]",
+                    "Examples include Kaziranga National Park, Manas Wildlife Sanctuary, Keoladeo National Park, Sundarbans National Park, Nanda Devi and Valley of Flowers National Parks, Western Ghats, and Great Himalayan National Park Conservation Area.[cite: 1]"
+                  ]
+                }
+              ]
+            },
+            {
+              "SubtopicName": "Biosphere Reserves (BR)",
+              "Sections": [
+                {
+                  "SectionName": "Network & Recognition",
+                  "Facts": [
+                    "Large, multi-purpose protected areas created to conserve genetic diversity while integrating sustainable human development and research.[cite: 1]",
+                    "India has a total of 18 officially notified Biosphere Reserves.[cite: 1]",
+                    "12 of these are internationally recognized under the UNESCO Man and the Biosphere (MAB) Programme.[cite: 1]",
+                    "Nilgiri was the first established reserve.[cite: 1]",
+                    "Kachchh (Gujarat) is the largest by geographical area, and Dibru-Saikhowa (Assam) is the smallest.[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

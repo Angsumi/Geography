@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, X, Sparkles } from 'lucide-react';
-import { playCorrect, playWrong, playComplete, playFlip } from './useSound';
+import { playCorrect, playWrong, playComplete, playFlip } from '../hooks/useSound';
 
 export default function Flashcard({ data, onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);

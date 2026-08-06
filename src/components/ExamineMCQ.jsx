@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, X, ArrowRight, Award, HelpCircle } from 'lucide-react';
-import { playCorrect, playWrong, playComplete } from './useSound';
+import { playCorrect, playWrong, playComplete } from '../hooks/useSound';
 
 export default function ExamineMCQ({ data, onComplete }) {
   const [currentIndex, setCurrentIndex] = useState(0);

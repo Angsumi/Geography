@@ -1,0 +1,84 @@
+{
+  "SectionVisualisations": [
+    {
+      "SectionName": "General Structure[cite: 1]",
+      "VisualisationIdea": "CSS 3D Folded Paper Effect using transforms and gradients to represent young, structurally fold mountains."
+    },
+    {
+      "SectionName": "Subdivisions (West to East)[cite: 1]",
+      "VisualisationIdea": "\ud83d\udd04 Interactive Syntaxial Bends Diagram using CSS SVG paths with animated drawing effects (stroke-dashoffset) to show the horizontal span."
+    },
+    {
+      "SectionName": "Vertical Divisions (South to North)[cite: 1]",
+      "VisualisationIdea": "\ud83c\udfd4\ufe0f CSS Stacked Elevation Layers using overlapping divs with varying z-indexes and heights to represent Himadri, Himachal, and Shivalik."
+    },
+    {
+      "SectionName": "Formation & Soil[cite: 1]",
+      "VisualisationIdea": "CSS Layered Soil Profile Box using linear gradients to show the rich alluvial soil layers formed by the river systems."
+    },
+    {
+      "SectionName": "Regional Divisions[cite: 1]",
+      "VisualisationIdea": "Interactive HTML/CSS Map with three distinct hoverable zones (Punjab, Ganga, Brahmaputra plains) that expand on hover."
+    },
+    {
+      "SectionName": "Central Highlands (Midlands)[cite: 1]",
+      "VisualisationIdea": "CSS Grid Layout displaying distinct plateau tiles (Malwa, Marwar, Bundelkhand, etc.) that elevate (box-shadow/transform) on hover."
+    },
+    {
+      "SectionName": "Deccan Plateau[cite: 1]",
+      "VisualisationIdea": "CSS Triangle shape created using `clip-path: polygon()` with a dark textured background to represent the black soil Deccan Trap."
+    },
+    {
+      "SectionName": "Mountain Ranges & Peaks[cite: 1]",
+      "VisualisationIdea": "CSS/SVG V-Shape Diagram showing the Western and Eastern Ghats converging at a central node labeled Nilgiri, with a pulsing CSS marker for Anaimudi."
+    },
+    {
+      "SectionName": "The Indian Desert (Thar Desert)[cite: 1]",
+      "VisualisationIdea": "CSS Animated Heat Waves and Sand Dunes created using overlapping radial gradients and keyframe animations for an arid effect."
+    },
+    {
+      "SectionName": "Western Coastal Plains[cite: 1]",
+      "VisualisationIdea": "Narrow CSS Flex Column adjacent to a blue gradient, with sticky scrolling to explore Konkan, Kannad, and Malabar."
+    },
+    {
+      "SectionName": "Eastern Coastal Plains[cite: 1]",
+      "VisualisationIdea": "Broader CSS Flex Column featuring expanding horizontal border-radiuses to visually represent the large river deltas."
+    },
+    {
+      "SectionName": "Major Island Groups[cite: 1]",
+      "VisualisationIdea": "CSS Floating Bubbles scattered on a blue background container, clustered into a large group (Andaman) and a small coral ring group (Lakshadweep)."
+    },
+    {
+      "SectionName": "The Indus System[cite: 1]",
+      "VisualisationIdea": "SVG Branching Path Diagram flowing top-to-left, with tributaries lighting up consecutively using CSS animations."
+    },
+    {
+      "SectionName": "The Ganga System[cite: 1]",
+      "VisualisationIdea": "Animated SVG River Flow (stroke-dasharray) starting from a single point and widening as major tributaries (Yamuna, Kosi) join in."
+    },
+    {
+      "SectionName": "The Brahmaputra System[cite: 1]",
+      "VisualisationIdea": "CSS U-Turn Animation path reflecting the river's entry into Arunachal Pradesh and its massive spreading network in Assam."
+    },
+    {
+      "SectionName": "West-Flowing Rivers[cite: 1]",
+      "VisualisationIdea": "CSS Horizontal Scroll/Flow right-to-left, ending abruptly in a straight edge to represent estuaries instead of deltas."
+    },
+    {
+      "SectionName": "East-Flowing Rivers[cite: 1]",
+      "VisualisationIdea": "CSS Horizontal Flow left-to-right that fans out into multiple small branches using CSS Grid/Flex to represent fertile deltas."
+    },
+    {
+      "SectionName": "Overview & Indian Hotspots[cite: 1]",
+      "VisualisationIdea": "HTML/CSS Radar Map with 4 pulsing animated ring markers (using `@keyframes`) representing the 4 biodiversity hotspots."
+    },
+    {
+      "SectionName": "Key Indian Sites[cite: 1]",
+      "VisualisationIdea": "CSS Masonry Gallery Layout showcasing image placeholder cards for Kaziranga, Manas, and Sundarbans that flip to reveal facts."
+    },
+    {
+      "SectionName": "Network & Recognition[cite: 1]",
+      "VisualisationIdea": "CSS Concentric Circles representing the Core, Buffer, and Transition zones of a Biosphere Reserve, with tooltips for Nilgiri and Kachchh."
+    }
+  ]
+}

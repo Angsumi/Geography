@@ -1,0 +1,1792 @@
+{
+  "LearningActivities": [
+    {
+      "SectionName": "Central Plateau/Hills (Karbi Anglong, Haflong)",
+      "VisualFlashcards": [
+        {
+          "Front": "What is the only hill station in Assam, located in Dima Hasao?[cite: 1]",
+          "Back": "Haflong.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Geologically, the Central Plateau of Assam is an extension of which landform?[cite: 1]",
+          "Back": "Indian Peninsular Shield (Meghalaya Plateau).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which mountain range connects Karbi Anglong and Dima Hasao in the Central Hills?[cite: 1]",
+          "Back": "Barail Range.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What two major hill groups form the Karbi Anglong plateau?[cite: 1]",
+          "Back": "Mikir Hills and Rengma Hills.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river separates the Karbi Anglong Plateau from the Meghalaya Plateau?[cite: 1]",
+          "Back": "Kopili River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the highest peak in the Karbi Anglong plateau?[cite: 1]",
+          "Back": "Singhason Peak (1,363m).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Haflong is the administrative headquarters of which hill district?[cite: 1]",
+          "Back": "Dima Hasao district.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What autonomous council governs Karbi Anglong district under the Sixth Schedule?[cite: 1]",
+          "Back": "KAAC (Karbi Anglong Autonomous Council).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What autonomous council governs Dima Hasao district under the Sixth Schedule?[cite: 1]",
+          "Back": "NCHAC (North Cachar Hills Autonomous Council).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the highest mountain range in Assam?[cite: 1]",
+          "Back": "Barail Range (up to 1,959m).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Assam Hill Station[cite: 1]",
+          "Definition": "Haflong (Dima Hasao).[cite: 1]"
+        },
+        {
+          "Term": "Geological Origin[cite: 1]",
+          "Definition": "Indian Peninsular Shield extension.[cite: 1]"
+        },
+        {
+          "Term": "Karbi Anglong Peak[cite: 1]",
+          "Definition": "Singhason Peak (1,363m).[cite: 1]"
+        },
+        {
+          "Term": "Highest Mountain Range[cite: 1]",
+          "Definition": "Barail Range.[cite: 1]"
+        },
+        {
+          "Term": "Karbi Hill Groups[cite: 1]",
+          "Definition": "Mikir and Rengma Hills.[cite: 1]"
+        },
+        {
+          "Term": "Dissecting River Gap[cite: 1]",
+          "Definition": "Kopili River Gap.[cite: 1]"
+        },
+        {
+          "Term": "Dima Hasao HQ[cite: 1]",
+          "Definition": "Haflong.[cite: 1]"
+        },
+        {
+          "Term": "Karbi Council[cite: 1]",
+          "Definition": "KAAC.[cite: 1]"
+        },
+        {
+          "Term": "Dima Hasao Council[cite: 1]",
+          "Definition": "NCHAC.[cite: 1]"
+        },
+        {
+          "Term": "Central Plateau Location[cite: 1]",
+          "Definition": "Between Brahmaputra and Barak valleys.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which is the only hill station in Assam, located in Dima Hasao?[cite: 1]",
+          "Options": [
+            "Haflong",
+            "Diphu",
+            "Shillong",
+            "Jorhat"
+          ],
+          "CorrectAnswer": "Haflong[cite: 1]"
+        },
+        {
+          "Question": "Geologically, the Central Plateau and Hills of Assam are an extension of which landform?[cite: 1]",
+          "Options": [
+            "Indian Peninsular Shield (Meghalaya Plateau)",
+            "Himalayan Fold Belt",
+            "Indo-Gangetic Plain",
+            "Patkai Purvanchal Range"
+          ],
+          "CorrectAnswer": "Indian Peninsular Shield (Meghalaya Plateau)[cite: 1]"
+        },
+        {
+          "Question": "Which is the highest peak in the Karbi Anglong plateau?[cite: 1]",
+          "Options": [
+            "Singhason Peak (1,363m)",
+            "Shillong Peak",
+            "Nokrek Peak",
+            "Khangchendzonga"
+          ],
+          "CorrectAnswer": "Singhason Peak (1,363m)[cite: 1]"
+        },
+        {
+          "Question": "Which mountain range connects Karbi Anglong and Dima Hasao in the Central Plateau?[cite: 1]",
+          "Options": [
+            "Barail Range",
+            "Patkai Range",
+            "Dafla Hills",
+            "Jampui Range"
+          ],
+          "CorrectAnswer": "Barail Range[cite: 1]"
+        },
+        {
+          "Question": "Which river separates the Karbi Anglong Plateau from the Meghalaya Plateau?[cite: 1]",
+          "Options": [
+            "Kopili River",
+            "Subansiri River",
+            "Manas River",
+            "Burhi Dihing"
+          ],
+          "CorrectAnswer": "Kopili River[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Mega-fauna Project Reserves",
+      "VisualFlashcards": [
+        {
+          "Front": "What defines the Mega-fauna Project Reserves of Assam?[cite: 1]",
+          "Back": "Project Tiger (4 Reserves) and Project Elephant (5 Reserves).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "In what year was Project Tiger launched in India?[cite: 1]",
+          "Back": "1973.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "How many Tiger Reserves are located in Assam?[cite: 1]",
+          "Back": "4 Tiger Reserves (Manas, Nameri, Kaziranga, Orang).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "In what year was Project Elephant launched in India?[cite: 1]",
+          "Back": "1992.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1574063413132-355dbfd83e0c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "How many Elephant Reserves are located in Assam?[cite: 1]",
+          "Back": "5 Elephant Reserves.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1574063413132-355dbfd83e0c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the largest Elephant Reserve in Assam (3,270 sq. km)?[cite: 1]",
+          "Back": "Kaziranga-Karbi Anglong ER.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1574063413132-355dbfd83e0c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Name the 4 Tiger Reserves of Assam.[cite: 1]",
+          "Back": "Manas TR, Nameri TR, Kaziranga TR, Orang TR.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Name the 5 Elephant Reserves of Assam.[cite: 1]",
+          "Back": "Kaziranga-Karbi Anglong, Dhansiri-Lungding, Chirang-Ripu, Sonitpur, Dihing Patkai.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1574063413132-355dbfd83e0c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the primary objective of Project Elephant?[cite: 1]",
+          "Back": "Protect elephant habitats, migration corridors and minimize human-elephant conflict.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1574063413132-355dbfd83e0c?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which Elephant Reserve spans across Kokrajhar and Chirang districts?[cite: 1]",
+          "Back": "Chirang-Ripu ER.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1574063413132-355dbfd83e0c?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Mega-fauna Project Reserves Definition[cite: 1]",
+          "Definition": "Project Tiger (4 Reserves) and Project Elephant (5 Reserves).[cite: 1]"
+        },
+        {
+          "Term": "Project Tiger Launch[cite: 1]",
+          "Definition": "1973.[cite: 1]"
+        },
+        {
+          "Term": "Assam Tiger Reserves Count[cite: 1]",
+          "Definition": "4 Tiger Reserves.[cite: 1]"
+        },
+        {
+          "Term": "Project Elephant Launch[cite: 1]",
+          "Definition": "1992.[cite: 1]"
+        },
+        {
+          "Term": "Assam Elephant Reserves Count[cite: 1]",
+          "Definition": "5 Elephant Reserves.[cite: 1]"
+        },
+        {
+          "Term": "Largest Elephant Reserve[cite: 1]",
+          "Definition": "Kaziranga-Karbi Anglong ER (3,270 sq. km).[cite: 1]"
+        },
+        {
+          "Term": "Assam Tiger Reserves List[cite: 1]",
+          "Definition": "Manas, Nameri, Kaziranga, Orang.[cite: 1]"
+        },
+        {
+          "Term": "Chirang-Ripu ER[cite: 1]",
+          "Definition": "BTR Elephant Reserve.[cite: 1]"
+        },
+        {
+          "Term": "Dhansiri-Lungding ER[cite: 1]",
+          "Definition": "Central Assam Elephant Reserve.[cite: 1]"
+        },
+        {
+          "Term": "Dihing Patkai ER[cite: 1]",
+          "Definition": "Upper Assam Rainforest Elephant Reserve.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "What comprises the Mega-fauna Project Reserves of Assam?[cite: 1]",
+          "Options": [
+            "Project Tiger (4 Reserves) and Project Elephant (5 Reserves)",
+            "Project Snow Leopard and Project Dolphin",
+            "Project Rhino and Project Great Indian Bustard",
+            "Project Lion and Project Cheetah"
+          ],
+          "CorrectAnswer": "Project Tiger (4 Reserves) and Project Elephant (5 Reserves)[cite: 1]"
+        },
+        {
+          "Question": "How many Tiger Reserves (governed under Project Tiger 1973) are located in Assam?[cite: 1]",
+          "Options": [
+            "4",
+            "5",
+            "3",
+            "7"
+          ],
+          "CorrectAnswer": "4[cite: 1]"
+        },
+        {
+          "Question": "Which is the largest Elephant Reserve in Assam by total area (3,270 sq. km)?[cite: 1]",
+          "Options": [
+            "Kaziranga-Karbi Anglong ER",
+            "Dhansiri-Lungding ER",
+            "Chirang-Ripu ER",
+            "Sonitpur ER"
+          ],
+          "CorrectAnswer": "Kaziranga-Karbi Anglong ER[cite: 1]"
+        },
+        {
+          "Question": "In which year was Project Elephant launched in India?[cite: 1]",
+          "Options": [
+            "1992",
+            "1973",
+            "1985",
+            "2006"
+          ],
+          "CorrectAnswer": "1992[cite: 1]"
+        },
+        {
+          "Question": "Which of the following is NOT one of the 4 designated Tiger Reserves in Assam?[cite: 1]",
+          "Options": [
+            "Dehing Patkai",
+            "Manas",
+            "Nameri",
+            "Orang"
+          ],
+          "CorrectAnswer": "Dehing Patkai[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "North Bank Tributaries (Brahmaputra)",
+      "VisualFlashcards": [
+        {
+          "Front": "What is the largest North Bank tributary of the Brahmaputra River in Assam?[cite: 1]",
+          "Back": "Subansiri River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which sub-tributaries join the Subansiri network near the Brahmaputra?[cite: 1]",
+          "Back": "Ranganadi and Dikrong rivers.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which two rivers act as significant sub-tributaries for the Manas River network?[cite: 1]",
+          "Back": "Beki and Aie rivers.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Jia Bharali is also known by which name in Arunachal Pradesh?[cite: 1]",
+          "Back": "Kameng River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which North Bank river forms the western border of Assam with West Bengal?[cite: 1]",
+          "Back": "Sankosh River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Raidak river is locally known by what name in Western Assam?[cite: 1]",
+          "Back": "Gadadhar.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which North Bank river flows through Nameri National Park?[cite: 1]",
+          "Back": "Jia Bharali (Kameng).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river flows through Manas National Park before joining the Brahmaputra?[cite: 1]",
+          "Back": "Manas River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which North Bank tributary is notorious for severe flash floods in Baksa/Nalbari?[cite: 1]",
+          "Back": "Pagladiya River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Name the easternmost North Bank tributaries joining near the Siang/Lohit confluence.[cite: 1]",
+          "Back": "Siku and Jiari rivers.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Subansiri Sub-tributaries[cite: 1]",
+          "Definition": "Ranganadi and Dikrong.[cite: 1]"
+        },
+        {
+          "Term": "Manas Sub-tributaries[cite: 1]",
+          "Definition": "Beki and Aie.[cite: 1]"
+        },
+        {
+          "Term": "Jia Bharali Alias[cite: 1]",
+          "Definition": "Kameng River.[cite: 1]"
+        },
+        {
+          "Term": "Raidak Alias[cite: 1]",
+          "Definition": "Gadadhar.[cite: 1]"
+        },
+        {
+          "Term": "Assam-WB Boundary River[cite: 1]",
+          "Definition": "Sankosh River.[cite: 1]"
+        },
+        {
+          "Term": "Flash Flood River[cite: 1]",
+          "Definition": "Pagladiya River.[cite: 1]"
+        },
+        {
+          "Term": "Nameri River[cite: 1]",
+          "Definition": "Jia Bharali.[cite: 1]"
+        },
+        {
+          "Term": "Largest North Tributary[cite: 1]",
+          "Definition": "Subansiri River.[cite: 1]"
+        },
+        {
+          "Term": "Westernmost NB River[cite: 1]",
+          "Definition": "Sankosh / Raidak.[cite: 1]"
+        },
+        {
+          "Term": "Easternmost NB Rivers[cite: 1]",
+          "Definition": "Siku and Jiari.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which is the largest North Bank tributary of the Brahmaputra River in Assam?[cite: 1]",
+          "Options": [
+            "Subansiri",
+            "Manas",
+            "Jia Bharali",
+            "Pagladiya"
+          ],
+          "CorrectAnswer": "Subansiri[cite: 1]"
+        },
+        {
+          "Question": "Which two rivers act as significant sub-tributaries for the Manas River network?[cite: 1]",
+          "Options": [
+            "Beki and Aie",
+            "Ranganadi and Dikrong",
+            "Jiri and Chiri",
+            "Dhaleshwari and Katakhal"
+          ],
+          "CorrectAnswer": "Beki and Aie[cite: 1]"
+        },
+        {
+          "Question": "Jia Bharali is known by which alternate name in Arunachal Pradesh?[cite: 1]",
+          "Options": [
+            "Kameng",
+            "Subansiri",
+            "Dihang",
+            "Lohit"
+          ],
+          "CorrectAnswer": "Kameng[cite: 1]"
+        },
+        {
+          "Question": "Which two rivers join the Subansiri River network before entering the Brahmaputra?[cite: 1]",
+          "Options": [
+            "Ranganadi and Dikrong",
+            "Beki and Aie",
+            "Sonai and Rukni",
+            "Jatinga and Larang"
+          ],
+          "CorrectAnswer": "Ranganadi and Dikrong[cite: 1]"
+        },
+        {
+          "Question": "Which North Bank river forms the western boundary of Assam with West Bengal?[cite: 1]",
+          "Options": [
+            "Sankosh",
+            "Pagladiya",
+            "Puthimari",
+            "Buroi"
+          ],
+          "CorrectAnswer": "Sankosh[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "South Bank Tributaries (Brahmaputra)",
+      "VisualFlashcards": [
+        {
+          "Front": "Which South Bank river flows directly through Jorhat city?[cite: 1]",
+          "Back": "Bhogdoi River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which South Bank river is famous for hosting endangered Ganges River Dolphins in Kamrup?[cite: 1]",
+          "Back": "Kulsi River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Through which historical town of Assam does the Dikhou River flow?[cite: 1]",
+          "Back": "Sivasagar.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which is the longest South Bank river cutting between Karbi Anglong and Meghalaya?[cite: 1]",
+          "Back": "Kopili River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Where does the Disang River meet the Brahmaputra River?[cite: 1]",
+          "Back": "Disangmukh in Sivasagar.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Dhansiri (South) originates from which mountain peak in Nagaland?[cite: 1]",
+          "Back": "Laisang Peak.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Burhi Dihing forms a major economic belt for which two resources in Upper Assam?[cite: 1]",
+          "Back": "Petroleum Oil and Coal.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which South Bank tributary flows through Goalpara district into the Brahmaputra?[cite: 1]",
+          "Back": "Jinjiram / Krishnai / Dudhnoi.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river forms the boundary between Jorhat and Sivasagar districts?[cite: 1]",
+          "Back": "Jhanji River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river acts as an important south-bank branch of Kopili in Morigaon/Nagaon?[cite: 1]",
+          "Back": "Kolong River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Jorhat River[cite: 1]",
+          "Definition": "Bhogdoi River.[cite: 1]"
+        },
+        {
+          "Term": "Sivasagar River[cite: 1]",
+          "Definition": "Dikhou River.[cite: 1]"
+        },
+        {
+          "Term": "River Dolphin Habitat[cite: 1]",
+          "Definition": "Kulsi River.[cite: 1]"
+        },
+        {
+          "Term": "Upper Assam Oil/Coal Belt[cite: 1]",
+          "Definition": "Burhi Dihing River.[cite: 1]"
+        },
+        {
+          "Term": "Golaghat/Kaziranga SB River[cite: 1]",
+          "Definition": "Dhansiri (South).[cite: 1]"
+        },
+        {
+          "Term": "Karbi Anglong Divider[cite: 1]",
+          "Definition": "Kopili River.[cite: 1]"
+        },
+        {
+          "Term": "Disang Confluence[cite: 1]",
+          "Definition": "Disangmukh.[cite: 1]"
+        },
+        {
+          "Term": "Goalpara SB Rivers[cite: 1]",
+          "Definition": "Krishnai & Dudhnoi.[cite: 1]"
+        },
+        {
+          "Term": "Morigaon Kopili Branch[cite: 1]",
+          "Definition": "Kolong River.[cite: 1]"
+        },
+        {
+          "Term": "Jorhat-Sivasagar Border[cite: 1]",
+          "Definition": "Jhanji River.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which of the following is a South Bank tributary of the Brahmaputra River?[cite: 1]",
+          "Options": [
+            "Burhi Dihing",
+            "Subansiri",
+            "Manas",
+            "Jia Bharali"
+          ],
+          "CorrectAnswer": "Burhi Dihing[cite: 1]"
+        },
+        {
+          "Question": "Which South Bank river flows directly through Jorhat city?[cite: 1]",
+          "Options": [
+            "Bhogdoi",
+            "Dikhou",
+            "Disang",
+            "Kopili"
+          ],
+          "CorrectAnswer": "Bhogdoi[cite: 1]"
+        },
+        {
+          "Question": "Which South Bank tributary is famous for hosting an endemic population of Ganges River Dolphins in Kamrup?[cite: 1]",
+          "Options": [
+            "Kulsi",
+            "Jhanji",
+            "Jinjiram",
+            "Dudhnoi"
+          ],
+          "CorrectAnswer": "Kulsi[cite: 1]"
+        },
+        {
+          "Question": "Through which historical town of Assam does the Dikhou River flow?[cite: 1]",
+          "Options": [
+            "Sivasagar",
+            "Jorhat",
+            "Tezpur",
+            "Guwahati"
+          ],
+          "CorrectAnswer": "Sivasagar[cite: 1]"
+        },
+        {
+          "Question": "Which is the principal South Bank river cutting between Karbi Anglong and Meghalaya?[cite: 1]",
+          "Options": [
+            "Kopili",
+            "Subansiri",
+            "Pagladiya",
+            "Sankosh"
+          ],
+          "CorrectAnswer": "Kopili[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "North Bank Tributaries (Barak)",
+      "VisualFlashcards": [
+        {
+          "Front": "What is the correct East-to-West sequence of North Bank tributaries of the Barak River?[cite: 1]",
+          "Back": "Jiri, Chiri, Madhura, Jatinga, and Larang.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which North Bank tributary of the Barak River flows through Dima Hasao & Jatinga valley?[cite: 1]",
+          "Back": "Jatinga River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river forms the boundary between Manipur and Cachar district of Assam?[cite: 1]",
+          "Back": "Jiri River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Name the easternmost North Bank tributary of the Barak in Assam.[cite: 1]",
+          "Back": "Jiri River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Name the westernmost North Bank tributary of the Barak in Assam.[cite: 1]",
+          "Back": "Larang River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river flows near Silchar on the north bank of Barak?[cite: 1]",
+          "Back": "Madhura River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which hill range feeds the North Bank tributaries of the Barak River?[cite: 1]",
+          "Back": "Barail Range.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Jatinga River meets the Barak near which sub-division of Cachar?[cite: 1]",
+          "Back": "Barkhola.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Chiri River flows between which two river sub-basins in Cachar?[cite: 1]",
+          "Back": "Jiri and Madhura rivers.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the primary flow direction of Barak north-bank tributaries?[cite: 1]",
+          "Back": "North-to-South into the Barak.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Jatinga River[cite: 1]",
+          "Definition": "Flows through Dima Hasao into Barak.[cite: 1]"
+        },
+        {
+          "Term": "Jiri River[cite: 1]",
+          "Definition": "Manipur-Assam boundary river.[cite: 1]"
+        },
+        {
+          "Term": "Barak NB Sequence[cite: 1]",
+          "Definition": "Jiri, Chiri, Madhura, Jatinga, Larang.[cite: 1]"
+        },
+        {
+          "Term": "Madhura River[cite: 1]",
+          "Definition": "North bank tributary in Cachar.[cite: 1]"
+        },
+        {
+          "Term": "Larang River[cite: 1]",
+          "Definition": "Westernmost north bank tributary.[cite: 1]"
+        },
+        {
+          "Term": "Source Mountain[cite: 1]",
+          "Definition": "Barail Range.[cite: 1]"
+        },
+        {
+          "Term": "Chiri River[cite: 1]",
+          "Definition": "Tributary between Jiri and Madhura.[cite: 1]"
+        },
+        {
+          "Term": "Barkhola Confluence[cite: 1]",
+          "Definition": "Jatinga river confluence.[cite: 1]"
+        },
+        {
+          "Term": "Flow Direction[cite: 1]",
+          "Definition": "North-to-South.[cite: 1]"
+        },
+        {
+          "Term": "Barak NB Count[cite: 1]",
+          "Definition": "5 main tributaries.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "What is the correct East-to-West sequence of North Bank tributaries of the Barak River?[cite: 1]",
+          "Options": [
+            "Jiri, Chiri, Madhura, Jatinga, Larang",
+            "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari",
+            "Subansiri, Jia Bharali, Manas, Sankosh",
+            "Burhi Dihing, Dikhou, Kopili, Kulsi"
+          ],
+          "CorrectAnswer": "Jiri, Chiri, Madhura, Jatinga, Larang[cite: 1]"
+        },
+        {
+          "Question": "Which North Bank tributary of the Barak River flows through the Jatinga valley in Dima Hasao?[cite: 1]",
+          "Options": [
+            "Jatinga River",
+            "Jiri River",
+            "Madhura River",
+            "Sonai River"
+          ],
+          "CorrectAnswer": "Jatinga River[cite: 1]"
+        },
+        {
+          "Question": "Which river forms the eastern boundary of Cachar district with Manipur before joining the Barak?[cite: 1]",
+          "Options": [
+            "Jiri River",
+            "Chiri River",
+            "Larang River",
+            "Rukni River"
+          ],
+          "CorrectAnswer": "Jiri River[cite: 1]"
+        },
+        {
+          "Question": "Which mountain range serves as the catchment source for all North Bank tributaries of the Barak?[cite: 1]",
+          "Options": [
+            "Barail Range",
+            "Mikir Hills",
+            "Patkai Range",
+            "Garo Hills"
+          ],
+          "CorrectAnswer": "Barail Range[cite: 1]"
+        },
+        {
+          "Question": "Which is the westernmost North Bank tributary of the Barak River in Assam?[cite: 1]",
+          "Options": [
+            "Larang River",
+            "Jatinga River",
+            "Madhura River",
+            "Chiri River"
+          ],
+          "CorrectAnswer": "Larang River[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "South Bank Tributaries (Barak)",
+      "VisualFlashcards": [
+        {
+          "Front": "What is the correct East-to-West sequence of South Bank tributaries of the Barak River?[cite: 1]",
+          "Back": "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, and Longai.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which South Bank river flows from Mizoram through Hailakandi district to join the Barak?[cite: 1]",
+          "Back": "Dhaleshwari (Tlawng) / Katakhal.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river forms the westernmost South Bank tributary of the Barak in Karimganj?[cite: 1]",
+          "Back": "Longai River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Name the easternmost South Bank tributary of the Barak in Cachar district.[cite: 1]",
+          "Back": "Sonai River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which major tributary channel connects Dhaleshwari with the Barak in Hailakandi?[cite: 1]",
+          "Back": "Katakhal River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Rukni and Ghagra rivers flow through which district of Barak Valley?[cite: 1]",
+          "Back": "Cachar district.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Where do Dhaleshwari and Longai originate?[cite: 1]",
+          "Back": "Mizoram and Tripura hills.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the primary flow direction of Barak south-bank tributaries?[cite: 1]",
+          "Back": "South-to-North into the Barak.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which wetland in Karimganj is fed by south-bank streams of the Barak system?[cite: 1]",
+          "Back": "Son Beel.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Into which country does the Barak flow after receiving its tributaries?[cite: 1]",
+          "Back": "Bangladesh (as Surma and Kushiyara).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Sonai River[cite: 1]",
+          "Definition": "Easternmost south bank tributary of Barak.[cite: 1]"
+        },
+        {
+          "Term": "Dhaleshwari / Tlawng[cite: 1]",
+          "Definition": "Mizoram river entering Hailakandi.[cite: 1]"
+        },
+        {
+          "Term": "Longai River[cite: 1]",
+          "Definition": "Karimganj south bank river.[cite: 1]"
+        },
+        {
+          "Term": "Barak SB Sequence[cite: 1]",
+          "Definition": "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, Longai.[cite: 1]"
+        },
+        {
+          "Term": "Katakhal River[cite: 1]",
+          "Definition": "Distributary channel in Hailakandi.[cite: 1]"
+        },
+        {
+          "Term": "Source Hills[cite: 1]",
+          "Definition": "Mizoram & Tripura Hills.[cite: 1]"
+        },
+        {
+          "Term": "Son Beel Feeder[cite: 1]",
+          "Definition": "Singla & Longai rivers.[cite: 1]"
+        },
+        {
+          "Term": "Flow Direction[cite: 1]",
+          "Definition": "South-to-North.[cite: 1]"
+        },
+        {
+          "Term": "Barak Split[cite: 1]",
+          "Definition": "Surma and Kushiyara.[cite: 1]"
+        },
+        {
+          "Term": "Cachar SB Rivers[cite: 1]",
+          "Definition": "Sonai, Rukni, Ghagra.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "What is the correct East-to-West sequence of South Bank tributaries of the Barak River?[cite: 1]",
+          "Options": [
+            "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, Longai",
+            "Jiri, Chiri, Madhura, Jatinga, Larang",
+            "Burhi Dihing, Disang, Dikhou, Bhogdoi",
+            "Subansiri, Manas, Sankosh, Raidak"
+          ],
+          "CorrectAnswer": "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, Longai[cite: 1]"
+        },
+        {
+          "Question": "Which South Bank river flows from Mizoram through Hailakandi district to join the Barak River?[cite: 1]",
+          "Options": [
+            "Dhaleshwari (Katakhal)",
+            "Sonai",
+            "Jatinga",
+            "Jiri"
+          ],
+          "CorrectAnswer": "Dhaleshwari (Katakhal)[cite: 1]"
+        },
+        {
+          "Question": "Which river forms the westernmost South Bank tributary of the Barak in Karimganj district?[cite: 1]",
+          "Options": [
+            "Longai River",
+            "Sonai River",
+            "Rukni River",
+            "Chiri River"
+          ],
+          "CorrectAnswer": "Longai River[cite: 1]"
+        },
+        {
+          "Question": "Which state hills serve as the primary headwaters for Dhaleshwari and Longai rivers?[cite: 1]",
+          "Options": [
+            "Mizoram and Tripura Hills",
+            "Himalayan Foothills",
+            "Patkai Hills",
+            "Mikir Hills"
+          ],
+          "CorrectAnswer": "Mizoram and Tripura Hills[cite: 1]"
+        },
+        {
+          "Question": "Which famous wetland in Karimganj is connected to the south-bank drainage network of the Barak?[cite: 1]",
+          "Options": [
+            "Son Beel",
+            "Deepor Beel",
+            "Chandubi Beel",
+            "Pani Dihing"
+          ],
+          "CorrectAnswer": "Son Beel[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Ecological Frameworks Overview",
+      "VisualFlashcards": [
+        {
+          "Front": "Which two global Biodiversity Hotspots overlap across Assam?[cite: 1]",
+          "Back": "Eastern Himalayas and Indo-Burma Hotspots.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which two sites in Assam were inscribed as UNESCO World Natural Heritage Sites in 1985?[cite: 1]",
+          "Back": "Kaziranga National Park and Manas Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What two Biosphere Reserves are located in Assam?[cite: 1]",
+          "Back": "Manas Biosphere Reserve and Dibru-Saikhowa Biosphere Reserve.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "How many formally declared National Parks does Assam currently have?[cite: 1]",
+          "Back": "7 Parks (plus Sikhna Jwhwlao NP 2025 proposal).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the newest National Park added in 2025 in BTR Assam?[cite: 1]",
+          "Back": "Sikhna Jwhwlao National Park.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the largest Wildlife Sanctuary in Assam?[cite: 1]",
+          "Back": "Marat Longri Wildlife Sanctuary in Karbi Anglong.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the oldest and smallest Wildlife Sanctuary in Assam?[cite: 1]",
+          "Back": "Garampani Wildlife Sanctuary in Karbi Anglong.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is Assam only officially designated Ramsar Site?[cite: 1]",
+          "Back": "Deepor Beel near Guwahati.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which earthquake-formed natural lake is located in Kamrup district?[cite: 1]",
+          "Back": "Chandubi Beel.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the largest wetland in Assam, located in Karimganj district?[cite: 1]",
+          "Back": "Son Beel.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Assam Hotspots[cite: 1]",
+          "Definition": "Eastern Himalayas and Indo-Burma.[cite: 1]"
+        },
+        {
+          "Term": "1985 WNHS Sites[cite: 1]",
+          "Definition": "Kaziranga NP and Manas Sanctuary.[cite: 1]"
+        },
+        {
+          "Term": "Assam Ramsar Site[cite: 1]",
+          "Definition": "Deepor Beel near Guwahati.[cite: 1]"
+        },
+        {
+          "Term": "Biggest WS in Assam[cite: 1]",
+          "Definition": "Marat Longri WS.[cite: 1]"
+        },
+        {
+          "Term": "Oldest/Smallest WS[cite: 1]",
+          "Definition": "Garampani WS.[cite: 1]"
+        },
+        {
+          "Term": "Earthquake Lake[cite: 1]",
+          "Definition": "Chandubi Beel in Kamrup.[cite: 1]"
+        },
+        {
+          "Term": "2025 Proposed NP[cite: 1]",
+          "Definition": "Sikhna Jwhwlao NP.[cite: 1]"
+        },
+        {
+          "Term": "Largest Assam Wetland[cite: 1]",
+          "Definition": "Son Beel in Karimganj.[cite: 1]"
+        },
+        {
+          "Term": "Assam Biosphere Reserves[cite: 1]",
+          "Definition": "Manas BR and Dibru-Saikhowa BR.[cite: 1]"
+        },
+        {
+          "Term": "Declared National Parks[cite: 1]",
+          "Definition": "7 National Parks.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which two global Biodiversity Hotspots overlap across Assam?[cite: 1]",
+          "Options": [
+            "Eastern Himalayas and Indo-Burma",
+            "Western Ghats and Sundaland",
+            "Himalayas and Western Ghats",
+            "Indo-Burma and Sundaland"
+          ],
+          "CorrectAnswer": "Eastern Himalayas and Indo-Burma[cite: 1]"
+        },
+        {
+          "Question": "Which is Assam only officially designated Ramsar Site of international wetland importance?[cite: 1]",
+          "Options": [
+            "Deepor Beel",
+            "Son Beel",
+            "Chandubi Beel",
+            "Pani Dihing"
+          ],
+          "CorrectAnswer": "Deepor Beel[cite: 1]"
+        },
+        {
+          "Question": "Which is the largest Wildlife Sanctuary in Assam by total area?[cite: 1]",
+          "Options": [
+            "Marat Longri WS",
+            "Garampani WS",
+            "Pobitora WS",
+            "Bornadi WS"
+          ],
+          "CorrectAnswer": "Marat Longri WS[cite: 1]"
+        },
+        {
+          "Question": "In which year were Kaziranga National Park and Manas Wildlife Sanctuary inscribed as UNESCO World Natural Heritage Sites?[cite: 1]",
+          "Options": [
+            "1985",
+            "1974",
+            "1992",
+            "2006"
+          ],
+          "CorrectAnswer": "1985[cite: 1]"
+        },
+        {
+          "Question": "What is the newest National Park addition in Assam (2025)?[cite: 1]",
+          "Options": [
+            "Sikhna Jwhwlao NP",
+            "Raimona NP",
+            "Dehing Patkai NP",
+            "Orang NP"
+          ],
+          "CorrectAnswer": "Sikhna Jwhwlao NP[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Biodiversity Hotspots (BH)",
+      "VisualFlashcards": [
+        {
+          "Front": "Which two global Biodiversity Hotspots overlap across Assam?[cite: 1]",
+          "Back": "Eastern Himalayas and Indo-Burma Hotspots.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Why is Assam considered an endemic biodiversity hub?[cite: 1]",
+          "Back": "It acts as a biogeographical junction between the Indian subregion and Indo-Chinese realm.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What percentage of India bird species are found in the Assam Eastern Himalayas hotspot zone?[cite: 1]",
+          "Back": "Over 50% of India bird species.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1551085254-e96b210df58a?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which global hotspot covers the Patkai and Karbi hill forests of Assam?[cite: 1]",
+          "Back": "Indo-Burma Biodiversity Hotspot.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which global hotspot covers the northern duars and Himalayan foothills of Assam?[cite: 1]",
+          "Back": "Eastern Himalayas Biodiversity Hotspot.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What flagship mammal species is endemic to the Eastern Himalayas foothill forests of Assam?[cite: 1]",
+          "Back": "Pygmy Hog and Golden Langur.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What flagship primate is endemic to the Indo-Burma hotspot zone of Upper Assam?[cite: 1]",
+          "Back": "Western Hoolock Gibbon.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1540573133985-778788170485?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "How many total global biodiversity hotspots exist worldwide?[cite: 1]",
+          "Back": "36 Global Hotspots (4 present in India).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which criteria define a Biodiversity Hotspot?[cite: 1]",
+          "Back": "Must contain at least 1,500 endemic plant species & lost 70%+ original habitat.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which Assam river valley acts as a ecological bridge between the two hotspots?[cite: 1]",
+          "Back": "Brahmaputra Floodplain.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Eastern Himalayas Hotspot[cite: 1]",
+          "Definition": "Foothill duars & northern Assam.[cite: 1]"
+        },
+        {
+          "Term": "Indo-Burma Hotspot[cite: 1]",
+          "Definition": "Patkai, Karbi Hills & Upper Assam.[cite: 1]"
+        },
+        {
+          "Term": "Endemic Primate[cite: 1]",
+          "Definition": "Golden Langur & Hoolock Gibbon.[cite: 1]"
+        },
+        {
+          "Term": "Global Hotspots Count[cite: 1]",
+          "Definition": "36 Worldwide (4 in India).[cite: 1]"
+        },
+        {
+          "Term": "Hotspot Endemic Criteria[cite: 1]",
+          "Definition": "Min 1,500 endemic vascular plants.[cite: 1]"
+        },
+        {
+          "Term": "Habitat Loss Criteria[cite: 1]",
+          "Definition": "Lost 70%+ of primary vegetation.[cite: 1]"
+        },
+        {
+          "Term": "Assam Avian Diversity[cite: 1]",
+          "Definition": "Over 50% of India bird species.[cite: 1]"
+        },
+        {
+          "Term": "Biogeographical Role[cite: 1]",
+          "Definition": "Junction of Indian & Indo-Chinese realms.[cite: 1]"
+        },
+        {
+          "Term": "Ecological Bridge[cite: 1]",
+          "Definition": "Brahmaputra Floodplain.[cite: 1]"
+        },
+        {
+          "Term": "Hotspot Overlap[cite: 1]",
+          "Definition": "Eastern Himalayas & Indo-Burma.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which two global Biodiversity Hotspots overlap across the state of Assam?[cite: 1]",
+          "Options": [
+            "Eastern Himalayas and Indo-Burma",
+            "Western Ghats and Sundaland",
+            "Himalayas and Western Ghats",
+            "Indo-Burma and Sundaland"
+          ],
+          "CorrectAnswer": "Eastern Himalayas and Indo-Burma[cite: 1]"
+        },
+        {
+          "Question": "Which Biodiversity Hotspot encompasses the northern duars and Himalayan foothills of Assam?[cite: 1]",
+          "Options": [
+            "Eastern Himalayas",
+            "Indo-Burma",
+            "Sundaland",
+            "Western Ghats"
+          ],
+          "CorrectAnswer": "Eastern Himalayas[cite: 1]"
+        },
+        {
+          "Question": "Which Biodiversity Hotspot covers the Patkai hills, Karbi plateau, and rainforests of Upper Assam?[cite: 1]",
+          "Options": [
+            "Indo-Burma",
+            "Eastern Himalayas",
+            "Sundaland",
+            "Western Ghats"
+          ],
+          "CorrectAnswer": "Indo-Burma[cite: 1]"
+        },
+        {
+          "Question": "To be recognized as a global Biodiversity Hotspot, a region must have lost at least what percentage of its primary vegetation?[cite: 1]",
+          "Options": [
+            "70%",
+            "50%",
+            "30%",
+            "90%"
+          ],
+          "CorrectAnswer": "70%[cite: 1]"
+        },
+        {
+          "Question": "How many global Biodiversity Hotspots are officially present within India territory?[cite: 1]",
+          "Options": [
+            "4",
+            "2",
+            "6",
+            "8"
+          ],
+          "CorrectAnswer": "4[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "World Natural Heritage Sites (WNHS)",
+      "VisualFlashcards": [
+        {
+          "Front": "Which two sites in Assam were recognized as UNESCO World Natural Heritage Sites in 1985?[cite: 1]",
+          "Back": "Kaziranga National Park and Manas Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "In what year were Kaziranga and Manas inscribed on the UNESCO WNHS list?[cite: 1]",
+          "Back": "1985.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Why was Kaziranga National Park inscribed as a WNHS in 1985?[cite: 1]",
+          "Back": "Hosts two-thirds of the world Indian one-horned rhinoceroses & highest tiger density.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Why was Manas Wildlife Sanctuary inscribed as a WNHS in 1985?[cite: 1]",
+          "Back": "Stunning Himalayan foothill scenery & home to rare Pygmy Hog, Golden Langur & Hispid Hare.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which UNESCO WNHS site in Assam is a transboundary biosphere reserve with Bhutan?[cite: 1]",
+          "Back": "Manas Wildlife Sanctuary (Royal Manas NP in Bhutan).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which cultural heritage site in Assam was recently inscribed on UNESCO World Heritage list in 2024?[cite: 1]",
+          "Back": "Moidams \u2013 Ahom Dynasty Burial Mounds at Charaideo.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "How many total UNESCO Natural Heritage Sites exist in Assam?[cite: 1]",
+          "Back": "2 Sites (Kaziranga & Manas).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Under which UNESCO criterion was Kaziranga inscribed as a Natural Heritage Site?[cite: 1]",
+          "Back": "Criteria (ix) and (x) for ongoing ecological processes and biological diversity.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river forms the northern boundary of Kaziranga WNHS?[cite: 1]",
+          "Back": "Brahmaputra River.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which river flows through the heart of Manas WNHS?[cite: 1]",
+          "Back": "Manas River (and its branch Beki).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Kaziranga WNHS Inscription[cite: 1]",
+          "Definition": "1985 (1-horned rhino & tiger refuge).[cite: 1]"
+        },
+        {
+          "Term": "Manas WNHS Inscription[cite: 1]",
+          "Definition": "1985 (Pygmy hog & golden langur).[cite: 1]"
+        },
+        {
+          "Term": "Transboundary WNHS Partner[cite: 1]",
+          "Definition": "Royal Manas National Park (Bhutan).[cite: 1]"
+        },
+        {
+          "Term": "2024 Cultural WNHS[cite: 1]",
+          "Definition": "Charaideo Moidams.[cite: 1]"
+        },
+        {
+          "Term": "Kaziranga Northern Border[cite: 1]",
+          "Definition": "Brahmaputra River.[cite: 1]"
+        },
+        {
+          "Term": "Manas Main River[cite: 1]",
+          "Definition": "Manas and Beki rivers.[cite: 1]"
+        },
+        {
+          "Term": "Kaziranga Rhino Fraction[cite: 1]",
+          "Definition": "Two-thirds of world population.[cite: 1]"
+        },
+        {
+          "Term": "UNESCO Natural Sites Count[cite: 1]",
+          "Definition": "2 Natural Heritage Sites in Assam.[cite: 1]"
+        },
+        {
+          "Term": "Manas Endemic Primate[cite: 1]",
+          "Definition": "Golden Langur.[cite: 1]"
+        },
+        {
+          "Term": "Kaziranga Landscape[cite: 1]",
+          "Definition": "Tall elephant grass & riverine swamps.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "In which year were Kaziranga National Park and Manas Wildlife Sanctuary officially inscribed as UNESCO World Natural Heritage Sites?[cite: 1]",
+          "Options": [
+            "1985",
+            "1974",
+            "1992",
+            "2000"
+          ],
+          "CorrectAnswer": "1985[cite: 1]"
+        },
+        {
+          "Question": "Kaziranga National Park holds UNESCO WNHS status primarily for harboring what proportion of the world Indian one-horned rhinoceros population?[cite: 1]",
+          "Options": [
+            "Two-thirds (66%+)",
+            "One-half (50%)",
+            "Three-fourths (75%)",
+            "One-third (33%)"
+          ],
+          "CorrectAnswer": "Two-thirds (66%+)[cite: 1]"
+        },
+        {
+          "Question": "Which UNESCO World Natural Heritage Site in Assam shares a seamless transboundary ecosystem with Bhutan Royal Manas National Park?[cite: 1]",
+          "Options": [
+            "Manas Wildlife Sanctuary",
+            "Kaziranga National Park",
+            "Nameri National Park",
+            "Orang National Park"
+          ],
+          "CorrectAnswer": "Manas Wildlife Sanctuary[cite: 1]"
+        },
+        {
+          "Question": "Which recent site from Assam was inscribed as a UNESCO World Cultural Heritage Site in 2024?[cite: 1]",
+          "Options": [
+            "Moidams \u2013 Ahom Dynasty Mound Burials at Charaideo",
+            "Majuli River Island",
+            "Kamakhya Temple Complex",
+            "Sivasagar Rang Ghar"
+          ],
+          "CorrectAnswer": "Moidams \u2013 Ahom Dynasty Mound Burials at Charaideo[cite: 1]"
+        },
+        {
+          "Question": "Which river forms the entire northern boundary of Kaziranga World Natural Heritage Site?[cite: 1]",
+          "Options": [
+            "Brahmaputra River",
+            "Subansiri River",
+            "Manas River",
+            "Jia Bharali"
+          ],
+          "CorrectAnswer": "Brahmaputra River[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Biosphere Reserves (BR)",
+      "VisualFlashcards": [
+        {
+          "Front": "Name the two Biosphere Reserves located in Assam.[cite: 1]",
+          "Back": "Manas Biosphere Reserve (foothills) and Dibru-Saikhowa Biosphere Reserve (765 sq. km).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "In what year was Manas designated as a Biosphere Reserve?[cite: 1]",
+          "Back": "1989 (spanning 2,837 sq. km).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "In what year was Dibru-Saikhowa designated as a Biosphere Reserve?[cite: 1]",
+          "Back": "1997 (spanning 765 sq. km in Tinsukia & Dibrugarh).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What rare wild equid population is famous in Dibru-Saikhowa Biosphere Reserve?[cite: 1]",
+          "Back": "Feral Horses (wild horses).[cite: 1]",
+          "Image": "/feral_horses.jpg"
+        },
+        {
+          "Front": "What rare endangered avian species is preserved in Dibru-Saikhowa BR?[cite: 1]",
+          "Back": "White-winged Wood Duck (Deo Hanh).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1551085254-e96b210df58a?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What concentric zonation schema defines a standard Biosphere Reserve under MAB?[cite: 1]",
+          "Back": "Core Zone (strictly protected), Buffer Zone (research/eco-tourism), and Transition Zone (sustainable human settlements).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which rivers surround the riverine island ecosystem of Dibru-Saikhowa BR?[cite: 1]",
+          "Back": "Brahmaputra, Lohit, and Dibru rivers.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the primary conservation goal of Manas Biosphere Reserve?[cite: 1]",
+          "Back": "Conserving Himalayan foothill corridor, tiger, elephant, pygmy hog & golden langur.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Under which UNESCO programme are Biosphere Reserves designated worldwide?[cite: 1]",
+          "Back": "MAB (Man and the Biosphere) Programme launched in 1971.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which Biosphere Reserve in Assam is famous for semi-evergreen willow swamp forests?[cite: 1]",
+          "Back": "Dibru-Saikhowa Biosphere Reserve.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Manas BR Notification[cite: 1]",
+          "Definition": "1989 (2,837 sq. km).[cite: 1]"
+        },
+        {
+          "Term": "Dibru-Saikhowa BR Notification[cite: 1]",
+          "Definition": "1997 (765 sq. km).[cite: 1]"
+        },
+        {
+          "Term": "Dibru-Saikhowa Fauna[cite: 1]",
+          "Definition": "Feral horses & White-winged wood duck.[cite: 1]"
+        },
+        {
+          "Term": "BR Zonation Schema[cite: 1]",
+          "Definition": "Core, Buffer, Transition zones.[cite: 1]"
+        },
+        {
+          "Term": "Dibru-Saikhowa Rivers[cite: 1]",
+          "Definition": "Brahmaputra, Lohit, Dibru.[cite: 1]"
+        },
+        {
+          "Term": "UNESCO BR Programme[cite: 1]",
+          "Definition": "Man and the Biosphere (MAB).[cite: 1]"
+        },
+        {
+          "Term": "Assam BR Count[cite: 1]",
+          "Definition": "2 Biosphere Reserves.[cite: 1]"
+        },
+        {
+          "Term": "Dibru-Saikhowa Vegetation[cite: 1]",
+          "Definition": "Salix swamp forests & grasslands.[cite: 1]"
+        },
+        {
+          "Term": "Core Zone Function[cite: 1]",
+          "Definition": "Strict, legally protected wilderness area.[cite: 1]"
+        },
+        {
+          "Term": "Buffer Zone Function[cite: 1]",
+          "Definition": "Controlled research, education & eco-tourism.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which two Biosphere Reserves are situated in Assam?[cite: 1]",
+          "Options": [
+            "Manas BR and Dibru-Saikhowa BR",
+            "Nokrek BR and Dehang-Debang BR",
+            "Sunderbans BR and Similipal BR",
+            "Khangchendzonga BR and Nilgiri BR"
+          ],
+          "CorrectAnswer": "Manas BR and Dibru-Saikhowa BR[cite: 1]"
+        },
+        {
+          "Question": "Dibru-Saikhowa Biosphere Reserve in Upper Assam is world-famous for protecting which wild equine population?[cite: 1]",
+          "Options": [
+            "Feral Horses",
+            "Wild Ass (Khur)",
+            "Zebra",
+            "Przewalski Horse"
+          ],
+          "CorrectAnswer": "Feral Horses[cite: 1]"
+        },
+        {
+          "Question": "Which endangered state bird of Assam is specifically protected inside Dibru-Saikhowa Biosphere Reserve?[cite: 1]",
+          "Options": [
+            "White-winged Wood Duck (Deo Hanh)",
+            "Great Indian Bustard",
+            "Bengal Florican",
+            "Hornbill"
+          ],
+          "CorrectAnswer": "White-winged Wood Duck (Deo Hanh)[cite: 1]"
+        },
+        {
+          "Question": "What is the correct 3-tier concentric zonation structure of a standard Biosphere Reserve?[cite: 1]",
+          "Options": [
+            "Core Zone, Buffer Zone, Transition Zone",
+            "Inner Zone, Outer Zone, Forest Zone",
+            "Sanctuary, Park, Corridor",
+            "Protected Zone, Free Zone, Farm Zone"
+          ],
+          "CorrectAnswer": "Core Zone, Buffer Zone, Transition Zone[cite: 1]"
+        },
+        {
+          "Question": "In what year was Dibru-Saikhowa designated as a Biosphere Reserve in Assam?[cite: 1]",
+          "Options": [
+            "1997",
+            "1989",
+            "1985",
+            "2001"
+          ],
+          "CorrectAnswer": "1997[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "7 Declared National Parks (NP)",
+      "VisualFlashcards": [
+        {
+          "Front": "List Assam 7 declared National Parks and their notification years.[cite: 1]",
+          "Back": "Kaziranga NP (1974), Manas NP (1990), Nameri NP (1998), Dibru-Saikhowa NP (1999), Orang NP (1999), Dehing Patkai NP (2021), Raimona NP (2021).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the newest National Park proposed in 2025 in Assam BTR region?[cite: 1]",
+          "Back": "Sikhna Jwhwlao National Park.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which is the oldest declared National Park in Assam?[cite: 1]",
+          "Back": "Kaziranga National Park (declared NP in 1974).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which two National Parks were declared in the year 2021 in Assam?[cite: 1]",
+          "Back": "Dehing Patkai NP (6th) and Raimona NP (5th / 7th).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which National Park in Kokrajhar district is famous for the Golden Langur corridor?[cite: 1]",
+          "Back": "Raimona National Park.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which National Park is known as the Amazon of the East for its lowland rainforests?[cite: 1]",
+          "Back": "Dehing Patkai National Park.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which is the smallest National Park in Assam by area?[cite: 1]",
+          "Back": "Orang National Park (78.8 sq. km).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Orang National Park is often referred to by what nickname?[cite: 1]",
+          "Back": "Mini Kaziranga due to similar rhino habitat & landscape.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which National Park in Sonitpur is famous for Golden Mahseer angling & Nameri Eco Camp?[cite: 1]",
+          "Back": "Nameri National Park.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which district hosts Raimona National Park in Assam?[cite: 1]",
+          "Back": "Kokrajhar district (BTR).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Kaziranga NP[cite: 1]",
+          "Definition": "1974 (Oldest NP in Assam).[cite: 1]"
+        },
+        {
+          "Term": "Manas NP[cite: 1]",
+          "Definition": "1990.[cite: 1]"
+        },
+        {
+          "Term": "Nameri NP[cite: 1]",
+          "Definition": "1998 (Golden Mahseer habitat).[cite: 1]"
+        },
+        {
+          "Term": "Dibru-Saikhowa NP[cite: 1]",
+          "Definition": "1999.[cite: 1]"
+        },
+        {
+          "Term": "Orang NP[cite: 1]",
+          "Definition": "1999 (Mini Kaziranga).[cite: 1]"
+        },
+        {
+          "Term": "Dehing Patkai NP[cite: 1]",
+          "Definition": "2021 (Amazon of the East).[cite: 1]"
+        },
+        {
+          "Term": "Raimona NP[cite: 1]",
+          "Definition": "2021 (Golden Langur in Kokrajhar).[cite: 1]"
+        },
+        {
+          "Term": "Sikhna Jwhwlao NP[cite: 1]",
+          "Definition": "2025 (Newest addition in BTR).[cite: 1]"
+        },
+        {
+          "Term": "Smallest NP[cite: 1]",
+          "Definition": "Orang NP (78.8 sq. km).[cite: 1]"
+        },
+        {
+          "Term": "Rainforest NP[cite: 1]",
+          "Definition": "Dehing Patkai NP.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which is the oldest declared National Park in Assam (declared in 1974)?[cite: 1]",
+          "Options": [
+            "Kaziranga NP",
+            "Manas NP",
+            "Orang NP",
+            "Nameri NP"
+          ],
+          "CorrectAnswer": "Kaziranga NP[cite: 1]"
+        },
+        {
+          "Question": "Which National Park in Assam is popularly known as the Amazon of the East for its dense lowland tropical rainforests?[cite: 1]",
+          "Options": [
+            "Dehing Patkai NP",
+            "Raimona NP",
+            "Dibru-Saikhowa NP",
+            "Nameri NP"
+          ],
+          "CorrectAnswer": "Dehing Patkai NP[cite: 1]"
+        },
+        {
+          "Question": "Which two National Parks were declared in Assam in the year 2021?[cite: 1]",
+          "Options": [
+            "Dehing Patkai NP and Raimona NP",
+            "Orang NP and Nameri NP",
+            "Kaziranga NP and Manas NP",
+            "Dibru-Saikhowa NP and Orang NP"
+          ],
+          "CorrectAnswer": "Dehing Patkai NP and Raimona NP[cite: 1]"
+        },
+        {
+          "Question": "Which is the smallest National Park in Assam by geographical land area (78.8 sq. km)?[cite: 1]",
+          "Options": [
+            "Orang NP",
+            "Raimona NP",
+            "Nameri NP",
+            "Dibru-Saikhowa NP"
+          ],
+          "CorrectAnswer": "Orang NP[cite: 1]"
+        },
+        {
+          "Question": "What is the newest National Park added in 2025 in Kokrajhar/Chirang districts of Assam?[cite: 1]",
+          "Options": [
+            "Sikhna Jwhwlao NP",
+            "Raimona NP",
+            "Dehing Patkai NP",
+            "Orang NP"
+          ],
+          "CorrectAnswer": "Sikhna Jwhwlao NP[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Sanctuaries & Wetlands",
+      "VisualFlashcards": [
+        {
+          "Front": "Which sanctuary in Morigaon district has the world highest density of one-horned rhinoceroses?[cite: 1]",
+          "Back": "Pobitora Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which sanctuary in Jorhat district protects India only ape species, the Hoolock Gibbon?[cite: 1]",
+          "Back": "Hollongapar Gibbon Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1540573133985-778788170485?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which sanctuary in Udalguri and Baksa districts was created to protect the hispid hare and pygmy hog?[cite: 1]",
+          "Back": "Bornadi Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which sanctuary in Dhubri and Kokrajhar districts is famous as a safe home for the golden langur?[cite: 1]",
+          "Back": "Chakrashila Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which sanctuary in Kamrup Metro district is a major Ramsar wetland site for water birds?[cite: 1]",
+          "Back": "Deepor Beel Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which sanctuary in Kamrup Metro district borders Guwahati city?[cite: 1]",
+          "Back": "Amchang Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which sanctuary spans across Cachar and Dima Hasao districts?[cite: 1]",
+          "Back": "Borail Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which sanctuary in Tinsukia district is composed of three fragmented forest patches?[cite: 1]",
+          "Back": "Bherjan-Borajan-Padumoni Wildlife Sanctuary.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the biggest Wildlife Sanctuary in Assam by total area?[cite: 1]",
+          "Back": "Marat Longri Wildlife Sanctuary (Karbi Anglong).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the oldest and smallest Wildlife Sanctuary in Assam?[cite: 1]",
+          "Back": "Garampani Wildlife Sanctuary (Karbi Anglong).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Pobitora WS[cite: 1]",
+          "Definition": "Morigaon; highest density of one-horned rhino.[cite: 1]"
+        },
+        {
+          "Term": "Hollongapar Gibbon WS[cite: 1]",
+          "Definition": "Jorhat; India only ape (Hoolock Gibbon).[cite: 1]"
+        },
+        {
+          "Term": "Bornadi WS[cite: 1]",
+          "Definition": "Udalguri/Baksa; hispid hare & pygmy hog.[cite: 1]"
+        },
+        {
+          "Term": "Chakrashila WS[cite: 1]",
+          "Definition": "Dhubri/Kokrajhar; golden langur.[cite: 1]"
+        },
+        {
+          "Term": "Deepor Beel WS[cite: 1]",
+          "Definition": "Kamrup Metro; Ramsar site for water birds.[cite: 1]"
+        },
+        {
+          "Term": "Amchang WS[cite: 1]",
+          "Definition": "Kamrup Metro near Guwahati.[cite: 1]"
+        },
+        {
+          "Term": "Borail WS[cite: 1]",
+          "Definition": "Cachar & Dima Hasao.[cite: 1]"
+        },
+        {
+          "Term": "Marat Longri WS[cite: 1]",
+          "Definition": "Karbi Anglong; biggest WS in Assam.[cite: 1]"
+        },
+        {
+          "Term": "Garampani WS[cite: 1]",
+          "Definition": "Karbi Anglong; oldest & smallest WS.[cite: 1]"
+        },
+        {
+          "Term": "Laokhowa / Bura-Chapori WS[cite: 1]",
+          "Definition": "Nagaon & Sonitpur buffer zone.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which Wildlife Sanctuary in Morigaon district is known for having the world highest density of Indian one-horned rhinoceroses?[cite: 1]",
+          "Options": [
+            "Pobitora Wildlife Sanctuary",
+            "Hollongapar Gibbon Sanctuary",
+            "Bornadi Wildlife Sanctuary",
+            "Amchang Wildlife Sanctuary"
+          ],
+          "CorrectAnswer": "Pobitora Wildlife Sanctuary[cite: 1]"
+        },
+        {
+          "Question": "Which sanctuary in Jorhat district protects India only wild ape species, the Hoolock Gibbon?[cite: 1]",
+          "Options": [
+            "Hollongapar Gibbon Sanctuary",
+            "Chakrashila Wildlife Sanctuary",
+            "Garampani Wildlife Sanctuary",
+            "Nambor Wildlife Sanctuary"
+          ],
+          "CorrectAnswer": "Hollongapar Gibbon Sanctuary[cite: 1]"
+        },
+        {
+          "Question": "Which sanctuary in Dhubri and Kokrajhar districts is famous as a secure habitat for the endangered Golden Langur?[cite: 1]",
+          "Options": [
+            "Chakrashila Wildlife Sanctuary",
+            "Pobitora Wildlife Sanctuary",
+            "Sonai Rupai Wildlife Sanctuary",
+            "Bura-Chapori Wildlife Sanctuary"
+          ],
+          "CorrectAnswer": "Chakrashila Wildlife Sanctuary[cite: 1]"
+        },
+        {
+          "Question": "Which sanctuary in Udalguri and Baksa districts was established primarily to protect the Hispid Hare and Pygmy Hog?[cite: 1]",
+          "Options": [
+            "Bornadi Wildlife Sanctuary",
+            "Marat Longri Wildlife Sanctuary",
+            "Panidehing Wildlife Sanctuary",
+            "Borail Wildlife Sanctuary"
+          ],
+          "CorrectAnswer": "Bornadi Wildlife Sanctuary[cite: 1]"
+        },
+        {
+          "Question": "Which is the largest Wildlife Sanctuary in Assam by total geographical area?[cite: 1]",
+          "Options": [
+            "Marat Longri Wildlife Sanctuary",
+            "Garampani Wildlife Sanctuary",
+            "Pobitora Wildlife Sanctuary",
+            "Laokhowa Wildlife Sanctuary"
+          ],
+          "CorrectAnswer": "Marat Longri Wildlife Sanctuary[cite: 1]"
+        }
+      ]
+    }
+  ]
+}

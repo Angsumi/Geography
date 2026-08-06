@@ -1,0 +1,48 @@
+{
+  "SectionVisualisations": [
+    {
+      "SectionName": "Characteristics[cite: 1]",
+      "VisualisationIdea": "CSS Elongated Horizontal Flexbox container depicting the narrow Brahmaputra and Barak valleys, with animated blue wave overlays for flood susceptibility."
+    },
+    {
+      "SectionName": "North Bank Tributaries[cite: 1]",
+      "VisualisationIdea": "Top-Down CSS Tree Diagram merging into a thick horizontal central line (the Brahmaputra)."
+    },
+    {
+      "SectionName": "South Bank Tributaries[cite: 1]",
+      "VisualisationIdea": "Bottom-Up CSS Tree Diagram merging into a thick horizontal central line."
+    },
+    {
+      "SectionName": "North and South Bank Tributaries[cite: 1]",
+      "VisualisationIdea": "Interactive CSS Accordion lists styled as opposing riverbanks feeding into a central channel."
+    },
+    {
+      "SectionName": "Hotspots & Heritage Sites[cite: 1]",
+      "VisualisationIdea": "CSS 3D Flip Cards: front shows the WNHS logo or hotspot name, back displays the unique rhinos/langur facts."
+    },
+    {
+      "SectionName": "Biosphere Reserves[cite: 1]",
+      "VisualisationIdea": "Two distinct CSS rounded floating containers (Manas and Dibru-Saikhowa) with a subtle riverine background texture."
+    },
+    {
+      "SectionName": "Designated Parks[cite: 1]",
+      "VisualisationIdea": "Interactive CSS Timeline (1974 to 2025) highlighting the addition of National Parks along a horizontal scrollbar."
+    },
+    {
+      "SectionName": "Wildlife Sanctuaries (WS)[cite: 1]",
+      "VisualisationIdea": "CSS Node Map with hover-revealed expanding tooltips identifying the biggest (Marat Longri) and oldest (Garampani)."
+    },
+    {
+      "SectionName": "Bird Sanctuaries (BS) & Beels[cite: 1]",
+      "VisualisationIdea": "CSS Wave Animation containers holding water body stats, with a distinct Ramsar Site badge for Deepor Beel."
+    },
+    {
+      "SectionName": "Tiger Reserves (TR)[cite: 1]",
+      "VisualisationIdea": "CSS Striped Background Pattern (black and orange linear gradients) masking the 4 Tiger Reserve name blocks."
+    },
+    {
+      "SectionName": "Elephant Reserves (ER)[cite: 1]",
+      "VisualisationIdea": "CSS Proportion Circles (bubble chart) showing the massive size of Kaziranga-Karbi Anglong compared to the other 4 reserves."
+    }
+  ]
+}

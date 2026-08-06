@@ -1,0 +1,316 @@
+{
+  "LearningActivities": [
+    {
+      "SectionName": "Vertical Divisions (South to North)",
+      "VisualFlashcards": [
+        {
+          "Front": "What is the innermost, continuous range of the Himalayas called?[cite: 1]",
+          "Back": "Himadri (Greater Himalayas).[cite: 1]"
+        },
+        {
+          "Front": "Which Himalayan division contains the highest peaks like Mt. Everest and Kanchenjunga?[cite: 1]",
+          "Back": "Himadri (Greater Himalayas).[cite: 1]"
+        },
+        {
+          "Front": "What is the alternative name for the Lesser Himalayas?[cite: 1]",
+          "Back": "Himachal.[cite: 1]"
+        },
+        {
+          "Front": "Which division of the Himalayas is known for hill stations and rugged terrain?[cite: 1]",
+          "Back": "Himachal (Lesser Himalayas).[cite: 1]"
+        },
+        {
+          "Front": "Pir Panjal and Dhaula Dhar are part of which Himalayan division?[cite: 1]",
+          "Back": "Himachal (Lesser Himalayas).[cite: 1]"
+        },
+        {
+          "Front": "What is the outermost range of the Himalayas known as?[cite: 1]",
+          "Back": "Shiwaliks (Outer Himalayas).[cite: 1]"
+        },
+        {
+          "Front": "Which Himalayan range is composed of unconsolidated sediments?[cite: 1]",
+          "Back": "Shiwaliks (Outer Himalayas).[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Himadri[cite: 1]",
+          "Definition": "The innermost, continuous range containing the highest peaks like Mt. Everest.[cite: 1]"
+        },
+        {
+          "Term": "Himachal[cite: 1]",
+          "Definition": "Known for hill stations and rugged terrain like Pir Panjal.[cite: 1]"
+        },
+        {
+          "Term": "Shiwaliks[cite: 1]",
+          "Definition": "The outermost range composed of unconsolidated sediments.[cite: 1]"
+        },
+        {
+          "Term": "Mt. Everest & Kanchenjunga[cite: 1]",
+          "Definition": "Highest peaks located in the Himadri range.[cite: 1]"
+        },
+        {
+          "Term": "Pir Panjal & Dhaula Dhar[cite: 1]",
+          "Definition": "Rugged terrain features found in the Himachal range.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which of the following ranges contains the highest peaks such as Mt. Everest and Kanchenjunga?[cite: 1]",
+          "Options": [
+            "Himachal",
+            "Shiwaliks",
+            "Himadri",
+            "Purvanchal"
+          ],
+          "CorrectAnswer": "Himadri[cite: 1]"
+        },
+        {
+          "Question": "The Himachal range is best known for which of the following features?[cite: 1]",
+          "Options": [
+            "Unconsolidated sediments",
+            "Hill stations and rugged terrain",
+            "Highest peaks",
+            "Coastal plains"
+          ],
+          "CorrectAnswer": "Hill stations and rugged terrain[cite: 1]"
+        },
+        {
+          "Question": "Which Himalayan division is composed of unconsolidated sediments?[cite: 1]",
+          "Options": [
+            "Himadri",
+            "Himachal",
+            "Shiwaliks",
+            "Karakoram"
+          ],
+          "CorrectAnswer": "Shiwaliks[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Mountain Ranges & Peaks",
+      "VisualFlashcards": [
+        {
+          "Front": "What two major mountain ranges are encompassed in the Peninsular Plateau?[cite: 1]",
+          "Back": "The Western Ghats and Eastern Ghats.[cite: 1]"
+        },
+        {
+          "Front": "Where do the Western Ghats and Eastern Ghats join?[cite: 1]",
+          "Back": "Nilgiri.[cite: 1]"
+        },
+        {
+          "Front": "Which peak is identified as the southernmost peak?[cite: 1]",
+          "Back": "Anaimudi.[cite: 1]"
+        },
+        {
+          "Front": "What is the highest peak in Peninsular India?[cite: 1]",
+          "Back": "Jindagarha.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Nilgiri[cite: 1]",
+          "Definition": "The point where the Western and Eastern Ghats join.[cite: 1]"
+        },
+        {
+          "Term": "Anaimudi[cite: 1]",
+          "Definition": "Identified as the southernmost peak.[cite: 1]"
+        },
+        {
+          "Term": "Jindagarha[cite: 1]",
+          "Definition": "The highest peak in Peninsular India.[cite: 1]"
+        },
+        {
+          "Term": "Western & Eastern Ghats[cite: 1]",
+          "Definition": "Mountain ranges encompassed by the Peninsular Plateau.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "At which point do the Western Ghats and Eastern Ghats join?[cite: 1]",
+          "Options": [
+            "Anaimudi",
+            "Jindagarha",
+            "Nilgiri",
+            "Aravali"
+          ],
+          "CorrectAnswer": "Nilgiri[cite: 1]"
+        },
+        {
+          "Question": "Which of the following is identified as the southernmost peak?[cite: 1]",
+          "Options": [
+            "Jindagarha",
+            "Nilgiri",
+            "Anaimudi",
+            "Kanchenjunga"
+          ],
+          "CorrectAnswer": "Anaimudi[cite: 1]"
+        },
+        {
+          "Question": "What is the highest peak in Peninsular India?[cite: 1]",
+          "Options": [
+            "Anaimudi",
+            "Jindagarha",
+            "Nilgiri",
+            "Mt. Everest"
+          ],
+          "CorrectAnswer": "Jindagarha[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Overview & Indian Hotspots",
+      "VisualFlashcards": [
+        {
+          "Front": "How many globally recognized biodiversity hotspots does India host?[cite: 1]",
+          "Back": "4 out of the 36 globally recognized hotspots.[cite: 1]"
+        },
+        {
+          "Front": "Which hotspot includes the entire Indian Himalayan region?[cite: 1]",
+          "Back": "The Himalayas hotspot.[cite: 1]"
+        },
+        {
+          "Front": "Which hotspot includes the entire North-Eastern India except Assam and Andaman?[cite: 1]",
+          "Back": "Indo-Burma hotspot.[cite: 1]"
+        },
+        {
+          "Front": "Which hotspot runs parallel to the western coast of the Indian peninsula?[cite: 1]",
+          "Back": "Western Ghats and Sri Lanka hotspot.[cite: 1]"
+        },
+        {
+          "Front": "Which hotspot includes the Nicobar group of Islands?[cite: 1]",
+          "Back": "Sundaland hotspot.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "The Himalayas hotspot[cite: 1]",
+          "Definition": "Includes the entire Indian Himalayan region.[cite: 1]"
+        },
+        {
+          "Term": "Indo-Burma hotspot[cite: 1]",
+          "Definition": "Includes the entire North-Eastern India (except Assam and Andaman).[cite: 1]"
+        },
+        {
+          "Term": "Western Ghats and Sri Lanka hotspot[cite: 1]",
+          "Definition": "Runs parallel to the western coast of the Indian peninsula.[cite: 1]"
+        },
+        {
+          "Term": "Sundaland hotspot[cite: 1]",
+          "Definition": "Includes the Nicobar group of Islands.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "How many globally recognized biodiversity hotspots are hosted in India?[cite: 1]",
+          "Options": [
+            "2 out of 36",
+            "4 out of 36",
+            "12 out of 36",
+            "18 out of 36"
+          ],
+          "CorrectAnswer": "4 out of the 36 globally recognized hotspots[cite: 1]"
+        },
+        {
+          "Question": "Which hotspot includes the entire North-Eastern India (except Assam and Andaman)?[cite: 1]",
+          "Options": [
+            "The Himalayas hotspot",
+            "Sundaland hotspot",
+            "Indo-Burma hotspot",
+            "Western Ghats hotspot"
+          ],
+          "CorrectAnswer": "Indo-Burma hotspot[cite: 1]"
+        },
+        {
+          "Question": "The Nicobar group of Islands is included in which biodiversity hotspot?[cite: 1]",
+          "Options": [
+            "Sundaland hotspot",
+            "Indo-Burma hotspot",
+            "The Himalayas hotspot",
+            "Western Ghats and Sri Lanka hotspot"
+          ],
+          "CorrectAnswer": "Sundaland hotspot[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Network & Recognition",
+      "VisualFlashcards": [
+        {
+          "Front": "How many officially notified Biosphere Reserves does India have in total?[cite: 1]",
+          "Back": "18 officially notified Biosphere Reserves.[cite: 1]"
+        },
+        {
+          "Front": "How many of India's Biosphere Reserves are internationally recognized under the UNESCO MAB Programme?[cite: 1]",
+          "Back": "12 of these are internationally recognized.[cite: 1]"
+        },
+        {
+          "Front": "Which was the first established Biosphere Reserve in India?[cite: 1]",
+          "Back": "Nilgiri was the first established reserve.[cite: 1]"
+        },
+        {
+          "Front": "Which is the largest Biosphere Reserve in India by geographical area?[cite: 1]",
+          "Back": "Kachchh (Gujarat).[cite: 1]"
+        },
+        {
+          "Front": "Which is the smallest Biosphere Reserve in India?[cite: 1]",
+          "Back": "Dibru-Saikhowa (Assam).[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "18[cite: 1]",
+          "Definition": "The total number of officially notified Biosphere Reserves in India.[cite: 1]"
+        },
+        {
+          "Term": "12[cite: 1]",
+          "Definition": "The number of Biosphere Reserves internationally recognized under the UNESCO MAB Programme.[cite: 1]"
+        },
+        {
+          "Term": "Nilgiri[cite: 1]",
+          "Definition": "The first established biosphere reserve.[cite: 1]"
+        },
+        {
+          "Term": "Kachchh (Gujarat)[cite: 1]",
+          "Definition": "The largest biosphere reserve by geographical area.[cite: 1]"
+        },
+        {
+          "Term": "Dibru-Saikhowa (Assam)[cite: 1]",
+          "Definition": "The smallest biosphere reserve.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which is the largest Biosphere Reserve in India by geographical area?[cite: 1]",
+          "Options": [
+            "Nilgiri",
+            "Kachchh (Gujarat)",
+            "Dibru-Saikhowa (Assam)",
+            "Manas"
+          ],
+          "CorrectAnswer": "Kachchh (Gujarat)[cite: 1]"
+        },
+        {
+          "Question": "Which was the first established Biosphere Reserve in India?[cite: 1]",
+          "Options": [
+            "Kachchh",
+            "Dibru-Saikhowa",
+            "Nilgiri",
+            "Sundarbans"
+          ],
+          "CorrectAnswer": "Nilgiri[cite: 1]"
+        },
+        {
+          "Question": "How many Indian Biosphere Reserves are internationally recognized under the UNESCO Man and the Biosphere (MAB) Programme?[cite: 1]",
+          "Options": [
+            "4",
+            "12",
+            "18",
+            "36"
+          ],
+          "CorrectAnswer": "12[cite: 1]"
+        }
+      ]
+    }
+  ]
+}

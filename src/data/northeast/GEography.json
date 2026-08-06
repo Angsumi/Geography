@@ -1,0 +1,251 @@
+{
+  "GeographySyllabus": [
+    {
+      "Subject": "Northeast India (The Seven Sisters)",
+      "Topics": [
+        {
+          "TopicName": "Arunachal Pradesh",
+          "Subtopics": [
+            {
+              "SubtopicName": "Arunachal Pradesh State Profile",
+              "Sections": [
+                {
+                  "SectionName": "Arunachal Pradesh Profile",
+                  "Facts": [
+                    "Capital: Itanagar.[cite: 1]",
+                    "State Symbols: Mithun (Animal), Great Hornbill (Bird), Foxtail Orchid (Flower).[cite: 1]",
+                    "Special Conserved Fauna: Snow Leopard, Red Panda, Hoolock Gibbon.[cite: 1]",
+                    "Important National Parks: Namdapha National Park, Mouling National Park.[cite: 1]",
+                    "Highest Peak: Kangto Peak (7,090 m).[cite: 1]",
+                    "Major Hills: Dafla Hills, Miri Hills, Abor Hills, and Mishmi Hills (part of the Eastern Himalayas).[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Major Hill Ranges (Arunachal Pradesh)",
+                  "Facts": [
+                    "Major Hills: Dafla Hills, Miri Hills, Abor Hills, and Mishmi Hills (outer ranges of the Eastern Himalayas).[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Assam",
+          "Subtopics": [
+            {
+              "SubtopicName": "Assam State Profile",
+              "Sections": [
+                {
+                  "SectionName": "Assam Profile",
+                  "Facts": [
+                    "Capital: Dispur.[cite: 1]",
+                    "State Symbols: One-horned Rhinoceros (Animal), White-winged Wood Duck (Bird), Foxtail Orchid (Flower), Hollong (Tree).[cite: 1]",
+                    "Special Conserved Fauna: One-horned Rhino, Pygmy Hog, Golden Langur, Wild Water Buffalo.[cite: 1]",
+                    "Important National Parks: Kaziranga NP, Manas NP, Orang NP, Nameri NP, Dibru-Saikhowa NP, Raimona NP, Dihing Patkai NP.[cite: 1]",
+                    "Major Valleys: Brahmaputra Valley and Barak Valley.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Major Hill Ranges (Assam)",
+                  "Facts": [
+                    "Major Hills: Mikir Hills (Karbi Plateau), Rengma Hills, and Barail Range (connecting Karbi Anglong and Dima Hasao).[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Manipur",
+          "Subtopics": [
+            {
+              "SubtopicName": "Manipur State Profile",
+              "Sections": [
+                {
+                  "SectionName": "Manipur Profile",
+                  "Facts": [
+                    "Capital: Imphal.[cite: 1]",
+                    "State Symbols: Sangai/Brow-antlered Deer (Animal), Mrs. Hume Pheasant/Nongin (Bird), Shirui Lily/Siroi Lily (Flower).[cite: 1]",
+                    "Special Conserved Fauna: Sangai (endemic to the floating phumdis of Loktak Lake).[cite: 1]",
+                    "Important National Parks: Keibul Lamjao NP (the world floating national park), Sirohi NP.[cite: 1]",
+                    "Highest Peak: Mount Tempu/Mount Iso (2,994 m).[cite: 1]",
+                    "Major Hills: Manipur Hills (part of the Purvanchal Range).[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Meghalaya",
+          "Subtopics": [
+            {
+              "SubtopicName": "Meghalaya State Profile",
+              "Sections": [
+                {
+                  "SectionName": "Meghalaya Profile",
+                  "Facts": [
+                    "Capital: Shillong.[cite: 1]",
+                    "State Symbols: Clouded Leopard (Animal), Hill Myna (Bird), Lady Slipper Orchid (Flower).[cite: 1]",
+                    "Special Conserved Fauna: Clouded Leopard, Hoolock Gibbon.[cite: 1]",
+                    "Important National Parks: Balpakram NP, Nokrek NP.[cite: 1]",
+                    "Highest Peak: Shillong Peak (1,965 m).[cite: 1]",
+                    "Major Hills: Garo, Khasi, and Jaintia Hills (comprising the Meghalaya Plateau).[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Major Hill Ranges (Meghalaya)",
+                  "Facts": [
+                    "Major Hills: Garo Hills, Khasi Hills, and Jaintia Hills (comprising the Meghalaya Plateau / Shillong Plateau).[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Mizoram",
+          "Subtopics": [
+            {
+              "SubtopicName": "Mizoram State Profile",
+              "Sections": [
+                {
+                  "SectionName": "Mizoram Profile",
+                  "Facts": [
+                    "Capital: Aizawl.[cite: 1]",
+                    "State Symbols: Himalayan Serow (Animal), Mrs. Hume Pheasant (Bird), Red Vanda (Flower).[cite: 1]",
+                    "Special Conserved Fauna: Serow, Asiatic Black Bear.[cite: 1]",
+                    "Important National Parks: Murlen NP, Phawngpui NP.[cite: 1]",
+                    "Highest Peak: Phawngpui/Blue Mountain (2,165 m).[cite: 1]",
+                    "Major Hills: Mizo Hills (formerly Lushai Hills).[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Nagaland",
+          "Subtopics": [
+            {
+              "SubtopicName": "Nagaland State Profile",
+              "Sections": [
+                {
+                  "SectionName": "Nagaland Profile",
+                  "Facts": [
+                    "Capital: Kohima.[cite: 1]",
+                    "State Symbols: Mithun (Animal), Blyth Tragopan (Bird), Tree Rhododendron (Flower).[cite: 1]",
+                    "Special Conserved Fauna: Amur Falcon (during migration roosting), Blyth Tragopan.[cite: 1]",
+                    "Important National Parks: Ntangki NP.[cite: 1]",
+                    "Highest Peak: Mount Saramati (3,841 m).[cite: 1]",
+                    "Major Hills: Naga Hills, Patkai Bum (forming the border with Myanmar).[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Tripura",
+          "Subtopics": [
+            {
+              "SubtopicName": "Tripura State Profile",
+              "Sections": [
+                {
+                  "SectionName": "Tripura Profile",
+                  "Facts": [
+                    "Capital: Agartala.[cite: 1]",
+                    "State Symbols: Phayre Leaf Monkey/Spectacled Langur (Animal), Green Imperial Pigeon (Bird), Nageshwar/Cobra Saffron (Flower).[cite: 1]",
+                    "Special Conserved Fauna: Phayre Langur.[cite: 1]",
+                    "Important National Parks: Clouded Leopard NP, Rajbari (Bison) NP.[cite: 1]",
+                    "Highest Peak: Betlingchhip/Sibrai-khung (930 m).[cite: 1]",
+                    "Major Hills: Jampui Hills, Atharamura Range.[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "World Natural Heritage Sites (WNHS)",
+          "Subtopics": [
+            {
+              "SubtopicName": "Heritage Sites",
+              "Sections": [
+                {
+                  "SectionName": "Kaziranga National Park (Assam)",
+                  "Facts": [
+                    "Famous home to two-thirds of the world's great one-horned rhinoceroses.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Manas Wildlife Sanctuary (Assam)",
+                  "Facts": [
+                    "A scenic tiger and elephant reserve near the foothills of the Himalayas.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Moidams \u2013 Ahom Dynasty Mounds (Assam)",
+                  "Facts": [
+                    "Sacred royal mound-burial systems located in Charaideo.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Khangchendzonga National Park (Sikkim)",
+                  "Facts": [
+                    "A stunning mixed-criteria mountain and glacial ecosystem.[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "TopicName": "Biosphere Reserves (BR)",
+          "Subtopics": [
+            {
+              "SubtopicName": "Biosphere Reserves",
+              "Sections": [
+                {
+                  "SectionName": "General Schema (Core, Buffer & Eco-Sensitive Zone)",
+                  "Facts": [
+                    "Structure: Biosphere reserves are divided into three concentric zones: Core Zone (strictly protected natural ecosystem), Buffer Zone (used for scientific research, education, and eco-tourism), and Eco-Sensitive / Transition Zone (outermost region for sustainable human settlements and agriculture).[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Manas Biosphere Reserve (Assam)",
+                  "Facts": [
+                    "Located in the foothills of the Himalayas.[cite: 1]",
+                    "Known for the wild water buffalo, pygmy hog, and golden langur.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Dibru-Saikhowa Biosphere Reserve (Assam)",
+                  "Facts": [
+                    "Formed by the Brahmaputra and Lohit rivers.[cite: 1]",
+                    "Famous for swamp forests, feral horses, and rare white-winged wood ducks.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Nokrek Biosphere Reserve (Meghalaya)",
+                  "Facts": [
+                    "Located in the Garo Hills.[cite: 1]",
+                    "Known for citrus gene conservation and red pandas.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Dihang-Dibang Biosphere Reserve (Arunachal Pradesh)",
+                  "Facts": [
+                    "Located in the high mountains of the Siang and Dibang valleys.[cite: 1]",
+                    "Home to Mishmi takin and snow leopards.[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
