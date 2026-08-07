@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Trophy, ArrowLeft, Zap, Layers, Link2, Flame, Map, HelpCircle, BookOpen, GraduationCap, ChevronRight, RotateCcw } from 'lucide-react';
+import { Trophy, ArrowLeft, Zap, Layers, Link2, Flame, Map, HelpCircle, BookOpen, GraduationCap, ChevronRight, RotateCcw, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import indiaGeo from './data/india/GEography.json';
 import assamGeo from './data/assam/GEography.json';
@@ -34,8 +34,10 @@ const activityData = {
   ]
 };
 
-// Map SectionName to Activity.json items
-function getSectionActivity(sectionName, subtopicName) {
+// ─── Map SectionName to Activity.json items ─────────────────────────────────
+// Uses isNameMatch (normalised fuzzy match) so edits to section names in
+// GEography.json never silently break the learning activities.
+function getSectionActivity(sectionName) {
   const activitiesList = activityData.LearningActivities || [];
   const found = activitiesList.find(a => isNameMatch(a.SectionName, sectionName));
 
@@ -74,10 +76,10 @@ function getSectionActivity(sectionName, subtopicName) {
 
     return { flashcards, match, mcqs };
   }
-  return null;
+  return null; // null = no curated data, fall back to STUDY_DATABASE
 }
 
-// ─── localStorage helpers ───────────────────────────────
+// ─── localStorage helpers ─────────────────────────────────────────────────
 function loadState(key, fallback) {
   try {
     const val = localStorage.getItem(key);
@@ -100,7 +102,8 @@ function getStreak() {
   return 0;
 }
 
-// ─── Parse Syllabus Hierarchy into Normalized Study Database & Plans ─────
+// ─── Parse Syllabus Hierarchy into Normalized Study Database & Plans ─────────
+// Builds: syllabusHierarchy, studyDb (fallback activities from facts), subjectsList
 function parseSyllabus(json) {
   const subjectsList = [];
   const syllabusHierarchy = [];
@@ -112,19 +115,12 @@ function parseSyllabus(json) {
     const subjectName = subjectObj.Subject || subjectObj.Title || 'Geography';
     subjectsList.push(subjectName);
 
-    const subjectItem = {
-      subjectName,
-      topics: []
-    };
+    const subjectItem = { subjectName, topics: [] };
 
     const topics = subjectObj.Topics || subjectObj.SubTopics || [];
     topics.forEach((topicObj) => {
       const topicName = topicObj.TopicName || topicObj.Title || 'General Topic';
-      const topicItem = {
-        topicName,
-        subtopics: []
-      };
-
+      const topicItem = { topicName, subtopics: [] };
       const rawSubtopics = topicObj.Subtopics || topicObj.SubTopics || [];
 
       const buildSubtopicItem = (subName, rawSections, rawFacts) => {
@@ -134,10 +130,7 @@ function parseSyllabus(json) {
         if (rawFacts && Array.isArray(rawFacts)) {
           const cleanFacts = rawFacts.map(f => f.replace(/\[cite:\s*\d+\]/g, '').trim()).filter(Boolean);
           if (cleanFacts.length > 0) {
-            sectionsList.push({
-              sectionName: 'General Overview',
-              facts: cleanFacts
-            });
+            sectionsList.push({ sectionName: 'General Overview', facts: cleanFacts });
             allFactLines.push(...cleanFacts);
           }
         }
@@ -146,15 +139,12 @@ function parseSyllabus(json) {
           rawSections.forEach(sec => {
             const secName = sec.SectionName || sec.Title || 'Key Highlights';
             const cleanFacts = (sec.Facts || []).map(f => f.replace(/\[cite:\s*\d+\]/g, '').trim()).filter(Boolean);
-            sectionsList.push({
-              sectionName: secName,
-              facts: cleanFacts
-            });
+            sectionsList.push({ sectionName: secName, facts: cleanFacts });
             allFactLines.push(...cleanFacts.map(f => `${secName}: ${f}`));
           });
         }
 
-        // Generate Flashcards, MCQs, and Matching Game pairs from facts
+        // Fallback flashcard/MCQ/match arrays generated from raw facts
         const flashcards = [];
         const mcqs = [];
         const matchPairs = [];
@@ -164,41 +154,18 @@ function parseSyllabus(json) {
             const parts = factLine.split(':');
             const keyTerm = parts.length > 1 ? parts[0].trim() : `${subName} Key Fact ${fIdx + 1}`;
             const valText = parts.length > 1 ? parts.slice(1).join(':').trim() : factLine.trim();
-
-            flashcards.push({
-              q: `What is a key fact regarding ${keyTerm}?`,
-              a: valText,
-              exp: `Part of ${subName} study notes under ${subjectName}.`
-            });
-
-            matchPairs.push({
-              q: keyTerm,
-              a: valText.length > 90 ? valText.substring(0, 87) + '...' : valText,
-              exp: ''
-            });
+            flashcards.push({ q: `What is a key fact regarding ${keyTerm}?`, a: valText, exp: `Part of ${subName} study notes under ${subjectName}.` });
+            matchPairs.push({ q: keyTerm, a: valText.length > 90 ? valText.substring(0, 87) + '...' : valText, exp: '' });
           });
         } else {
-          flashcards.push({
-            q: `What is ${subName}?`,
-            a: `Key subtopic under ${topicName} in ${subjectName}.`,
-            exp: `Refer to ${subjectName} syllabus notes.`
-          });
-          matchPairs.push({
-            q: subName,
-            a: `Key region under ${topicName}`,
-            exp: ''
-          });
+          flashcards.push({ q: `What is ${subName}?`, a: `Key subtopic under ${topicName} in ${subjectName}.`, exp: `Refer to ${subjectName} syllabus notes.` });
+          matchPairs.push({ q: subName, a: `Key region under ${topicName}`, exp: '' });
         }
 
         const firstFact = allFactLines[0] || `${subName} is a key topic in ${subjectName}.`;
         mcqs.push({
           question: `Which of the following correctly describes ${subName}?`,
-          options: {
-            A: firstFact.replace(/^\*\*\s*/, '').replace(/\*\*/g, ''),
-            B: `It is an arid desert landform exclusive to Western Australia.`,
-            C: `It is a major glaciated trench system in the Pacific Ocean.`,
-            D: `It represents a specialized marine ecosystem in the Caribbean.`
-          },
+          options: { A: firstFact.replace(/^\*\*\s*/, '').replace(/\*\*/g, ''), B: `It is an arid desert landform exclusive to Western Australia.`, C: `It is a major glaciated trench system in the Pacific Ocean.`, D: `It represents a specialized marine ecosystem in the Caribbean.` },
           correctAnswer: 'A',
           explanation: `According to the syllabus, ${firstFact.replace(/\*\*/g, '')}`
         });
@@ -207,23 +174,14 @@ function parseSyllabus(json) {
           const secondFact = allFactLines[1];
           mcqs.push({
             question: `Regarding ${subName}, which statement is accurate?`,
-            options: {
-              A: `It has no ecological significance or river drainage connection.`,
-              B: secondFact.replace(/^\*\*\s*/, '').replace(/\*\*/g, ''),
-              C: `It is an active subduction rift valley located in Iceland.`,
-              D: `It is a closed depression formation in Antarctica.`
-            },
+            options: { A: `It has no ecological significance or river drainage connection.`, B: secondFact.replace(/^\*\*\s*/, '').replace(/\*\*/g, ''), C: `It is an active subduction rift valley located in Iceland.`, D: `It is a closed depression formation in Antarctica.` },
             correctAnswer: 'B',
             explanation: `${secondFact.replace(/\*\*/g, '')}`
           });
         }
 
         studyDb[subName] = { flashcards, mcqs, match: matchPairs };
-
-        return {
-          subtopicName: subName,
-          sections: sectionsList
-        };
+        return { subtopicName: subName, sections: sectionsList };
       };
 
       if (rawSubtopics.length > 0) {
@@ -246,501 +204,322 @@ function parseSyllabus(json) {
 
 const { subjectsList: chapters, syllabusHierarchy, studyDb: STUDY_DATABASE } = parseSyllabus(syllabusData);
 
-// High-quality aesthetic Unsplash images for geographic topics
+// Topic hero images
 const TOPIC_IMAGES = {
-  // India
   'The Northern Mountains (The Himalayas)': 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80',
   'The Northern Plains (Indo-Gangetic Plain)': 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&auto=format&fit=crop&q=80',
   'The Peninsular Plateau (Including Central Territories)': 'https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?w=1200&auto=format&fit=crop&q=80',
   'The Indian Desert (Thar Desert)': 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1200&auto=format&fit=crop&q=80',
   'The Coastal Plains': '/coastal_plains.jpg',
   'The Islands': '/islands.jpg',
-
-  // Assam — keys must match SubtopicName exactly from GEography.json
   'Brahmaputra Valley (Sadiya to Dhubri, floods)': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&auto=format&fit=crop&q=80',
   'Central Plateau/Hills (Karbi Anglong, Haflong)': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80',
   'Barak Valley': 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&auto=format&fit=crop&q=80',
   'Ecological Frameworks': 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&auto=format&fit=crop&q=80',
   'Mega-fauna Project Reserves': 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=1200&auto=format&fit=crop&q=80',
   'Transport': 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&auto=format&fit=crop&q=80',
-
-  // Northeast
   'Arunachal Pradesh': 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80',
   'Manipur': 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80',
   'Meghalaya': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80'
 };
 
-const REGION_SUBDIVISIONS = {
-  'india': [
-    { name: 'The Northern Mountains (The Himalayas)', zone: 'Himalayan Mountains', label: 'Northern Mountains' },
-    { name: 'The Northern Plains (Indo-Gangetic Plain)', zone: 'Northern Plains', label: 'Northern Plains' },
-    { name: 'The Peninsular Plateau (Including Central Territories)', zone: 'Peninsular Plateau', label: 'Peninsular Plateau' },
-    { name: 'The Indian Desert (Thar Desert)', zone: 'Thar Desert', label: 'Thar Desert' },
-    { name: 'The Coastal Plains', zone: 'Coastal Plains', label: 'Coastal Plains' },
-    { name: 'The Islands', zone: 'Islands', label: 'Islands' }
-  ],
-  'assam': [
-    { name: 'Brahmaputra Valley (Sadiya to Dhubri, floods)', zone: 'Brahmaputra Valley', label: 'Brahmaputra Valley' },
-    { name: 'Central Plateau/Hills (Karbi Anglong, Haflong)', zone: 'Central Hills', label: 'Central Hills' },
-    { name: 'Barak Valley', zone: 'Barak Valley', label: 'Barak Valley' },
-    { name: 'Ecological Frameworks', zone: 'Ecological Frameworks', label: 'Ecological Frameworks' },
-    { name: 'Mega-fauna Project Reserves', zone: 'Mega-fauna Project Reserves', label: 'Mega-fauna Project Reserves' }
-  ]
-};
-
-// Helper to parse pre-line text and structure markdown list markings cleanly
-function renderStructuredContent(text) {
-  if (!text) return null;
-  const lines = text.split('\n');
-  return (
-    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-      {lines.map((line, idx) => {
-        let cleanLine = line.trim();
-        if (cleanLine.startsWith('*')) {
-          cleanLine = cleanLine.substring(1).trim();
-        }
-        if (!cleanLine) return null;
-
-        const boldMatch = cleanLine.match(/^[\*_]+([^\*_]+)[\*_]+:\s*(.*)/);
-        if (boldMatch) {
-          return (
-            <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', padding: '0.65rem 0.9rem', borderRadius: '10px' }}>
-              <span style={{ color: 'var(--primary)', fontWeight: 'bold', fontSize: '1.2rem', lineHeight: 1 }}>•</span>
-              <div>
-                <strong style={{ color: 'var(--primary)' }}>{boldMatch[1]}: </strong>
-                <span style={{ color: 'var(--text-main)' }}>{boldMatch[2]}</span>
-              </div>
-            </li>
-          );
-        }
-
-        return (
-          <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', padding: '0.65rem 0.9rem', borderRadius: '10px' }}>
-            <span style={{ color: 'var(--primary)', fontWeight: 'bold', fontSize: '1.2rem', lineHeight: 1 }}>•</span>
-            <span style={{ color: 'var(--text-main)' }}>{cleanLine}</span>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-// ─── Main App Component ───────────────────────────────
+// ─── Main App Component ───────────────────────────────────────────────────
 export default function App() {
   const [xp, setXp] = useState(() => loadState('adre_xp', 0));
   const [streak, setStreak] = useState(() => getStreak());
   const [activeChapter, setActiveChapter] = useState(() => chapters[0] || 'Indian Geography & Environment');
-  
-  // Navigation Mode
-  const [currentSection, setCurrentSection] = useState('learn'); // 'learn' | 'practice' | 'examine'
+
+  // Mobile sidebar toggle
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Current Subtopic & Activity State
   const [selectedSubtopic, setSelectedSubtopic] = useState('');
   const [detailedViewSubdivision, setDetailedViewSubdivision] = useState(null);
-  
-  const [activeActivity, setActiveActivity] = useState(null); // null | 'flashcard' | 'match' | 'mcq'
+  const [activeActivity, setActiveActivity] = useState(null);
   const [activeActivityData, setActiveActivityData] = useState(null);
-  
+
   const detailsRef = useRef(null);
 
-  // Sync XP
-  useEffect(() => {
-    saveState('adre_xp', xp);
-  }, [xp]);
+  useEffect(() => { saveState('adre_xp', xp); }, [xp]);
 
+  // Build quick-select subtopic buttons for the current chapter
   let quickButtons = [];
   const currentSubj = syllabusHierarchy.find(s => s.subjectName === activeChapter);
   if (currentSubj) {
     currentSubj.topics.forEach(top => {
       top.subtopics.forEach(sub => {
-        quickButtons.push({ name: sub.subtopicName, label: sub.subtopicName, topicName: top.topicName });
+        quickButtons.push({ name: sub.subtopicName, label: sub.subtopicName, topicName: top.topicName, sectionsCount: sub.sections.length });
       });
     });
   }
 
   // Default to first subtopic on chapter change
   useEffect(() => {
-    if (quickButtons.length > 0) {
-      setSelectedSubtopic(quickButtons[0].name);
-    } else {
-      setSelectedSubtopic('');
-    }
+    setSelectedSubtopic(quickButtons.length > 0 ? quickButtons[0].name : '');
     setDetailedViewSubdivision(null);
     setActiveActivity(null);
   }, [activeChapter]);
 
   const addXp = (amount) => {
     setXp(prev => prev + amount);
-    const today = new Date().toDateString();
-    saveState('adre_last_play', today);
+    saveState('adre_last_play', new Date().toDateString());
     setStreak(getStreak());
   };
 
-  // Retrieve section blocks for selected subtopic
   const getSubtopicSections = () => {
     if (!selectedSubtopic) return { topicName: 'Overview', sections: [] };
-
     for (const subj of syllabusHierarchy) {
       if (subj.subjectName === activeChapter) {
         for (const top of subj.topics) {
           for (const sub of top.subtopics) {
-            if (sub.subtopicName === selectedSubtopic) {
-              return { topicName: top.topicName, sections: sub.sections };
-            }
+            if (sub.subtopicName === selectedSubtopic) return { topicName: top.topicName, sections: sub.sections };
           }
         }
       }
     }
-    // Fallback across active chapter and all subjects
+    // Fuzzy fallback
     for (const subj of syllabusHierarchy) {
       for (const top of subj.topics) {
         for (const sub of top.subtopics) {
-          const sName = sub.subtopicName.toLowerCase();
-          const target = selectedSubtopic.toLowerCase();
-          if (sName.includes(target) || target.includes(sName)) {
-            return { topicName: top.topicName, sections: sub.sections };
-          }
+          const s = sub.subtopicName.toLowerCase(), t = selectedSubtopic.toLowerCase();
+          if (s.includes(t) || t.includes(s)) return { topicName: top.topicName, sections: sub.sections };
         }
       }
     }
     return { topicName: 'Overview', sections: [] };
   };
-  // Extract Flashcard / MCQ / Match arrays
+
+  // Fallback from STUDY_DATABASE when no curated Activity.json entry exists
   const getStudyData = () => {
     let data = STUDY_DATABASE[selectedSubtopic];
     if (!data) {
-      const foundKey = Object.keys(STUDY_DATABASE).find(k => 
+      const key = Object.keys(STUDY_DATABASE).find(k =>
         k.toLowerCase().includes(selectedSubtopic.toLowerCase()) || selectedSubtopic.toLowerCase().includes(k.toLowerCase())
       );
-      if (foundKey) data = STUDY_DATABASE[foundKey];
+      if (key) data = STUDY_DATABASE[key];
     }
     return data || { flashcards: [], mcqs: [], match: [] };
   };
 
   const handleRegionSelect = (regionName) => {
-    let targetSubtopic = regionName;
-    
-    // Map zone names from GeographyMap to actual JSON subtopic names
-    if (regionName === 'Himalayan Mountains') {
-      targetSubtopic = 'The Northern Mountains (The Himalayas)';
-    } else if (regionName === 'Northern Plains') {
-      targetSubtopic = 'The Northern Plains (Indo-Gangetic Plain)';
-    } else if (regionName === 'Peninsular Plateau') {
-      targetSubtopic = 'The Peninsular Plateau (Including Central Territories)';
-    } else if (regionName === 'Thar Desert') {
-      targetSubtopic = 'The Indian Desert (Thar Desert)';
-    }
+    let target = regionName;
+    if (regionName === 'Himalayan Mountains') target = 'The Northern Mountains (The Himalayas)';
+    else if (regionName === 'Northern Plains') target = 'The Northern Plains (Indo-Gangetic Plain)';
+    else if (regionName === 'Peninsular Plateau') target = 'The Peninsular Plateau (Including Central Territories)';
+    else if (regionName === 'Thar Desert') target = 'The Indian Desert (Thar Desert)';
 
-    setSelectedSubtopic(targetSubtopic);
-    if (detailsRef.current) {
-      detailsRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    setSelectedSubtopic(target);
+    setIsSidebarOpen(false);
+    if (detailsRef.current) detailsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Handle activity completions
-  const handleActivityComplete = (earnedPoints) => {
-    addXp(earnedPoints || 10);
-    setActiveActivity(null);
-  };
-
-  const startFlashcard = (customData) => {
-    setActiveActivityData(customData || null);
-    setActiveActivity('flashcard');
-  };
-  const startMatch = (customData) => {
-    setActiveActivityData(customData || null);
-    setActiveActivity('match');
-  };
-  const startMCQ = (customData) => {
-    setActiveActivityData(customData || null);
-    setActiveActivity('mcq');
-  };
+  const handleActivityComplete = (pts) => { addXp(pts || 10); setActiveActivity(null); };
+  const startFlashcard = (d) => { setActiveActivityData(d || null); setActiveActivity('flashcard'); };
+  const startMatch     = (d) => { setActiveActivityData(d || null); setActiveActivity('match'); };
+  const startMCQ       = (d) => { setActiveActivityData(d || null); setActiveActivity('mcq'); };
 
   const imageUrl = () => {
-    const rawUrl = TOPIC_IMAGES[selectedSubtopic] || 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80';
-    if (rawUrl.startsWith('/')) {
-      return `${import.meta.env.BASE_URL}${rawUrl.slice(1)}`;
-    }
-    return rawUrl;
+    const raw = TOPIC_IMAGES[selectedSubtopic] || 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80';
+    return raw.startsWith('/') ? `${import.meta.env.BASE_URL}${raw.slice(1)}` : raw;
   };
 
-  const getChapterShortName = (name) => {
-    return name.replace(/^\d+[\.\_]\s*/, '');
-  };
+  const getChapterShortName = (name) => name.replace(/^\d+[\.\_]\s*/, '');
 
   return (
-    <div className="app-container" style={{ minHeight: '100vh', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      
-      {/* ─── Top Navigation Bar ─────────────────────────────── */}
-      <header className="glass-panel" style={{ padding: '1rem 1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#090d16', color: '#fff', fontFamily: 'Outfit, sans-serif' }}>
+
+      {/* ─── Sticky Header ─── */}
+      <header className="glass-panel app-header" style={{ padding: '0.85rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.06)', borderRadius: 0, position: 'sticky', top: 0, zIndex: 110 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg, var(--primary), #10b981)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontWeight: 'bold' }}>
-            <Map size={22} />
+          <button className="mobile-menu-btn" onClick={() => setIsSidebarOpen(v => !v)} aria-label="Toggle sidebar">
+            {isSidebarOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+          <div style={{ width: 36, height: 36, borderRadius: 10, background: 'linear-gradient(135deg, var(--primary), #10b981)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000' }}>
+            <Map size={20} />
           </div>
           <div>
-            <h2 style={{ margin: 0, fontSize: '1.25rem', lineHeight: 1.2 }}>ADRE Geography Hub</h2>
-            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Interactive Geography Mastery</span>
+            <h2 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 'bold' }}>ADRE Geography Hub</h2>
+            <span style={{ fontSize: '0.65rem', color: '#94a3b8' }}>Interactive Syllabus Mastery Dashboard</span>
           </div>
         </div>
 
-        {/* User Stats Banner */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255,255,255,0.03)', padding: '0.4rem 0.8rem', borderRadius: '20px', border: '1px solid var(--glass-border)' }}>
-            <Trophy size={16} color="var(--primary)" />
-            <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--primary)' }}>{xp} XP</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(255,255,255,0.03)', padding: '0.35rem 0.7rem', borderRadius: 15, border: '1px solid rgba(255,255,255,0.08)' }}>
+            <Trophy size={14} color="var(--primary)" />
+            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--primary)' }}>{xp} XP</span>
           </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255,255,255,0.03)', padding: '0.4rem 0.8rem', borderRadius: '20px', border: '1px solid var(--glass-border)' }}>
-            <Flame size={16} color="#f97316" />
-            <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#f97316' }}>{streak} Day Streak</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(255,255,255,0.03)', padding: '0.35rem 0.7rem', borderRadius: 15, border: '1px solid rgba(255,255,255,0.08)' }}>
+            <Flame size={14} color="#f97316" />
+            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#f97316' }}>{streak} Day Streak</span>
           </div>
-
-          <button 
-            onClick={() => {
-              if (window.confirm('Reset all XP, study progress, and streaks?')) {
-                localStorage.clear();
-                window.location.reload();
-              }
-            }}
-            style={{
-              background: 'rgba(239, 68, 68, 0.08)',
-              border: '1px solid rgba(239, 68, 68, 0.2)',
-              color: '#ef4444',
-              padding: '0.4rem 0.8rem',
-              borderRadius: '20px',
-              fontSize: '0.75rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              fontWeight: 'bold',
-              transition: 'all 0.2s'
-            }}
-            title="Reset Stats"
+          <button
+            onClick={() => { if (window.confirm('Reset all XP, study progress, and streaks?')) { localStorage.clear(); window.location.reload(); } }}
+            style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)', color: '#ef4444', padding: '0.35rem 0.65rem', borderRadius: 15, fontSize: '0.7rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem', fontWeight: 'bold' }}
           >
-            <RotateCcw size={12} />
-            <span>Reset</span>
+            <RotateCcw size={10} /> Reset
           </button>
         </div>
       </header>
 
-      {/* ─── Chapter Selector Tabs ─────────────────────────── */}
-      <nav style={{ display: 'flex', gap: '0.75rem', overflowX: 'auto', paddingBottom: '0.25rem' }}>
-        {chapters.map(ch => {
-          const isActive = activeChapter === ch;
-          return (
-            <button
-              key={ch}
-              onClick={() => {
-                setActiveChapter(ch);
-                setDetailedViewSubdivision(null);
-                setActiveActivity(null);
-              }}
-              className="btn"
-              style={{
-                background: isActive ? 'linear-gradient(135deg, var(--primary), #10b981)' : 'var(--glass-bg)',
-                color: isActive ? '#000' : 'var(--text-main)',
-                border: isActive ? 'none' : '1px solid var(--glass-border)',
-                fontWeight: isActive ? 700 : 500,
-                fontSize: '0.85rem',
-                whiteSpace: 'nowrap',
-                padding: '0.65rem 1.25rem'
-              }}
-            >
-              {getChapterShortName(ch)}
-            </button>
-          );
-        })}
-      </nav>
+      {/* ─── Two-Column Layout ─── */}
+      <div className="subdivision-grid" style={{ flex: 1 }}>
 
+        {/* LEFT: Sidebar */}
+        <aside className={`sidebar-container ${isSidebarOpen ? 'open' : ''}`}>
 
-
-      {/* ─── Main Content Views ────────────────────────────── */}
-      <div style={{ flex: 1 }}>
-        
-        {/* Active Activity Overlay Modal (Flashcard, Match Game, MCQ) */}
-        {activeActivity ? (
-          <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel" style={{ padding: '2rem' }}>
-            <button
-              onClick={() => setActiveActivity(null)}
-              className="btn btn-glass"
-              style={{ marginBottom: '1.5rem', padding: '0.5rem 1rem', fontSize: '0.85rem' }}
-            >
-              <ArrowLeft size={16} /> Back to Hub
-            </button>
-
-            {activeActivity === 'flashcard' && (
-              <Flashcard 
-                data={activeActivityData?.flashcards || getStudyData().flashcards} 
-                onComplete={handleActivityComplete} 
-              />
-            )}
-
-            {activeActivity === 'match' && (
-              <MatchGame 
-                data={activeActivityData?.match || getStudyData().match} 
-                onComplete={handleActivityComplete} 
-              />
-            )}
-
-            {activeActivity === 'mcq' && (
-              <ExamineMCQ 
-                data={activeActivityData?.mcqs || getStudyData().mcqs} 
-                onComplete={handleActivityComplete} 
-              />
-            )}
-          </motion.div>
-        ) : detailedViewSubdivision ? (
-          /* Dedicated Study Page for Subdivision */
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <button
-              onClick={() => setDetailedViewSubdivision(null)}
-              className="btn btn-glass"
-              style={{ width: 'fit-content', padding: '0.5rem 1rem', fontSize: '0.85rem' }}
-            >
-              <ArrowLeft size={16} /> Back to Geography Hub
-            </button>
-
-            {/* Banner Title */}
-            <div className="glass-panel" style={{ position: 'relative', overflow: 'hidden', padding: '2.5rem 2rem', minHeight: '180px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-              <img 
-                src={imageUrl()} 
-                alt={selectedSubtopic} 
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3 }} 
-              />
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 'bold', letterSpacing: '0.05em' }}>
-                  {activeChapter}
-                </span>
-                <h1 style={{ margin: '0.2rem 0 0', fontSize: '2.2rem' }}>{selectedSubtopic}</h1>
-              </div>
-            </div>
-
-            {/* Subtopic Sections rendering with dedicated visual cards & individual sidebars */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              {getSubtopicSections().sections.map((sec, idx) => {
-                const sectionActData = getSectionActivity(sec.sectionName, selectedSubtopic);
+          <div>
+            <span className="sidebar-label">Select Subject</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+              {chapters.map(ch => {
+                const isActive = activeChapter === ch;
                 return (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.05 }}
-                    style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '1.5rem', alignItems: 'start' }}
+                  <button key={ch} onClick={() => { setActiveChapter(ch); setDetailedViewSubdivision(null); setActiveActivity(null); setIsSidebarOpen(false); }}
+                    style={{ background: isActive ? 'linear-gradient(135deg, rgba(74,222,128,0.1), rgba(16,185,129,0.1))' : 'rgba(255,255,255,0.01)', color: isActive ? 'var(--primary)' : '#94a3b8', border: `1px solid ${isActive ? 'rgba(74,222,128,0.3)' : 'rgba(255,255,255,0.04)'}`, padding: '0.65rem 0.85rem', borderRadius: 8, fontSize: '0.78rem', fontWeight: isActive ? 'bold' : 'normal', textAlign: 'left', cursor: 'pointer', transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
                   >
-                    {/* Section Main Content Card */}
-                    <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid var(--primary)', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.75rem' }}>
-                        <h3 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <Zap size={18} color="var(--primary)" /> {sec.sectionName}
-                        </h3>
-                        <span style={{ fontSize: '0.7rem', background: 'rgba(74, 222, 128, 0.1)', color: 'var(--primary)', padding: '0.2rem 0.6rem', borderRadius: '12px', fontWeight: 'bold' }}>
-                          Section {idx + 1}
-                        </span>
-                      </div>
-
-                      {/* Section Visualizer Component from Viz.json */}
-                      <SectionVisualizer sectionName={sec.sectionName} facts={sec.facts} />
-
-                      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', flex: 1 }}>
-                        {sec.facts.map((fact, fIdx) => (
-                          <li key={fIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', padding: '0.75rem 1rem', borderRadius: '10px' }}>
-                            <span style={{ color: 'var(--primary)', fontWeight: 'bold', fontSize: '1.2rem', lineHeight: 1 }}>•</span>
-                            <span style={{ color: 'var(--text-main)', fontSize: '0.9rem', lineHeight: 1.6 }}>{fact}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Section Dedicated Learning Activities Side Bar */}
-                    <div className="glass-panel" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem', border: '1px solid rgba(129, 140, 248, 0.3)', background: 'rgba(15, 23, 42, 0.6)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0, fontSize: '1rem', color: 'var(--secondary)' }}>
-                          <GraduationCap size={18} color="var(--secondary)" /> Learning Activities
-                        </h4>
-                        <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 600 }}>
-                          Section {idx + 1}
-                        </span>
-                      </div>
-                      
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                        <button 
-                          className="btn btn-primary" 
-                          onClick={() => startFlashcard(sectionActData)} 
-                          style={{ justifyContent: 'space-between', padding: '0.8rem 1rem', fontSize: '0.85rem' }}
-                        >
-                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Layers size={16} /> Visual Flashcards</span>
-                          <span className="badge" style={{ background: 'rgba(0,0,0,0.2)', color: '#fff', fontSize: '0.75rem' }}>+10 pts</span>
-                        </button>
-
-                        <button 
-                          className="btn btn-glass" 
-                          onClick={() => startMatch(sectionActData)} 
-                          style={{ justifyContent: 'space-between', padding: '0.8rem 1rem', fontSize: '0.85rem', borderColor: 'var(--secondary)', color: 'var(--secondary)' }}
-                        >
-                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Link2 size={16} /> Practice Matching</span>
-                          <span className="badge" style={{ background: 'rgba(129, 140, 248, 0.2)', color: 'var(--secondary)', fontSize: '0.75rem' }}>+10 pts</span>
-                        </button>
-
-                        <button 
-                          className="btn btn-glass" 
-                          onClick={() => startMCQ(sectionActData)} 
-                          style={{ justifyContent: 'space-between', padding: '0.8rem 1rem', fontSize: '0.85rem', borderColor: 'var(--danger)', color: 'var(--danger)' }}
-                        >
-                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><HelpCircle size={16} /> Examine MCQ</span>
-                          <span className="badge" style={{ background: 'rgba(239, 68, 68, 0.2)', color: 'var(--danger)', fontSize: '0.75rem' }}>+10 pts</span>
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
+                    <span>{getChapterShortName(ch)}</span>
+                    <ChevronRight size={14} opacity={isActive ? 1 : 0.3} />
+                  </button>
                 );
               })}
             </div>
-          </motion.div>
-        ) : (
-          /* Hub Landing Views */
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            
-            {/* Header */}
-            <div>
-              <span style={{ color: 'var(--primary)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Geography Mode</span>
-              <h1 style={{ fontSize: '2.2rem', margin: '0.2rem 0' }}>{getChapterShortName(activeChapter)}</h1>
-              <p style={{ color: 'var(--text-muted)', margin: 0 }}>Explore physical regions, practice matching key traits, and examine your knowledge.</p>
-            </div>
+          </div>
 
-            {/* Hub Landing View */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              {/* Top Section: Map */}
-              <div className="glass-panel" style={{ padding: '1.5rem', maxWidth: '800px', margin: '0 auto', width: '100%' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1, overflow: 'hidden' }}>
+            <span className="sidebar-label">Subtopics</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', overflowY: 'auto', flex: 1, paddingRight: 2 }}>
+              {quickButtons.map(btn => {
+                const isSelected = selectedSubtopic === btn.name;
+                return (
+                  <button key={btn.name} onClick={() => { setSelectedSubtopic(btn.name); setDetailedViewSubdivision(null); setActiveActivity(null); setIsSidebarOpen(false); }}
+                    style={{ background: isSelected ? 'rgba(74,222,128,0.08)' : 'transparent', border: `1px solid ${isSelected ? 'rgba(74,222,128,0.25)' : 'transparent'}`, color: isSelected ? 'var(--primary)' : '#e2e8f0', padding: '0.55rem 0.75rem', borderRadius: 8, fontSize: '0.76rem', textAlign: 'left', cursor: 'pointer', transition: 'all 0.15s', width: '100%', flexShrink: 0 }}
+                  >
+                    <div style={{ fontWeight: isSelected ? 'bold' : 'normal', wordBreak: 'break-word' }}>{btn.name}</div>
+                    <div style={{ fontSize: '0.6rem', color: '#64748b', marginTop: 2 }}>{btn.topicName} · {btn.sectionsCount} sections</div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </aside>
+
+        {/* Backdrop for mobile drawer */}
+        {isSidebarOpen && (
+          <div onClick={() => setIsSidebarOpen(false)}
+            style={{ position: 'fixed', inset: 0, top: 60, zIndex: 90, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(3px)' }}
+          />
+        )}
+
+        {/* RIGHT: Main Content */}
+        <main style={{ padding: '1.5rem', overflowY: 'auto', height: 'calc(100vh - 60px)' }}>
+
+          {activeActivity ? (
+            <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel" style={{ padding: '2rem' }}>
+              <button onClick={() => setActiveActivity(null)} className="btn btn-glass" style={{ marginBottom: '1.5rem', padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
+                <ArrowLeft size={16} /> Back to Hub
+              </button>
+              {activeActivity === 'flashcard' && <Flashcard data={activeActivityData?.flashcards || getStudyData().flashcards} onComplete={handleActivityComplete} />}
+              {activeActivity === 'match'     && <MatchGame  data={activeActivityData?.match     || getStudyData().match}      onComplete={handleActivityComplete} />}
+              {activeActivity === 'mcq'       && <ExamineMCQ data={activeActivityData?.mcqs      || getStudyData().mcqs}       onComplete={handleActivityComplete} />}
+            </motion.div>
+
+          ) : detailedViewSubdivision ? (
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <button onClick={() => setDetailedViewSubdivision(null)} className="btn btn-glass" style={{ width: 'fit-content', padding: '0.5rem 1rem', fontSize: '0.85rem' }}>
+                <ArrowLeft size={16} /> Back to Geography Hub
+              </button>
+
+              {/* Banner */}
+              <div className="glass-panel" style={{ position: 'relative', overflow: 'hidden', padding: '2.5rem 2rem', minHeight: 180, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+                <img src={imageUrl()} alt={selectedSubtopic} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3 }} />
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 'bold', letterSpacing: '0.05em' }}>{activeChapter}</span>
+                  <h1 style={{ margin: '0.2rem 0 0', fontSize: '2.2rem' }}>{selectedSubtopic}</h1>
+                </div>
+              </div>
+
+              {/* Section cards */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                {getSubtopicSections().sections.map((sec, idx) => {
+                  const curatedData = getSectionActivity(sec.sectionName);
+                  const sectionActData = curatedData || getStudyData();
+                  return (
+                    <motion.div key={idx} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}
+                      style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '1.5rem', alignItems: 'start' }}
+                      className="section-card-grid"
+                    >
+                      {/* Content card */}
+                      <div className="glass-panel" style={{ padding: '1.75rem', borderLeft: '4px solid var(--primary)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.75rem' }}>
+                          <h3 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <Zap size={18} color="var(--primary)" /> {sec.sectionName}
+                          </h3>
+                          <span style={{ fontSize: '0.7rem', background: 'rgba(74,222,128,0.1)', color: 'var(--primary)', padding: '0.2rem 0.6rem', borderRadius: 12, fontWeight: 'bold' }}>
+                            Section {idx + 1}
+                          </span>
+                        </div>
+                        <SectionVisualizer sectionName={sec.sectionName} facts={sec.facts} />
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', flex: 1 }}>
+                          {sec.facts.map((fact, fIdx) => (
+                            <li key={fIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.03)', padding: '0.75rem 1rem', borderRadius: 10 }}>
+                              <span style={{ color: 'var(--primary)', fontWeight: 'bold', fontSize: '1.2rem', lineHeight: 1 }}>•</span>
+                              <span style={{ color: 'var(--text-main)', fontSize: '0.9rem', lineHeight: 1.6 }}>{fact}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Activities sidebar */}
+                      <div className="glass-panel" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem', border: '1px solid rgba(129,140,248,0.3)', background: 'rgba(15,23,42,0.6)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0, fontSize: '1rem', color: 'var(--secondary)' }}>
+                            <GraduationCap size={18} color="var(--secondary)" /> Learning Activities
+                          </h4>
+                          <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: 600 }}>Section {idx + 1}</span>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                          <button className="btn btn-primary" onClick={() => startFlashcard(sectionActData)} style={{ justifyContent: 'space-between', padding: '0.8rem 1rem', fontSize: '0.85rem' }}>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Layers size={16} /> Visual Flashcards</span>
+                            <span className="badge" style={{ background: 'rgba(0,0,0,0.2)', color: '#fff', fontSize: '0.75rem' }}>+10 pts</span>
+                          </button>
+                          <button className="btn btn-glass" onClick={() => startMatch(sectionActData)} style={{ justifyContent: 'space-between', padding: '0.8rem 1rem', fontSize: '0.85rem', borderColor: 'var(--secondary)', color: 'var(--secondary)' }}>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Link2 size={16} /> Practice Matching</span>
+                            <span className="badge" style={{ background: 'rgba(129,140,248,0.2)', color: 'var(--secondary)', fontSize: '0.75rem' }}>+10 pts</span>
+                          </button>
+                          <button className="btn btn-glass" onClick={() => startMCQ(sectionActData)} style={{ justifyContent: 'space-between', padding: '0.8rem 1rem', fontSize: '0.85rem', borderColor: 'var(--danger)', color: 'var(--danger)' }}>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><HelpCircle size={16} /> Examine MCQ</span>
+                            <span className="badge" style={{ background: 'rgba(239,68,68,0.2)', color: 'var(--danger)', fontSize: '0.75rem' }}>+10 pts</span>
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+
+          ) : (
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              <div>
+                <span style={{ color: 'var(--primary)', fontSize: '0.85rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Geography Mode</span>
+                <h1 style={{ fontSize: '2.2rem', margin: '0.2rem 0' }}>{getChapterShortName(activeChapter)}</h1>
+                <p style={{ color: 'var(--text-muted)', margin: 0 }}>Explore physical regions, practice matching key traits, and examine your knowledge.</p>
+              </div>
+
+              <div className="glass-panel" style={{ padding: '1.5rem', maxWidth: 800, margin: '0 auto', width: '100%' }}>
                 <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
                   🗺️ Interactive Region Selection
                 </h3>
-                <GeographyMap 
-                  onSelectRegion={handleRegionSelect} 
-                  activeRegion={selectedSubtopic} 
-                  isAssam={activeChapter.toLowerCase().includes('assam')} 
-                  activeChapter={activeChapter}
-                />
+                <GeographyMap onSelectRegion={handleRegionSelect} activeRegion={selectedSubtopic} isAssam={activeChapter.toLowerCase().includes('assam')} activeChapter={activeChapter} />
               </div>
 
-              {/* Quick subtopic selectors directly under map */}
               <div className="glass-panel" style={{ padding: '1.25rem' }}>
                 <h4 style={{ marginBottom: '0.75rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>Subtopic Select:</h4>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {quickButtons.map(btn => {
                     const isSelected = selectedSubtopic === btn.name;
                     return (
-                      <button
-                        key={btn.name}
-                        onClick={() => { handleRegionSelect(btn.name); }}
-                        className="btn"
-                        style={{
-                          fontSize: '0.75rem',
-                          padding: '0.4rem 0.8rem',
-                          background: isSelected ? 'rgba(74, 222, 128, 0.15)' : 'rgba(255,255,255,0.02)',
-                          border: isSelected ? '1px solid var(--primary)' : '1px solid var(--glass-border)',
-                          color: isSelected ? 'var(--primary)' : 'var(--text-main)',
-                        }}
+                      <button key={btn.name} onClick={() => handleRegionSelect(btn.name)} className="btn"
+                        style={{ fontSize: '0.75rem', padding: '0.4rem 0.8rem', background: isSelected ? 'rgba(74,222,128,0.15)' : 'rgba(255,255,255,0.02)', border: isSelected ? '1px solid var(--primary)' : '1px solid var(--glass-border)', color: isSelected ? 'var(--primary)' : 'var(--text-main)' }}
                       >
                         {btn.label}
                       </button>
@@ -749,37 +528,19 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Bottom Section: Clickable Banner */}
               <div ref={detailsRef} style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '1.5rem' }}>
                 {selectedSubtopic ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)' }}>Click the banner below to open the dedicated study page:</p>
-                    
-                    <motion.div 
-                      whileHover={{ scale: 1.01, borderColor: 'var(--primary)' }}
-                      onClick={() => setDetailedViewSubdivision(selectedSubtopic)}
-                      className="glass-panel" 
-                      style={{ 
-                        padding: 0, 
-                        overflow: 'hidden', 
-                        border: '1px solid var(--glass-border)', 
-                        cursor: 'pointer',
-                        boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
-                        transition: 'border-color 0.3s'
-                      }}
+                    <motion.div whileHover={{ scale: 1.01, borderColor: 'var(--primary)' }} onClick={() => setDetailedViewSubdivision(selectedSubtopic)}
+                      className="glass-panel"
+                      style={{ padding: 0, overflow: 'hidden', border: '1px solid var(--glass-border)', cursor: 'pointer', boxShadow: '0 8px 24px rgba(0,0,0,0.2)', transition: 'border-color 0.3s' }}
                     >
-                      <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', minHeight: '220px' }}>
-                        {/* Banner Image */}
-                        <div style={{ position: 'relative', overflow: 'hidden', minHeight: '200px' }}>
-                          <img 
-                            src={imageUrl()} 
-                            alt={selectedSubtopic} 
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-                          />
-                          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent, rgba(15, 17, 26, 0.95))' }} />
+                      <div className="detailed-banner-grid">
+                        <div style={{ position: 'relative', overflow: 'hidden', minHeight: 200 }}>
+                          <img src={imageUrl()} alt={selectedSubtopic} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent, rgba(15,17,26,0.95))' }} />
                         </div>
-
-                        {/* Preview Details */}
                         <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.5rem' }}>
                           <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--primary)', fontWeight: 'bold' }}>Geographic Division</span>
                           <h2 style={{ margin: 0, fontSize: '1.6rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -800,10 +561,9 @@ export default function App() {
                   <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '2rem' }}>Select a subdivision to load preview.</p>
                 )}
               </div>
-            </div>
-
-          </motion.div>
-        )}
+            </motion.div>
+          )}
+        </main>
       </div>
     </div>
   );
