@@ -11,6 +11,8 @@ const isRiverMatch = (btnName, mapName) => {
   if (b.includes('dehing') && m.includes('dihing')) return true;
   if (b.includes('sankosh') && m.includes('sonkosh')) return true;
   if (b.includes('sonkosh') && m.includes('sankosh')) return true;
+  if (b.includes('kopili') && m.includes('kapili')) return true;
+  if (b.includes('kapili') && m.includes('kopili')) return true;
   if (b.includes('bhogdoi') && m.includes('bhogdoi')) return true;
   if (b.includes('bharali') && m.includes('bharali')) return true;
   if (b.includes('ranganadi') && m.includes('ronganodi')) return true;
