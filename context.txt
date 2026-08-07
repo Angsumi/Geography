@@ -21,8 +21,8 @@ This document describes the design system, data format specifications, directory
 │   └── INDIAN_SUB_DISTRICTS_COMPACT.json # Compact sub-district polygons for India & Assam maps
 ├── src/
 │   ├── main.jsx                       # React entry point
-│   ├── index.css                      # Design system, glassmorphism UI, and variables
-│   ├── App.jsx                        # Main state machine, data parser, and tab router
+│   ├── index.css                      # Design system, dark glassmorphism UI, mobile responsive grids, and variables
+│   ├── App.jsx                        # Main state machine, data parser, and responsive sidebar layout
 │   ├── assets/
 │   │   └── kml/                       # Raw geographic KML data files (National Highway, Railways)
 │   ├── hooks/
@@ -60,13 +60,13 @@ This document describes the design system, data format specifications, directory
 [GEography.json] + [Activity.json]
        │
        ▼ (Decoupled & Normalized via stringMatcher.js)
-  [App.jsx] (State Orchestrator)
+  [App.jsx] (State Orchestrator & Sidebar Router)
        │
        ├─► [GeographyMap.jsx] (Districts & State boundary rendering)
        │
        ├─► [SectionVisualizer.jsx] (Decoupled Visualizer Router)
        │         │
-       │         └─► [visualizers/*] (17 specialized SVG/CSS diagrams)
+       │         └─► [visualizers/*] (17 specialized SVG/CSS diagrams, fully responsive)
        │
        └─► Game Modes
                  ├─► [Flashcard.jsx] (3D Card deck)
