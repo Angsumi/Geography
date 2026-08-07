@@ -1,6 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
+const isRiverMatch = (btnName, mapName) => {
+  if (!btnName || !mapName) return false;
+  const b = btnName.toLowerCase();
+  const m = mapName.toLowerCase();
+  if (b === m) return true;
+  const clean = s => s.replace(/[^a-z0-9]/g, '');
+  if (clean(b) === clean(m)) return true;
+  if (b.includes('bhogdoi') && m.includes('bhogdoi')) return true;
+  if (b.includes('bharali') && m.includes('bharali')) return true;
+  if (b.includes('ranganadi') && m.includes('ronganodi')) return true;
+  if (b.includes('ronganodi') && m.includes('ranganadi')) return true;
+  if (b.includes('pagladia') && m.includes('pagladiya')) return true;
+  if (b.includes('pagladiya') && m.includes('pagladia')) return true;
+  if (b.includes('dhansiri') && m.includes('dhansiri')) return true;
+  if (b.includes('bornadi') && m.includes('bornadi')) return true;
+  if (b.includes('puthimari') && m.includes('puthimari')) return true;
+  if (b.includes('jhanji') && m.includes('jaji')) return true;
+  if (b.includes('jaji') && m.includes('jhanji')) return true;
+  if (b.length > 3 && m.includes(b)) return true;
+  if (m.length > 3 && b.includes(m)) return true;
+  return false;
+};
+
 export function BrahmaputraValleyVisual() {
   const canvasRef = useRef(null);
   const [rivers, setRivers] = useState([]);
@@ -38,7 +61,7 @@ export function BrahmaputraValleyVisual() {
 
     // Draw grid
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 0.5;
     for (let x = 0; x < width; x += 40) {
       ctx.beginPath();
       ctx.moveTo(x, 0);
@@ -50,7 +73,7 @@ export function BrahmaputraValleyVisual() {
     rivers.forEach(r => {
       if (!r.path || r.path.length < 2) return;
       const isMain = r.name.toLowerCase().includes('brahmaputra') || r.name.toLowerCase().includes('dihang') || r.name.toLowerCase().includes('siang');
-      const isHovered = hoveredRiver === r.name;
+      const isHovered = isRiverMatch(hoveredRiver, r.name);
 
       ctx.beginPath();
       ctx.moveTo(toX(r.path[0][0]), toY(r.path[0][1]));

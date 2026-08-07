@@ -1,5 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+const isRiverMatch = (btnName, mapName) => {
+  if (!btnName || !mapName) return false;
+  const b = btnName.toLowerCase();
+  const m = mapName.toLowerCase();
+  if (b === m) return true;
+  const clean = s => s.replace(/[^a-z0-9]/g, '');
+  if (clean(b) === clean(m)) return true;
+  if (b.includes('bhogdoi') && m.includes('bhogdoi')) return true;
+  if (b.includes('bharali') && m.includes('bharali')) return true;
+  if (b.includes('ranganadi') && m.includes('ronganodi')) return true;
+  if (b.includes('ronganodi') && m.includes('ranganadi')) return true;
+  if (b.includes('pagladia') && m.includes('pagladiya')) return true;
+  if (b.includes('pagladiya') && m.includes('pagladia')) return true;
+  if (b.includes('dhansiri') && m.includes('dhansiri')) return true;
+  if (b.includes('bornadi') && m.includes('bornadi')) return true;
+  if (b.includes('puthimari') && m.includes('puthimari')) return true;
+  if (b.includes('jhanji') && m.includes('jaji')) return true;
+  if (b.includes('jaji') && m.includes('jhanji')) return true;
+  if (b.length > 3 && m.includes(b)) return true;
+  if (m.length > 3 && b.includes(m)) return true;
+  return false;
+};
+
 export function TributariesBankVisual({ sectionName }) {
   const canvasRef = useRef(null);
   const [rivers, setRivers] = useState([]);
@@ -38,17 +61,17 @@ export function TributariesBankVisual({ sectionName }) {
     const grad = ctx.createLinearGradient(0, 0, width, height);
     if (isSouthSection) {
       grad.addColorStop(0, 'rgba(30, 10, 15, 0.95)');
-      grad.addColorStop(1, 'rgba(127, 29, 29, 0.35)');
+      grad.addColorStop(1, 'rgba(6, 78, 59, 0.1)');
     } else {
-      grad.addColorStop(0, 'rgba(6, 30, 20, 0.95)');
-      grad.addColorStop(1, 'rgba(6, 78, 59, 0.35)');
+      grad.addColorStop(0, 'rgba(15, 23, 42, 0.95)');
+      grad.addColorStop(1, 'rgba(6, 78, 59, 0.3)');
     }
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, width, height);
 
-    // Draw coordinate grid
+    // Draw coordinate grid lines
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 0.5;
     for (let x = 0; x < width; x += 40) {
       ctx.beginPath();
       ctx.moveTo(x, 0);
@@ -56,7 +79,7 @@ export function TributariesBankVisual({ sectionName }) {
       ctx.stroke();
     }
 
-    const northBankNames = ['subansiri', 'manas', 'jiadhol', 'gai', 'siku', 'buroi', 'borgang', 'kameng', 'bharali', 'gabhoru', 'belsiri', 'puthimari', 'bornadi', 'pagladia', 'pagladiya', 'sankosh', 'sonkosh', 'tipkai', 'beki', 'aie', 'ronganodi', 'ronganadi', 'dikrong', 'semen', 'solengi', 'saralbhanga', 'siang', 'dihang', 'jiri', 'chiri', 'madhura', 'jatinga', 'larang'];
+    const northBankNames = ['subansiri', 'manas', 'jiadhol', 'gai', 'siku', 'buroi', 'borgang', 'kameng', 'bharali', 'gabhoru', 'belsiri', 'puthimari', 'bornadi', 'pagladia', 'pagladiya', 'sankosh', 'sonkosh', 'tipkai', 'beki', 'aie', 'ronganodi', 'ranganadi', 'dikrong', 'semen', 'solengi', 'saralbhanga', 'siang', 'dihang', 'jiri', 'chiri', 'madhura', 'jatinga', 'larang'];
     const southBankNames = ['burhi dihing', 'dehing', 'disang', 'dikhou', 'jhanji', 'jaji', 'bhogdoi', 'disoi', 'dhansiri', 'doyang', 'kopili', 'kapili', 'kolong', 'kulsi', 'krishnai', 'dudhnoi', 'mornoi', 'jinjiram', 'bokota', 'teok', 'kakodunga', 'sonai', 'rukni', 'ghagra', 'katakhal', 'dhaleshwari', 'longai'];
 
     // Draw rivers
@@ -64,7 +87,7 @@ export function TributariesBankVisual({ sectionName }) {
       if (!r.path || r.path.length < 2) return;
       const nameLower = r.name.toLowerCase();
       const isMain = nameLower.includes('brahmaputra') || nameLower.includes('dihang') || nameLower.includes('siang') || nameLower.includes('barak');
-      const isHovered = hoveredRiver === r.name;
+      const isHovered = isRiverMatch(hoveredRiver, r.name);
       const isNB = northBankNames.some(nb => nameLower.includes(nb));
       const isSB = southBankNames.some(sb => nameLower.includes(sb));
 
