@@ -540,4 +540,44 @@ h2 { font-size: 2rem; margin-bottom: 0.75rem; }
     padding: 0.5rem 0.65rem !important;
     font-size: 0.82rem !important;
   }
+
+  /* ─── Visualizers Mobile Alignment & Scale Fixes ─── */
+  /* Force all inline flex headers to vertical stack on narrow displays */
+  div[style*="display: 'flex'"][style*="justifyContent: 'space-between'"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Retain inline row flow where needed (e.g. headers, buttons, simple badges) */
+  .app-header,
+  .app-header div,
+  div[style*="flexDirection: 'row'"],
+  div[style*="display: 'flex'"][style*="gap:"] {
+    flex-direction: row !important;
+  }
+
+  /* 5-column and 4-column tab bars to wrap instead of squeezing */
+  div[style*="gridTemplateColumns: 'repeat(5, 1fr)'"],
+  div[style*="gridTemplateColumns: 'repeat(4, 1fr)'"],
+  div[style*="gridTemplateColumns: 'repeat(3, 1fr)'"] {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)) !important;
+    gap: 0.25rem !important;
+  }
+
+  /* Ecology grid profile cards: change from 1fr 1fr to 1 column */
+  div[style*="gridTemplateColumns: '1fr 1fr'"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Central plateau & other 3-column layouts inside visualizers */
+  div[style*="gridTemplateColumns: 'repeat(3, 1fr)'"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* SVGs inside visualizers: auto resize and maintain aspect ratio */
+  svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
 }
