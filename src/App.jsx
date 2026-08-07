@@ -8,6 +8,7 @@ import neGeo from './data/northeast/GEography.json';
 import indiaAct from './data/india/Activity.json';
 import assamAct from './data/assam/Activity.json';
 import neAct from './data/northeast/Activity.json';
+import { isNameMatch } from './utils/stringMatcher';
 
 import './index.css';
 import Flashcard from './components/Flashcard';
@@ -36,15 +37,7 @@ const activityData = {
 // Map SectionName to Activity.json items
 function getSectionActivity(sectionName, subtopicName) {
   const activitiesList = activityData.LearningActivities || [];
-  let found = activitiesList.find(a => a.SectionName.toLowerCase().trim() === sectionName.toLowerCase().trim());
-  
-  if (!found) {
-    // Partial search
-    found = activitiesList.find(a => 
-      a.SectionName.toLowerCase().includes(sectionName.toLowerCase()) || 
-      sectionName.toLowerCase().includes(a.SectionName.toLowerCase())
-    );
-  }
+  const found = activitiesList.find(a => isNameMatch(a.SectionName, sectionName));
 
   if (found) {
     const flashcards = (found.VisualFlashcards || []).map(f => ({

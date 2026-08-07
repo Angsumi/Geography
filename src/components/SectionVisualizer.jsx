@@ -1,6 +1,7 @@
 import indiaViz from '../data/india/Viz.json';
 import assamViz from '../data/assam/Viz.json';
 import neViz from '../data/northeast/Viz.json';
+import { isNameMatch } from '../utils/stringMatcher';
 
 const vizData = {
   SectionVisualisations: [
@@ -32,62 +33,57 @@ import { TransportVisual } from './visualizers/TransportVisual';
 export function getVizIdea(sectionName) {
   if (!sectionName) return null;
   const list = vizData.SectionVisualisations || [];
-  const cleanTarget = sectionName.replace(/\[cite:\s*\d+\]/g, '').trim().toLowerCase();
-  
-  let found = list.find(v => v.SectionName.replace(/\[cite:\s*\d+\]/g, '').trim().toLowerCase() === cleanTarget);
-  if (!found) {
-    found = list.find(v => cleanTarget.includes(v.SectionName.replace(/\[cite:\s*\d+\]/g, '').trim().toLowerCase()) || v.SectionName.toLowerCase().includes(cleanTarget));
-  }
+  const found = list.find(v => isNameMatch(v.SectionName, sectionName));
   return found ? found.VisualisationIdea : null;
 }
 
 export function SectionVisualizer({ sectionName, facts = [] }) {
   const idea = getVizIdea(sectionName);
-  const cleanName = sectionName ? sectionName.replace(/\[cite:\s*\d+\]/g, '').trim() : '';
+  const cleanName = sectionName || '';
 
   // 0. Transport Visualizers
-  if (cleanName.includes('National Highways')) {
+  if (isNameMatch(cleanName, 'National Highways')) {
     return <TransportVisual mode="nh" />;
   }
-  if (cleanName.includes('Railways')) {
+  if (isNameMatch(cleanName, 'Railways')) {
     return <TransportVisual mode="railway" />;
   }
-  if (cleanName.includes('National Waterways') || cleanName.includes('Transport')) {
+  if (isNameMatch(cleanName, 'National Waterways') || isNameMatch(cleanName, 'Transport')) {
     return <TransportVisual mode="waterway" />;
   }
 
   // 1. Central Plateau & Hills Visualizer
-  if (cleanName.includes('Central Plateau') || cleanName.includes('Karbi Anglong') || cleanName.includes('Haflong')) {
+  if (isNameMatch(cleanName, 'Central Plateau') || isNameMatch(cleanName, 'Karbi Anglong') || isNameMatch(cleanName, 'Haflong')) {
     return <CentralPlateauVisual />;
   }
 
   // 2. Specialized Bank Tributary Visualizer (North Bank vs South Bank)
-  if (cleanName.includes('North Bank') || cleanName.includes('South Bank')) {
+  if (isNameMatch(cleanName, 'North Bank') || isNameMatch(cleanName, 'South Bank')) {
     return <TributariesBankVisual sectionName={cleanName} />;
   }
 
   // 3. Brahmaputra Valley KML Rivers Visualizer
-  if (cleanName.includes('Brahmaputra Valley') || cleanName.includes('Brahmaputra')) {
+  if (isNameMatch(cleanName, 'Brahmaputra Valley') || isNameMatch(cleanName, 'Brahmaputra')) {
     return <BrahmaputraValleyVisual />;
   }
 
   // 4. Major Hill Ranges Visualizer
-  if (cleanName.includes('Major Hill Ranges')) {
+  if (isNameMatch(cleanName, 'Major Hill Ranges')) {
     return <HillRangesVisual sectionName={cleanName} />;
   }
 
   // 5. WNHS Visualizer
-  if (cleanName.includes('Kaziranga') || cleanName.includes('Manas') || cleanName.includes('Moidams') || cleanName.includes('Khangchendzonga') || cleanName.includes('Heritage')) {
+  if (isNameMatch(cleanName, 'Kaziranga') || isNameMatch(cleanName, 'Manas') || isNameMatch(cleanName, 'Moidams') || isNameMatch(cleanName, 'Khangchendzonga') || isNameMatch(cleanName, 'Heritage')) {
     return <WNHSSitesVisual activeSection={cleanName} />;
   }
 
   // 6. Biosphere Reserves Visualizer
-  if (cleanName.includes('Reserves') || cleanName.includes('Biosphere') || cleanName.includes('Schema') || cleanName.includes('Core, Buffer')) {
+  if (isNameMatch(cleanName, 'Reserves') || isNameMatch(cleanName, 'Biosphere') || isNameMatch(cleanName, 'Schema') || isNameMatch(cleanName, 'Core, Buffer')) {
     return <BiosphereReservesVisual activeSection={cleanName} />;
   }
 
   // 4. State Profiles Visualizer (Arunachal, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Tripura)
-  if (cleanName.includes('Administration & Symbols') || cleanName.includes('Ecology & Topography') || cleanName.includes('Profile')) {
+  if (isNameMatch(cleanName, 'Administration & Symbols') || isNameMatch(cleanName, 'Ecology & Topography') || isNameMatch(cleanName, 'Profile')) {
     let stateName = 'Northeast State';
     let capital = 'State Capital';
     let animal = 'State Animal';
