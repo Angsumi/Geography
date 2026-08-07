@@ -113,6 +113,35 @@
                   ]
                 }
               ]
+            },
+            {
+              "SubtopicName": "Transport",
+              "Sections": [
+                {
+                  "SectionName": "National Highways (NH)",
+                  "Facts": [
+                    "Assam acts as the transit hub for Northeast India with an extensive network of National Highways connecting all Seven Sister states.[cite: 1]",
+                    "Key Highways: NH-27 (formerly NH-37) is the lifeline corridor traversing Assam east-west from Srirampur to Silchar/Sadiya.[cite: 1]",
+                    "Connectivity: Bridges like Bhupen Hazarika Setu (Dhola-Sadiya) and Bogibeel Bridge connect crucial NH networks across the Brahmaputra River.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "Railways",
+                  "Facts": [
+                    "Administered by the Northeast Frontier Railway (NFR) zone headquartered in Maligaon, Guwahati.[cite: 1]",
+                    "Network: Extensive broad gauge railway tracks connect Upper Assam to Lower Assam and the rest of mainland India via the Siliguri Corridor.[cite: 1]",
+                    "Landmark Projects: Bogibeel Bridge is the longest rail-cum-road bridge in India, providing seamless connectivity between north and south banks.[cite: 1]"
+                  ]
+                },
+                {
+                  "SectionName": "National Waterways (NW)",
+                  "Facts": [
+                    "National Waterway 2 (NW-2) comprises the Brahmaputra River running from Sadiya to Dhubri (891 km).[cite: 1]",
+                    "Infrastructure: Pandu Port in Guwahati is the largest and most developed river port in Assam, serving as an inland water terminal.[cite: 1]",
+                    "Logistics: Promotes eco-friendly and cost-effective bulk cargo trade connecting Northeast India to international ports via Bangladesh.[cite: 1]"
+                  ]
+                }
+              ]
             }
           ]
         }

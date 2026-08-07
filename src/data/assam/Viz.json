@@ -43,6 +43,18 @@
     {
       "SectionName": "Elephant Reserves (ER)[cite: 1]",
       "VisualisationIdea": "CSS Proportion Circles (bubble chart) showing the massive size of Kaziranga-Karbi Anglong compared to the other 4 reserves."
+    },
+    {
+      "SectionName": "National Highways (NH)[cite: 1]",
+      "VisualisationIdea": "Interactive roadmap highlighting key national highways (NH-27) across Assam."
+    },
+    {
+      "SectionName": "Railways[cite: 1]",
+      "VisualisationIdea": "Schematic route map showing Northeast Frontier Railway (NFR) routes and divisions."
+    },
+    {
+      "SectionName": "National Waterways (NW)[cite: 1]",
+      "VisualisationIdea": "River shipping lane diagram tracking National Waterway 2 (NW-2) along the Brahmaputra River from Sadiya to Dhubri."
     }
   ]
 }

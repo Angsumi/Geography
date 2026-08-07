@@ -27,6 +27,7 @@ import { HillRangesVisual } from './visualizers/HillRangesVisual';
 import { BrahmaputraValleyVisual } from './visualizers/BrahmaputraValleyVisual';
 import { TributariesBankVisual } from './visualizers/TributariesBankVisual';
 import { CentralPlateauVisual } from './visualizers/CentralPlateauVisual';
+import { TransportVisual } from './visualizers/TransportVisual';
 
 export function getVizIdea(sectionName) {
   if (!sectionName) return null;
@@ -43,6 +44,11 @@ export function getVizIdea(sectionName) {
 export function SectionVisualizer({ sectionName, facts = [] }) {
   const idea = getVizIdea(sectionName);
   const cleanName = sectionName ? sectionName.replace(/\[cite:\s*\d+\]/g, '').trim() : '';
+
+  // 0. Transport Visualizer (NH, Railways, Waterways)
+  if (cleanName.includes('National Highways') || cleanName.includes('Railways') || cleanName.includes('National Waterways') || cleanName.includes('Transport')) {
+    return <TransportVisual />;
+  }
 
   // 1. Central Plateau & Hills Visualizer
   if (cleanName.includes('Central Plateau') || cleanName.includes('Karbi Anglong') || cleanName.includes('Haflong')) {

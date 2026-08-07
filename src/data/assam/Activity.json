@@ -1787,6 +1787,117 @@
           "CorrectAnswer": "Marat Longri Wildlife Sanctuary[cite: 1]"
         }
       ]
+    },
+    {
+      "SectionName": "National Highways (NH)",
+      "VisualFlashcards": [
+        {
+          "Front": "Which highway is considered the main lifeline corridor traversing Assam from west to east?[cite: 1]",
+          "Back": "NH-27 (formerly NH-37).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What is the name of India's longest water bridge, connecting Dhola to Sadiya in Assam?[cite: 1]",
+          "Back": "Bhupen Hazarika Setu (Dhola-Sadiya Bridge).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "NH-27",
+          "Definition": "East-west lifeline highway of Assam connecting Srirampur to Sadiya.[cite: 1]"
+        },
+        {
+          "Term": "Dhola-Sadiya Bridge",
+          "Definition": "Bhupen Hazarika Setu, connecting NH networks across Lohit River.[cite: 1]"
+        }
+      ],
+      "PracticeMCQs": [
+        {
+          "Question": "Which bridge is the longest water bridge in India, located in Assam?[cite: 1]",
+          "Options": [
+            "Bhupen Hazarika Setu (Dhola-Sadiya Bridge)",
+            "Bogibeel Bridge",
+            "Saraighat Bridge",
+            "Kalia Bhomora Setu"
+          ],
+          "CorrectAnswer": "Bhupen Hazarika Setu (Dhola-Sadiya Bridge)[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Railways",
+      "VisualFlashcards": [
+        {
+          "Front": "Which railway zone governs the rail network in Assam and Northeast India?[cite: 1]",
+          "Back": "Northeast Frontier Railway (NFR) zone.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Where is the headquarter of the Northeast Frontier Railway (NFR) located?[cite: 1]",
+          "Back": "Maligaon, Guwahati.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "NFR Headquarters",
+          "Definition": "Maligaon, Guwahati.[cite: 1]"
+        },
+        {
+          "Term": "Bogibeel Bridge",
+          "Definition": "Longest rail-cum-road bridge in India.[cite: 1]"
+        }
+      ],
+      "PracticeMCQs": [
+        {
+          "Question": "Where is the headquarters of the Northeast Frontier Railway (NFR) located?[cite: 1]",
+          "Options": [
+            "Maligaon (Guwahati)",
+            "Lumding",
+            "Tinsukia",
+            "Siliguri"
+          ],
+          "CorrectAnswer": "Maligaon (Guwahati)[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "National Waterways (NW)",
+      "VisualFlashcards": [
+        {
+          "Front": "Which river stretch in Assam is designated as National Waterway 2 (NW-2)?[cite: 1]",
+          "Back": "The Brahmaputra River from Sadiya to Dhubri.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which port in Guwahati is the largest and most developed river port in Assam?[cite: 1]",
+          "Back": "Pandu Port.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "NW-2 Length",
+          "Definition": "891 km stretch along the Brahmaputra River.[cite: 1]"
+        },
+        {
+          "Term": "Pandu Port",
+          "Definition": "The main river port terminal in Guwahati.[cite: 1]"
+        }
+      ],
+      "PracticeMCQs": [
+        {
+          "Question": "What is the total length of National Waterway 2 (NW-2) along the Brahmaputra River?[cite: 1]",
+          "Options": [
+            "891 km",
+            "720 km",
+            "930 km",
+            "650 km"
+          ],
+          "CorrectAnswer": "891 km[cite: 1]"
+        }
+      ]
     }
   ]
 }
