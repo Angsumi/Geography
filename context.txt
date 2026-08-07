@@ -23,8 +23,12 @@ This document describes the design system, data format specifications, directory
 │   ├── main.jsx                       # React entry point
 │   ├── index.css                      # Design system, glassmorphism UI, and variables
 │   ├── App.jsx                        # Main state machine, data parser, and tab router
+│   ├── assets/
+│   │   └── kml/                       # Raw geographic KML data files (National Highway, Railways)
 │   ├── hooks/
 │   │   └── useSound.js                # Web Audio API sound generator helper (flip, correct, complete)
+│   ├── utils/
+│   │   └── stringMatcher.js           # Decoupled string normalization and name-matching helper
 │   ├── components/
 │   │   ├── Flashcard.jsx              # 3D interactive flip card game (VisualFlashcards)
 │   │   ├── MatchGame.jsx              # Drag-and-drop matching column game (PracticeMatching)
@@ -55,12 +59,12 @@ This document describes the design system, data format specifications, directory
 ```
 [GEography.json] + [Activity.json]
        │
-       ▼
+       ▼ (Decoupled & Normalized via stringMatcher.js)
   [App.jsx] (State Orchestrator)
        │
        ├─► [GeographyMap.jsx] (Districts & State boundary rendering)
        │
-       ├─► [SectionVisualizer.jsx] (Keyword-based visualizer router)
+       ├─► [SectionVisualizer.jsx] (Decoupled Visualizer Router)
        │         │
        │         └─► [visualizers/*] (17 specialized SVG/CSS diagrams)
        │
@@ -72,7 +76,7 @@ This document describes the design system, data format specifications, directory
 
 ### Data Integration
 - **`App.jsx`** acts as the central hub. It imports and aggregates all `GEography.json` files into a single `syllabusData` object and all `Activity.json` files into `activityData`.
-- The `parseSyllabus` function parses the active subject JSON into a key-value dictionary (`studyDb`) indexed by section name for constant-time lookup.
+- Section matching and data association are processed via **`src/utils/stringMatcher.js`**. The utility strips citation marks (e.g. `[cite: 1]`), bracketed annotations (e.g. `(NH)`), and ignores capitalization/spacing. This ensures that formatting modifications in the syllabus files do not break active visualizers or learning activities.
 - If a section lacks curated activity content, it dynamically constructs fallback MCQ, Flashcard, and Matching arrays to prevent the application from crashing.
 
 ---
@@ -93,7 +97,7 @@ This document describes the design system, data format specifications, directory
               "SubtopicName": "Subtopic Name (emitted by map boundary click)",
               "Sections": [
                 {
-                  "SectionName": "Section Name (MUST match Activity.json exactly)",
+                  "SectionName": "Section Name (matched flexibly with Activity.json)",
                   "Facts": [
                     "Fact sentence with citation.[cite: 1]",
                     "Another fact sentence.[cite: 1]"
@@ -114,7 +118,7 @@ This document describes the design system, data format specifications, directory
 {
   "LearningActivities": [
     {
-      "SectionName": "Section Name (exact match from GEography.json)",
+      "SectionName": "Section Name (matched flexibly with GEography.json)",
       "VisualFlashcards": [
         {
           "Front": "Question prompt?[cite: 1]",
@@ -158,11 +162,12 @@ This document describes the design system, data format specifications, directory
 - Hover detection is calculated using squared Euclidean distance threshold checks against feature centroids.
 
 ### `SectionVisualizer.jsx`
-Maps section names (via case-insensitive substring checks) to 17 customized visual components located in `src/components/visualizers/`:
+Maps section names (via robust normalization matching) to 17 customized visual components located in `src/components/visualizers/`:
 - `RiverFlowVisual` / `TributariesBankVisual` / `BrahmaputraValleyVisual`: Generates animated canvas and SVG flow paths for river systems.
 - `BiosphereReservesVisual`: Generates concentric circles representing Core, Buffer, and Transition zones.
 - `StateProfileVisual`: Renders state cards containing local administrative data and state symbols.
 - `GeneralStructureVisual` / `SoilProfileVisual` / `PlateauGridVisual`: Renders layered, stylized CSS cards mapping physical geology structures.
+- `TransportVisual`: Draws detailed interactive SVG route networks (railways, highways, waterways) extracted from KML files.
 
 ---
 
