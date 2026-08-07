@@ -8,6 +8,10 @@ const isRiverMatch = (btnName, mapName) => {
   if (b === m) return true;
   const clean = s => s.replace(/[^a-z0-9]/g, '');
   if (clean(b) === clean(m)) return true;
+  if (b.includes('dihing') && m.includes('dehing')) return true;
+  if (b.includes('dehing') && m.includes('dihing')) return true;
+  if (b.includes('sankosh') && m.includes('sonkosh')) return true;
+  if (b.includes('sonkosh') && m.includes('sankosh')) return true;
   if (b.includes('bhogdoi') && m.includes('bhogdoi')) return true;
   if (b.includes('bharali') && m.includes('bharali')) return true;
   if (b.includes('ranganadi') && m.includes('ronganodi')) return true;
