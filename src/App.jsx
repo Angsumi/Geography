@@ -330,7 +330,7 @@ export default function App() {
 
       {/* ─── Sticky Header ─── */}
       <header className="glass-panel app-header" style={{ padding: '0.85rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.06)', borderRadius: 0, position: 'sticky', top: 0, zIndex: 110 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
           <button className="mobile-menu-btn" onClick={() => setIsSidebarOpen(v => !v)} aria-label="Toggle sidebar">
             {isSidebarOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -410,7 +410,7 @@ export default function App() {
         )}
 
         {/* RIGHT: Main Content */}
-        <main style={{ padding: '1.5rem', overflowY: 'auto', height: 'calc(100vh - 60px)' }}>
+        <main style={{ padding: '1.5rem', overflowY: 'auto', overflowX: 'hidden', height: 'calc(100vh - 60px)', minWidth: 0 }}>
 
           {activeActivity ? (
             <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel" style={{ padding: '2rem' }}>

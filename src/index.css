@@ -468,20 +468,76 @@ h2 { font-size: 2rem; margin-bottom: 0.75rem; }
 
 /* ─── Mobile (≤ 600px) ───────────────────── */
 @media (max-width: 600px) {
+  /* Prevent any horizontal overflow */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Header: wrap stats below title on very small screens */
   .app-header {
-    padding: 0.75rem 1rem !important;
-    gap: 0.5rem;
+    padding: 0.65rem 0.9rem !important;
+    gap: 0.4rem;
   }
 
+  /* Shrink XP / Streak text to fit */
+  .app-header span[style] {
+    font-size: 0.7rem !important;
+  }
+
+  /* Main content area */
   main {
-    padding: 0.75rem !important;
+    padding: 0.6rem !important;
+    overflow-x: hidden;
   }
 
+  /* Glass panels: tighter padding */
+  .glass-panel {
+    padding: 1rem !important;
+    border-radius: 14px !important;
+  }
+
+  /* Stack section content + activity cards vertically */
   .section-card-grid {
     grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
   }
 
+  /* Banner heading */
   h1 {
-    font-size: 1.5rem !important;
+    font-size: 1.3rem !important;
+    word-break: break-word;
+  }
+
+  h2 {
+    font-size: 1.1rem !important;
+    word-break: break-word;
+  }
+
+  h3, h4 {
+    font-size: 0.95rem !important;
+  }
+
+  /* Map card: no side margin, full width */
+  .glass-panel[style*="maxWidth"] {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Buttons full-width on mobile for easier tapping */
+  .btn {
+    font-size: 0.8rem !important;
+    padding: 0.65rem 0.75rem !important;
+  }
+
+  /* Subtopic quick-select pills: allow wrap */
+  div[style*="flexWrap: 'wrap'"] {
+    gap: 0.3rem !important;
+  }
+
+  /* Fact list items: compact */
+  li[style*="0.75rem 1rem"] {
+    padding: 0.5rem 0.65rem !important;
+    font-size: 0.82rem !important;
   }
 }
