@@ -138,7 +138,7 @@ export function WNHSSitesVisual({ activeSection = '' }) {
         >
           {/* Header Image Showcase */}
           <div style={{ height: '160px', width: '100%', position: 'relative', overflow: 'hidden' }}>
-            <img src={current.image} alt={current.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={current.image.startsWith('/') ? `${import.meta.env.BASE_URL}${current.image.slice(1)}` : current.image} alt={current.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.95))` }} />
             <div style={{ position: 'absolute', bottom: '0.75rem', left: '1rem', right: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
               <h6 style={{ margin: 0, fontSize: '1rem', color: '#fff', textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>

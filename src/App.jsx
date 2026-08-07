@@ -50,7 +50,7 @@ function getSectionActivity(sectionName, subtopicName) {
     const flashcards = (found.VisualFlashcards || []).map(f => ({
       q: f.Front.replace(/\[cite:\s*\d+\]/g, '').trim(),
       a: f.Back.replace(/\[cite:\s*\d+\]/g, '').trim(),
-      img: f.Image || null,
+      img: f.Image ? (f.Image.startsWith('/') ? `${import.meta.env.BASE_URL}${f.Image.slice(1)}` : f.Image) : null,
       exp: `Section: ${sectionName}`
     }));
     const match = (found.PracticeMatching || []).map(m => ({
@@ -462,7 +462,13 @@ export default function App() {
     setActiveActivity('mcq');
   };
 
-  const imageUrl = () => TOPIC_IMAGES[selectedSubtopic] || 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80';
+  const imageUrl = () => {
+    const rawUrl = TOPIC_IMAGES[selectedSubtopic] || 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80';
+    if (rawUrl.startsWith('/')) {
+      return `${import.meta.env.BASE_URL}${rawUrl.slice(1)}`;
+    }
+    return rawUrl;
+  };
 
   const getChapterShortName = (name) => {
     return name.replace(/^\d+[\.\_]\s*/, '');

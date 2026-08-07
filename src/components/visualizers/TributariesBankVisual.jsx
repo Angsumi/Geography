@@ -10,7 +10,7 @@ export function TributariesBankVisual({ sectionName }) {
   const isBarak = sectionName.toLowerCase().includes('barak');
 
   useEffect(() => {
-    fetch('/SIMPLIFIED_ASSAM_RIVERS.json')
+    fetch(`${import.meta.env.BASE_URL}SIMPLIFIED_ASSAM_RIVERS.json`)
       .then(r => r.json())
       .then(data => setRivers(data))
       .catch(() => {});

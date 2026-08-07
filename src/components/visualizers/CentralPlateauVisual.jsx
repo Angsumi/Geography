@@ -49,7 +49,7 @@ export function CentralPlateauVisual() {
       {/* Hero Image Showcase */}
       <div style={{ position: 'relative', height: '220px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1rem', border: '1px solid rgba(255,255,255,0.1)' }}>
         <img 
-          src="/haflong_hills.jpg" 
+          src={`${import.meta.env.BASE_URL}haflong_hills.jpg`} 
           alt="Haflong Central Hills Assam" 
           style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
         />

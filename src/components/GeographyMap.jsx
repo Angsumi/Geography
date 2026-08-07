@@ -39,8 +39,8 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
   // Load map datasets
   useEffect(() => {
     Promise.all([
-      fetch('/INDIAN_SUB_DISTRICTS_COMPACT.json').then(r => r.json()),
-      fetch('/NORTHEAST_STATES_ONLY.json').then(r => r.json())
+      fetch(`${import.meta.env.BASE_URL}INDIAN_SUB_DISTRICTS_COMPACT.json`).then(r => r.json()),
+      fetch(`${import.meta.env.BASE_URL}NORTHEAST_STATES_ONLY.json`).then(r => r.json())
     ]).then(([subData, neData]) => {
       rawFeaturesRef.current = subData;
 

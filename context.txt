@@ -1,0 +1,187 @@
+# ADRE Geography Hub – Application Context & Architectural Documentation
+
+This document describes the design system, data format specifications, directory layout, game mechanics, and deployment workflow for the ADRE Geography Hub. It serves as a developer guide for maintaining this codebase and extending it to new subjects.
+
+---
+
+## 1. Directory Structure
+
+```
+/
+├── dist/                              # Production build output
+├── public/                            # Static assets served from root
+│   ├── charaideo_moidams.jpg          # Ahom dynasty burial mounds banner image
+│   ├── feral_horses.jpg               # Feral horses at Dibru-Saikhowa banner image
+│   ├── haflong_hills.jpg              # Haflong hill station banner image
+│   ├── kaziranga_rhino.jpg            # One-horned rhino at Kaziranga banner image
+│   ├── coastal_plains.jpg             # Coastal plains banner image
+│   ├── islands.jpg                    # Island archipelago banner image
+│   ├── SIMPLIFIED_ASSAM_RIVERS.json   # 109 simplified river paths extracted from KML
+│   ├── NORTHEAST_STATES_ONLY.json     # Coordinates for 7 sister states
+│   └── INDIAN_SUB_DISTRICTS_COMPACT.json # Compact sub-district polygons for India & Assam maps
+├── src/
+│   ├── main.jsx                       # React entry point
+│   ├── index.css                      # Design system, glassmorphism UI, and variables
+│   ├── App.jsx                        # Main state machine, data parser, and tab router
+│   ├── hooks/
+│   │   └── useSound.js                # Web Audio API sound generator helper (flip, correct, complete)
+│   ├── components/
+│   │   ├── Flashcard.jsx              # 3D interactive flip card game (VisualFlashcards)
+│   │   ├── MatchGame.jsx              # Drag-and-drop matching column game (PracticeMatching)
+│   │   ├── ExamineMCQ.jsx             # MCQ quiz with real-time feedback (ExamineMCQ)
+│   │   ├── GeographyMap.jsx           # Canvas-based interactive map renderer
+│   │   └── SectionVisualizer.jsx      # Visualizer router (maps section name → custom visual component)
+│   └── data/
+│       ├── assam/                     # Assam Geography & Conservation datasets
+│       │   ├── GEography.json         # Syllabus hierarchy (5 subtopics, 12 sections)
+│       │   ├── Activity.json          # Curated learning activities for the 12 sections
+│       │   └── Viz.json               # Fallback visual concept ideas
+│       ├── india/                     # Indian Geography & Environment datasets
+│       │   ├── GEography.json
+│       │   ├── Activity.json
+│       │   └── Viz.json
+│       └── northeast/                 # Northeast India Geography datasets
+│           ├── GEography.json
+│           ├── Activity.json
+│           └── Viz.json
+├── package.json                       # Dependencies (Framer Motion, Lucide, Hello Pangea DnD)
+└── vite.config.js                     # Vite build configuration
+```
+
+---
+
+## 2. Component Architecture & Data Flow
+
+```
+[GEography.json] + [Activity.json]
+       │
+       ▼
+  [App.jsx] (State Orchestrator)
+       │
+       ├─► [GeographyMap.jsx] (Districts & State boundary rendering)
+       │
+       ├─► [SectionVisualizer.jsx] (Keyword-based visualizer router)
+       │         │
+       │         └─► [visualizers/*] (17 specialized SVG/CSS diagrams)
+       │
+       └─► Game Modes
+                 ├─► [Flashcard.jsx] (3D Card deck)
+                 ├─► [MatchGame.jsx] (Drag & drop matching columns)
+                 └─► [ExamineMCQ.jsx] (Quiz module with explanation popups)
+```
+
+### Data Integration
+- **`App.jsx`** acts as the central hub. It imports and aggregates all `GEography.json` files into a single `syllabusData` object and all `Activity.json` files into `activityData`.
+- The `parseSyllabus` function parses the active subject JSON into a key-value dictionary (`studyDb`) indexed by section name for constant-time lookup.
+- If a section lacks curated activity content, it dynamically constructs fallback MCQ, Flashcard, and Matching arrays to prevent the application from crashing.
+
+---
+
+## 3. Core Database Schemas
+
+### Syllabus Schema (`GEography.json`)
+```json
+{
+  "GeographySyllabus": [
+    {
+      "Subject": "Subject Name (matches tab labels)",
+      "Topics": [
+        {
+          "TopicName": "Broad Topic Block",
+          "Subtopics": [
+            {
+              "SubtopicName": "Subtopic Name (emitted by map boundary click)",
+              "Sections": [
+                {
+                  "SectionName": "Section Name (MUST match Activity.json exactly)",
+                  "Facts": [
+                    "Fact sentence with citation.[cite: 1]",
+                    "Another fact sentence.[cite: 1]"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Activities Schema (`Activity.json`)
+```json
+{
+  "LearningActivities": [
+    {
+      "SectionName": "Section Name (exact match from GEography.json)",
+      "VisualFlashcards": [
+        {
+          "Front": "Question prompt?[cite: 1]",
+          "Back": "Core answer text.[cite: 1]",
+          "Image": "Image path / Unsplash URL (200 OK only)"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Term or name[cite: 1]",
+          "Definition": "Plausible definition[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Question?[cite: 1]",
+          "Options": [
+            "Correct Option text",
+            "Distractor Option B",
+            "Distractor Option C",
+            "Distractor Option D"
+          ],
+          "CorrectAnswer": "Correct Option text[cite: 1]"
+        }
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## 4. Visualizers and Map Engine
+
+### `GeographyMap.jsx`
+- Uses an HTML5 `<canvas>` element to render geographic paths dynamically, mapping coordinates into pixel boundaries.
+- **Three drawing profiles:**
+  1. *India Physiographic Map:* Uses `INDIAN_SUB_DISTRICTS_COMPACT.json` to draw 6 major zones.
+  2. *Assam Districts Map:* Filters the same dataset for features where `is_assam === 1`.
+  3. *Northeast States Map:* Uses `NORTHEAST_STATES_ONLY.json` to draw boundaries for the 7 sister states.
+- Hover detection is calculated using squared Euclidean distance threshold checks against feature centroids.
+
+### `SectionVisualizer.jsx`
+Maps section names (via case-insensitive substring checks) to 17 customized visual components located in `src/components/visualizers/`:
+- `RiverFlowVisual` / `TributariesBankVisual` / `BrahmaputraValleyVisual`: Generates animated canvas and SVG flow paths for river systems.
+- `BiosphereReservesVisual`: Generates concentric circles representing Core, Buffer, and Transition zones.
+- `StateProfileVisual`: Renders state cards containing local administrative data and state symbols.
+- `GeneralStructureVisual` / `SoilProfileVisual` / `PlateauGridVisual`: Renders layered, stylized CSS cards mapping physical geology structures.
+
+---
+
+## 5. Gamification Mechanics
+
+- **Progress tracking:** Score states and XP are updated instantly.
+- **Streak calculation:** Users gain a daily streak. If the gap between the last activity completion timestamp and the current time is between 24 and 48 hours, the streak increases. If it exceeds 48 hours, the streak resets to 1.
+- **Sound Effects:** `useSound.js` synthesizes sounds directly using the browser's native Web Audio API oscillators, avoiding the need for external `.mp3` dependencies:
+  - *Correct:* Dual triangle oscillators sounding at `523.25Hz` (C5) and `659.25Hz` (E5).
+  - *Wrong:* Low sawtooth wave dropping from `180Hz` to `110Hz`.
+  - *Flip:* Low-frequency sine wave click at `80Hz`.
+
+---
+
+## 6. Build and Deployment
+
+Vite compiles code into optimized static assets. To deploy:
+```bash
+npm run build         # Compiles index.html, JS, and CSS chunks into dist/
+npx gh-pages -d dist  # Pushes compiled bundle to gh-pages branch on GitHub
+```
+Deployment URL: **[https://angsumi.github.io/adre-master/](https://angsumi.github.io/adre-master/)**

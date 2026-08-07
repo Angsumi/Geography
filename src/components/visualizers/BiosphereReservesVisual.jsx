@@ -236,7 +236,7 @@ export function BiosphereReservesVisual({ activeSection = '' }) {
               return (
                 <div style={{ background: 'rgba(0,0,0,0.3)', border: `1px solid ${currentBR.color}66`, borderRadius: '12px', overflow: 'hidden' }}>
                   <div style={{ height: '140px', width: '100%', position: 'relative', overflow: 'hidden' }}>
-                    <img src={currentBR.image} alt={currentBR.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <img src={currentBR.image.startsWith('/') ? `${import.meta.env.BASE_URL}${currentBR.image.slice(1)}` : currentBR.image} alt={currentBR.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.95))' }} />
                     <div style={{ position: 'absolute', bottom: '0.6rem', left: '0.8rem', right: '0.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                       <h6 style={{ margin: 0, fontSize: '0.95rem', color: currentBR.color }}>{currentBR.icon} {currentBR.title}</h6>
