@@ -1800,6 +1800,21 @@
           "Front": "What is the name of India's longest water bridge, connecting Dhola to Sadiya in Assam?[cite: 1]",
           "Back": "Bhupen Hazarika Setu (Dhola-Sadiya Bridge).[cite: 1]",
           "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which national highway runs entirely along the North Bank of the Brahmaputra River in Assam?[cite: 1]",
+          "Back": "NH-15.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which highway connects Tezpur on the North Bank to Nagaon on the South Bank?[cite: 1]",
+          "Back": "NH-715 (crossing via Kalia Bhomora Setu).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Where is the western entry gateway of NH-27 into Assam located?[cite: 1]",
+          "Back": "Srirampur (on the West Bengal border).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
         }
       ],
       "PracticeMatching": [
@@ -1810,9 +1825,21 @@
         {
           "Term": "Dhola-Sadiya Bridge",
           "Definition": "Bhupen Hazarika Setu, connecting NH networks across Lohit River.[cite: 1]"
+        },
+        {
+          "Term": "NH-15",
+          "Definition": "Runs along the North Bank of Brahmaputra River.[cite: 1]"
+        },
+        {
+          "Term": "Kalia Bhomora Setu",
+          "Definition": "Connects Tezpur to Nagaon on NH-715.[cite: 1]"
+        },
+        {
+          "Term": "Srirampur",
+          "Definition": "Western gateway entry node for NH-27 on Bengal border.[cite: 1]"
         }
       ],
-      "PracticeMCQs": [
+      "ExamineMCQ": [
         {
           "Question": "Which bridge is the longest water bridge in India, located in Assam?[cite: 1]",
           "Options": [
@@ -1822,6 +1849,46 @@
             "Kalia Bhomora Setu"
           ],
           "CorrectAnswer": "Bhupen Hazarika Setu (Dhola-Sadiya Bridge)[cite: 1]"
+        },
+        {
+          "Question": "Which NH runs along the North Bank of the Brahmaputra River in Assam?[cite: 1]",
+          "Options": [
+            "NH-15",
+            "NH-27",
+            "NH-17",
+            "NH-2"
+          ],
+          "CorrectAnswer": "NH-15[cite: 1]"
+        },
+        {
+          "Question": "Which Setu connects Tezpur on the North Bank to Nagaon on the South Bank?[cite: 1]",
+          "Options": [
+            "Kalia Bhomora Setu",
+            "Saraighat Setu",
+            "Naranarayan Setu",
+            "Bhupen Hazarika Setu"
+          ],
+          "CorrectAnswer": "Kalia Bhomora Setu[cite: 1]"
+        },
+        {
+          "Question": "What is the new designation of the primary East-West lifeline corridor of Assam?[cite: 1]",
+          "Options": [
+            "NH-27",
+            "NH-15",
+            "NH-37",
+            "NH-52"
+          ],
+          "CorrectAnswer": "NH-27[cite: 1]"
+        },
+        {
+          "Question": "Which town serves as the western gateway entry point of NH-27 into Assam?[cite: 1]",
+          "Options": [
+            "Srirampur",
+            "Dhubri",
+            "Bongaigaon",
+            "Kokrajhar"
+          ],
+          "CorrectAnswer": "Srirampur[cite: 1]"
         }
       ]
     },
@@ -1837,6 +1904,21 @@
           "Front": "Where is the headquarter of the Northeast Frontier Railway (NFR) located?[cite: 1]",
           "Back": "Maligaon, Guwahati.[cite: 1]",
           "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which is the longest rail-cum-road bridge in India, located in Assam?[cite: 1]",
+          "Back": "Bogibeel Bridge (4.94 km).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "What scenic and geologically challenging section connects Lumding to Badarpur?[cite: 1]",
+          "Back": "The Hill Section (connecting to Barak Valley).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which town serves as the headquarters of the hill division of NFR in central Assam?[cite: 1]",
+          "Back": "Lumding Junction.[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
         }
       ],
       "PracticeMatching": [
@@ -1847,9 +1929,21 @@
         {
           "Term": "Bogibeel Bridge",
           "Definition": "Longest rail-cum-road bridge in India.[cite: 1]"
+        },
+        {
+          "Term": "Hill Section",
+          "Definition": "Broad gauge track connecting Lumding to Badarpur.[cite: 1]"
+        },
+        {
+          "Term": "New Bongaigaon",
+          "Definition": "Major junction connecting lower Assam to Goalpara/Guwahati.[cite: 1]"
+        },
+        {
+          "Term": "Ledo",
+          "Definition": "Easternmost broad gauge railway station in India.[cite: 1]"
         }
       ],
-      "PracticeMCQs": [
+      "ExamineMCQ": [
         {
           "Question": "Where is the headquarters of the Northeast Frontier Railway (NFR) located?[cite: 1]",
           "Options": [
@@ -1859,6 +1953,46 @@
             "Siliguri"
           ],
           "CorrectAnswer": "Maligaon (Guwahati)[cite: 1]"
+        },
+        {
+          "Question": "Which is the longest rail-cum-road bridge in India?[cite: 1]",
+          "Options": [
+            "Bogibeel Bridge",
+            "Saraighat Bridge",
+            "Naranarayan Setu",
+            "Bhupen Hazarika Setu"
+          ],
+          "CorrectAnswer": "Bogibeel Bridge[cite: 1]"
+        },
+        {
+          "Question": "Which two main railway junctions are connected by the scenic Hill Section?[cite: 1]",
+          "Options": [
+            "Lumding and Badarpur",
+            "Guwahati and Lumding",
+            "Badarpur and Silchar",
+            "Rangiya and Tezpur"
+          ],
+          "CorrectAnswer": "Lumding and Badarpur[cite: 1]"
+        },
+        {
+          "Question": "Which railway division headquarters splits routes into Upper Assam and the Barak Valley?[cite: 1]",
+          "Options": [
+            "Lumding Division",
+            "Rangiya Division",
+            "Tinsukia Division",
+            "Katihar Division"
+          ],
+          "CorrectAnswer": "Lumding Division[cite: 1]"
+        },
+        {
+          "Question": "Which station is the easternmost broad gauge railway terminus in India?[cite: 1]",
+          "Options": [
+            "Ledo",
+            "Tinsukia",
+            "Dibrugarh",
+            "Murkongselek"
+          ],
+          "CorrectAnswer": "Ledo[cite: 1]"
         }
       ]
     },
@@ -1874,6 +2008,11 @@
           "Front": "Which port in Guwahati is the largest and most developed river port in Assam?[cite: 1]",
           "Back": "Pandu Port.[cite: 1]",
           "Image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          "Front": "Which national waterway is developed on the Kopili River in Assam?[cite: 1]",
+          "Back": "National Waterway 57 (NW-57).[cite: 1]",
+          "Image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80"
         }
       ],
       "PracticeMatching": [
@@ -1884,9 +2023,13 @@
         {
           "Term": "Pandu Port",
           "Definition": "The main river port terminal in Guwahati.[cite: 1]"
+        },
+        {
+          "Term": "NW-57",
+          "Definition": "National Waterway developed on the Kopili River (48 km).[cite: 1]"
         }
       ],
-      "PracticeMCQs": [
+      "ExamineMCQ": [
         {
           "Question": "What is the total length of National Waterway 2 (NW-2) along the Brahmaputra River?[cite: 1]",
           "Options": [
@@ -1896,6 +2039,16 @@
             "650 km"
           ],
           "CorrectAnswer": "891 km[cite: 1]"
+        },
+        {
+          "Question": "Which river in Assam is designated as National Waterway 57 (NW-57)?[cite: 1]",
+          "Options": [
+            "Kopili River",
+            "Barak River",
+            "Dhansiri River",
+            "Subansiri River"
+          ],
+          "CorrectAnswer": "Kopili River[cite: 1]"
         }
       ]
     }

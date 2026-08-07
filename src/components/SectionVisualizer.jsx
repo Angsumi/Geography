@@ -45,9 +45,15 @@ export function SectionVisualizer({ sectionName, facts = [] }) {
   const idea = getVizIdea(sectionName);
   const cleanName = sectionName ? sectionName.replace(/\[cite:\s*\d+\]/g, '').trim() : '';
 
-  // 0. Transport Visualizer (NH, Railways, Waterways)
-  if (cleanName.includes('National Highways') || cleanName.includes('Railways') || cleanName.includes('National Waterways') || cleanName.includes('Transport')) {
-    return <TransportVisual />;
+  // 0. Transport Visualizers
+  if (cleanName.includes('National Highways')) {
+    return <TransportVisual mode="nh" />;
+  }
+  if (cleanName.includes('Railways')) {
+    return <TransportVisual mode="railway" />;
+  }
+  if (cleanName.includes('National Waterways') || cleanName.includes('Transport')) {
+    return <TransportVisual mode="waterway" />;
   }
 
   // 1. Central Plateau & Hills Visualizer
