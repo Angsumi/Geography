@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Trophy, ArrowLeft, Zap, Layers, Link2, Flame, Map, HelpCircle, BookOpen, GraduationCap, ChevronRight } from 'lucide-react';
+import { Trophy, ArrowLeft, Zap, Layers, Link2, Flame, Map, HelpCircle, BookOpen, GraduationCap, ChevronRight, RotateCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import indiaGeo from './data/india/GEography.json';
 import assamGeo from './data/assam/GEography.json';
@@ -491,7 +491,7 @@ export default function App() {
         </div>
 
         {/* User Stats Banner */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: 'rgba(255,255,255,0.03)', padding: '0.4rem 0.8rem', borderRadius: '20px', border: '1px solid var(--glass-border)' }}>
             <Trophy size={16} color="var(--primary)" />
             <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--primary)' }}>{xp} XP</span>
@@ -501,6 +501,33 @@ export default function App() {
             <Flame size={16} color="#f97316" />
             <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#f97316' }}>{streak} Day Streak</span>
           </div>
+
+          <button 
+            onClick={() => {
+              if (window.confirm('Reset all XP, study progress, and streaks?')) {
+                localStorage.clear();
+                window.location.reload();
+              }
+            }}
+            style={{
+              background: 'rgba(239, 68, 68, 0.08)',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              color: '#ef4444',
+              padding: '0.4rem 0.8rem',
+              borderRadius: '20px',
+              fontSize: '0.75rem',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              fontWeight: 'bold',
+              transition: 'all 0.2s'
+            }}
+            title="Reset Stats"
+          >
+            <RotateCcw size={12} />
+            <span>Reset</span>
+          </button>
         </div>
       </header>
 
