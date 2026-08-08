@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Map, Layers, Link2, GraduationCap, Zap, Compass, ArrowRight, BookOpen, Award, CheckCircle2 } from 'lucide-react';
+import { GamusaIcon } from './icons/GamusaIcon';
 
 export function HomePage({ onSelectChapter }) {
   const chapterCards = [
@@ -25,7 +26,7 @@ export function HomePage({ onSelectChapter }) {
       id: 'ASSAM',
       title: 'ASSAM',
       fullTitle: 'Assam Geography & Wildlife',
-      icon: '🦏',
+      icon: <GamusaIcon size={36} />,
       color: '#fb923c',
       bgGrad: 'linear-gradient(135deg, rgba(251,146,60,0.15), rgba(245,158,11,0.15))',
       border: 'rgba(251, 146, 60, 0.3)',

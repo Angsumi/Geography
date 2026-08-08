@@ -17,6 +17,7 @@ import ExamineMCQ from './components/ExamineMCQ';
 import GeographyMap from './components/GeographyMap';
 import { SectionVisualizer } from './components/SectionVisualizer';
 import { HomePage } from './components/HomePage';
+import { GamusaIcon } from './components/icons/GamusaIcon';
 
 // Combine regional JSON files into unified syllabus and activities arrays
 const syllabusData = {
@@ -223,7 +224,7 @@ const CHAPTER_STYLES = {
     activeColor: '#fb923c',
     glowColor: 'rgba(251, 146, 60, 0.5)',
     glow: '0 0 16px rgba(249,115,22,0.35)',
-    icon: '🦏'
+    icon: <GamusaIcon size={24} />
   },
   'NE': {
     activeBg: 'linear-gradient(135deg, rgba(168,85,247,0.25), rgba(236,72,153,0.25))',
