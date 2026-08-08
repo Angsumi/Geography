@@ -1,13 +1,13 @@
 {
   "GeographySyllabus": [
     {
-      "Subject": "Assam Geography, Environment & Conservation",
+      "Subject": "ASSAM",
       "Topics": [
         {
           "TopicName": "Physiographic Divisions & Conservation",
           "Subtopics": [
             {
-              "SubtopicName": "Brahmaputra Valley (Sadiya to Dhubri, floods)",
+              "SubtopicName": "Brahmaputra Valley",
               "Sections": [
                 {
                   "SectionName": "North Bank Tributaries (Brahmaputra)",
@@ -27,10 +27,10 @@
               ]
             },
             {
-              "SubtopicName": "Central Plateau/Hills (Karbi Anglong, Haflong)",
+              "SubtopicName": "Central Hills",
               "Sections": [
                 {
-                  "SectionName": "Central Plateau/Hills (Karbi Anglong, Haflong)",
+                  "SectionName": "Central Hills",
                   "Facts": [
                     "Karbi Anglong & Dima Hasao, Meghalaya Plateau extension, Barail Range, and Haflong hill station.[cite: 1]",
                     "Features: Situated between the two valleys (Karbi Anglong and North Cachar Hills). Geologically, it is an extension of the Indian Peninsular Plateau (Meghalaya plateau).[cite: 1]",
@@ -59,7 +59,7 @@
               ]
             },
             {
-              "SubtopicName": "Ecological Frameworks",
+              "SubtopicName": "Ecology",
               "Sections": [
                 {
                   "SectionName": "Ecological Frameworks Overview",
@@ -102,7 +102,7 @@
               ]
             },
             {
-              "SubtopicName": "Mega-fauna Project Reserves",
+              "SubtopicName": "Wildlife Reserves",
               "Sections": [
                 {
                   "SectionName": "Mega-fauna Project Reserves",

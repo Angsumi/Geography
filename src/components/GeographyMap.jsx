@@ -20,8 +20,8 @@ const NE_STATE_COLORS = {
 };
 
 const ASSAM_ZONE_COLORS = {
-  'Brahmaputra Valley (Sadiya to Dhubri, floods)': '#34d399',
-  'Central Plateau/Hills (Karbi Anglong, Haflong)': '#fb923c',
+  'Brahmaputra Valley': '#34d399',
+  'Central Hills': '#fb923c',
   'Barak Valley': '#60a5fa'
 };
 
@@ -34,7 +34,7 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
   const boundsRef = useRef({ minLon: 68, maxLon: 98, minLat: 6, maxLat: 38 });
   const rawFeaturesRef = useRef([]);
 
-  const isNortheastChapter = activeChapter.toLowerCase().includes('northeast');
+  const isNortheastChapter = activeChapter.toLowerCase().includes('northeast') || activeChapter.toUpperCase() === 'NE';
 
   // Load map datasets
   useEffect(() => {

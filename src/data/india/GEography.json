@@ -1,20 +1,14 @@
 {
   "GeographySyllabus": [
     {
-      "Subject": "Indian Geography & Environment",
+      "Subject": "INDIA",
       "Topics": [
         {
           "TopicName": "Physiographic Divisions of India",
           "Subtopics": [
             {
-              "SubtopicName": "The Northern Mountains (The Himalayas)",
+              "SubtopicName": "Himalayas",
               "Sections": [
-                {
-                  "SectionName": "General Structure",
-                  "Facts": [
-                    "A geologically young and structurally fold mountain system stretching along the northern borders.[cite: 1]"
-                  ]
-                },
                 {
                   "SectionName": "Subdivisions (West to East)",
                   "Facts": [
@@ -34,7 +28,7 @@
               ]
             },
             {
-              "SubtopicName": "The Northern Plains (Indo-Gangetic Plain)",
+              "SubtopicName": "Northern Plains",
               "Sections": [
                 {
                   "SectionName": "Formation & Soil",
@@ -54,7 +48,7 @@
               ]
             },
             {
-              "SubtopicName": "The Peninsular Plateau (Including Central Territories)",
+              "SubtopicName": "Peninsular Plateau",
               "Sections": [
                 {
                   "SectionName": "Central Highlands (Midlands)",
@@ -82,7 +76,7 @@
               ]
             },
             {
-              "SubtopicName": "The Indian Desert & Coastal Plains",
+              "SubtopicName": "Thar & Coastal Plains",
               "Sections": [
                 {
                   "SectionName": "The Indian Desert (Thar Desert)",
@@ -125,7 +119,7 @@
           "TopicName": "Major River Systems",
           "Subtopics": [
             {
-              "SubtopicName": "Himalayan River Systems (Perennial Rivers)",
+              "SubtopicName": "Himalayan Rivers",
               "Sections": [
                 {
                   "SectionName": "The Indus System",
@@ -151,7 +145,7 @@
               ]
             },
             {
-              "SubtopicName": "Peninsular River Systems (Seasonal/Rain-fed Rivers)",
+              "SubtopicName": "Peninsular Rivers",
               "Sections": [
                 {
                   "SectionName": "West-Flowing Rivers",
@@ -191,7 +185,7 @@
               ]
             },
             {
-              "SubtopicName": "World Natural Heritage Sites (WNHS)",
+              "SubtopicName": "Natural Heritage",
               "Sections": [
                 {
                   "SectionName": "Key Indian Sites",
@@ -203,7 +197,7 @@
               ]
             },
             {
-              "SubtopicName": "Biosphere Reserves (BR)",
+              "SubtopicName": "Biosphere Reserves",
               "Sections": [
                 {
                   "SectionName": "Network & Recognition",

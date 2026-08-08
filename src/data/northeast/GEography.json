@@ -1,13 +1,13 @@
 {
   "GeographySyllabus": [
     {
-      "Subject": "Northeast India (The Seven Sisters)",
+      "Subject": "NE",
       "Topics": [
         {
           "TopicName": "Arunachal Pradesh",
           "Subtopics": [
             {
-              "SubtopicName": "Arunachal Pradesh State Profile",
+              "SubtopicName": "Arunachal Pradesh",
               "Sections": [
                 {
                   "SectionName": "Arunachal Pradesh Profile",
@@ -34,7 +34,7 @@
           "TopicName": "Assam",
           "Subtopics": [
             {
-              "SubtopicName": "Assam State Profile",
+              "SubtopicName": "Assam Profile",
               "Sections": [
                 {
                   "SectionName": "Assam Profile",
@@ -60,7 +60,7 @@
           "TopicName": "Manipur",
           "Subtopics": [
             {
-              "SubtopicName": "Manipur State Profile",
+              "SubtopicName": "Manipur",
               "Sections": [
                 {
                   "SectionName": "Manipur Profile",
@@ -81,7 +81,7 @@
           "TopicName": "Meghalaya",
           "Subtopics": [
             {
-              "SubtopicName": "Meghalaya State Profile",
+              "SubtopicName": "Meghalaya",
               "Sections": [
                 {
                   "SectionName": "Meghalaya Profile",
@@ -108,7 +108,7 @@
           "TopicName": "Mizoram",
           "Subtopics": [
             {
-              "SubtopicName": "Mizoram State Profile",
+              "SubtopicName": "Mizoram",
               "Sections": [
                 {
                   "SectionName": "Mizoram Profile",
@@ -129,7 +129,7 @@
           "TopicName": "Nagaland",
           "Subtopics": [
             {
-              "SubtopicName": "Nagaland State Profile",
+              "SubtopicName": "Nagaland",
               "Sections": [
                 {
                   "SectionName": "Nagaland Profile",
@@ -150,7 +150,7 @@
           "TopicName": "Tripura",
           "Subtopics": [
             {
-              "SubtopicName": "Tripura State Profile",
+              "SubtopicName": "Tripura",
               "Sections": [
                 {
                   "SectionName": "Tripura Profile",
@@ -171,7 +171,7 @@
           "TopicName": "World Natural Heritage Sites (WNHS)",
           "Subtopics": [
             {
-              "SubtopicName": "Heritage Sites",
+              "SubtopicName": "NE Heritage",
               "Sections": [
                 {
                   "SectionName": "Kaziranga National Park (Assam)",
@@ -205,7 +205,7 @@
           "TopicName": "Biosphere Reserves (BR)",
           "Subtopics": [
             {
-              "SubtopicName": "Biosphere Reserves",
+              "SubtopicName": "NE Biosphere",
               "Sections": [
                 {
                   "SectionName": "General Schema (Core, Buffer & Eco-Sensitive Zone)",

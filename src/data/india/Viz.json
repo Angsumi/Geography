@@ -1,10 +1,6 @@
 {
   "SectionVisualisations": [
     {
-      "SectionName": "General Structure[cite: 1]",
-      "VisualisationIdea": "CSS 3D Folded Paper Effect using transforms and gradients to represent young, structurally fold mountains."
-    },
-    {
       "SectionName": "Subdivisions (West to East)[cite: 1]",
       "VisualisationIdea": "\ud83d\udd04 Interactive Syntaxial Bends Diagram using CSS SVG paths with animated drawing effects (stroke-dashoffset) to show the horizontal span."
     },

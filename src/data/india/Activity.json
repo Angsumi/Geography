@@ -1,6 +1,105 @@
 {
   "LearningActivities": [
     {
+      "SectionName": "Subdivisions (West to East)",
+      "VisualFlashcards": [
+        {
+          "Front": "Which westernmost mountain range extends through the Karakoram system?[cite: 1]",
+          "Back": "Suleyman (Karakoram range).[cite: 1]"
+        },
+        {
+          "Front": "What is the central backbone of the Himalayan fold mountains?[cite: 1]",
+          "Back": "Main Himalaya (Great Himalaya).[cite: 1]"
+        },
+        {
+          "Front": "Which eastern wing of the Himalayas forms the border ranges in the Northeast?[cite: 1]",
+          "Back": "Purvanchal (Eastern Himalaya).[cite: 1]"
+        },
+        {
+          "Front": "Which mountain peak marks the western syntaxial bend anchor of the Himalayas?[cite: 1]",
+          "Back": "Nanga Parbat.[cite: 1]"
+        },
+        {
+          "Front": "Which mountain peak marks the eastern syntaxial bend anchor of the Himalayas?[cite: 1]",
+          "Back": "Namcha Barwa.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Suleyman / Karakoram[cite: 1]",
+          "Definition": "Westernmost mountain range extension.[cite: 1]"
+        },
+        {
+          "Term": "Main Himalaya[cite: 1]",
+          "Definition": "Central backbone containing the Great Himalayan peaks.[cite: 1]"
+        },
+        {
+          "Term": "Purvanchal[cite: 1]",
+          "Definition": "Eastern Himalayan wing forming North-Eastern border hills.[cite: 1]"
+        },
+        {
+          "Term": "Nanga Parbat[cite: 1]",
+          "Definition": "Western syntaxial bend anchor point of the Himalayas.[cite: 1]"
+        },
+        {
+          "Term": "Namcha Barwa[cite: 1]",
+          "Definition": "Eastern syntaxial bend anchor point in Tibet/Arunachal.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which eastern wing of the Himalayas forms the hill ranges along the North-Eastern Indian border?[cite: 1]",
+          "Options": [
+            "Shiwaliks",
+            "Purvanchal",
+            "Zaskar",
+            "Pir Panjal"
+          ],
+          "CorrectAnswer": "Purvanchal[cite: 1]"
+        },
+        {
+          "Question": "What is the westernmost mountain extension of the Trans-Himalayan region?[cite: 1]",
+          "Options": [
+            "Purvanchal",
+            "Suleyman / Karakoram",
+            "Shiwaliks",
+            "Patkai Bum"
+          ],
+          "CorrectAnswer": "Suleyman / Karakoram[cite: 1]"
+        },
+        {
+          "Question": "Which mountain peak marks the sharp eastern syntaxial bend of the Himalayas?[cite: 1]",
+          "Options": [
+            "K2",
+            "Nanga Parbat",
+            "Namcha Barwa",
+            "Anaimudi"
+          ],
+          "CorrectAnswer": "Namcha Barwa[cite: 1]"
+        },
+        {
+          "Question": "Which mountain peak marks the sharp western syntaxial bend of the Himalayas?[cite: 1]",
+          "Options": [
+            "Nanga Parbat",
+            "Namcha Barwa",
+            "Kanchenjunga",
+            "Guru Shikhar"
+          ],
+          "CorrectAnswer": "Nanga Parbat[cite: 1]"
+        },
+        {
+          "Question": "What is the central continuous fold backbone of the Himalayan mountain system?[cite: 1]",
+          "Options": [
+            "Outer Shiwaliks",
+            "Main Himalaya (Great Himalaya)",
+            "Purvanchal Hills",
+            "Vindhya Range"
+          ],
+          "CorrectAnswer": "Main Himalaya (Great Himalaya)[cite: 1]"
+        }
+      ]
+    },
+    {
       "SectionName": "Vertical Divisions (South to North)",
       "VisualFlashcards": [
         {
@@ -35,23 +134,23 @@
       "PracticeMatching": [
         {
           "Term": "Himadri[cite: 1]",
-          "Definition": "The innermost, continuous range containing the highest peaks like Mt. Everest.[cite: 1]"
+          "Definition": "The innermost, continuous range containing Mt. Everest.[cite: 1]"
         },
         {
           "Term": "Himachal[cite: 1]",
-          "Definition": "Known for hill stations and rugged terrain like Pir Panjal.[cite: 1]"
+          "Definition": "Lesser Himalayas featuring hill stations and Pir Panjal.[cite: 1]"
         },
         {
           "Term": "Shiwaliks[cite: 1]",
           "Definition": "The outermost range composed of unconsolidated sediments.[cite: 1]"
         },
         {
-          "Term": "Mt. Everest & Kanchenjunga[cite: 1]",
-          "Definition": "Highest peaks located in the Himadri range.[cite: 1]"
+          "Term": "Duns[cite: 1]",
+          "Definition": "Longitudinal valleys between Himachal and Shiwaliks (e.g., Dehradun).[cite: 1]"
         },
         {
-          "Term": "Pir Panjal & Dhaula Dhar[cite: 1]",
-          "Definition": "Rugged terrain features found in the Himachal range.[cite: 1]"
+          "Term": "Mt. Everest & Kanchenjunga[cite: 1]",
+          "Definition": "Highest peaks located in the Himadri range.[cite: 1]"
         }
       ],
       "ExamineMCQ": [
@@ -84,6 +183,422 @@
             "Karakoram"
           ],
           "CorrectAnswer": "Shiwaliks[cite: 1]"
+        },
+        {
+          "Question": "Pir Panjal and Dhaula Dhar belong to which vertical division of the Himalayas?[cite: 1]",
+          "Options": [
+            "Himadri",
+            "Himachal (Lesser Himalayas)",
+            "Shiwaliks",
+            "Trans-Himalayas"
+          ],
+          "CorrectAnswer": "Himachal (Lesser Himalayas)[cite: 1]"
+        },
+        {
+          "Question": "What are the longitudinal valleys lying between Himachal and Shiwaliks called?[cite: 1]",
+          "Options": [
+            "Passes",
+            "Duns (e.g. Dehradun)",
+            "Estuaries",
+            "Kayals"
+          ],
+          "CorrectAnswer": "Duns (e.g. Dehradun)[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Formation & Soil",
+      "VisualFlashcards": [
+        {
+          "Front": "Which three river systems combined to deposit and form the Northern Plains?[cite: 1]",
+          "Back": "The Indus, Ganga, and Brahmaputra river systems.[cite: 1]"
+        },
+        {
+          "Front": "What type of highly fertile soil covers the Northern Plains of India?[cite: 1]",
+          "Back": "Alluvial soil deposited by river systems.[cite: 1]"
+        },
+        {
+          "Front": "Why are the Northern Plains the most agriculturally productive region in India?[cite: 1]",
+          "Back": "Due to rich alluvial soil deposits and abundant water supply.[cite: 1]"
+        },
+        {
+          "Front": "What is the older, less fertile alluvium deposited on higher terraces called?[cite: 1]",
+          "Back": "Bhangar.[cite: 1]"
+        },
+        {
+          "Front": "What is the newer, highly fertile alluvium deposited on floodplains called?[cite: 1]",
+          "Back": "Khadar.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Alluvial Soil[cite: 1]",
+          "Definition": "Highly fertile river sediment covering the Northern Plains.[cite: 1]"
+        },
+        {
+          "Term": "Indus, Ganga & Brahmaputra[cite: 1]",
+          "Definition": "Three major river systems that formed the Northern Plains.[cite: 1]"
+        },
+        {
+          "Term": "Bhangar[cite: 1]",
+          "Definition": "Older, less fertile alluvium on elevated river terraces.[cite: 1]"
+        },
+        {
+          "Term": "Khadar[cite: 1]",
+          "Definition": "Newer, highly fertile floodplain alluvial deposits.[cite: 1]"
+        },
+        {
+          "Term": "Bhabar Belt[cite: 1]",
+          "Definition": "Porous pebble belt along the Shiwalik foothills.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "The Northern Plains of India were primarily created by alluvial deposits from which three river systems?[cite: 1]",
+          "Options": [
+            "Narmada, Tapi & Mahanadi",
+            "Indus, Ganga & Brahmaputra",
+            "Godavari, Krishna & Cauvery",
+            "Luni, Sabarmati & Banas"
+          ],
+          "CorrectAnswer": "Indus, Ganga & Brahmaputra[cite: 1]"
+        },
+        {
+          "Question": "What is the dominant, highly fertile soil type covering the Northern Plains?[cite: 1]",
+          "Options": [
+            "Black Regur Soil",
+            "Alluvial Soil",
+            "Laterite Soil",
+            "Red Soil"
+          ],
+          "CorrectAnswer": "Alluvial Soil[cite: 1]"
+        },
+        {
+          "Question": "What is the newer, highly fertile alluvium deposited on active river floodplains called?[cite: 1]",
+          "Options": [
+            "Bhangar",
+            "Khadar",
+            "Terai",
+            "Reh"
+          ],
+          "CorrectAnswer": "Khadar[cite: 1]"
+        },
+        {
+          "Question": "What is the older alluvium deposited on higher terraces above river floodplains called?[cite: 1]",
+          "Options": [
+            "Bhangar",
+            "Khadar",
+            "Bhabar",
+            "Kayal"
+          ],
+          "CorrectAnswer": "Bhangar[cite: 1]"
+        },
+        {
+          "Question": "Which narrow porous belt of pebbles lies along the Shiwalik foothills where streams disappear underground?[cite: 1]",
+          "Options": [
+            "Terai",
+            "Bhabar",
+            "Doab",
+            "Delta"
+          ],
+          "CorrectAnswer": "Bhabar[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Regional Divisions",
+      "VisualFlashcards": [
+        {
+          "Front": "Which western section of the Northern Plains is formed by the Indus and its tributaries?[cite: 1]",
+          "Back": "Punjab Plains.[cite: 1]"
+        },
+        {
+          "Front": "Which central section of the Northern Plains stretches between Ghaggar and Teesta rivers?[cite: 1]",
+          "Back": "Ganga Plains.[cite: 1]"
+        },
+        {
+          "Front": "Which easternmost section of the Northern Plains lies mainly in Assam?[cite: 1]",
+          "Back": "Brahmaputra / Luit Valley.[cite: 1]"
+        },
+        {
+          "Front": "What is the fertile tract of land lying between two converging rivers called?[cite: 1]",
+          "Back": "Doab.[cite: 1]"
+        },
+        {
+          "Front": "What is the wet, marshy, densely forested region lying south of the Bhabar belt called?[cite: 1]",
+          "Back": "Terai belt.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Punjab Plains[cite: 1]",
+          "Definition": "Western section of Northern Plains formed by Indus system.[cite: 1]"
+        },
+        {
+          "Term": "Ganga Plains[cite: 1]",
+          "Definition": "Central section spanning Haryana, UP, Bihar, and West Bengal.[cite: 1]"
+        },
+        {
+          "Term": "Brahmaputra Valley[cite: 1]",
+          "Definition": "Eastern plain section traversing Assam.[cite: 1]"
+        },
+        {
+          "Term": "Doab[cite: 1]",
+          "Definition": "Fertile tract of land situated between two rivers.[cite: 1]"
+        },
+        {
+          "Term": "Terai Belt[cite: 1]",
+          "Definition": "Marshy, densely forested wet region south of Bhabar.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which regional division of the Northern Plains is situated in the eastern region, primarily covering Assam?[cite: 1]",
+          "Options": [
+            "Punjab Plains",
+            "Ganga Plains",
+            "Brahmaputra / Luit Valley",
+            "Rann of Kutch"
+          ],
+          "CorrectAnswer": "Brahmaputra / Luit Valley[cite: 1]"
+        },
+        {
+          "Question": "Which regional division of the Northern Plains is formed by the Indus and its five main tributaries?[cite: 1]",
+          "Options": [
+            "Punjab Plains",
+            "Ganga Plains",
+            "Brahmaputra Valley",
+            "Coromandel Plains"
+          ],
+          "CorrectAnswer": "Punjab Plains[cite: 1]"
+        },
+        {
+          "Question": "Which central division of the Northern Plains stretches between the Ghaggar and Teesta rivers?[cite: 1]",
+          "Options": [
+            "Punjab Plains",
+            "Ganga Plains",
+            "Assam Plains",
+            "Konkan Plains"
+          ],
+          "CorrectAnswer": "Ganga Plains[cite: 1]"
+        },
+        {
+          "Question": "What term refers to the fertile region of land lying between two rivers in the Punjab Plains?[cite: 1]",
+          "Options": [
+            "Doab",
+            "Estuary",
+            "Dun",
+            "Kayal"
+          ],
+          "CorrectAnswer": "Doab[cite: 1]"
+        },
+        {
+          "Question": "What wet, marshy, wildlife-rich belt lies immediately south of the Bhabar pebble zone?[cite: 1]",
+          "Options": [
+            "Terai",
+            "Bhangar",
+            "Doab",
+            "Pass"
+          ],
+          "CorrectAnswer": "Terai[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Central Highlands (Midlands)",
+      "VisualFlashcards": [
+        {
+          "Front": "Where are the Central Highlands located relative to the Narmada river?[cite: 1]",
+          "Back": "Lies to the north of the Narmada river.[cite: 1]"
+        },
+        {
+          "Front": "Which mountain ranges border the Central Highlands?[cite: 1]",
+          "Back": "Bounded by the Vindhya range and Aravalis.[cite: 1]"
+        },
+        {
+          "Front": "Which mineral-rich eastern plateau forms part of the Central Highlands?[cite: 1]",
+          "Back": "Chotanagpur Plateau.[cite: 1]"
+        },
+        {
+          "Front": "Which plateau covers Rajasthan and central MP within Central Highlands?[cite: 1]",
+          "Back": "Malwa Plateau.[cite: 1]"
+        },
+        {
+          "Front": "Which regional plateaus form the central stretch of the Central Highlands in UP/MP?[cite: 1]",
+          "Back": "Bundelkhand and Baghelkhand.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Central Highlands[cite: 1]",
+          "Definition": "Plateau region lying north of the Narmada river.[cite: 1]"
+        },
+        {
+          "Term": "Aravali Range[cite: 1]",
+          "Definition": "Oldest fold mountain range forming northwest boundary.[cite: 1]"
+        },
+        {
+          "Term": "Vindhya Range[cite: 1]",
+          "Definition": "Southern mountain border of the Central Highlands.[cite: 1]"
+        },
+        {
+          "Term": "Chotanagpur Plateau[cite: 1]",
+          "Definition": "Eastern mineral-rich plateau in Jharkhand.[cite: 1]"
+        },
+        {
+          "Term": "Malwa Plateau[cite: 1]",
+          "Definition": "Plateau section draining towards the Chambal & Yamuna.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which plateau region lies directly north of the Narmada river, bounded by the Vindhyas and Aravalis?[cite: 1]",
+          "Options": [
+            "Deccan Plateau",
+            "Central Highlands (Midlands)",
+            "Shillong Plateau",
+            "Karnataka Plateau"
+          ],
+          "CorrectAnswer": "Central Highlands (Midlands)[cite: 1]"
+        },
+        {
+          "Question": "Which mountain range forms the northwest boundary of the Central Highlands?[cite: 1]",
+          "Options": [
+            "Western Ghats",
+            "Aravali Range",
+            "Satpura Range",
+            "Barail Range"
+          ],
+          "CorrectAnswer": "Aravali Range[cite: 1]"
+        },
+        {
+          "Question": "Which mineral-rich plateau in Jharkhand forms the eastern extension of Central Highlands?[cite: 1]",
+          "Options": [
+            "Malwa Plateau",
+            "Chotanagpur Plateau",
+            "Deccan Plateau",
+            "Karbi Plateau"
+          ],
+          "CorrectAnswer": "Chotanagpur Plateau[cite: 1]"
+        },
+        {
+          "Question": "Which mountain range forms the southern border of the Central Highlands?[cite: 1]",
+          "Options": [
+            "Aravali Range",
+            "Vindhya Range",
+            "Western Ghats",
+            "Pir Panjal"
+          ],
+          "CorrectAnswer": "Vindhya Range[cite: 1]"
+        },
+        {
+          "Question": "Which plateau covers central Madhya Pradesh and eastern Rajasthan in the Central Highlands?[cite: 1]",
+          "Options": [
+            "Malwa Plateau",
+            "Deccan Plateau",
+            "Shillong Plateau",
+            "Ladakh Plateau"
+          ],
+          "CorrectAnswer": "Malwa Plateau[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Deccan Plateau",
+      "VisualFlashcards": [
+        {
+          "Front": "What shape is the Deccan Plateau landmass south of the Narmada river?[cite: 1]",
+          "Back": "Triangular landmass.[cite: 1]"
+        },
+        {
+          "Front": "What type of soil dominates the Deccan Trap region?[cite: 1]",
+          "Back": "Black soil (Deccan Trap) ideal for cotton.[cite: 1]"
+        },
+        {
+          "Front": "Which mountain ranges flank the Deccan Plateau on its west and east sides?[cite: 1]",
+          "Back": "Flanked by the Western Ghats and Eastern Ghats.[cite: 1]"
+        },
+        {
+          "Front": "What is the local indigenous name for black cotton soil in Deccan?[cite: 1]",
+          "Back": "Regur Soil.[cite: 1]"
+        },
+        {
+          "Front": "What continuous mountain wall forms the western boundary of Deccan Plateau?[cite: 1]",
+          "Back": "Western Ghats (Sahyadri).[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Deccan Trap[cite: 1]",
+          "Definition": "Volcanic basaltic region dominated by rich black cotton soil.[cite: 1]"
+        },
+        {
+          "Term": "Triangular Landmass[cite: 1]",
+          "Definition": "Geometrical contour of Deccan Plateau south of Narmada.[cite: 1]"
+        },
+        {
+          "Term": "Regur Soil[cite: 1]",
+          "Definition": "Local name for fertile black cotton soil.[cite: 1]"
+        },
+        {
+          "Term": "Western Ghats[cite: 1]",
+          "Definition": "Continuous mountain wall along western edge of Deccan.[cite: 1]"
+        },
+        {
+          "Term": "Eastern Ghats[cite: 1]",
+          "Definition": "Discontinuous, eroded hills along eastern edge of Deccan.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "The volcanic Deccan Trap region is famous for which type of soil essential for cotton cultivation?[cite: 1]",
+          "Options": [
+            "Laterite Soil",
+            "Black Soil (Deccan Trap)",
+            "Red & Yellow Soil",
+            "Desert Soil"
+          ],
+          "CorrectAnswer": "Black Soil (Deccan Trap)[cite: 1]"
+        },
+        {
+          "Question": "What geometrical shape best describes the Deccan Plateau south of Narmada?[cite: 1]",
+          "Options": [
+            "Circular",
+            "Triangular",
+            "Rectangular",
+            "Oval"
+          ],
+          "CorrectAnswer": "Triangular[cite: 1]"
+        },
+        {
+          "Question": "Where is the Deccan Plateau situated relative to the Narmada river?[cite: 1]",
+          "Options": [
+            "North of Narmada",
+            "South of Narmada",
+            "West of Narmada",
+            "East of Narmada"
+          ],
+          "CorrectAnswer": "South of Narmada[cite: 1]"
+        },
+        {
+          "Question": "What is the local name for the black soil found in the Deccan Trap?[cite: 1]",
+          "Options": [
+            "Bhangar",
+            "Khadar",
+            "Regur",
+            "Usar"
+          ],
+          "CorrectAnswer": "Regur[cite: 1]"
+        },
+        {
+          "Question": "Which continuous mountain range forms the western boundary wall of the Deccan Plateau?[cite: 1]",
+          "Options": [
+            "Eastern Ghats",
+            "Western Ghats (Sahyadri)",
+            "Vindhya Range",
+            "Aravali Range"
+          ],
+          "CorrectAnswer": "Western Ghats (Sahyadri)[cite: 1]"
         }
       ]
     },
@@ -104,7 +619,11 @@
         },
         {
           "Front": "What is the highest peak in Peninsular India?[cite: 1]",
-          "Back": "Jindagarha.[cite: 1]"
+          "Back": "Jindagarha (1,690 m).[cite: 1]"
+        },
+        {
+          "Front": "Which is the highest peak of the Aravali Range in Rajasthan?[cite: 1]",
+          "Back": "Guru Shikhar (1,722 m).[cite: 1]"
         }
       ],
       "PracticeMatching": [
@@ -114,11 +633,15 @@
         },
         {
           "Term": "Anaimudi[cite: 1]",
-          "Definition": "Identified as the southernmost peak.[cite: 1]"
+          "Definition": "Identified as the southernmost peak in Peninsular India.[cite: 1]"
         },
         {
           "Term": "Jindagarha[cite: 1]",
-          "Definition": "The highest peak in Peninsular India.[cite: 1]"
+          "Definition": "The highest peak in Peninsular India (Eastern Ghats).[cite: 1]"
+        },
+        {
+          "Term": "Guru Shikhar[cite: 1]",
+          "Definition": "Highest peak of the Aravali Range in Rajasthan.[cite: 1]"
         },
         {
           "Term": "Western & Eastern Ghats[cite: 1]",
@@ -155,6 +678,917 @@
             "Mt. Everest"
           ],
           "CorrectAnswer": "Jindagarha[cite: 1]"
+        },
+        {
+          "Question": "Which is the highest peak in the Aravali Range?[cite: 1]",
+          "Options": [
+            "Guru Shikhar",
+            "Anaimudi",
+            "Jindagarha",
+            "Dhupgarh"
+          ],
+          "CorrectAnswer": "Guru Shikhar[cite: 1]"
+        },
+        {
+          "Question": "Anaimudi peak is situated in which hill range of Peninsular India?[cite: 1]",
+          "Options": [
+            "Cardamom Hills",
+            "Anaimalai Hills",
+            "Nilgiri Hills",
+            "Palani Hills"
+          ],
+          "CorrectAnswer": "Anaimalai Hills[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "The Indian Desert (Thar Desert)",
+      "VisualFlashcards": [
+        {
+          "Front": "Where is the Thar Desert located in India?[cite: 1]",
+          "Back": "Towards the western margins of the Aravali Hills in Rajasthan.[cite: 1]"
+        },
+        {
+          "Front": "What is the average annual rainfall received in the Thar Desert?[cite: 1]",
+          "Back": "Very low annual rainfall below 150 mm.[cite: 1]"
+        },
+        {
+          "Front": "What is the climate and vegetation characteristic of the Thar Desert?[cite: 1]",
+          "Back": "Arid climate with low vegetation cover.[cite: 1]"
+        },
+        {
+          "Front": "What are crescent-shaped sand dunes called in the Thar Desert?[cite: 1]",
+          "Back": "Barchans.[cite: 1]"
+        },
+        {
+          "Front": "Which is the only major river flowing through the Thar Desert?[cite: 1]",
+          "Back": "Luni River.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Thar Desert[cite: 1]",
+          "Definition": "Arid desert region west of Aravali Hills in Rajasthan.[cite: 1]"
+        },
+        {
+          "Term": "Below 150 mm[cite: 1]",
+          "Definition": "Average annual rainfall in the Indian Desert.[cite: 1]"
+        },
+        {
+          "Term": "Barchans[cite: 1]",
+          "Definition": "Crescent-shaped sand dunes prevalent in Thar Desert.[cite: 1]"
+        },
+        {
+          "Term": "Luni River[cite: 1]",
+          "Definition": "Only major river flowing through the Thar Desert.[cite: 1]"
+        },
+        {
+          "Term": "Playas[cite: 1]",
+          "Definition": "Saline lake basins found in arid desert regions.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "The Thar Desert lies towards which margin of the Aravali Hills in Rajasthan?[cite: 1]",
+          "Options": [
+            "Eastern margin",
+            "Western margin",
+            "Southern margin",
+            "Northern margin"
+          ],
+          "CorrectAnswer": "Western margin[cite: 1]"
+        },
+        {
+          "Question": "What is the average annual rainfall received in the Thar Desert?[cite: 1]",
+          "Options": [
+            "Below 150 mm",
+            "500 mm to 750 mm",
+            "1000 mm",
+            "Over 2000 mm"
+          ],
+          "CorrectAnswer": "Below 150 mm[cite: 1]"
+        },
+        {
+          "Question": "What are crescent-shaped sand dunes common in the Thar Desert called?[cite: 1]",
+          "Options": [
+            "Barchans",
+            "Duns",
+            "Doabs",
+            "Kayals"
+          ],
+          "CorrectAnswer": "Barchans[cite: 1]"
+        },
+        {
+          "Question": "Which is the only major river that flows through the Thar Desert in Rajasthan?[cite: 1]",
+          "Options": [
+            "Narmada",
+            "Luni River",
+            "Sutlej",
+            "Chambal"
+          ],
+          "CorrectAnswer": "Luni River[cite: 1]"
+        },
+        {
+          "Question": "Saline lake basins located in desert areas like Thar are commonly known as what?[cite: 1]",
+          "Options": [
+            "Playas",
+            "Duns",
+            "Estuaries",
+            "Hotspots"
+          ],
+          "CorrectAnswer": "Playas[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Western Coastal Plains",
+      "VisualFlashcards": [
+        {
+          "Front": "Where are the Western Coastal Plains situated?[cite: 1]",
+          "Back": "A narrow strip between the Western Ghats and the Arabian Sea.[cite: 1]"
+        },
+        {
+          "Front": "What are the three main subdivisions of the Western Coastal Plains?[cite: 1]",
+          "Back": "Konkan, Kannad, and Malabar coasts.[cite: 1]"
+        },
+        {
+          "Front": "What is the northern section of Western Coastal Plains called?[cite: 1]",
+          "Back": "Konkan Coast (Mumbai to Goa).[cite: 1]"
+        },
+        {
+          "Front": "What is the central section of Western Coastal Plains called?[cite: 1]",
+          "Back": "Kannad Coast (Karnataka).[cite: 1]"
+        },
+        {
+          "Front": "What is the southern section of Western Coastal Plains called?[cite: 1]",
+          "Back": "Malabar Coast (Kerala).[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Konkan Coast[cite: 1]",
+          "Definition": "Northern section of the Western Coastal Plains (Mumbai to Goa).[cite: 1]"
+        },
+        {
+          "Term": "Kannad Coast[cite: 1]",
+          "Definition": "Central section of the Western Coastal Plains in Karnataka.[cite: 1]"
+        },
+        {
+          "Term": "Malabar Coast[cite: 1]",
+          "Definition": "Southern section of the Western Coastal Plains in Kerala.[cite: 1]"
+        },
+        {
+          "Term": "Kayals[cite: 1]",
+          "Definition": "Famous backwater lagoons of Kerala on the Malabar Coast.[cite: 1]"
+        },
+        {
+          "Term": "Arabian Sea[cite: 1]",
+          "Definition": "Sea bordering the Western Coastal Plains.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which of the following is the southern coast of the Western Coastal Plains?[cite: 1]",
+          "Options": [
+            "Konkan",
+            "Coromandel",
+            "Malabar",
+            "Northern Circars"
+          ],
+          "CorrectAnswer": "Malabar[cite: 1]"
+        },
+        {
+          "Question": "Which section of the Western Coastal Plains stretches from Mumbai to Goa?[cite: 1]",
+          "Options": [
+            "Konkan Coast",
+            "Coromandel Coast",
+            "Kannad Coast",
+            "Malabar Coast"
+          ],
+          "CorrectAnswer": "Konkan Coast[cite: 1]"
+        },
+        {
+          "Question": "The Western Coastal Plains are situated between the Western Ghats and which sea?[cite: 1]",
+          "Options": [
+            "Bay of Bengal",
+            "Arabian Sea",
+            "Indian Ocean",
+            "Red Sea"
+          ],
+          "CorrectAnswer": "Arabian Sea[cite: 1]"
+        },
+        {
+          "Question": "What is the central stretch of the Western Coastal Plains along Karnataka called?[cite: 1]",
+          "Options": [
+            "Kannad Coast",
+            "Konkan Coast",
+            "Malabar Coast",
+            "Northern Circars"
+          ],
+          "CorrectAnswer": "Kannad Coast[cite: 1]"
+        },
+        {
+          "Question": "What famous backwater lagoons in Kerala are characteristic of the Malabar Coast?[cite: 1]",
+          "Options": [
+            "Kayals",
+            "Doabs",
+            "Duns",
+            "Playas"
+          ],
+          "CorrectAnswer": "Kayals[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Eastern Coastal Plains",
+      "VisualFlashcards": [
+        {
+          "Front": "Where are the Eastern Coastal Plains situated?[cite: 1]",
+          "Back": "Broader plains between the Eastern Ghats and the Bay of Bengal.[cite: 1]"
+        },
+        {
+          "Front": "What are the two major divisions of the Eastern Coastal Plains?[cite: 1]",
+          "Back": "Northern Circars and the Coromandel Coast.[cite: 1]"
+        },
+        {
+          "Front": "Why are the Eastern Coastal Plains broader than the Western Coastal Plains?[cite: 1]",
+          "Back": "Due to wide deltas formed by rivers like Godavari and Krishna.[cite: 1]"
+        },
+        {
+          "Front": "Which is the largest brackish water lake on the Eastern Coast?[cite: 1]",
+          "Back": "Chilika Lake in Odisha.[cite: 1]"
+        },
+        {
+          "Front": "Which coast forms the southern part of the Eastern Coastal Plains in Tamil Nadu?[cite: 1]",
+          "Back": "Coromandel Coast.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Northern Circars[cite: 1]",
+          "Definition": "Northern section of the Eastern Coastal Plains.[cite: 1]"
+        },
+        {
+          "Term": "Coromandel Coast[cite: 1]",
+          "Definition": "Southern section of the Eastern Coastal Plains along Tamil Nadu.[cite: 1]"
+        },
+        {
+          "Term": "Chilika Lake[cite: 1]",
+          "Definition": "Largest brackish water lagoon in India on Odisha coast.[cite: 1]"
+        },
+        {
+          "Term": "River Deltas[cite: 1]",
+          "Definition": "Broad fertile deltas formed by Godavari, Krishna, and Cauvery.[cite: 1]"
+        },
+        {
+          "Term": "Bay of Bengal[cite: 1]",
+          "Definition": "Sea bordering the Eastern Coastal Plains.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "The southern part of the Eastern Coastal Plains is referred to as which coast?[cite: 1]",
+          "Options": [
+            "Konkan Coast",
+            "Kannad Coast",
+            "Coromandel Coast",
+            "Malabar Coast"
+          ],
+          "CorrectAnswer": "Coromandel Coast[cite: 1]"
+        },
+        {
+          "Question": "Which is the largest brackish water lagoon located on the Eastern Coastal Plain in Odisha?[cite: 1]",
+          "Options": [
+            "Vembanad Lake",
+            "Chilika Lake",
+            "Wular Lake",
+            "Dal Lake"
+          ],
+          "CorrectAnswer": "Chilika Lake[cite: 1]"
+        },
+        {
+          "Question": "What is the northern section of the Eastern Coastal Plains called?[cite: 1]",
+          "Options": [
+            "Northern Circars",
+            "Coromandel Coast",
+            "Konkan Coast",
+            "Malabar Coast"
+          ],
+          "CorrectAnswer": "Northern Circars[cite: 1]"
+        },
+        {
+          "Question": "The Eastern Coastal Plains lie between the Eastern Ghats and which body of water?[cite: 1]",
+          "Options": [
+            "Arabian Sea",
+            "Bay of Bengal",
+            "Gulf of Kutch",
+            "Red Sea"
+          ],
+          "CorrectAnswer": "Bay of Bengal[cite: 1]"
+        },
+        {
+          "Question": "Which rivers form large fertile deltas along the Eastern Coastal Plains?[cite: 1]",
+          "Options": [
+            "Narmada & Tapi",
+            "Mahanadi, Godavari, Krishna & Cauvery",
+            "Indus & Jhelum",
+            "Luni & Sabarmati"
+          ],
+          "CorrectAnswer": "Mahanadi, Godavari, Krishna & Cauvery[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Major Island Groups",
+      "VisualFlashcards": [
+        {
+          "Front": "Which island group in the Bay of Bengal is of volcanic origin?[cite: 1]",
+          "Back": "Andaman and Nicobar Islands.[cite: 1]"
+        },
+        {
+          "Front": "Which island group in the Arabian Sea is of coral origin?[cite: 1]",
+          "Back": "Lakshadweep Islands (atolls).[cite: 1]"
+        },
+        {
+          "Front": "What is the name of India's only active volcano located in Andaman Sea?[cite: 1]",
+          "Back": "Barren Island.[cite: 1]"
+        },
+        {
+          "Front": "Which channel separates the Andaman Islands from the Nicobar Islands?[cite: 1]",
+          "Back": "Ten Degree Channel.[cite: 1]"
+        },
+        {
+          "Front": "What ring-shaped coral formations characterize Lakshadweep Islands?[cite: 1]",
+          "Back": "Atolls.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Andaman and Nicobar[cite: 1]",
+          "Definition": "Volcanic origin island chain in the Bay of Bengal.[cite: 1]"
+        },
+        {
+          "Term": "Lakshadweep[cite: 1]",
+          "Definition": "Coral origin (atolls) island group in the Arabian Sea.[cite: 1]"
+        },
+        {
+          "Term": "Barren Island[cite: 1]",
+          "Definition": "India's only active volcano in the Andaman Sea.[cite: 1]"
+        },
+        {
+          "Term": "Ten Degree Channel[cite: 1]",
+          "Definition": "Water strait separating Andaman from Nicobar Islands.[cite: 1]"
+        },
+        {
+          "Term": "Atoll[cite: 1]",
+          "Definition": "Ring-shaped coral reef structure surrounding a lagoon.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "The Lakshadweep Islands in the Arabian Sea are primarily formed from what structure?[cite: 1]",
+          "Options": [
+            "Volcanic rock",
+            "Coral origin (atolls)",
+            "Fold mountain roots",
+            "Glacial moraines"
+          ],
+          "CorrectAnswer": "Coral origin (atolls)[cite: 1]"
+        },
+        {
+          "Question": "Which island group is located in the Bay of Bengal?[cite: 1]",
+          "Options": [
+            "Lakshadweep",
+            "Andaman and Nicobar",
+            "Maldives",
+            "Sri Lanka"
+          ],
+          "CorrectAnswer": "Andaman and Nicobar[cite: 1]"
+        },
+        {
+          "Question": "What is the name of India's only active volcano situated in the Andaman Sea?[cite: 1]",
+          "Options": [
+            "Narcondam Island",
+            "Barren Island",
+            "Minicoy Island",
+            "Majuli Island"
+          ],
+          "CorrectAnswer": "Barren Island[cite: 1]"
+        },
+        {
+          "Question": "Which water body channel separates the Andaman Islands from the Nicobar Islands?[cite: 1]",
+          "Options": [
+            "Nine Degree Channel",
+            "Ten Degree Channel",
+            "Palk Strait",
+            "Duncan Passage"
+          ],
+          "CorrectAnswer": "Ten Degree Channel[cite: 1]"
+        },
+        {
+          "Question": "Lakshadweep Islands are located in which sea?[cite: 1]",
+          "Options": [
+            "Bay of Bengal",
+            "Arabian Sea",
+            "Andaman Sea",
+            "South China Sea"
+          ],
+          "CorrectAnswer": "Arabian Sea[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "The Indus System",
+      "VisualFlashcards": [
+        {
+          "Front": "Where does the Indus river system originate?[cite: 1]",
+          "Back": "In Tibet near Lake Mansarovar.[cite: 1]"
+        },
+        {
+          "Front": "What are the main tributaries of the Indus river?[cite: 1]",
+          "Back": "Jhelum, Chenab, Ravi, Beas, and Sutlej.[cite: 1]"
+        },
+        {
+          "Front": "Which is the largest tributary of the Indus river?[cite: 1]",
+          "Back": "Chenab River.[cite: 1]"
+        },
+        {
+          "Front": "Which river flows through Srinagar and Wular Lake?[cite: 1]",
+          "Back": "Jhelum River.[cite: 1]"
+        },
+        {
+          "Front": "Into which sea does the Indus river drain?[cite: 1]",
+          "Back": "Arabian Sea.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Lake Mansarovar (Tibet)[cite: 1]",
+          "Definition": "Origin point of the Indus river system.[cite: 1]"
+        },
+        {
+          "Term": "Chenab[cite: 1]",
+          "Definition": "Largest tributary of the Indus system.[cite: 1]"
+        },
+        {
+          "Term": "Jhelum[cite: 1]",
+          "Definition": "Tributary flowing through Srinagar and Wular Lake.[cite: 1]"
+        },
+        {
+          "Term": "Sutlej[cite: 1]",
+          "Definition": "Tributary originating near Rakshastal in Tibet.[cite: 1]"
+        },
+        {
+          "Term": "Arabian Sea[cite: 1]",
+          "Definition": "Final drainage destination of the Indus river.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Near which landmark in Tibet does the Indus river originate?[cite: 1]",
+          "Options": [
+            "Gangotri Glacier",
+            "Lake Mansarovar",
+            "Yamunotri Glacier",
+            "Badrinath"
+          ],
+          "CorrectAnswer": "Lake Mansarovar[cite: 1]"
+        },
+        {
+          "Question": "Which is the largest tributary of the Indus river system?[cite: 1]",
+          "Options": [
+            "Jhelum",
+            "Chenab",
+            "Ravi",
+            "Beas"
+          ],
+          "CorrectAnswer": "Chenab[cite: 1]"
+        },
+        {
+          "Question": "Which river flows through Srinagar and the famous Wular Lake in Kashmir?[cite: 1]",
+          "Options": [
+            "Chenab",
+            "Jhelum",
+            "Sutlej",
+            "Ravi"
+          ],
+          "CorrectAnswer": "Jhelum[cite: 1]"
+        },
+        {
+          "Question": "Where does the Sutlej river originate?[cite: 1]",
+          "Options": [
+            "Rakshastal near Mansarovar",
+            "Gangotri Glacier",
+            "Verinag Spring",
+            "Rohtang Pass"
+          ],
+          "CorrectAnswer": "Rakshastal near Mansarovar[cite: 1]"
+        },
+        {
+          "Question": "Into which body of water does the Indus river empty?[cite: 1]",
+          "Options": [
+            "Bay of Bengal",
+            "Arabian Sea",
+            "Indian Ocean",
+            "Red Sea"
+          ],
+          "CorrectAnswer": "Arabian Sea[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "The Ganga System",
+      "VisualFlashcards": [
+        {
+          "Front": "Where does the Ganga river originate as the Bhagirathi?[cite: 1]",
+          "Back": "From the Gangotri glacier.[cite: 1]"
+        },
+        {
+          "Front": "Where do Bhagirathi and Alaknanda join to form the Ganga?[cite: 1]",
+          "Back": "Devprayag.[cite: 1]"
+        },
+        {
+          "Front": "Which is the largest right-bank tributary of the Ganga?[cite: 1]",
+          "Back": "Yamuna River (originating at Yamunotri).[cite: 1]"
+        },
+        {
+          "Front": "What are major left-bank tributaries of the Ganga?[cite: 1]",
+          "Back": "Ghaghara, Gandak, Kosi, and Ramganga.[cite: 1]"
+        },
+        {
+          "Front": "Which Peninsular river joins the Ganga on its right bank near Patna?[cite: 1]",
+          "Back": "Son River.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Gangotri Glacier[cite: 1]",
+          "Definition": "Origin point of the Bhagirathi headstream of Ganga.[cite: 1]"
+        },
+        {
+          "Term": "Devprayag[cite: 1]",
+          "Definition": "Confluence of Bhagirathi and Alaknanda forming the Ganga.[cite: 1]"
+        },
+        {
+          "Term": "Yamuna River[cite: 1]",
+          "Definition": "Largest right-bank tributary originating at Yamunotri.[cite: 1]"
+        },
+        {
+          "Term": "Kosi River[cite: 1]",
+          "Definition": "Major left-bank tributary known for shifting channels.[cite: 1]"
+        },
+        {
+          "Term": "Son River[cite: 1]",
+          "Definition": "Right-bank Peninsular tributary joining Ganga near Patna.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "From which glacier does the Bhagirathi headstream of the Ganga originate?[cite: 1]",
+          "Options": [
+            "Gangotri glacier",
+            "Yamunotri glacier",
+            "Pindari glacier",
+            "Siachen glacier"
+          ],
+          "CorrectAnswer": "Gangotri glacier[cite: 1]"
+        },
+        {
+          "Question": "At which confluence do the Bhagirathi and Alaknanda meet to form the Ganga?[cite: 1]",
+          "Options": [
+            "Rudraprayag",
+            "Devprayag",
+            "Karnaprayag",
+            "Vishnuprayag"
+          ],
+          "CorrectAnswer": "Devprayag[cite: 1]"
+        },
+        {
+          "Question": "Which is the largest right-bank tributary of the Ganga river system?[cite: 1]",
+          "Options": [
+            "Ghaghara",
+            "Yamuna River",
+            "Gandak",
+            "Kosi"
+          ],
+          "CorrectAnswer": "Yamuna River[cite: 1]"
+        },
+        {
+          "Question": "Which left-bank tributary of the Ganga is known as the 'Sorrow of Bihar'?[cite: 1]",
+          "Options": [
+            "Yamuna",
+            "Kosi River",
+            "Son",
+            "Chambal"
+          ],
+          "CorrectAnswer": "Kosi River[cite: 1]"
+        },
+        {
+          "Question": "Which Peninsular river joins the Ganga on its right bank near Patna?[cite: 1]",
+          "Options": [
+            "Son River",
+            "Betwa",
+            "Ken",
+            "Narmada"
+          ],
+          "CorrectAnswer": "Son River[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "The Brahmaputra System",
+      "VisualFlashcards": [
+        {
+          "Front": "What is the Brahmaputra river known as in Tibet?[cite: 1]",
+          "Back": "Tsangpo.[cite: 1]"
+        },
+        {
+          "Front": "Where does the Brahmaputra enter India?[cite: 1]",
+          "Back": "Arunachal Pradesh (as the Dihang/Siang).[cite: 1]"
+        },
+        {
+          "Front": "Which is the largest north-bank tributary of Brahmaputra?[cite: 1]",
+          "Back": "Subansiri River.[cite: 1]"
+        },
+        {
+          "Front": "Which major river island is formed by Brahmaputra in Assam?[cite: 1]",
+          "Back": "Majuli Island (world's largest inhabited river island).[cite: 1]"
+        },
+        {
+          "Front": "What is the Brahmaputra river called after entering Bangladesh?[cite: 1]",
+          "Back": "Jamuna.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Tsangpo[cite: 1]",
+          "Definition": "Tibetan name for the Brahmaputra river.[cite: 1]"
+        },
+        {
+          "Term": "Dihang / Siang[cite: 1]",
+          "Definition": "Name of Brahmaputra as it enters Arunachal Pradesh.[cite: 1]"
+        },
+        {
+          "Term": "Subansiri[cite: 1]",
+          "Definition": "Largest north-bank tributary of the Brahmaputra.[cite: 1]"
+        },
+        {
+          "Term": "Majuli[cite: 1]",
+          "Definition": "World's largest inhabited riverine island in Assam.[cite: 1]"
+        },
+        {
+          "Term": "Jamuna[cite: 1]",
+          "Definition": "Name of Brahmaputra River upon entering Bangladesh.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "What is the name given to the Brahmaputra river in Tibet?[cite: 1]",
+          "Options": [
+            "Meghna",
+            "Tsangpo",
+            "Padma",
+            "Jamuna"
+          ],
+          "CorrectAnswer": "Tsangpo[cite: 1]"
+        },
+        {
+          "Question": "Under what name does Brahmaputra enter Arunachal Pradesh?[cite: 1]",
+          "Options": [
+            "Dihang / Siang",
+            "Manas",
+            "Subansiri",
+            "Lohit"
+          ],
+          "CorrectAnswer": "Dihang / Siang[cite: 1]"
+        },
+        {
+          "Question": "Which is the world's largest inhabited river island formed by the Brahmaputra in Assam?[cite: 1]",
+          "Options": [
+            "Umananda",
+            "Majuli",
+            "Barren Island",
+            "Minicoy"
+          ],
+          "CorrectAnswer": "Majuli[cite: 1]"
+        },
+        {
+          "Question": "Which is the largest north-bank tributary of the Brahmaputra?[cite: 1]",
+          "Options": [
+            "Subansiri",
+            "Burhi Dihing",
+            "Dhansiri",
+            "Kopili"
+          ],
+          "CorrectAnswer": "Subansiri[cite: 1]"
+        },
+        {
+          "Question": "What is the Brahmaputra called after entering Bangladesh?[cite: 1]",
+          "Options": [
+            "Padma",
+            "Jamuna",
+            "Meghna",
+            "Hooghly"
+          ],
+          "CorrectAnswer": "Jamuna[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "West-Flowing Rivers",
+      "VisualFlashcards": [
+        {
+          "Front": "Which major Peninsular rivers flow through rift valleys into the Arabian Sea?[cite: 1]",
+          "Back": "Narmada & Tapi.[cite: 1]"
+        },
+        {
+          "Front": "Where does the Narmada river originate?[cite: 1]",
+          "Back": "Amarkantak Plateau in Madhya Pradesh.[cite: 1]"
+        },
+        {
+          "Front": "Where does the Tapi river originate?[cite: 1]",
+          "Back": "Multai in Betul district of Madhya Pradesh.[cite: 1]"
+        },
+        {
+          "Front": "Do west-flowing rivers form estuaries or deltas?[cite: 1]",
+          "Back": "They form estuaries instead of deltas.[cite: 1]"
+        },
+        {
+          "Front": "Which famous waterfall is formed by the Narmada river near Jabalpur?[cite: 1]",
+          "Back": "Dhuandhar Falls (Marble Rocks).[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Narmada[cite: 1]",
+          "Definition": "West-flowing river originating at Amarkantak.[cite: 1]"
+        },
+        {
+          "Term": "Tapi[cite: 1]",
+          "Definition": "West-flowing river originating at Multai in Betul.[cite: 1]"
+        },
+        {
+          "Term": "Rift Valleys[cite: 1]",
+          "Definition": "Fault structures through which Narmada and Tapi flow.[cite: 1]"
+        },
+        {
+          "Term": "Dhuandhar Falls[cite: 1]",
+          "Definition": "Waterfall formed by Narmada at Marble Rocks in Jabalpur.[cite: 1]"
+        },
+        {
+          "Term": "Estuaries[cite: 1]",
+          "Definition": "Coastal features formed instead of deltas by west-flowing rivers.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which two major Peninsular rivers flow westwards through rift valleys into the Arabian Sea?[cite: 1]",
+          "Options": [
+            "Godavari & Krishna",
+            "Narmada & Tapi",
+            "Mahanadi & Cauvery",
+            "Luni & Sabarmati"
+          ],
+          "CorrectAnswer": "Narmada & Tapi[cite: 1]"
+        },
+        {
+          "Question": "Where does the Narmada river originate?[cite: 1]",
+          "Options": [
+            "Trimbakeshwar",
+            "Amarkantak Plateau",
+            "Mahabaleshwar",
+            "Brahmagiri"
+          ],
+          "CorrectAnswer": "Amarkantak Plateau[cite: 1]"
+        },
+        {
+          "Question": "Where does the Tapi river originate?[cite: 1]",
+          "Options": [
+            "Multai in Betul district",
+            "Gangotri",
+            "Mansarovar",
+            "Amarkantak"
+          ],
+          "CorrectAnswer": "Multai in Betul district[cite: 1]"
+        },
+        {
+          "Question": "What type of coastal landform do Narmada and Tapi form at their mouths?[cite: 1]",
+          "Options": [
+            "Deltas",
+            "Estuaries",
+            "Kayals",
+            "Atolls"
+          ],
+          "CorrectAnswer": "Estuaries[cite: 1]"
+        },
+        {
+          "Question": "Which famous waterfall is formed by the Narmada river near Jabalpur?[cite: 1]",
+          "Options": [
+            "Jog Falls",
+            "Dhuandhar Falls",
+            "Nohkalikai Falls",
+            "Chitrakote Falls"
+          ],
+          "CorrectAnswer": "Dhuandhar Falls[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "East-Flowing Rivers",
+      "VisualFlashcards": [
+        {
+          "Front": "Which four major Peninsular rivers flow into the Bay of Bengal forming deltas?[cite: 1]",
+          "Back": "Mahanadi, Godavari, Krishna, and Cauvery.[cite: 1]"
+        },
+        {
+          "Front": "Which is the largest peninsular river in India?[cite: 1]",
+          "Back": "The Godavari (often called Dakshin Ganga).[cite: 1]"
+        },
+        {
+          "Front": "Where does the Godavari river originate?[cite: 1]",
+          "Back": "Trimbakeshwar near Nasik in Maharashtra.[cite: 1]"
+        },
+        {
+          "Front": "Where does the Krishna river originate?[cite: 1]",
+          "Back": "Mahabaleshwar in Maharashtra.[cite: 1]"
+        },
+        {
+          "Front": "Where does the Cauvery river originate?[cite: 1]",
+          "Back": "Brahmagiri Hills in Kodagu, Karnataka.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Godavari[cite: 1]",
+          "Definition": "Longest Peninsular river, known as 'Dakshin Ganga'.[cite: 1]"
+        },
+        {
+          "Term": "Krishna[cite: 1]",
+          "Definition": "Major east-flowing river originating at Mahabaleshwar.[cite: 1]"
+        },
+        {
+          "Term": "Cauvery[cite: 1]",
+          "Definition": "East-flowing river originating in Brahmagiri Hills.[cite: 1]"
+        },
+        {
+          "Term": "Mahanadi[cite: 1]",
+          "Definition": "Major east-flowing river originating in Chhattisgarh.[cite: 1]"
+        },
+        {
+          "Term": "Bay of Bengal Deltas[cite: 1]",
+          "Definition": "Fertile coastal deltas formed by east-flowing rivers.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which is the largest peninsular river in India?[cite: 1]",
+          "Options": [
+            "Krishna",
+            "Cauvery",
+            "Godavari",
+            "Mahanadi"
+          ],
+          "CorrectAnswer": "Godavari[cite: 1]"
+        },
+        {
+          "Question": "The Godavari river is often referred to by what alternative name?[cite: 1]",
+          "Options": [
+            "Uttara Ganga",
+            "Dakshin Ganga",
+            "Tsangpo",
+            "Luit"
+          ],
+          "CorrectAnswer": "Dakshin Ganga[cite: 1]"
+        },
+        {
+          "Question": "Where does the Godavari river originate?[cite: 1]",
+          "Options": [
+            "Trimbakeshwar near Nasik",
+            "Amarkantak",
+            "Gangotri",
+            "Multai"
+          ],
+          "CorrectAnswer": "Trimbakeshwar near Nasik[cite: 1]"
+        },
+        {
+          "Question": "Where does the Krishna river originate?[cite: 1]",
+          "Options": [
+            "Mahabaleshwar",
+            "Brahmagiri",
+            "Trimbakeshwar",
+            "Betul"
+          ],
+          "CorrectAnswer": "Mahabaleshwar[cite: 1]"
+        },
+        {
+          "Question": "Where does the Cauvery river originate?[cite: 1]",
+          "Options": [
+            "Brahmagiri Hills",
+            "Amarkantak",
+            "Mahabaleshwar",
+            "Nandi Hills"
+          ],
+          "CorrectAnswer": "Brahmagiri Hills[cite: 1]"
         }
       ]
     },
@@ -170,11 +1604,11 @@
           "Back": "The Himalayas hotspot.[cite: 1]"
         },
         {
-          "Front": "Which hotspot includes the entire North-Eastern India except Assam and Andaman?[cite: 1]",
+          "Front": "Which hotspot includes NE India except Assam and Andaman?[cite: 1]",
           "Back": "Indo-Burma hotspot.[cite: 1]"
         },
         {
-          "Front": "Which hotspot runs parallel to the western coast of the Indian peninsula?[cite: 1]",
+          "Front": "Which hotspot runs parallel to the western coast of Peninsular India?[cite: 1]",
           "Back": "Western Ghats and Sri Lanka hotspot.[cite: 1]"
         },
         {
@@ -189,7 +1623,7 @@
         },
         {
           "Term": "Indo-Burma hotspot[cite: 1]",
-          "Definition": "Includes the entire North-Eastern India (except Assam and Andaman).[cite: 1]"
+          "Definition": "Includes North-Eastern India (except Assam and Andaman).[cite: 1]"
         },
         {
           "Term": "Western Ghats and Sri Lanka hotspot[cite: 1]",
@@ -198,6 +1632,10 @@
         {
           "Term": "Sundaland hotspot[cite: 1]",
           "Definition": "Includes the Nicobar group of Islands.[cite: 1]"
+        },
+        {
+          "Term": "4 out of 36[cite: 1]",
+          "Definition": "Proportion of global biodiversity hotspots hosted in India.[cite: 1]"
         }
       ],
       "ExamineMCQ": [
@@ -230,6 +1668,125 @@
             "Western Ghats and Sri Lanka hotspot"
           ],
           "CorrectAnswer": "Sundaland hotspot[cite: 1]"
+        },
+        {
+          "Question": "Which hotspot covers the entire northern mountain belt of India?[cite: 1]",
+          "Options": [
+            "The Himalayas hotspot",
+            "Indo-Burma hotspot",
+            "Sundaland hotspot",
+            "Western Ghats hotspot"
+          ],
+          "CorrectAnswer": "The Himalayas hotspot[cite: 1]"
+        },
+        {
+          "Question": "Which hotspot runs parallel to the western coastal margin of Peninsular India?[cite: 1]",
+          "Options": [
+            "Western Ghats and Sri Lanka hotspot",
+            "Sundaland hotspot",
+            "Indo-Burma hotspot",
+            "The Himalayas hotspot"
+          ],
+          "CorrectAnswer": "Western Ghats and Sri Lanka hotspot[cite: 1]"
+        }
+      ]
+    },
+    {
+      "SectionName": "Key Indian Sites",
+      "VisualFlashcards": [
+        {
+          "Front": "What agency designates World Natural Heritage Sites for outstanding universal value?[cite: 1]",
+          "Back": "UNESCO.[cite: 1]"
+        },
+        {
+          "Front": "Which famous natural site in Assam is recognized for one-horned rhinos?[cite: 1]",
+          "Back": "Kaziranga National Park.[cite: 1]"
+        },
+        {
+          "Front": "Which tiger & elephant reserve in Assam is a UNESCO World Natural Heritage Site?[cite: 1]",
+          "Back": "Manas Wildlife Sanctuary.[cite: 1]"
+        },
+        {
+          "Front": "Which Himalayan site in Uttarakhand is a UNESCO World Natural Heritage Site?[cite: 1]",
+          "Back": "Nanda Devi and Valley of Flowers National Parks.[cite: 1]"
+        },
+        {
+          "Front": "Which famous mangrove forest in West Bengal is a UNESCO Natural Heritage Site?[cite: 1]",
+          "Back": "Sundarbans National Park.[cite: 1]"
+        }
+      ],
+      "PracticeMatching": [
+        {
+          "Term": "Kaziranga NP[cite: 1]",
+          "Definition": "UNESCO World Heritage Site famous for one-horned rhinos.[cite: 1]"
+        },
+        {
+          "Term": "Manas WS[cite: 1]",
+          "Definition": "UNESCO World Heritage tiger & elephant reserve in Assam.[cite: 1]"
+        },
+        {
+          "Term": "Sundarbans NP[cite: 1]",
+          "Definition": "UNESCO World Heritage mangrove forest in West Bengal.[cite: 1]"
+        },
+        {
+          "Term": "Nanda Devi & Valley of Flowers[cite: 1]",
+          "Definition": "UNESCO World Heritage alpine site in Uttarakhand.[cite: 1]"
+        },
+        {
+          "Term": "Keoladeo NP[cite: 1]",
+          "Definition": "UNESCO World Heritage bird sanctuary in Bharatpur, Rajasthan.[cite: 1]"
+        }
+      ],
+      "ExamineMCQ": [
+        {
+          "Question": "Which international body designates World Natural Heritage Sites?[cite: 1]",
+          "Options": [
+            "UNESCO",
+            "WWF",
+            "IUCN",
+            "UNEP"
+          ],
+          "CorrectAnswer": "UNESCO[cite: 1]"
+        },
+        {
+          "Question": "Which national park in Assam is designated as a UNESCO World Natural Heritage Site for its rhino population?[cite: 1]",
+          "Options": [
+            "Pobitora WS",
+            "Kaziranga National Park",
+            "Dibru-Saikhowa NP",
+            "Orang NP"
+          ],
+          "CorrectAnswer": "Kaziranga National Park[cite: 1]"
+        },
+        {
+          "Question": "Which famous mangrove ecosystem in West Bengal is a UNESCO Natural Heritage Site?[cite: 1]",
+          "Options": [
+            "Sundarbans National Park",
+            "Kaziranga NP",
+            "Keoladeo NP",
+            "Manas WS"
+          ],
+          "CorrectAnswer": "Sundarbans National Park[cite: 1]"
+        },
+        {
+          "Question": "Which UNESCO Natural Heritage site is located in the state of Uttarakhand?[cite: 1]",
+          "Options": [
+            "Nanda Devi and Valley of Flowers National Parks",
+            "Great Himalayan National Park",
+            "Sundarbans NP",
+            "Kaziranga NP"
+          ],
+          "CorrectAnswer": "Nanda Devi and Valley of Flowers National Parks[cite: 1]"
+        },
+        {
+          "Question": "Which bird sanctuary in Bharatpur, Rajasthan is a UNESCO World Natural Heritage Site?[cite: 1]",
+          "Options": [
+            "Keoladeo National Park",
+            "Ranthambore NP",
+            "Sariska Tiger Reserve",
+            "Desert National Park"
+          ],
+          "CorrectAnswer": "Keoladeo National Park[cite: 1]"
         }
       ]
     },
@@ -246,7 +1803,7 @@
         },
         {
           "Front": "Which was the first established Biosphere Reserve in India?[cite: 1]",
-          "Back": "Nilgiri was the first established reserve.[cite: 1]"
+          "Back": "Nilgiri (1986).[cite: 1]"
         },
         {
           "Front": "Which is the largest Biosphere Reserve in India by geographical area?[cite: 1]",
@@ -259,16 +1816,16 @@
       ],
       "PracticeMatching": [
         {
-          "Term": "18[cite: 1]",
+          "Term": "18 Notified Reserves[cite: 1]",
           "Definition": "The total number of officially notified Biosphere Reserves in India.[cite: 1]"
         },
         {
-          "Term": "12[cite: 1]",
+          "Term": "12 MAB Reserves[cite: 1]",
           "Definition": "The number of Biosphere Reserves internationally recognized under the UNESCO MAB Programme.[cite: 1]"
         },
         {
-          "Term": "Nilgiri[cite: 1]",
-          "Definition": "The first established biosphere reserve.[cite: 1]"
+          "Term": "Nilgiri (1986)[cite: 1]",
+          "Definition": "The first established biosphere reserve in India.[cite: 1]"
         },
         {
           "Term": "Kachchh (Gujarat)[cite: 1]",
@@ -276,7 +1833,7 @@
         },
         {
           "Term": "Dibru-Saikhowa (Assam)[cite: 1]",
-          "Definition": "The smallest biosphere reserve.[cite: 1]"
+          "Definition": "The smallest biosphere reserve in India.[cite: 1]"
         }
       ],
       "ExamineMCQ": [
@@ -291,7 +1848,7 @@
           "CorrectAnswer": "Kachchh (Gujarat)[cite: 1]"
         },
         {
-          "Question": "Which was the first established Biosphere Reserve in India?[cite: 1]",
+          "Question": "Which was the first established Biosphere Reserve in India in 1986?[cite: 1]",
           "Options": [
             "Kachchh",
             "Dibru-Saikhowa",
@@ -309,6 +1866,26 @@
             "36"
           ],
           "CorrectAnswer": "12[cite: 1]"
+        },
+        {
+          "Question": "What is the total number of officially notified Biosphere Reserves in India?[cite: 1]",
+          "Options": [
+            "7",
+            "12",
+            "18",
+            "25"
+          ],
+          "CorrectAnswer": "18[cite: 1]"
+        },
+        {
+          "Question": "Which is the smallest Biosphere Reserve in India by geographical area?[cite: 1]",
+          "Options": [
+            "Pobitora",
+            "Dibru-Saikhowa (Assam)",
+            "Nokrek",
+            "Gulf of Mannar"
+          ],
+          "CorrectAnswer": "Dibru-Saikhowa (Assam)[cite: 1]"
         }
       ]
     }

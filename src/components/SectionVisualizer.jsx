@@ -12,10 +12,10 @@ const vizData = {
 };
 import { VerticalDivisionsVisual } from './visualizers/VerticalDivisionsVisual';
 import { SubdivisionsWestEastVisual } from './visualizers/SubdivisionsWestEastVisual';
-import { GeneralStructureVisual } from './visualizers/GeneralStructureVisual';
 import { SoilProfileVisual } from './visualizers/SoilProfileVisual';
 import { RegionalPlainsVisual } from './visualizers/RegionalPlainsVisual';
 import { PlateauGridVisual } from './visualizers/PlateauGridVisual';
+import { DeccanPlateauVisual } from './visualizers/DeccanPlateauVisual';
 import { MountainRangesGhatsVisual } from './visualizers/MountainRangesGhatsVisual';
 import { TharDesertVisual } from './visualizers/TharDesertVisual';
 import { CoastalPlainsVisual } from './visualizers/CoastalPlainsVisual';
@@ -53,7 +53,7 @@ export function SectionVisualizer({ sectionName, facts = [] }) {
   }
 
   // 1. Central Plateau & Hills Visualizer
-  if (isNameMatch(cleanName, 'Central Plateau') || isNameMatch(cleanName, 'Karbi Anglong') || isNameMatch(cleanName, 'Haflong')) {
+  if (isNameMatch(cleanName, 'Central Plateau') || isNameMatch(cleanName, 'Central Hills') || isNameMatch(cleanName, 'Karbi Anglong') || isNameMatch(cleanName, 'Haflong')) {
     return <CentralPlateauVisual />;
   }
 
@@ -141,12 +141,7 @@ export function SectionVisualizer({ sectionName, facts = [] }) {
     return <SubdivisionsWestEastVisual />;
   }
 
-  // 9. General Structure
-  if (cleanName.includes('General Structure')) {
-    return <GeneralStructureVisual idea={idea} />;
-  }
-
-  // 10. Formation & Soil
+  // 9. Formation & Soil
   if (cleanName.includes('Formation & Soil')) {
     return <SoilProfileVisual />;
   }
@@ -156,9 +151,14 @@ export function SectionVisualizer({ sectionName, facts = [] }) {
     return <RegionalPlainsVisual />;
   }
 
-  // 12. Central Highlands / Deccan Plateau
-  if (cleanName.includes('Central Highlands') || cleanName.includes('Deccan Plateau')) {
+  // 12. Central Highlands
+  if (cleanName.includes('Central Highlands')) {
     return <PlateauGridVisual />;
+  }
+
+  // 13. Deccan Plateau
+  if (cleanName.includes('Deccan Plateau') || cleanName.includes('Deccan Trap') || cleanName.includes('Deccan')) {
+    return <DeccanPlateauVisual />;
   }
 
   // 13. Mountain Ranges & Peaks
