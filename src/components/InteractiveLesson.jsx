@@ -320,255 +320,44 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </div>
       )}
 
-      {/* STEP 1: FACT READING CARD */}
-      {unitStep === 'fact' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(16,185,129,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
-                CONCEPT UNIT {unitIndex + 1} OF {conceptUnits.length}
-              </span>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
-                Fact Read Phase
-              </span>
-            </div>
+      {/* ── UNIFIED FIXED HEIGHT PLAYER CARD CONTAINER (min-height: 520px, Flex Layout) ── */}
+      <div style={{ minHeight: '520px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
 
-            <h2 style={{ margin: 0, fontSize: '1.4rem', color: '#fff', fontWeight: 900, lineHeight: 1.4 }}>
-              {topicName} Fact
-            </h2>
-
-            <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: '1.25rem' }}>
-              <p style={{ margin: 0, fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6, fontWeight: 500 }}>
-                {currentUnit.Fact}
-              </p>
-            </div>
-
-            {/* Visualizer for concept unit */}
-            <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <SectionVisualizer sectionName={topicName} facts={[currentUnit.Fact]} />
-            </div>
-
-            <button
-              onClick={handleNextFact}
-              style={{
-                padding: '0.85rem 1.5rem',
-                borderRadius: 14,
-                background: 'linear-gradient(135deg, #10b981, #34d399)',
-                color: '#000',
-                border: 'none',
-                fontWeight: 900,
-                fontSize: '0.95rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justify: 'center',
-                gap: '0.45rem',
-                boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
-              }}
-            >
-              Next: Flashcard Recall <ArrowRight size={18} />
-            </button>
-          </motion.div>
-        </AnimatePresence>
-      )}
-
-      {/* STEP 2: FLASHCARD RECALL (With 'I knew it' / 'I didn't know' options) */}
-      {unitStep === 'flashcard' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.75rem', color: '#c084fc', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(192,132,252,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
-                ACTIVE RECALL
-              </span>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
-                Flashcard Recall Phase
-              </span>
-            </div>
-
-            {/* Flip Canvas Card */}
-            <div style={{ perspective: '1000px', minHeight: '260px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
-              <motion.div
-                style={{ width: '100%', minHeight: '260px', position: 'relative', transformStyle: 'preserve-3d' }}
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                {/* Front Side */}
-                <div className="glass-panel" style={{
-                  position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                  padding: '2rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)', borderRadius: 16
-                }}>
-                  <span style={{ fontSize: '0.75rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '1rem' }}>
-                    TAP CARD TO FLIP
+        {/* STEP 1: FACT READING CARD */}
+        {unitStep === 'fact' && (
+          <AnimatePresence mode="wait">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '1.75rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(16,185,129,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                    CONCEPT UNIT {unitIndex + 1} OF {conceptUnits.length}
                   </span>
-                  <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
-                    {currentUnit.Flashcard?.Front || `What is a key feature of ${topicName}?`}
-                  </h2>
+                  <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                    Fact Read Phase
+                  </span>
                 </div>
 
-                {/* Back Side */}
-                <div className="glass-panel" style={{
-                  position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
-                  transform: 'rotateY(180deg)',
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                  padding: '2rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981', borderRadius: 16
-                }}>
-                  <span style={{ fontSize: '0.75rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.75rem' }}>
-                    KEY RECALL ANSWER
-                  </span>
-                  <h2 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
-                    {currentUnit.Flashcard?.Back || currentUnit.Fact}
-                  </h2>
+                <h2 style={{ margin: 0, fontSize: '1.3rem', color: '#fff', fontWeight: 900, lineHeight: 1.35 }}>
+                  {topicName} Fact
+                </h2>
+
+                <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: '1rem' }}>
+                  <p style={{ margin: 0, fontSize: '1rem', color: '#e2e8f0', lineHeight: 1.5, fontWeight: 500 }}>
+                    {currentUnit.Fact}
+                  </p>
                 </div>
-              </motion.div>
-            </div>
 
-            {/* Self-Assessment Buttons (Revealed when card is flipped or always accessible) */}
-            <div style={{ display: 'flex', gap: '0.75rem' }}>
+                {/* Standardized Visualizer Frame (Fixed Height: 210px) */}
+                <div style={{ height: '210px', borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)', overflowY: 'auto' }}>
+                  <SectionVisualizer sectionName={topicName} facts={[currentUnit.Fact]} />
+                </div>
+              </div>
+
+              {/* Anchored Bottom Button */}
               <button
-                onClick={() => handleFlashcardSelfAssess(false)}
+                onClick={handleNextFact}
                 style={{
-                  flex: 1,
-                  padding: '0.85rem 1rem',
-                  borderRadius: 14,
-                  background: 'rgba(244,63,94,0.12)',
-                  border: '1.5px solid rgba(244,63,94,0.35)',
-                  color: '#f43f5e',
-                  fontWeight: 800,
-                  fontSize: '0.88rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  gap: '0.4rem'
-                }}
-              >
-                <ThumbsDown size={17} /> I Didn't Know
-              </button>
-
-              <button
-                onClick={() => handleFlashcardSelfAssess(true)}
-                style={{
-                  flex: 1,
-                  padding: '0.85rem 1rem',
-                  borderRadius: 14,
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  border: 'none',
-                  color: '#000',
-                  fontWeight: 900,
-                  fontSize: '0.88rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  gap: '0.4rem',
-                  boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
-                }}
-              >
-                <ThumbsUp size={17} /> I Knew It (+10 XP)
-              </button>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      )}
-
-      {/* STEP 3: EXAM MCQ QUIZ (With explicit 'Proceed to Next Unit' button) */}
-      {unitStep === 'quiz' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.75rem', color: '#f43f5e', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(244,63,94,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
-                EXAM MCQ QUIZ
-              </span>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
-                Exam Quiz Phase
-              </span>
-            </div>
-
-            <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 800, lineHeight: 1.5 }}>
-              {currentUnit.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
-            </h3>
-
-            {/* Options List */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-              {Object.entries(currentUnit.Quiz?.Options || {}).map(([key, label]) => {
-                const isSelected = selectedOption === key;
-                const isCorrect = key === currentUnit.Quiz?.CorrectAnswer;
-
-                let btnBg = 'rgba(255,255,255,0.02)';
-                let btnBorder = '1px solid rgba(255,255,255,0.08)';
-                let textColor = '#e2e8f0';
-
-                if (isQuizAnswered) {
-                  if (isCorrect) {
-                    btnBg = 'rgba(16,185,129,0.2)';
-                    btnBorder = '1.5px solid #10b981';
-                    textColor = '#34d399';
-                  } else if (isSelected) {
-                    btnBg = 'rgba(244,63,94,0.2)';
-                    btnBorder = '1.5px solid #f43f5e';
-                    textColor = '#f43f5e';
-                  }
-                }
-
-                return (
-                  <button
-                    key={key}
-                    onClick={() => handleQuizOptionSelect(key)}
-                    style={{
-                      background: btnBg,
-                      border: btnBorder,
-                      color: textColor,
-                      padding: '0.85rem 1.1rem',
-                      borderRadius: 14,
-                      fontSize: '0.9rem',
-                      fontWeight: isSelected ? 800 : 500,
-                      textAlign: 'left',
-                      cursor: isQuizAnswered ? 'default' : 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem'
-                    }}
-                  >
-                    <span style={{
-                      width: 28,
-                      height: 28,
-                      borderRadius: 8,
-                      background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.06)',
-                      color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justify: 'center',
-                      fontWeight: 800,
-                      fontSize: '0.82rem'
-                    }}>
-                      {key}
-                    </span>
-                    <span style={{ flex: 1 }}>{label}</span>
-                    {isQuizAnswered && isCorrect && <Check size={18} color="#34d399" />}
-                    {isQuizAnswered && isSelected && !isCorrect && <X size={18} color="#f43f5e" />}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Explanation Rationale Box */}
-            {isQuizAnswered && (
-              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 14, padding: '1rem' }}>
-                <span style={{ fontSize: '0.72rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
-                  SYLLABUS RATIONALE & EXPLANATION
-                </span>
-                <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', color: '#cbd5e1', lineHeight: 1.5 }}>
-                  {currentUnit.Quiz?.Explanation || `Official Fact: ${currentUnit.Fact}`}
-                </p>
-              </motion.div>
-            )}
-
-            {/* Explicit Proceed Button After Quiz */}
-            {isQuizAnswered && (
-              <button
-                onClick={handleNextUnit}
-                style={{
+                  width: '100%',
                   padding: '0.85rem 1.5rem',
                   borderRadius: 14,
                   background: 'linear-gradient(135deg, #10b981, #34d399)',
@@ -581,46 +370,275 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                   alignItems: 'center',
                   justify: 'center',
                   gap: '0.45rem',
-                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
+                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)',
+                  marginTop: '1rem'
                 }}
               >
-                {unitIndex < conceptUnits.length - 1 ? 'Proceed to Next Concept Unit ➔' : 'Proceed to Match the Following Recap ➔'}
+                Next: Flashcard Recall <ArrowRight size={18} />
               </button>
-            )}
-          </motion.div>
-        </AnimatePresence>
-      )}
+            </motion.div>
+          </AnimatePresence>
+        )}
 
-      {/* FINAL STEP: MATCH THE FOLLOWING RECAP */}
-      {unitStep === 'matching_recap' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(56,189,248,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
-                FINAL RECAP GAME
-              </span>
-              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
-                Match the Following
-              </span>
-            </div>
+        {/* STEP 2: FLASHCARD RECALL */}
+        {unitStep === 'flashcard' && (
+          <AnimatePresence mode="wait">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '1.75rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '0.75rem', color: '#c084fc', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(192,132,252,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                    ACTIVE RECALL
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                    Flashcard Recall Phase
+                  </span>
+                </div>
 
-            <div>
-              <h2 style={{ margin: 0, fontSize: '1.4rem', color: '#fff', fontWeight: 900 }}>
-                {topicName} Term Matching Recap
-              </h2>
-              <p style={{ color: '#94a3b8', fontSize: '0.88rem', margin: '0.2rem 0 0' }}>
-                Connect terms on the left to definitions on the right to master topic connections.
-              </p>
-            </div>
+                {/* Flip Canvas Card (Standard Height: 260px) */}
+                <div style={{ perspective: '1000px', height: '260px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
+                  <motion.div
+                    style={{ width: '100%', height: '100%', position: 'relative', transformStyle: 'preserve-3d' }}
+                    animate={{ rotateY: isFlipped ? 180 : 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {/* Front Side */}
+                    <div className="glass-panel" style={{
+                      position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      padding: '1.75rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)', borderRadius: 16
+                    }}>
+                      <span style={{ fontSize: '0.75rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.85rem' }}>
+                        TAP CARD TO FLIP
+                      </span>
+                      <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
+                        {currentUnit.Flashcard?.Front || `What is a key feature of ${topicName}?`}
+                      </h2>
+                    </div>
 
-            <MatchGame
-              isEmbedded={true}
-              data={practiceMatching.length > 0 ? practiceMatching : conceptUnits.map((u, i) => ({ q: `Term ${i + 1}`, a: u.Fact.substring(0, 50) }))}
-              onComplete={handleMatchingComplete}
-            />
-          </motion.div>
-        </AnimatePresence>
-      )}
+                    {/* Back Side */}
+                    <div className="glass-panel" style={{
+                      position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                      transform: 'rotateY(180deg)',
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      padding: '1.75rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981', borderRadius: 16
+                    }}>
+                      <span style={{ fontSize: '0.75rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.65rem' }}>
+                        KEY RECALL ANSWER
+                      </span>
+                      <h2 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
+                        {currentUnit.Flashcard?.Back || currentUnit.Fact}
+                      </h2>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Anchored Bottom Self-Assessment Buttons */}
+              <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
+                <button
+                  onClick={() => handleFlashcardSelfAssess(false)}
+                  style={{
+                    flex: 1,
+                    padding: '0.85rem 1rem',
+                    borderRadius: 14,
+                    background: 'rgba(244,63,94,0.12)',
+                    border: '1.5px solid rgba(244,63,94,0.35)',
+                    color: '#f43f5e',
+                    fontWeight: 800,
+                    fontSize: '0.88rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justify: 'center',
+                    gap: '0.4rem'
+                  }}
+                >
+                  <ThumbsDown size={17} /> I Didn't Know
+                </button>
+
+                <button
+                  onClick={() => handleFlashcardSelfAssess(true)}
+                  style={{
+                    flex: 1,
+                    padding: '0.85rem 1rem',
+                    borderRadius: 14,
+                    background: 'linear-gradient(135deg, #10b981, #34d399)',
+                    border: 'none',
+                    color: '#000',
+                    fontWeight: 900,
+                    fontSize: '0.88rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justify: 'center',
+                    gap: '0.4rem',
+                    boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
+                  }}
+                >
+                  <ThumbsUp size={17} /> I Knew It (+10 XP)
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        )}
+
+        {/* STEP 3: EXAM MCQ QUIZ */}
+        {unitStep === 'quiz' && (
+          <AnimatePresence mode="wait">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '1.75rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '0.75rem', color: '#f43f5e', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(244,63,94,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                    EXAM MCQ QUIZ
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                    Exam Quiz Phase
+                  </span>
+                </div>
+
+                <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#fff', fontWeight: 800, lineHeight: 1.4 }}>
+                  {currentUnit.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
+                </h3>
+
+                {/* Options List */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+                  {Object.entries(currentUnit.Quiz?.Options || {}).map(([key, label]) => {
+                    const isSelected = selectedOption === key;
+                    const isCorrect = key === currentUnit.Quiz?.CorrectAnswer;
+
+                    let btnBg = 'rgba(255,255,255,0.02)';
+                    let btnBorder = '1px solid rgba(255,255,255,0.08)';
+                    let textColor = '#e2e8f0';
+
+                    if (isQuizAnswered) {
+                      if (isCorrect) {
+                        btnBg = 'rgba(16,185,129,0.2)';
+                        btnBorder = '1.5px solid #10b981';
+                        textColor = '#34d399';
+                      } else if (isSelected) {
+                        btnBg = 'rgba(244,63,94,0.2)';
+                        btnBorder = '1.5px solid #f43f5e';
+                        textColor = '#f43f5e';
+                      }
+                    }
+
+                    return (
+                      <button
+                        key={key}
+                        onClick={() => handleQuizOptionSelect(key)}
+                        style={{
+                          background: btnBg,
+                          border: btnBorder,
+                          color: textColor,
+                          padding: '0.75rem 1rem',
+                          borderRadius: 12,
+                          fontSize: '0.85rem',
+                          fontWeight: isSelected ? 800 : 500,
+                          textAlign: 'left',
+                          cursor: isQuizAnswered ? 'default' : 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.65rem'
+                        }}
+                      >
+                        <span style={{
+                          width: 24,
+                          height: 24,
+                          borderRadius: 6,
+                          background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.06)',
+                          color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justify: 'center',
+                          fontWeight: 800,
+                          fontSize: '0.78rem'
+                        }}>
+                          {key}
+                        </span>
+                        <span style={{ flex: 1 }}>{label}</span>
+                        {isQuizAnswered && isCorrect && <Check size={16} color="#34d399" />}
+                        {isQuizAnswered && isSelected && !isCorrect && <X size={16} color="#f43f5e" />}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Explanation Rationale Box */}
+                {isQuizAnswered && (
+                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 12, padding: '0.85rem' }}>
+                    <span style={{ fontSize: '0.7rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
+                      SYLLABUS RATIONALE & EXPLANATION
+                    </span>
+                    <p style={{ margin: '0.2rem 0 0', fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                      {currentUnit.Quiz?.Explanation || `Official Fact: ${currentUnit.Fact}`}
+                    </p>
+                  </motion.div>
+                )}
+              </div>
+
+              {/* Anchored Bottom Proceed Button */}
+              {isQuizAnswered && (
+                <button
+                  onClick={handleNextUnit}
+                  style={{
+                    width: '100%',
+                    padding: '0.85rem 1.5rem',
+                    borderRadius: 14,
+                    background: 'linear-gradient(135deg, #10b981, #34d399)',
+                    color: '#000',
+                    border: 'none',
+                    fontWeight: 900,
+                    fontSize: '0.95rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justify: 'center',
+                    gap: '0.45rem',
+                    boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)',
+                    marginTop: '1rem'
+                  }}
+                >
+                  {unitIndex < conceptUnits.length - 1 ? 'Proceed to Next Concept Unit ➔' : 'Proceed to Match the Following Recap ➔'}
+                </button>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        )}
+
+        {/* FINAL STEP: MATCH THE FOLLOWING RECAP */}
+        {unitStep === 'matching_recap' && (
+          <AnimatePresence mode="wait">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '1.75rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(56,189,248,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                    FINAL RECAP GAME
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                    Match the Following
+                  </span>
+                </div>
+
+                <div>
+                  <h2 style={{ margin: 0, fontSize: '1.3rem', color: '#fff', fontWeight: 900 }}>
+                    {topicName} Term Matching Recap
+                  </h2>
+                  <p style={{ color: '#94a3b8', fontSize: '0.82rem', margin: '0.2rem 0 0' }}>
+                    Connect terms on the left to definitions on the right to master topic connections.
+                  </p>
+                </div>
+
+                <MatchGame
+                  isEmbedded={true}
+                  data={practiceMatching.length > 0 ? practiceMatching : conceptUnits.map((u, i) => ({ q: `Term ${i + 1}`, a: u.Fact.substring(0, 50) }))}
+                  onComplete={handleMatchingComplete}
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        )}
+
+      </div>
 
       {/* ── Mid-Play Skip Navigation Toolbar Options Below Player ── */}
       {unitStep !== 'completed' && (
