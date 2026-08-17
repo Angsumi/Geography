@@ -1,8 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Map, Zap, PlayCircle, Layers, Link2, HelpCircle, ChevronDown, ChevronRight, Sparkles, BookOpen } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { PlayCircle, ArrowRight, Compass, Layers, HelpCircle, CheckCircle2, Sparkles, BookOpen, MapPin, Zap, ChevronRight, Heart } from 'lucide-react';
 import { GamusaIcon } from './icons/GamusaIcon';
-import { SectionVisualizer } from './SectionVisualizer';
 
 export function HomePage({
   syllabusHierarchy,
@@ -13,401 +12,344 @@ export function HomePage({
   onStartFlashcard,
   onStartMatch,
   onStartMCQ,
-  onExploreMap
+  onExploreMap,
+  onExploreTopics
 }) {
-  const [expandedUnit, setExpandedUnit] = React.useState(null);
+  // Map Showcase state on front page ('ASSAM', 'NE', 'INDIA')
+  const [homeMapTab, setHomeMapTab] = useState('ASSAM');
 
-  const chapters = [
-    { id: 'ASSAM', label: 'Assam Geography', icon: <GamusaIcon size={20} />, desc: 'Unit 1 · 6 Lessons · 15 Topics' },
-    { id: 'NE', label: 'Northeast 7 Sisters', icon: '🏔️', desc: '9 Units · 9 Lessons · 19 Topics' },
-    { id: 'INDIA', label: 'Indian Geography', icon: '🇮🇳', desc: '3 Units · 10 Lessons · 19 Topics' }
+  // State for interactive mini-preview widget
+  const [previewTab, setPreviewTab] = useState('river'); // 'river', 'district', 'quiz'
+  const [activeRiver, setActiveRiver] = useState('subansiri');
+  const [selectedQuizOption, setSelectedQuizOption] = useState(null);
+
+  // Recommended starting lesson details
+  const firstLessonName = 'Brahmaputra Valley';
+
+  const riverData = {
+    subansiri: {
+      name: 'Subansiri River',
+      type: 'North Bank Tributary',
+      fact: 'Largest tributary of the Brahmaputra; originates in Tibet and enters Assam through Lakhimpur district.',
+      badge: 'Length: 442 km'
+    },
+    manas: {
+      name: 'Manas River',
+      type: 'North Bank Tributary',
+      fact: 'Transboundary river flowing through Manas National Park; Beki and Aie act as major sub-tributaries.',
+      badge: 'UNESCO Heritage Zone'
+    },
+    jiabharali: {
+      name: 'Jia Bharali (Kameng)',
+      type: 'North Bank Tributary',
+      fact: 'Originates in Arunachal Pradesh, known for golden mahseer and turbulent flow entering Sonitpur.',
+      badge: 'Fast Flow'
+    },
+    kopili: {
+      name: 'Kopili River',
+      type: 'South Bank Tributary',
+      fact: 'Divides the Karbi Plateau into the Western Karbi Hills and Eastern Karbi Anglong.',
+      badge: 'Geographical Boundary'
+    }
+  };
+
+  const districtData = [
+    { name: 'Majuli Island', tag: 'River Island', info: 'World’s largest inhabited river island formed by Brahmaputra & Subansiri.' },
+    { name: 'Kaziranga', tag: 'National Park', info: 'Home to 2/3rd of the world’s Great One-Horned Rhinoceros population.' },
+    { name: 'Haflong', tag: 'Hill Station', info: 'Assam’s only hill station, located in Dima Hasao district.' }
   ];
+  const [activeDistrict, setActiveDistrict] = useState(0);
 
-  const activeTab = activeChapter || 'ASSAM';
-  const currentChapterObj = syllabusHierarchy?.find(s => s.chapterName === activeTab) || syllabusHierarchy?.[0];
-  const units = currentChapterObj?.units || [];
+  const handleExploreClick = () => {
+    if (onExploreTopics) {
+      onExploreTopics();
+    } else if (onSelectChapter) {
+      onSelectChapter(activeChapter || 'ASSAM');
+    }
+  };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem', maxWidth: 1100, margin: '0 auto', paddingBottom: '3rem' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1.75rem',
+        maxWidth: 900,
+        margin: '0 auto',
+        padding: '0.5rem 0.5rem 3rem 0.5rem'
+      }}
     >
-      {/* ── Platform Hero Banner ── */}
-      <div className="glass-panel" style={{
-        padding: '2rem 1.5rem',
-        borderRadius: '24px',
-        background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95))',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <span style={{
-              fontSize: '0.75rem',
-              fontWeight: 800,
-              color: '#10b981',
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              background: 'rgba(16, 185, 129, 0.15)',
-              padding: '0.35rem 0.85rem',
-              borderRadius: '20px',
-              border: '1px solid rgba(16, 185, 129, 0.3)',
+      {/* ── 1. BRAND HEADER & HERO SECTION ── */}
+      <section style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        
+        {/* Brand Pill Badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.45rem',
+            background: 'var(--primary-bg)',
+            border: '1px solid var(--primary-border)',
+            padding: '0.35rem 0.9rem',
+            borderRadius: '100px',
+            marginBottom: '1.25rem'
+          }}
+        >
+          <GamusaIcon size={16} />
+          <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--primary)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+            Interactive Geography Platform
+          </span>
+        </motion.div>
+
+        {/* Short, Compelling Headline */}
+        <h1 style={{
+          fontSize: 'clamp(2.1rem, 5vw, 3.2rem)',
+          fontWeight: 900,
+          margin: '0 0 0.85rem 0',
+          letterSpacing: '-0.03em',
+          lineHeight: 1.15,
+          color: 'var(--text-main)'
+        }}>
+          Master Geography,<br />
+          <span style={{
+            color: 'var(--primary)'
+          }}>
+            step by bite-sized step.
+          </span>
+        </h1>
+
+        {/* One-Line Explanation */}
+        <p style={{
+          fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)',
+          color: 'var(--text-muted)',
+          maxWidth: 620,
+          margin: '0 auto 1.25rem',
+          lineHeight: 1.6,
+          fontWeight: 400
+        }}>
+          Bite-sized visual lessons, map-based concepts, and micro-quizzes across Assam, Northeast &amp; Indian Geography.
+        </p>
+
+        {/* 3 Action CTAs Mobile First Centered Group */}
+        <div className="hero-cta-group">
+          {/* 1. Start Learning -> Enters Player */}
+          <button
+            className="btn btn-primary"
+            onClick={() => onStartLessonPlayer(firstLessonName)}
+            style={{
+              padding: '0.85rem 1.5rem',
+              fontSize: '0.95rem',
+              fontWeight: 700,
+              borderRadius: '12px'
+            }}
+          >
+            <PlayCircle size={18} />
+            <span>Start Learning</span>
+          </button>
+
+          {/* 2. Explore Topics -> Enters Student Curriculum Tree */}
+          <button
+            className="btn btn-subtle"
+            onClick={handleExploreClick}
+            style={{
+              padding: '0.85rem 1.5rem',
+              fontSize: '0.95rem',
+              fontWeight: 600,
+              borderRadius: '12px'
+            }}
+          >
+            <BookOpen size={18} />
+            <span>Explore Topics</span>
+          </button>
+
+          {/* 3. Map Viwer -> Enters Map Viewer Page */}
+          <button
+            className="btn btn-subtle"
+            onClick={onExploreMap}
+            style={{
+              padding: '0.85rem 1.5rem',
+              fontSize: '0.95rem',
+              fontWeight: 600,
+              borderRadius: '12px'
+            }}
+          >
+            <Compass size={18} />
+            <span>Map Viwer</span>
+          </button>
+        </div>
+      </section>
+      {/* ── 3. MINIMAL CORE JOURNEY: Learn → Explore → Practice → Master ── */}
+      <section style={{ width: '100%', marginTop: '0.5rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
+          <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            HOW IT WORKS
+          </span>
+          <h2 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffffff', margin: '0.2rem 0 0' }}>
+            The Core Learning Journey
+          </h2>
+        </div>
+
+        {/* 4 Steps Container */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+          gap: '0.85rem'
+        }}>
+          {[
+            {
+              step: '01',
+              title: 'Learn',
+              icon: <BookOpen size={18} color="#34d399" />,
+              desc: 'Bite-sized visual concepts & river flow visualizers.',
+              accent: '#10b981'
+            },
+            {
+              step: '02',
+              title: 'Explore',
+              icon: <Compass size={18} color="#38bdf8" />,
+              desc: 'Interactive vector map of Assam districts & hills.',
+              accent: '#38bdf8'
+            },
+            {
+              step: '03',
+              title: 'Practice',
+              icon: <Layers size={18} color="#fb923c" />,
+              desc: 'Active recall flashcards & drag-and-drop matching.',
+              accent: '#fb923c'
+            },
+            {
+              step: '04',
+              title: 'Master',
+              icon: <Zap size={18} color="#c084fc" />,
+              desc: 'Exam-level MCQ quizzes & daily streak tracking.',
+              accent: '#c084fc'
+            }
+          ].map((item) => (
+            <div
+              key={item.step}
+              style={{
+                background: 'rgba(15, 23, 42, 0.6)',
+                border: '1px solid rgba(255, 255, 255, 0.07)',
+                borderRadius: '18px',
+                padding: '1.15rem 1rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                position: 'relative'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: '10px',
+                  background: `${item.accent}18`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center'
+                }}>
+                  {item.icon}
+                </div>
+                <span style={{ fontSize: '0.72rem', fontWeight: 900, color: item.accent, opacity: 0.8 }}>
+                  STEP {item.step}
+                </span>
+              </div>
+
+              <h3 style={{ margin: 0, fontSize: '1.05rem', color: '#ffffff', fontWeight: 800 }}>
+                {item.title}
+              </h3>
+
+              <p style={{ margin: 0, fontSize: '0.8rem', color: '#94a3b8', lineHeight: 1.45 }}>
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── 4. RECOMMENDED STARTING LESSON CARD ── */}
+      <section style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <div
+          className="responsive-card-center"
+          style={{
+            background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.8))',
+            border: '1.5px solid rgba(16, 185, 129, 0.3)',
+            borderRadius: '20px',
+            padding: '1.25rem 1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justify: 'space-between',
+            flexWrap: 'wrap',
+            gap: '1rem',
+            width: '100%',
+            textAlign: 'center'
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
+            <span style={{ fontSize: '0.68rem', fontWeight: 800, color: '#fb923c', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              RECOMMENDED STARTING POINT
+            </span>
+            <h3 style={{ margin: '0.2rem 0 0.1rem', fontSize: '1.15rem', color: '#ffffff', fontWeight: 900, textAlign: 'center' }}>
+              Lesson 1: Brahmaputra Valley
+            </h3>
+            <p style={{ margin: 0, fontSize: '0.82rem', color: '#cbd5e1', textAlign: 'center' }}>
+              Physiography, north/south bank tributaries, and floodplains.
+            </p>
+          </div>
+
+          <button
+            onClick={() => onStartLessonPlayer(firstLessonName)}
+            style={{
+              background: 'linear-gradient(135deg, #10b981, #34d399)',
+              color: '#061610',
+              border: 'none',
+              padding: '0.65rem 1.25rem',
+              borderRadius: '12px',
+              fontSize: '0.85rem',
+              fontWeight: 900,
+              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.35rem'
-            }}>
-              <GamusaIcon size={16} /> ADRE & APSC Geography Platform
-            </span>
-          </div>
-
-          <h1 style={{
-            fontSize: '2.2rem',
-            fontWeight: 900,
-            margin: '0.4rem 0',
-            letterSpacing: '0.02em',
-            background: 'linear-gradient(135deg, #ffffff, #cbd5e1)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            lineHeight: 1.25
-          }}>
-            Curriculum Directory
-          </h1>
-
-          <p style={{
-            fontSize: '0.9rem',
-            color: '#94a3b8',
-            maxWidth: 680,
-            margin: '0 auto 1.25rem',
-            lineHeight: 1.6
-          }}>
-            Structured by <strong>Chapter ➔ Unit ➔ Lesson ➔ Topic</strong>. Select any topic to play fact-by-fact lessons with interactive visualizers, Flashcards, and Quizzes.
-          </p>
-
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <button
-              onClick={() => onStartLessonPlayer('Brahmaputra Valley')}
-              style={{
-                padding: '0.75rem 1.25rem',
-                borderRadius: '14px',
-                background: 'linear-gradient(135deg, #10b981, #34d399)',
-                color: '#000',
-                border: 'none',
-                fontWeight: 900,
-                fontSize: '0.85rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
-              }}
-            >
-              <PlayCircle size={17} /> Launch Brahmaputra Valley Lesson
-            </button>
-
-            <button
-              onClick={() => onExploreMap()}
-              style={{
-                padding: '0.75rem 1.25rem',
-                borderRadius: '14px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                color: '#34d399',
-                border: '1.5px solid rgba(16, 185, 129, 0.3)',
-                fontWeight: 800,
-                fontSize: '0.85rem',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.4rem'
-              }}
-            >
-              <Map size={17} /> Canvas Map Inspector
-            </button>
-          </div>
+              justify: 'center',
+              gap: '0.4rem',
+              boxShadow: '0 4px 14px rgba(16, 185, 129, 0.35)',
+              margin: '0 auto'
+            }}
+          >
+            <span>Start Now</span>
+            <ChevronRight size={16} />
+          </button>
         </div>
-      </div>
+      </section>
 
-      {/* ── Chapter Selector ── */}
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.75rem' }}>
-          <div>
-            <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              CHAPTER SELECTOR
-            </span>
-            <h2 style={{ margin: '0.1rem 0 0', fontSize: '1.4rem', fontWeight: 900, color: '#fff' }}>
-              Chapter: {activeTab === 'ASSAM' ? 'Assam Geography' : activeTab === 'NE' ? 'Northeast 7 Sisters' : 'Indian Geography'}
-            </h2>
-          </div>
-
-          <div style={{ display: 'flex', gap: '0.4rem', background: 'rgba(15, 23, 42, 0.8)', padding: '0.35rem', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)' }}>
-            {chapters.map(ch => {
-              const isActive = activeTab === ch.id;
-              return (
-                <button
-                  key={ch.id}
-                  onClick={() => { onSelectChapter(ch.id); setExpandedUnit(null); }}
-                  style={{
-                    background: isActive ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-                    border: `1.5px solid ${isActive ? '#10b981' : 'transparent'}`,
-                    color: isActive ? '#34d399' : '#94a3b8',
-                    padding: '0.5rem 0.95rem',
-                    borderRadius: 12,
-                    fontSize: '0.8rem',
-                    fontWeight: isActive ? 800 : 600,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.4rem'
-                  }}
-                >
-                  <span>{ch.icon}</span>
-                  <span>{ch.label}</span>
-                </button>
-              );
-            })}
-          </div>
+      {/* ── FOOTER ── */}
+      <footer style={{
+        textAlign: 'center',
+        paddingTop: '1.5rem',
+        borderTop: '1px solid var(--border-subtle)',
+        marginTop: '1rem',
+        color: 'var(--text-muted)',
+        fontSize: '0.82rem',
+        display: 'flex',
+        alignItems: 'center',
+        justify: 'center',
+        flexWrap: 'wrap',
+        width: '100%',
+        margin: '1rem auto 0 auto',
+        gap: '0.35rem'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem', width: '100%', textAlign: 'center' }}>
+          <span>Made with</span>
+          <Heart size={14} color="#f43f5e" fill="#f43f5e" />
+          <span>in Rangachakua</span>
         </div>
+      </footer>
 
-        {/* ── Units & Lessons Directory List ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          {units.map((unitObj, uIdx) => {
-            const isUnitOpen = expandedUnit === uIdx || expandedUnit === null;
-
-            return (
-              <div key={uIdx} className="glass-panel" style={{ padding: '1.5rem', borderRadius: '20px', background: 'rgba(15, 23, 42, 0.8)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                
-                {/* Unit Header */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', paddingBottom: isUnitOpen ? '1rem' : 0, borderBottom: isUnitOpen ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
-                  <div
-                    onClick={() => setExpandedUnit(expandedUnit === uIdx ? -1 : uIdx)}
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flex: 1 }}
-                  >
-                    <div style={{ width: 36, height: 36, borderRadius: 12, background: 'linear-gradient(135deg, #10b981, #34d399)', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '0.9rem' }}>
-                      U{uIdx + 1}
-                    </div>
-                    <div>
-                      <span style={{ fontSize: '0.68rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                        UNIT {uIdx + 1} OF {units.length}
-                      </span>
-                      <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#fff', fontWeight: 900 }}>
-                        {unitObj.unitName}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                    {unitObj.lessons[0] && (
-                      <button
-                        onClick={() => onStartLessonPlayer(unitObj.lessons[0].lessonName)}
-                        style={{
-                          background: 'linear-gradient(135deg, #10b981, #34d399)',
-                          border: 'none',
-                          color: '#000',
-                          padding: '0.45rem 0.85rem',
-                          borderRadius: 10,
-                          fontSize: '0.78rem',
-                          fontWeight: 900,
-                          cursor: 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.35rem',
-                          boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
-                        }}
-                      >
-                        <PlayCircle size={14} /> Full Lesson Player
-                      </button>
-                    )}
-
-                    <div onClick={() => setExpandedUnit(expandedUnit === uIdx ? -1 : uIdx)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                      {isUnitOpen ? <ChevronDown size={20} color="#94a3b8" /> : <ChevronRight size={20} color="#94a3b8" />}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Lessons Items */}
-                {isUnitOpen && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginTop: '1rem' }}>
-                    {unitObj.lessons.map((les, lIdx) => {
-                      return (
-                        <div
-                          key={lIdx}
-                          style={{
-                            background: 'rgba(30, 41, 59, 0.5)',
-                            border: '1.5px solid rgba(255, 255, 255, 0.08)',
-                            borderRadius: '16px',
-                            padding: '1.25rem',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '1rem'
-                          }}
-                        >
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
-                            <div>
-                              <span style={{ fontSize: '0.65rem', color: '#fb923c', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                                LESSON {lIdx + 1}
-                              </span>
-                              <h4 style={{ margin: 0, fontSize: '1.1rem', color: '#34d399', fontWeight: 900 }}>
-                                {les.lessonName}
-                              </h4>
-                            </div>
-
-                            <button
-                              onClick={() => onStartLessonPlayer(les.lessonName)}
-                              style={{
-                                background: 'rgba(16, 185, 129, 0.2)',
-                                border: '1px solid #10b981',
-                                color: '#34d399',
-                                padding: '0.45rem 0.8rem',
-                                borderRadius: 10,
-                                fontSize: '0.78rem',
-                                fontWeight: 900,
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.35rem'
-                              }}
-                            >
-                              <PlayCircle size={14} /> Play All Lesson Topics
-                            </button>
-                          </div>
-
-                          {/* Topics List & Dedicated Topic Player Launchers */}
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {les.topics?.map((top, topIdx) => (
-                              <div
-                                key={topIdx}
-                                style={{
-                                  background: 'rgba(15, 23, 42, 0.6)',
-                                  borderLeft: '3.5px solid #fb923c',
-                                  border: '1px solid rgba(255,255,255,0.04)',
-                                  borderRadius: '12px',
-                                  padding: '1.1rem 1.15rem',
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  gap: '0.65rem'
-                                }}
-                              >
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                  <span style={{ fontSize: '0.88rem', color: '#fb923c', fontWeight: 800 }}>
-                                    📌 Topic {topIdx + 1}: {top.topicName}
-                                  </span>
-
-                                  {/* Dedicated Topic Player Launch Button */}
-                                  <button
-                                    onClick={() => onStartSectionPlayer(top, les.lessonName, unitObj.unitName, activeTab)}
-                                    style={{
-                                      background: 'linear-gradient(135deg, #10b981, #34d399)',
-                                      border: 'none',
-                                      color: '#000',
-                                      padding: '0.42rem 0.8rem',
-                                      borderRadius: 8,
-                                      fontSize: '0.75rem',
-                                      fontWeight: 900,
-                                      cursor: 'pointer',
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      gap: '0.35rem',
-                                      boxShadow: '0 4px 12px rgba(16, 185, 129, 0.35)'
-                                    }}
-                                  >
-                                    <PlayCircle size={14} /> Start Topic Player
-                                  </button>
-                                </div>
-
-                                {/* Section Visualizer Diagram */}
-                                <div style={{ borderRadius: 12, overflow: 'hidden' }}>
-                                  <SectionVisualizer sectionName={top.topicName} facts={top.facts || []} />
-                                </div>
-
-                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                                  {top.facts?.map((fact, fIdx) => (
-                                    <li key={fIdx} style={{ fontSize: '0.82rem', color: '#e2e8f0', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
-                                      <span style={{ color: '#10b981', fontWeight: 800 }}>•</span>
-                                      <span>{fact}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* Standalone Practice Launchers */}
-                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.55rem', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                            <button
-                              onClick={() => onStartFlashcard(les.lessonName)}
-                              style={{
-                                background: 'rgba(255, 255, 255, 0.05)',
-                                border: '1px solid rgba(255, 255, 255, 0.1)',
-                                color: '#cbd5e1',
-                                padding: '0.65rem',
-                                borderRadius: '12px',
-                                fontSize: '0.78rem',
-                                fontWeight: 700,
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '0.35rem'
-                              }}
-                            >
-                              <Layers size={14} /> Flashcards
-                            </button>
-
-                            <button
-                              onClick={() => onStartMatch(les.lessonName)}
-                              style={{
-                                background: 'rgba(56, 189, 248, 0.12)',
-                                border: '1px solid rgba(56, 189, 248, 0.3)',
-                                color: '#38bdf8',
-                                padding: '0.65rem',
-                                borderRadius: '12px',
-                                fontSize: '0.78rem',
-                                fontWeight: 700,
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '0.35rem'
-                              }}
-                            >
-                              <Link2 size={14} /> Match Pairs
-                            </button>
-
-                            <button
-                              onClick={() => onStartMCQ(les.lessonName)}
-                              style={{
-                                background: 'rgba(244, 63, 94, 0.14)',
-                                border: '1px solid rgba(244, 63, 94, 0.3)',
-                                color: '#f43f5e',
-                                padding: '0.65rem',
-                                borderRadius: '12px',
-                                fontSize: '0.78rem',
-                                fontWeight: 900,
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '0.35rem'
-                              }}
-                            >
-                              <HelpCircle size={14} /> Exam Quiz
-                            </button>
-                          </div>
-
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
     </motion.div>
   );
 }

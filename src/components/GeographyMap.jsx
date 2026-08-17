@@ -1,28 +1,37 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const INDIA_ZONE_COLORS = {
-  'Himalayan Mountains': '#60a5fa', // Blue
-  'Northern Plains': '#34d399',      // Green
-  'Thar Desert': '#fbbf24',          // Yellow
-  'Peninsular Plateau': '#fb923c',   // Orange
-  'Coastal Plains': '#a78bfa',       // Purple
-  'Islands': '#f472b6'               // Pink
+  'Himalayan Mountains': '#2563eb', // Royal Indigo Blue
+  'Northern Plains': '#059669',      // Emerald Green
+  'Thar Desert': '#d97706',          // Warm Amber
+  'Peninsular Plateau': '#ea580c',   // Terracotta Orange
+  'Coastal Plains': '#7c3aed',       // Rich Purple
+  'Islands': '#db2777'               // Rose Pink
 };
 
 const NE_STATE_COLORS = {
-  'ASSAM': '#34d399',
-  'ARUNACHAL PRADESH': '#60a5fa',
-  'MEGHALAYA': '#fb923c',
-  'MANIPUR': '#a78bfa',
-  'MIZORAM': '#f472b6',
-  'NAGALAND': '#fbbf24',
-  'TRIPURA': '#38bdf8'
+  'ASSAM': '#059669',
+  'ARUNACHAL PRADESH': '#2563eb',
+  'MEGHALAYA': '#d97706',
+  'MANIPUR': '#7c3aed',
+  'MIZORAM': '#db2777',
+  'NAGALAND': '#ca8a04',
+  'TRIPURA': '#0284c7'
 };
 
 const ASSAM_ZONE_COLORS = {
-  'Brahmaputra Valley': '#34d399',
-  'Central Hills': '#fb923c',
-  'Barak Valley': '#60a5fa'
+  'Brahmaputra Valley': '#059669', // Emerald Green for Brahmaputra Valley
+  'Central Hills': '#d97706',      // Warm Ochre Gold for Central Hills
+  'Barak Valley': '#2563eb'        // Deep Royal Blue for Barak Valley
+};
+
+const getAssamZoneCategory = (rawZone = '') => {
+  if (!rawZone) return 'Brahmaputra Valley';
+  const str = rawZone.toLowerCase();
+  if (str.includes('brahmaputra')) return 'Brahmaputra Valley';
+  if (str.includes('central') || str.includes('karbi') || str.includes('haflong') || str.includes('hills')) return 'Central Hills';
+  if (str.includes('barak')) return 'Barak Valley';
+  return 'Brahmaputra Valley';
 };
 
 export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, activeChapter = '' }) {
@@ -134,7 +143,7 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
 
   }, [isAssam, isNortheastChapter, neStatesData, loading]);
 
-  // Draw canvas
+  // Draw canvas with crisp high-contrast visibility
   useEffect(() => {
     if (loading || !canvasRef.current) return;
     const canvas = canvasRef.current;
@@ -155,18 +164,18 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
     };
 
     if (isNortheastChapter) {
-      // Draw 7 Northeast states only for Northeast chapter
+      // Draw 7 Northeast states with bold high-contrast visibility
       neStatesData.forEach(stFeat => {
         if (!stFeat.polygons) return;
 
         const stName = stFeat.stName;
         const isSelected = activeRegion?.toUpperCase() === stName;
         const isHovered = hoveredZone === stName;
-        const color = NE_STATE_COLORS[stName] || '#818cf8';
+        const color = NE_STATE_COLORS[stName] || '#2563eb';
 
-        ctx.fillStyle = isSelected ? color + 'dd' : (isHovered ? color + 'aa' : color + '44');
-        ctx.strokeStyle = isSelected ? '#ffffff' : color;
-        ctx.lineWidth = isSelected ? 2 : 1;
+        ctx.fillStyle = isSelected ? color : (isHovered ? color + 'bb' : color + '55');
+        ctx.strokeStyle = isSelected ? '#18181b' : color;
+        ctx.lineWidth = isSelected ? 2.5 : 1.2;
 
         stFeat.polygons.forEach(poly => {
           const outerRing = poly[0];
@@ -185,42 +194,40 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
 
         if (stFeat.centroid) {
           const [cx, cy] = project(stFeat.centroid[0], stFeat.centroid[1]);
-          ctx.fillStyle = '#ffffff';
-          ctx.font = 'bold 10px sans-serif';
+          ctx.fillStyle = '#18181b';
+          ctx.font = 'bold 11px sans-serif';
           ctx.textAlign = 'center';
-          ctx.shadowColor = '#000000';
-          ctx.shadowBlur = 4;
+          ctx.shadowColor = '#ffffff';
+          ctx.shadowBlur = 6;
           const displayLabel = stName === 'ARUNACHAL PRADESH' ? 'ARUNACHAL' : (stName === 'MEGHALAYA' ? 'MEGHALAYA' : stName);
           ctx.fillText(displayLabel, cx, cy);
           ctx.shadowBlur = 0;
         }
       });
     } else {
-      // Revert to Full India Physiographic Divisions Map for "Indian Geography & Environment"
-      const zoneColors = isAssam ? ASSAM_ZONE_COLORS : INDIA_ZONE_COLORS;
-
+      // Draw Assam 3 Distinct Parts OR India Physiographic Map
       indiaGeoData.forEach(feature => {
         if (!feature.polygons) return;
 
-        const zone = feature.zone;
-        const isSelected = activeRegion === zone || (isAssam && activeRegion?.startsWith(zone?.substring(0, 10)));
-        const isHovered = hoveredZone === zone;
+        const rawZone = feature.zone;
+        const category = isAssam ? getAssamZoneCategory(rawZone) : rawZone;
+        const baseColor = isAssam ? ASSAM_ZONE_COLORS[category] : (INDIA_ZONE_COLORS[rawZone] || '#2563eb');
 
-        let fillStyle = 'rgba(255, 255, 255, 0.03)';
-        let strokeStyle = 'rgba(255, 255, 255, 0.08)';
-        let lineWidth = isAssam ? 0.8 : 0.4;
+        const isSelected = activeRegion === category || activeRegion === rawZone || (isAssam && activeRegion?.toLowerCase().includes(category.toLowerCase().split(' ')[0]));
+        const isHovered = hoveredZone === category || hoveredZone === rawZone;
+
+        let fillStyle = baseColor + '55';
+        let strokeStyle = baseColor;
+        let lineWidth = isAssam ? 1.2 : 0.8;
 
         if (isSelected) {
-          fillStyle = zoneColors[zone] + '99';
-          strokeStyle = '#ffffff';
-          lineWidth = isAssam ? 1.5 : 1;
+          fillStyle = baseColor;
+          strokeStyle = '#18181b';
+          lineWidth = isAssam ? 2.5 : 1.8;
         } else if (isHovered) {
-          fillStyle = zoneColors[zone] + '55';
-          strokeStyle = zoneColors[zone];
-          lineWidth = isAssam ? 1.2 : 0.8;
-        } else {
-          fillStyle = (zoneColors[zone] || '#818cf8') + '22';
-          strokeStyle = (zoneColors[zone] || '#818cf8') + '33';
+          fillStyle = baseColor + 'bb';
+          strokeStyle = '#18181b';
+          lineWidth = isAssam ? 1.8 : 1.2;
         }
 
         ctx.fillStyle = fillStyle;
@@ -239,6 +246,26 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
           ctx.stroke();
         });
       });
+
+      // Draw clear labels for Assam's 3 parts
+      if (isAssam) {
+        const labels = [
+          { name: 'Brahmaputra Valley', coords: [92.6, 26.6] },
+          { name: 'Central Hills', coords: [93.2, 25.6] },
+          { name: 'Barak Valley', coords: [92.7, 24.8] }
+        ];
+
+        labels.forEach(lbl => {
+          const [lx, ly] = project(lbl.coords[0], lbl.coords[1]);
+          ctx.fillStyle = '#18181b';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.shadowColor = '#ffffff';
+          ctx.shadowBlur = 6;
+          ctx.fillText(lbl.name, lx, ly);
+          ctx.shadowBlur = 0;
+        });
+      }
     }
 
   }, [indiaGeoData, neStatesData, activeRegion, hoveredZone, isAssam, isNortheastChapter, loading]);
@@ -284,8 +311,9 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
 
     const threshold = isNortheastChapter ? 0.6 : (isAssam ? 0.08 : 1.2);
     if (nearestFeature && minDist < threshold) {
-      if (hoveredZone !== nearestFeature.zone) {
-        setHoveredZone(nearestFeature.zone);
+      const zoneName = isAssam ? getAssamZoneCategory(nearestFeature.zone) : nearestFeature.zone;
+      if (hoveredZone !== zoneName) {
+        setHoveredZone(zoneName);
       }
     } else {
       setHoveredZone(null);
@@ -305,8 +333,8 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
   if (loading) {
     return (
       <div style={{ height: '360px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', gap: '1rem' }}>
-        <div style={{ width: '40px', height: '40px', border: '3px solid rgba(255,255,255,0.05)', borderTopColor: 'var(--primary)', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-        <span style={{ fontSize: '0.9rem' }}>Loading Interactive Map...</span>
+        <div style={{ width: '40px', height: '40px', border: '3px solid var(--border-medium)', borderTopColor: 'var(--primary)', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+        <span style={{ fontSize: '0.9rem' }}>Loading High-Contrast Map...</span>
         <style>{`
           @keyframes spin { to { transform: rotate(360deg); } }
         `}</style>
@@ -317,11 +345,11 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
   const currentLegend = isNortheastChapter ? NE_STATE_COLORS : (isAssam ? ASSAM_ZONE_COLORS : INDIA_ZONE_COLORS);
 
   return (
-    <div style={{ position: 'relative', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '16px', border: '1px solid var(--glass-border)' }}>
-      <h4 style={{ textAlign: 'center', margin: '0 0 0.5rem', fontSize: '0.95rem', color: 'var(--primary)' }}>
+    <div style={{ position: 'relative', background: 'var(--bg-surface)', padding: '1.25rem', borderRadius: '16px', border: '1px solid var(--border-subtle)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+      <h4 style={{ textAlign: 'center', margin: '0 0 0.75rem', fontSize: '0.95rem', color: 'var(--primary)', fontWeight: 800 }}>
         {isNortheastChapter 
           ? '🗺️ Northeast India Map (The Seven Sisters)' 
-          : (isAssam ? '🗺️ Assam Sub-Regional Map' : '🗺️ Physical & Physiographic Divisions of India')}
+          : (isAssam ? '🗺️ Assam 3 Sub-Regions (Valleys & Hills)' : '🗺️ Physical & Physiographic Divisions of India')}
       </h4>
       <canvas
         ref={canvasRef}
@@ -336,14 +364,14 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
           cursor: hoveredZone ? 'pointer' : 'default',
           display: 'block',
           margin: '0 auto',
-          transition: 'filter 0.3s'
+          transition: 'filter 0.2s'
         }}
       />
 
-      {/* Legend */}
-      <div style={{ display: 'grid', gridTemplateColumns: isNortheastChapter ? 'repeat(4, 1fr)' : (isAssam ? '1fr' : 'repeat(3, 1fr)'), gap: '0.5rem', marginTop: '1rem', borderTop: '1px solid var(--glass-border)', paddingTop: '0.75rem' }}>
+      {/* Legend Pills */}
+      <div style={{ display: 'grid', gridTemplateColumns: isNortheastChapter ? 'repeat(auto-fit, minmax(110px, 1fr))' : 'repeat(3, 1fr)', gap: '0.65rem', marginTop: '1rem', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.85rem' }}>
         {Object.entries(currentLegend).map(([zone, color]) => {
-          const isSelected = activeRegion?.toUpperCase() === zone || activeRegion === zone || hoveredZone === zone;
+          const isSelected = activeRegion?.toUpperCase() === zone.toUpperCase() || activeRegion === zone || hoveredZone === zone;
           return (
             <div
               key={zone}
@@ -353,16 +381,16 @@ export default function GeographyMap({ activeRegion, onSelectRegion, isAssam, ac
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                fontSize: '0.75rem',
+                gap: '0.45rem',
+                fontSize: '0.78rem',
                 cursor: 'pointer',
-                color: isSelected ? '#fff' : 'var(--text-muted)',
-                fontWeight: isSelected ? 'bold' : 'normal',
-                opacity: hoveredZone && hoveredZone !== zone ? 0.4 : 1,
-                transition: 'opacity 0.2s'
+                color: isSelected ? 'var(--text-main)' : 'var(--text-muted)',
+                fontWeight: isSelected ? 800 : 500,
+                opacity: hoveredZone && hoveredZone !== zone ? 0.45 : 1,
+                transition: 'all 0.15s ease'
               }}
             >
-              <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: color, display: 'inline-block', flexShrink: 0 }} />
+              <span style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: color, display: 'inline-block', flexShrink: 0, border: '1px solid rgba(0,0,0,0.1)' }} />
               <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={zone}>{zone}</span>
             </div>
           );

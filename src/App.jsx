@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Trophy, ArrowLeft, Zap, Layers, Link2, Flame, HelpCircle, GraduationCap, ChevronRight, ChevronDown, Menu, X, Home, PlayCircle, Sparkles, Map, Compass, BookOpen } from 'lucide-react';
+import { Trophy, ArrowLeft, Zap, Layers, Link2, Flame, HelpCircle, GraduationCap, ChevronRight, ChevronDown, Menu, X, Home, PlayCircle, Sparkles, Map, Compass, BookOpen, Search, Clock, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import indiaGeo from './data/india/GEography.json';
 import assamGeo from './data/assam/GEography.json';
@@ -178,16 +178,29 @@ export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedLesson, setSelectedLesson] = useState('Brahmaputra Valley');
   const [detailedViewSubdivision, setDetailedViewSubdivision] = useState(null);
+  const [mapViewerTab, setMapViewerTab] = useState('ASSAM'); // 'ASSAM' | 'NE' | 'INDIA'
   const [activeActivity, setActiveActivity] = useState(null);
   const [activeActivityData, setActiveActivityData] = useState(null);
 
-  // Accordion Sidebar Open States
-  const [openChapters, setOpenChapters] = useState({ 'ASSAM': true, 'NE': true, 'INDIA': true });
-  const [openLessons, setOpenLessons] = useState({ 'Brahmaputra Valley': true });
+  // Accordion Open States (all collapsed by default)
+  const [openChapters, setOpenChapters] = useState({});
+  const [openUnits, setOpenUnits] = useState({});
+  const [openLessons, setOpenLessons] = useState({});
+  const [searchQuery, setSearchQuery] = useState('');
+  const [completedTopics, setCompletedTopics] = useState(() => loadState('adre_completed_topics', {}));
 
   const detailsRef = useRef(null);
 
   useEffect(() => { saveState('adre_xp', xp); }, [xp]);
+
+  const markTopicCompleted = (topName) => {
+    if (!topName) return;
+    setCompletedTopics(prev => {
+      const next = { ...prev, [topName]: true };
+      saveState('adre_completed_topics', next);
+      return next;
+    });
+  };
 
   let quickButtons = [];
   const currentCh = syllabusHierarchy.find(s => s.chapterName === activeChapter);
@@ -214,6 +227,10 @@ export default function App() {
   const toggleChapter = (chName) => {
     setOpenChapters(prev => ({ ...prev, [chName]: !prev[chName] }));
     setActiveChapter(chName);
+  };
+
+  const toggleUnit = (unitName) => {
+    setOpenUnits(prev => ({ ...prev, [unitName]: !prev[unitName] }));
   };
 
   const toggleLesson = (lesName) => {
@@ -263,7 +280,12 @@ export default function App() {
     let nextChapter = null;
 
     if (currentIndex >= 0 && currentIndex < allTopics.length - 1) {
-      nextTopic = allTopics[currentIndex + 1];
+      const immediateNext = allTopics[currentIndex + 1];
+
+      // Next topic ONLY if in the same lesson
+      if (immediateNext.lessonName === currentLesson && immediateNext.chapterName === currentChapter) {
+        nextTopic = immediateNext;
+      }
 
       // Find next lesson
       nextLesson = allTopics.slice(currentIndex + 1).find(item =>
@@ -399,18 +421,22 @@ export default function App() {
 
     const lesName = foundLes ? foundLes.lessonName : (targetLessonName || selectedLesson);
     const topics = foundLes ? foundLes.topics : getLessonTopics().topics;
-    const firstTopName = topics[0]?.topicName || '';
-    const navTargets = getNavigationTargets(foundChapterName, foundUnitName, lesName, firstTopName);
 
-    const lessonData = generateLessonPlayerData(lesName, foundUnitName, foundChapterName, topics, navTargets);
-    setActiveLesson(lessonData);
-    setViewMode('lesson');
-    setIsSidebarOpen(false);
+    if (topics && topics.length > 0) {
+      startSectionPlayer(topics[0], lesName, foundUnitName, foundChapterName);
+    } else {
+      const fallbackTopic = { topicName: lesName, ConceptUnits: [], PracticeMatching: [] };
+      startSectionPlayer(fallbackTopic, lesName, foundUnitName, foundChapterName);
+    }
   };
 
   const handleNavigateToTarget = (targetInfo) => {
     if (!targetInfo) return;
-    startSectionPlayer(targetInfo.topicObj, targetInfo.lessonName, targetInfo.unitName, targetInfo.chapterName);
+    if (targetInfo.topicObj) {
+      startSectionPlayer(targetInfo.topicObj, targetInfo.lessonName, targetInfo.unitName, targetInfo.chapterName);
+    } else if (targetInfo.lessonName) {
+      startLessonPlayer(targetInfo.lessonName);
+    }
   };
 
   const imageUrl = () => {
@@ -434,477 +460,417 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#090d16', color: '#fff', fontFamily: 'Outfit, sans-serif' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-main)', color: 'var(--text-main)', fontFamily: 'var(--font-sans)' }}>
+      
+      {/* ── Main Viewport (No Header / No Footer) ── */}
+      <main style={{ flex: 1, padding: '1.5rem 1rem', maxWidth: 960, margin: '0 auto', width: '100%' }}>
 
-      {/* ── Sticky Header ── */}
-      <header className="glass-panel app-header" style={{ padding: '0.75rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.06)', borderRadius: 0, position: 'sticky', top: 0, zIndex: 110 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
-          <button
-            className="sidebar-toggle-btn"
-            onClick={() => setIsSidebarOpen(v => !v)}
-            aria-label="Toggle Syllabus Sidebar"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              background: isSidebarOpen ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255, 255, 255, 0.05)',
-              border: `1.5px solid ${isSidebarOpen ? '#10b981' : 'rgba(255, 255, 255, 0.15)'}`,
-              color: isSidebarOpen ? '#10b981' : '#f8fafc',
-              padding: '0.4rem 0.75rem',
-              borderRadius: '12px',
-              cursor: 'pointer',
-              fontWeight: 800,
-              fontSize: '0.78rem'
+        {activeActivity ? (
+          <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel" style={{ padding: '1.75rem', maxWidth: 820, margin: '0 auto' }}>
+            <button onClick={() => setActiveActivity(null)} className="btn btn-subtle" style={{ marginBottom: '1.25rem', padding: '0.45rem 0.85rem', fontSize: '0.82rem' }}>
+              <ArrowLeft size={16} /> Back to Syllabus Directory
+            </button>
+            {activeActivity === 'flashcard' && <Flashcard data={activeActivityData?.flashcards || getCompleteLessonActivity(selectedLesson).flashcards} onComplete={handleActivityComplete} />}
+            {activeActivity === 'match'     && <MatchGame  data={activeActivityData?.match     || getCompleteLessonActivity(selectedLesson).match}      onComplete={handleActivityComplete} />}
+            {activeActivity === 'mcq'       && <ExamineMCQ data={activeActivityData?.mcqs      || getCompleteLessonActivity(selectedLesson).mcqs}       onComplete={handleActivityComplete} />}
+          </motion.div>
+        ) : viewMode === 'lesson' && activeLesson ? (
+          <InteractiveLesson
+            lessonData={activeLesson}
+            onComplete={(gainedXp) => {
+              addXp(gainedXp);
+              if (activeLesson?.topicName) markTopicCompleted(activeLesson.topicName);
+              setViewMode('chapter');
             }}
-          >
-            {isSidebarOpen ? <X size={16} /> : <Menu size={16} />}
-            <span>{isSidebarOpen ? 'Close' : 'Menu'}</span>
-          </button>
+            onBack={() => setViewMode('chapter')}
+            onNavigateToTarget={(target) => {
+              if (activeLesson?.topicName) markTopicCompleted(activeLesson.topicName);
+              handleNavigateToTarget(target);
+            }}
+          />
+        ) : viewMode === 'home' ? (
+          <HomePage
+            syllabusHierarchy={syllabusHierarchy}
+            activeChapter={activeChapter}
+            onSelectChapter={(ch) => {
+              setActiveChapter(ch);
+              setViewMode('chapter');
+              setDetailedViewSubdivision(null);
+              setActiveActivity(null);
+            }}
+            onStartLessonPlayer={startLessonPlayer}
+            onStartSectionPlayer={startSectionPlayer}
+            onStartFlashcard={(lesName) => startFlashcard(lesName || selectedLesson)}
+            onStartMatch={(lesName) => startMatch(lesName || selectedLesson)}
+            onStartMCQ={(lesName) => startMCQ(lesName || selectedLesson)}
+            onExploreMap={() => setViewMode('map_hub')}
+            onExploreTopics={() => {
+              setActiveChapter('ASSAM');
+              setViewMode('chapter');
+            }}
+          />
+        ) : viewMode === 'chapter' ? (
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {/* Top Navigation Row */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <button onClick={() => setViewMode('home')} className="btn btn-subtle" style={{ fontSize: '0.85rem' }}>
+                <ArrowLeft size={16} /> Back to Home
+              </button>
 
-          <div onClick={() => { setViewMode('home'); setActiveActivity(null); }} style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', cursor: 'pointer', minWidth: 0 }}>
-            <div style={{ width: 34, height: 34, borderRadius: 10, background: 'linear-gradient(135deg, #10b981, #34d399)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000' }}>
-              <GamusaIcon size={20} />
+              <span className="badge badge-sage" style={{ fontSize: '0.8rem' }}>
+                <GraduationCap size={14} style={{ marginRight: 4, display: 'inline' }} /> Student Curriculum Tree
+              </span>
             </div>
+
             <div>
-              <h2 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 800, letterSpacing: '0.02em' }}>ADRE Geography Platform</h2>
-              <span style={{ fontSize: '0.65rem', color: '#34d399', fontWeight: 700 }}>Brilliant.org Interactive Experience</span>
+              <h1 style={{ fontSize: '2rem', fontWeight: 900, margin: '0.2rem 0', color: 'var(--text-main)' }}>
+                Geography Curriculum Directory
+              </h1>
+              <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem' }}>
+                Select any chapter, unit, or lesson topic to launch interactive learning modules.
+              </p>
             </div>
-          </div>
-        </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <button
-            onClick={() => { setViewMode('home'); setActiveActivity(null); }}
-            style={{
-              background: viewMode === 'home' && !activeActivity ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.03)',
-              border: `1px solid ${viewMode === 'home' && !activeActivity ? '#10b981' : 'rgba(255,255,255,0.08)'}`,
-              color: viewMode === 'home' && !activeActivity ? '#34d399' : '#cbd5e1',
-              padding: '0.35rem 0.7rem',
-              borderRadius: 14,
-              fontSize: '0.75rem',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.3rem',
-              fontWeight: 800
-            }}
-          >
-            <Home size={14} /> Home
-          </button>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: 'rgba(255,255,255,0.03)', padding: '0.35rem 0.65rem', borderRadius: 14, border: '1px solid rgba(255,255,255,0.08)' }}>
-            <Trophy size={14} color="#34d399" />
-            <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#34d399' }}>{xp} XP</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: 'rgba(255,255,255,0.03)', padding: '0.35rem 0.65rem', borderRadius: 14, border: '1px solid rgba(255,255,255,0.08)' }}>
-            <Flame size={14} color="#f97316" />
-            <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#f97316' }}>{streak}d</span>
-          </div>
-        </div>
-      </header>
+            {/* 🔍 Search Bar for Instant Curriculum Filtering */}
+            <div style={{ position: 'relative', width: '100%' }}>
+              <Search size={16} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search topics (e.g. Brahmaputra, Dima Hasao, Rivers, Climate)..."
+                style={{
+                  width: '100%',
+                  padding: '0.65rem 1rem 0.65rem 2.4rem',
+                  borderRadius: 12,
+                  border: '1px solid var(--border-subtle)',
+                  background: 'var(--bg-surface)',
+                  color: 'var(--text-main)',
+                  fontSize: '0.85rem',
+                  outline: 'none'
+                }}
+              />
+              {searchQuery && (
+                <button onClick={() => setSearchQuery('')} style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
+                  <X size={15} />
+                </button>
+              )}
+            </div>
 
-      {/* ── Two-Column App Layout ── */}
-      <div className="subdivision-grid" style={{ flex: 1 }}>
+            {/* Student Curriculum Tree */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              {syllabusHierarchy.map((chObj) => {
+                const chName = chObj.chapterName;
+                const shortName = getChapterShortName(chName).toUpperCase();
+                const qLower = searchQuery.toLowerCase().trim();
+                const isChMatch = qLower && (chName.toLowerCase().includes(qLower) || JSON.stringify(chObj).toLowerCase().includes(qLower));
+                const isChOpen = isChMatch || !!openChapters[chName];
 
-        {/* LEFT: Multi-Tier Student Mindset Sidebar (Chapter -> Unit -> Lesson -> Topic) */}
-        <aside className={`sidebar-container ${isSidebarOpen ? 'open' : ''}`}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', height: '100%', overflowY: 'auto' }}>
-            <span className="sidebar-label" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-              <BookOpen size={14} color="#34d399" /> Student Curriculum Tree
-            </span>
+                let totalTopicsInCh = 0;
+                let completedTopicsInCh = 0;
+                chObj.units.forEach(u => {
+                  u.lessons.forEach(l => {
+                    totalTopicsInCh += l.topics.length;
+                    completedTopicsInCh += l.topics.filter(t => t.topicName && completedTopics[t.topicName]).length;
+                  });
+                });
+                const chPct = totalTopicsInCh > 0 ? Math.round((completedTopicsInCh / totalTopicsInCh) * 100) : 0;
 
-            {/* Nested Accordion: Chapter -> Unit -> Lesson -> Topic */}
-            {syllabusHierarchy.map((chObj) => {
-              const chName = chObj.chapterName;
-              const shortName = getChapterShortName(chName).toUpperCase();
-              const isChActive = activeChapter === chName;
-              const isChOpen = openChapters[chName] ?? true;
+                return (
+                  <div key={chName} className="glass-panel" style={{ padding: '1rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    {/* Level 1: Chapter Accordion Header */}
+                    <button
+                      onClick={() => toggleChapter(chName)}
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        color: 'var(--text-main)',
+                        fontSize: '1.05rem',
+                        fontWeight: 800,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justify: 'space-between',
+                        padding: 0,
+                        width: '100%'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                        <BookOpen size={18} color="var(--primary)" />
+                        <span>CHAPTER: {shortName} ({chObj.units.length} Units)</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        {completedTopicsInCh > 0 && (
+                          <span className="badge badge-sage" style={{ fontSize: '0.74rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                            <CheckCircle size={12} /> {chPct === 100 ? '✓ Mastered' : `📊 ${chPct}%`}
+                          </span>
+                        )}
+                        {isChOpen ? <ChevronDown size={18} color="var(--primary)" /> : <ChevronRight size={18} color="var(--text-muted)" />}
+                      </div>
+                    </button>
 
-              const styleConfig = CHAPTER_STYLES[shortName] || {
-                activeBg: 'linear-gradient(135deg, rgba(16,185,129,0.2), rgba(52,211,153,0.2))',
-                activeBorder: '1px solid #10b981',
-                activeColor: '#34d399',
-                glow: '0 0 14px rgba(16,185,129,0.3)',
-                icon: '📍'
-              };
+                    {/* Level 2: Units (Collapsed by Default) */}
+                    {isChOpen && (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginTop: '0.25rem', paddingLeft: '0.75rem', borderLeft: '2px solid var(--primary-border)' }}>
+                        {chObj.units.map(unitObj => {
+                          const uName = unitObj.unitName;
+                          const isUnitMatch = qLower && (uName.toLowerCase().includes(qLower) || JSON.stringify(unitObj).toLowerCase().includes(qLower));
+                          const isUnitOpen = isUnitMatch || !!openUnits[uName];
 
-              return (
-                <div key={chName} style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', background: 'rgba(15,23,42,0.6)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: '0.5rem' }}>
-                  
-                  {/* TIER 1: CHAPTER */}
-                  <button
-                    onClick={() => toggleChapter(chName)}
-                    style={{
-                      background: isChActive ? styleConfig.activeBg : 'rgba(255,255,255,0.02)',
-                      color: isChActive ? styleConfig.activeColor : '#f8fafc',
-                      border: isChActive ? styleConfig.activeBorder : '1px solid rgba(255,255,255,0.05)',
-                      padding: '0.65rem 0.8rem',
-                      borderRadius: 10,
-                      fontSize: '0.85rem',
-                      fontWeight: 900,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justify: 'space-between'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                      <span style={{ fontSize: '1rem' }}>{styleConfig.icon}</span>
-                      <span>CHAPTER: {shortName}</span>
-                    </div>
-                    {isChOpen ? <ChevronDown size={16} color={styleConfig.activeColor} /> : <ChevronRight size={16} color="#64748b" />}
-                  </button>
+                          let totalTopicsInUnit = 0;
+                          let completedTopicsInUnit = 0;
+                          unitObj.lessons.forEach(l => {
+                            totalTopicsInUnit += l.topics.length;
+                            completedTopicsInUnit += l.topics.filter(t => t.topicName && completedTopics[t.topicName]).length;
+                          });
+                          const unitPct = totalTopicsInUnit > 0 ? Math.round((completedTopicsInUnit / totalTopicsInUnit) * 100) : 0;
 
-                  {/* TIER 2 & 3: UNITS & LESSONS */}
-                  {isChOpen && (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', paddingLeft: '0.5rem', marginTop: '0.2rem' }}>
-                      {chObj.units.map(unitObj => {
-                        return (
-                          <div key={unitObj.unitName} style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                            <div style={{ fontSize: '0.68rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', paddingLeft: '0.25rem', marginTop: '0.2rem' }}>
-                              UNIT: {unitObj.unitName}
-                            </div>
+                          return (
+                            <div key={uName} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'var(--bg-subtle)', borderRadius: 10, padding: '0.75rem' }}>
+                              {/* Unit Accordion Header */}
+                              <button
+                                onClick={() => toggleUnit(uName)}
+                                style={{
+                                  background: 'transparent',
+                                  border: 'none',
+                                  color: 'var(--primary)',
+                                  fontSize: '0.85rem',
+                                  fontWeight: 800,
+                                  cursor: 'pointer',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justify: 'space-between',
+                                  padding: 0,
+                                  width: '100%',
+                                  textTransform: 'uppercase',
+                                  letterSpacing: '0.04em'
+                                }}
+                              >
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                                  <Layers size={15} color="var(--primary)" />
+                                  <span>UNIT: {uName} ({unitObj.lessons.length} Lessons)</span>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                  {completedTopicsInUnit > 0 && (
+                                    <span className="badge badge-sage" style={{ fontSize: '0.72rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                                      <CheckCircle size={11} /> {unitPct === 100 ? '✓ 100%' : `${unitPct}%`}
+                                    </span>
+                                  )}
+                                  {isUnitOpen ? <ChevronDown size={16} color="var(--primary)" /> : <ChevronRight size={16} color="var(--text-muted)" />}
+                                </div>
+                              </button>
 
-                            {unitObj.lessons.map(les => {
-                              const lesName = les.lessonName;
-                              const isLesSelected = selectedLesson === lesName;
-                              const isLesOpen = openLessons[lesName] ?? (isLesSelected);
+                              {/* Level 3: Lessons & Subtopics (Collapsed by Default) */}
+                              {isUnitOpen && (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.35rem', paddingLeft: '0.5rem' }}>
+                                  {unitObj.lessons.map(les => {
+                                    const lesName = les.lessonName;
+                                    const isLesMatch = qLower && (lesName.toLowerCase().includes(qLower) || JSON.stringify(les).toLowerCase().includes(qLower));
+                                    const isLesOpen = isLesMatch || !!openLessons[lesName];
 
-                              return (
-                                <div key={lesName} style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
-                                  
-                                  {/* TIER 3: LESSON HEADER */}
-                                  <button
-                                    onClick={() => toggleLesson(lesName)}
-                                    style={{
-                                      background: isLesSelected ? 'rgba(16,185,129,0.15)' : 'rgba(255,255,255,0.02)',
-                                      border: `1px solid ${isLesSelected ? '#10b981' : 'rgba(255,255,255,0.05)'}`,
-                                      color: isLesSelected ? '#34d399' : '#e2e8f0',
-                                      padding: '0.5rem 0.7rem',
-                                      borderRadius: 8,
-                                      fontSize: '0.78rem',
-                                      cursor: 'pointer',
-                                      display: 'flex',
-                                      alignItems: 'center',
-                                      justify: 'space-between'
-                                    }}
-                                  >
-                                    <div>
-                                      <div style={{ fontWeight: isLesSelected ? 800 : 600, textAlign: 'left' }}>Lesson: {lesName}</div>
-                                      <div style={{ fontSize: '0.62rem', color: '#64748b', marginTop: 1 }}>{les.topics.length} topics</div>
-                                    </div>
-                                    {isLesOpen ? <ChevronDown size={14} color="#34d399" /> : <ChevronRight size={14} color="#64748b" />}
-                                  </button>
+                                    const totalTopicsInLes = les.topics.length;
+                                    const completedTopicsInLes = les.topics.filter(t => t.topicName && completedTopics[t.topicName]).length;
+                                    const isLesDone = totalTopicsInLes > 0 && completedTopicsInLes === totalTopicsInLes;
 
-                                  {/* TIER 4: TOPICS LIST */}
-                                  {isLesOpen && (
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', paddingLeft: '0.75rem', borderLeft: '2px solid rgba(16,185,129,0.3)', margin: '0.2rem 0 0.3rem 0.4rem' }}>
-                                      {les.topics.map((top, tIdx) => {
-                                        return (
-                                          <div
-                                            key={tIdx}
-                                            style={{
-                                              background: 'rgba(255,255,255,0.02)',
-                                              border: '1px solid rgba(255,255,255,0.04)',
-                                              borderRadius: 6,
-                                              padding: '0.45rem 0.6rem',
-                                              display: 'flex',
-                                              alignItems: 'center',
-                                              justify: 'space-between',
-                                              gap: '0.35rem'
-                                            }}
-                                          >
-                                            <span style={{ fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>
-                                              📌 Topic: {top.topicName}
+                                    return (
+                                      <div
+                                        key={lesName}
+                                        style={{
+                                          background: 'var(--bg-surface)',
+                                          border: '1px solid var(--border-subtle)',
+                                          borderRadius: 8,
+                                          padding: '0.65rem 0.85rem',
+                                          display: 'flex',
+                                          flexDirection: 'column',
+                                          gap: '0.4rem'
+                                        }}
+                                      >
+                                        {/* Lesson Accordion Header */}
+                                        <button
+                                          onClick={() => toggleLesson(lesName)}
+                                          style={{
+                                            background: 'transparent',
+                                            border: 'none',
+                                            color: 'var(--text-main)',
+                                            fontSize: '0.88rem',
+                                            fontWeight: 700,
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justify: 'space-between',
+                                            padding: 0,
+                                            width: '100%'
+                                          }}
+                                        >
+                                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                                            <GraduationCap size={15} color="var(--secondary)" />
+                                            <span>{lesName}</span>
+                                          </div>
+                                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                            {isLesDone ? (
+                                              <span className="badge badge-sage" style={{ fontSize: '0.7rem', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+                                                <CheckCircle size={11} /> ✓ Mastered
+                                              </span>
+                                            ) : completedTopicsInLes > 0 ? (
+                                              <span style={{ fontSize: '0.72rem', color: 'var(--primary)', fontWeight: 700 }}>
+                                                {Math.round((completedTopicsInLes / totalTopicsInLes) * 100)}%
+                                              </span>
+                                            ) : null}
+                                            <span style={{ fontSize: '0.72rem', color: 'var(--primary)', background: 'var(--primary-bg)', border: '1px solid var(--primary-border)', padding: '0.12rem 0.4rem', borderRadius: 6, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
+                                              <Clock size={11} /> ⏱️ 3 min
                                             </span>
+                                            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                                              {les.topics.length} Subtopics
+                                            </span>
+                                            {isLesOpen ? <ChevronDown size={16} color="var(--primary)" /> : <ChevronRight size={16} color="var(--text-muted)" />}
+                                          </div>
+                                        </button>
+
+                                        {/* Level 4: Subtopics List & Start Player CTA (Collapsed by Default) */}
+                                        {isLesOpen && (
+                                          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.35rem', paddingTop: '0.35rem', borderTop: '1px dashed var(--border-subtle)' }}>
+                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                                              {les.topics.map((top, idx) => (
+                                                <div key={idx} style={{ fontSize: '0.78rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                                                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--primary)' }} />
+                                                  <span>{top.topicName}</span>
+                                                </div>
+                                              ))}
+                                            </div>
 
                                             <button
-                                              onClick={() => startSectionPlayer(top, lesName, unitObj.unitName, chName)}
-                                              style={{
-                                                background: 'linear-gradient(135deg, #10b981, #34d399)',
-                                                border: 'none',
-                                                color: '#000',
-                                                padding: '0.25rem 0.55rem',
-                                                borderRadius: 5,
-                                                fontSize: '0.65rem',
-                                                fontWeight: 900,
-                                                cursor: 'pointer',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '0.2rem',
-                                                flexShrink: 0
-                                              }}
+                                              className="btn btn-primary"
+                                              onClick={() => startLessonPlayer(lesName)}
+                                              style={{ padding: '0.45rem 0.75rem', fontSize: '0.78rem', marginTop: '0.25rem', alignSelf: 'flex-start' }}
                                             >
-                                              <PlayCircle size={10} /> Play
+                                              <PlayCircle size={14} /> Start learning this lesson
                                             </button>
                                           </div>
-                                        );
-                                      })}
-                                    </div>
-                                  )}
-
+                                        )}
+                                      </div>
+                                    );
+                                  })}
                                 </div>
-                              );
-                            })}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
 
+            {/* 💡 Curriculum Guide Card (Below Everything) */}
+            <div className="glass-panel" style={{ padding: '1.25rem', marginTop: '0.5rem', background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 14 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.75rem' }}>
+                <Sparkles size={16} color="var(--primary)" />
+                <h4 style={{ margin: 0, fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-main)' }}>
+                  How the Curriculum is Structured
+                </h4>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--primary)' }}>1. Chapters 📚</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
+                    Major regional domains like Assam, Northeast 7 Sisters, and India Physiography.
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-        </aside>
 
-        {isSidebarOpen && (
-          <div onClick={() => setIsSidebarOpen(false)} style={{ position: 'fixed', inset: 0, top: 60, zIndex: 90, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }} />
-        )}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--primary)' }}>2. Units 📁</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
+                    Core thematic focus areas within each chapter (e.g. Physical Divisions, River Basins).
+                  </span>
+                </div>
 
-        {/* RIGHT: Main Viewport */}
-        <main style={{ padding: '1.25rem', overflowY: 'auto', overflowX: 'hidden', height: 'calc(100vh - 60px)', minWidth: 0 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--secondary)' }}>3. Lessons 🎓</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
+                    Interactive study modules with dedicated lesson players and micro-quizzes.
+                  </span>
+                </div>
 
-          {activeActivity ? (
-            <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="glass-panel" style={{ padding: '1.75rem', maxWidth: 820, margin: '0 auto' }}>
-              <button onClick={() => setActiveActivity(null)} className="btn btn-glass" style={{ marginBottom: '1.25rem', padding: '0.45rem 0.85rem', fontSize: '0.82rem' }}>
-                <ArrowLeft size={16} /> Back to Syllabus Directory
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                  <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--secondary)' }}>4. Subtopics 📌</span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>
+                    Bite-sized concept units, facts, vector maps, and active recall practice.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ) : viewMode === 'map_hub' ? (
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <button onClick={() => setViewMode('home')} className="btn btn-subtle" style={{ fontSize: '0.85rem' }}>
+                <ArrowLeft size={16} /> Back to Home
               </button>
-              {activeActivity === 'flashcard' && <Flashcard data={activeActivityData?.flashcards || getCompleteLessonActivity(selectedLesson).flashcards} onComplete={handleActivityComplete} />}
-              {activeActivity === 'match'     && <MatchGame  data={activeActivityData?.match     || getCompleteLessonActivity(selectedLesson).match}      onComplete={handleActivityComplete} />}
-              {activeActivity === 'mcq'       && <ExamineMCQ data={activeActivityData?.mcqs      || getCompleteLessonActivity(selectedLesson).mcqs}       onComplete={handleActivityComplete} />}
-            </motion.div>
-          ) : viewMode === 'lesson' && activeLesson ? (
-            <InteractiveLesson
-              lessonData={activeLesson}
-              onComplete={(gainedXp) => {
-                addXp(gainedXp);
-                setViewMode('home');
-              }}
-              onBack={() => setViewMode('home')}
-              onNavigateToTarget={handleNavigateToTarget}
-            />
-          ) : viewMode === 'home' ? (
-            <HomePage
-              syllabusHierarchy={syllabusHierarchy}
-              activeChapter={activeChapter}
-              onSelectChapter={(ch) => {
-                setActiveChapter(ch);
-                setViewMode('chapter');
-                setDetailedViewSubdivision(null);
-                setActiveActivity(null);
-              }}
-              onStartLessonPlayer={startLessonPlayer}
-              onStartSectionPlayer={startSectionPlayer}
-              onStartFlashcard={(lesName) => startFlashcard(lesName || selectedLesson)}
-              onStartMatch={(lesName) => startMatch(lesName || selectedLesson)}
-              onStartMCQ={(lesName) => startMCQ(lesName || selectedLesson)}
-              onExploreMap={() => setViewMode('map_hub')}
-            />
-          ) : viewMode === 'map_hub' ? (
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+              <span className="badge badge-sage" style={{ fontSize: '0.8rem' }}>
+                <Compass size={14} style={{ marginRight: 4, display: 'inline' }} /> Map Viwer
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
               <div>
-                <span style={{ color: '#10b981', fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                  Interactive Canvas Map Hub
-                </span>
-                <h1 style={{ fontSize: '2.2rem', fontWeight: 900, margin: '0.2rem 0', color: '#fff' }}>
+                <h1 style={{ fontSize: '2rem', fontWeight: 900, margin: '0.2rem 0', color: 'var(--text-main)' }}>
                   Geography Map Inspector
                 </h1>
-                <p style={{ color: '#94a3b8', margin: 0, fontSize: '0.9rem' }}>
+                <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.9rem' }}>
                   Explore Assam districts, Northeast 7 Sisters, and Indian physiographic divisions interactively.
                 </p>
               </div>
 
-              <div className="glass-panel" style={{ padding: '1.25rem', maxWidth: 840, margin: '0 auto', width: '100%' }}>
-                <GeographyMap onSelectRegion={handleRegionSelect} activeRegion={selectedLesson} isAssam={activeChapter.toLowerCase().includes('assam')} activeChapter={activeChapter} />
-              </div>
-            </motion.div>
-          ) : viewMode === 'practice_hub' ? (
-            <PracticeHub
-              syllabusData={syllabusData}
-              activityData={{ LearningActivities: [] }}
-              studyDb={STUDY_DATABASE}
-              onCompleteActivity={handleActivityComplete}
-            />
-          ) : viewMode === 'progress_hub' ? (
-            <ProgressDashboard
-              xp={xp}
-              streak={streak}
-              syllabusHierarchy={syllabusHierarchy}
-            />
-          ) : detailedViewSubdivision ? (
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <button onClick={() => setDetailedViewSubdivision(null)} className="btn btn-glass" style={{ width: 'fit-content', padding: '0.45rem 0.85rem', fontSize: '0.82rem' }}>
-                  <ArrowLeft size={16} /> Back to Syllabus Directory
-                </button>
-
+              {/* Upfront 3 Map Switcher Pills Inside Map Viewer */}
+              <div className="zen-nav-pills">
                 <button
-                  onClick={() => startLessonPlayer(selectedLesson)}
-                  style={{
-                    background: 'linear-gradient(135deg, #10b981, #34d399)',
-                    border: 'none',
-                    color: '#000',
-                    padding: '0.55rem 1.1rem',
-                    borderRadius: 12,
-                    fontSize: '0.82rem',
-                    fontWeight: 800,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
-                  }}
+                  className={`zen-nav-pill ${mapViewerTab === 'ASSAM' ? 'active' : ''}`}
+                  onClick={() => setMapViewerTab('ASSAM')}
                 >
-                  <PlayCircle size={16} /> Start Full Lesson Player
+                  📍 Assam Map
+                </button>
+                <button
+                  className={`zen-nav-pill ${mapViewerTab === 'NE' ? 'active' : ''}`}
+                  onClick={() => setMapViewerTab('NE')}
+                >
+                  🏔️ Northeast 7 Sisters
+                </button>
+                <button
+                  className={`zen-nav-pill ${mapViewerTab === 'INDIA' ? 'active' : ''}`}
+                  onClick={() => setMapViewerTab('INDIA')}
+                >
+                  🇮🇳 India Physiography
                 </button>
               </div>
+            </div>
 
-              <div className="glass-panel" style={{ position: 'relative', overflow: 'hidden', padding: '2rem 1.5rem', minHeight: 160, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-                <img src={imageUrl()} alt={selectedLesson} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3 }} />
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#10b981', fontWeight: 800 }}>CHAPTER: {activeChapter}</span>
-                  <h1 style={{ margin: '0.2rem 0 0', fontSize: '2rem', fontWeight: 900 }}>Lesson: {selectedLesson}</h1>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                {getLessonTopics().topics.map((top, idx) => {
-                  return (
-                    <div key={idx} className="section-card-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '1.25rem', alignItems: 'start' }}>
-                      <div className="glass-panel" style={{ padding: '1.5rem', borderLeft: '4px solid #10b981', height: '100%' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '0.65rem' }}>
-                          <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#34d399', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                            <Zap size={17} color="#34d399" /> {top.topicName}
-                          </h3>
-                          <span style={{ fontSize: '0.68rem', background: 'rgba(16,185,129,0.15)', color: '#34d399', padding: '0.2rem 0.55rem', borderRadius: 10, fontWeight: 800 }}>
-                            Topic {idx + 1}
-                          </span>
-                        </div>
-                        <SectionVisualizer sectionName={top.topicName} facts={top.facts} />
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                          {top.facts.map((fact, fIdx) => (
-                            <li key={fIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', padding: '0.65rem 0.85rem', borderRadius: 10 }}>
-                              <span style={{ color: '#10b981', fontWeight: 800, fontSize: '1.1rem', lineHeight: 1 }}>•</span>
-                              <span style={{ color: '#e2e8f0', fontSize: '0.88rem', lineHeight: 1.5 }}>{fact}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="glass-panel" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.85rem', background: 'rgba(15,23,42,0.7)', border: '1px solid rgba(16,185,129,0.2)' }}>
-                        <h4 style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', margin: 0, fontSize: '0.92rem', color: '#34d399' }}>
-                          <GraduationCap size={17} /> Topic Practice Suite
-                        </h4>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
-                          <button
-                            className="btn btn-primary"
-                            onClick={() => startSectionPlayer(top, selectedLesson, getLessonTopics().unitName, activeChapter)}
-                            style={{ justifyContent: 'center', padding: '0.75rem 0.85rem', fontSize: '0.82rem', background: 'linear-gradient(135deg, #10b981, #34d399)', color: '#000', fontWeight: 900 }}
-                          >
-                            <PlayCircle size={15} /> Start Topic Player
-                          </button>
-                          <button className="btn btn-glass" onClick={() => startFlashcard(selectedLesson)} style={{ justifyContent: 'space-between', padding: '0.7rem 0.85rem', fontSize: '0.82rem' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Layers size={15} /> Flashcards Deck</span>
-                            <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.1)', padding: '0.15rem 0.4rem', borderRadius: 6 }}>+10 XP</span>
-                          </button>
-                          <button className="btn btn-glass" onClick={() => startMatch(selectedLesson)} style={{ justifyContent: 'space-between', padding: '0.7rem 0.85rem', fontSize: '0.82rem', borderColor: '#38bdf8', color: '#38bdf8' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Link2 size={15} /> Match Pairs</span>
-                            <span style={{ fontSize: '0.72rem', background: 'rgba(56,189,248,0.15)', padding: '0.15rem 0.4rem', borderRadius: 6 }}>+10 XP</span>
-                          </button>
-                          <button className="btn btn-glass" onClick={() => startMCQ(selectedLesson)} style={{ justifyContent: 'space-between', padding: '0.7rem 0.85rem', fontSize: '0.82rem', borderColor: '#f87171', color: '#f87171' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><HelpCircle size={15} /> Exam MCQ Quiz</span>
-                            <span style={{ fontSize: '0.72rem', background: 'rgba(248,113,113,0.15)', padding: '0.15rem 0.4rem', borderRadius: 6 }}>+15 XP</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <div>
-                <span style={{ color: '#10b981', fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Geography Interactive Explorer</span>
-                <h1 style={{ fontSize: '2.2rem', fontWeight: 900, margin: '0.2rem 0', color: '#fff' }}>
-                  Chapter: {activeChapter}
-                </h1>
-                <p style={{ color: '#94a3b8', margin: 0, fontSize: '0.9rem' }}>Tap map boundaries or select topics to launch dedicated Topic Players.</p>
-              </div>
-
-              <div className="glass-panel" style={{ padding: '1.25rem', maxWidth: 820, margin: '0 auto', width: '100%' }}>
-                <h3 style={{ marginBottom: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.45rem', justifyContent: 'center', fontSize: '1.1rem' }}>
-                  🗺️ Interactive Vector Map Inspector
-                </h3>
-                <GeographyMap onSelectRegion={handleRegionSelect} activeRegion={selectedLesson} isAssam={activeChapter.toLowerCase().includes('assam')} activeChapter={activeChapter} />
-              </div>
-
-              <div className="glass-panel" style={{ padding: '1.1rem' }}>
-                <h4 style={{ marginBottom: '0.65rem', fontSize: '0.85rem', color: '#94a3b8' }}>Select Lesson:</h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
-                  {quickButtons.map(btn => {
-                    const isSelected = selectedLesson === btn.name;
-                    return (
-                      <button key={btn.name} onClick={() => handleRegionSelect(btn.name)} className="btn"
-                        style={{
-                          fontSize: '0.78rem',
-                          padding: '0.4rem 0.8rem',
-                          background: isSelected ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.02)',
-                          border: `1px solid ${isSelected ? '#10b981' : 'rgba(255,255,255,0.06)'}`,
-                          color: isSelected ? '#34d399' : '#e2e8f0',
-                          fontWeight: isSelected ? 800 : 500
-                        }}
-                      >
-                        {btn.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div ref={detailsRef} style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.25rem' }}>
-                {selectedLesson ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                    <p style={{ margin: 0, fontSize: '0.82rem', color: '#94a3b8' }}>Click below to launch full sequential Lesson Player:</p>
-                    <motion.div whileHover={{ scale: 1.01 }} onClick={() => startLessonPlayer(selectedLesson)}
-                      className="glass-panel"
-                      style={{ padding: 0, overflow: 'hidden', border: '1.5px solid #10b981', cursor: 'pointer', boxShadow: '0 8px 24px rgba(16,185,129,0.25)' }}
-                    >
-                      <div className="detailed-banner-grid">
-                        <div style={{ position: 'relative', overflow: 'hidden', minHeight: 180 }}>
-                          <img src={imageUrl()} alt={selectedLesson} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent, rgba(15,17,26,0.95))' }} />
-                        </div>
-                        <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.45rem' }}>
-                          <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: '#34d399', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                            <PlayCircle size={12} /> Launch Full Lesson Player
-                          </span>
-                          <h2 style={{ margin: 0, fontSize: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.45rem', fontWeight: 900 }}>
-                            {selectedLesson} <ChevronRight size={18} color="#34d399" />
-                          </h2>
-                          <div style={{ fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.5 }}>
-                            {getLessonTopics().topics.slice(0, 2).map((t, i) => (
-                              <p key={i} style={{ margin: '0 0 0.35rem' }}>
-                                <strong style={{ color: '#34d399' }}>{t.topicName}:</strong> {t.facts[0] || ''}
-                              </p>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-                ) : null}
-              </div>
-            </motion.div>
-          )}
-        </main>
-      </div>
-
-      {/* ── Mobile Bottom Navigation Bar ── */}
-      <MobileNavBar
-        currentTab={currentNavTab}
-        onTabChange={handleMobileTabChange}
-      />
+            <div className="glass-panel" style={{ padding: '1.25rem', width: '100%' }}>
+              <GeographyMap
+                onSelectRegion={handleRegionSelect}
+                activeRegion={selectedLesson}
+                isAssam={mapViewerTab === 'ASSAM'}
+                activeChapter={mapViewerTab}
+              />
+            </div>
+          </motion.div>
+        ) : viewMode === 'practice_hub' ? (
+          <PracticeHub
+            syllabusData={syllabusData}
+            activityData={{ LearningActivities: [] }}
+            studyDb={STUDY_DATABASE}
+            onCompleteActivity={handleActivityComplete}
+          />
+        ) : viewMode === 'progress_hub' ? (
+          <ProgressDashboard
+            xp={xp}
+            streak={streak}
+            syllabusHierarchy={syllabusHierarchy}
+          />
+        ) : null}
+      </main>
     </div>
   );
 }

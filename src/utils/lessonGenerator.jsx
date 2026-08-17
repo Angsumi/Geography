@@ -72,7 +72,7 @@ export function generateLessonPlayerData(lessonName, unitName, chapterName, topi
     chapterName: chapterName || 'ASSAM',
     unitName: unitName || 'Syllabus Unit',
     lessonName: lessonName,
-    topicName: `${lessonName} (All Topics)`,
+    topicName: lessonName,
     title: lessonName,
     conceptUnits,
     practiceMatching,

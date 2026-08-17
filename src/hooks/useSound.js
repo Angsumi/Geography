@@ -4,8 +4,19 @@
 // ============================================================
 
 let audioCtx = null;
+let isMuted = false;
+
+export function toggleMute() {
+  isMuted = !isMuted;
+  return isMuted;
+}
+
+export function getIsMuted() {
+  return isMuted;
+}
 
 function getCtx() {
+  if (isMuted) return null;
   if (!audioCtx || audioCtx.state === 'closed') {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   }
@@ -22,6 +33,7 @@ function getCtx() {
 export function playCorrect() {
   try {
     const ctx = getCtx();
+    if (!ctx) return;
     const t = ctx.currentTime;
 
     [523.25, 659.25, 783.99].forEach((freq, i) => {
