@@ -14,6 +14,42 @@ The **ADRE & APSC Geography Platform** is a state-of-the-art interactive learnin
 
 ---
 
+## 📊 Standardized JSON Data Architecture
+
+All chapter data files (`assam/`, `northeast/`, `india/`) follow a **100% standardized 3-step hierarchy**:
+
+```
+GeographySyllabus [ Array ]
+ └── Subject: "ASSAM" | "NE" | "INDIA"
+      └── Topics [ Array ]
+           └── TopicName: String
+                └── Subtopics [ Array ]
+                     └── SubtopicName: String
+                          └── Sections [ Array ]
+                               ├── SectionName: String
+                               ├── Facts: [ Array of Strings ]
+                               ├── VisualisationIdea: String
+                               ├── ConceptUnits: [ Array of Concept Objects ]
+                               │    ├── Id: String (e.g. "assam-1", "ne-1", "india-1")
+                               │    ├── Fact: String
+                               │    ├── Flashcard: { Front, Back, Image }
+                               │    └── Quiz: { Question, Options: {A,B,C,D}, CorrectAnswer, Explanation }
+                               └── PracticeMatching: [ Array of { Term, Definition } ]
+```
+
+### 🎨 How Visualization Components Point Directly to the JSON Structure
+
+1. **Embedded Visualization Ideas**:
+   Every section object inside `GEography.json` contains a dedicated `"VisualisationIdea"` string (e.g. *"Interactive SVG path diagram showing north-bank tributaries..."*).
+
+2. **Dynamic Section Routing (`SectionVisualizer.jsx`)**:
+   `SectionVisualizer({ sectionName, facts })` takes the exact `sectionName` and `facts` array directly from the JSON section object:
+   - **Specialized SVG Components**: Matches `sectionName` to mount custom interactive SVG components (e.g. `<TributariesBankVisual>`, `<VerticalDivisionsVisual>`, `<CoastalPlainsVisual>`, `<RiverFlowVisual>`).
+   - **Data-Driven State Profiles**: Reads raw `facts` strings (e.g. `Capital: Itanagar`, `State Symbols: Mithun`) directly from JSON and injects them into `<StateProfileVisual>`.
+   - **Universal Concept Canvas**: For any un-matched section, it dynamically renders an animated SVG concept canvas displaying the exact `VisualisationIdea` string extracted from `GEography.json`.
+
+---
+
 ## ✨ Key Features
 
 - 🌲 **3-Tier Nested Accordion Tree Sidebar**:
@@ -82,8 +118,8 @@ GEOGRAPHY/
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/GEOGRAPHY.git
-   cd GEOGRAPHY
+   git clone https://github.com/Angsumi/adre-master.git
+   cd adre-master
    ```
 
 2. **Install Dependencies**:
