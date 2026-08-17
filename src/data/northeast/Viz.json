@@ -1,19 +1,19 @@
 {
   "SectionVisualisations": [
     {
-      "SectionName": "Administration & Symbols[cite: 1]",
+      "SectionName": "Administration & Symbols",
       "VisualisationIdea": "CSS Grid displaying 3 Interactive Flip Cards for each state representing the Animal, Bird, and Flower symbols."
     },
     {
-      "SectionName": "Ecology & Topography[cite: 1]",
+      "SectionName": "Ecology & Topography",
       "VisualisationIdea": "CSS Parallax Scrolling Section for each state, highlighting the highest peak elevation in the background and fauna in the foreground."
     },
     {
-      "SectionName": "Kaziranga & Manas National Parks[cite: 1]",
+      "SectionName": "Kaziranga & Manas National Parks",
       "VisualisationIdea": "\ud83c\udfc6 UNESCO World Natural Heritage Badge showcasing rhino & golden langur conservation icons."
     },
     {
-      "SectionName": "Key Northeast Reserves[cite: 1]",
+      "SectionName": "Key Northeast Reserves",
       "VisualisationIdea": "\ud83c\udf10 UNESCO Biosphere Reserve Concentric Circles (Core, Buffer, Transition) for Nokrek and Dibru-Saikhowa."
     }
   ]

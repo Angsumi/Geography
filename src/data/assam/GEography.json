@@ -12,17 +12,207 @@
                 {
                   "SectionName": "North Bank Tributaries (Brahmaputra)",
                   "Facts": [
-                    "Alluvial plain from Sadiya to Dhubri, annual monsoonal floods.[cite: 1]",
-                    "Tributaries: Siku/Jiari, Gai, Jiadhol, Subansiri, Buroi, Borgang, Jia Bharali (Kameng), Gabharu, Belsiri, Dhansiri (North), Puthimari, Pagladiya, Manas, Tipkai, Sankosh, Raidak (Gadadhar).[cite: 1]",
-                    "Sub-basin Notes: Ranganadi and Dikrong join the Subansiri network near the Brahmaputra; Beki and Aie act as significant sub-tributaries for Manas.[cite: 1]"
-                  ]
+                    "Alluvial plain from Sadiya to Dhubri, annual monsoonal floods.",
+                    "Tributaries: Siku/Jiari, Gai, Jiadhol, Subansiri, Buroi, Borgang, Jia Bharali (Kameng), Gabharu, Belsiri, Dhansiri (North), Puthimari, Pagladiya, Manas, Tipkai, Sankosh, Raidak (Gadadhar).",
+                    "Sub-basin Notes: Ranganadi and Dikrong join the Subansiri network near the Brahmaputra; Beki and Aie act as significant sub-tributaries for Manas."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-1",
+                      "Fact": "Alluvial plain from Sadiya to Dhubri, annual monsoonal floods.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of North Bank Tributaries (Brahmaputra) in Brahmaputra Valley?",
+                        "Back": "Subansiri River.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which is the largest North Bank tributary of the Brahmaputra River in Assam?",
+                        "Options": {
+                          "A": "Pagladiya",
+                          "B": "Manas",
+                          "C": "Jia Bharali",
+                          "D": "Subansiri"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Alluvial plain from Sadiya to Dhubri, annual monsoonal floods."
+                      }
+                    },
+                    {
+                      "Id": "assam-2",
+                      "Fact": "Tributaries: Siku/Jiari, Gai, Jiadhol, Subansiri, Buroi, Borgang, Jia Bharali (Kameng), Gabharu, Belsiri, Dhansiri (North), Puthimari, Pagladiya, Manas, Tipkai, Sankosh, Raidak (Gadadhar).",
+                      "Flashcard": {
+                        "Front": "Which north-bank tributaries feed into the river system in Brahmaputra Valley?",
+                        "Back": "Ranganadi and Dikrong rivers.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which two rivers act as significant sub-tributaries for the Manas River network?",
+                        "Options": {
+                          "A": "Ranganadi and Dikrong",
+                          "B": "Dhaleshwari and Katakhal",
+                          "C": "Beki and Aie",
+                          "D": "Jiri and Chiri"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Siku/Jiari, Gai, Jiadhol, Subansiri, Buroi, Borgang, Jia Bharali (Kameng), Gabharu, Belsiri, Dhansiri (North), Puthimari, Pagladiya, Manas, Tipkai, Sankosh, Raidak (Gadadhar)."
+                      }
+                    },
+                    {
+                      "Id": "assam-3",
+                      "Fact": "Sub-basin Notes: Ranganadi and Dikrong join the Subansiri network near the Brahmaputra; Beki and Aie act as significant sub-tributaries for Manas.",
+                      "Flashcard": {
+                        "Front": "Which north-bank tributaries feed into the river system in Brahmaputra Valley?",
+                        "Back": "Beki and Aie rivers.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Jia Bharali is known by which alternate name in Arunachal Pradesh?",
+                        "Options": {
+                          "A": "Dihang",
+                          "B": "Lohit",
+                          "C": "Subansiri",
+                          "D": "Kameng"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Ranganadi and Dikrong join the Subansiri network near the Brahmaputra; Beki and Aie act as significant sub-tributaries for Manas."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Subansiri Sub-tributaries",
+                      "Definition": "Ranganadi and Dikrong."
+                    },
+                    {
+                      "Term": "Manas Sub-tributaries",
+                      "Definition": "Beki and Aie."
+                    },
+                    {
+                      "Term": "Jia Bharali Alias",
+                      "Definition": "Kameng River."
+                    },
+                    {
+                      "Term": "Raidak Alias",
+                      "Definition": "Gadadhar."
+                    },
+                    {
+                      "Term": "Assam-WB Boundary River",
+                      "Definition": "Sankosh River."
+                    },
+                    {
+                      "Term": "Flash Flood River",
+                      "Definition": "Pagladiya River."
+                    },
+                    {
+                      "Term": "Nameri River",
+                      "Definition": "Jia Bharali."
+                    },
+                    {
+                      "Term": "Largest North Tributary",
+                      "Definition": "Subansiri River."
+                    },
+                    {
+                      "Term": "Westernmost NB River",
+                      "Definition": "Sankosh / Raidak."
+                    },
+                    {
+                      "Term": "Easternmost NB Rivers",
+                      "Definition": "Siku and Jiari."
+                    }
+                  ],
+                  "VisualisationIdea": "Top-Down CSS Tree Diagram merging into a thick horizontal central line (the Brahmaputra)."
                 },
                 {
                   "SectionName": "South Bank Tributaries (Brahmaputra)",
                   "Facts": [
-                    "Alluvial plain from Sadiya to Dhubri, annual monsoonal floods.[cite: 1]",
-                    "Tributaries: Burhi Dihing, Disang, Dikhou, Jhanji, Bhogdoi, Dhansiri (South), Kopili, Kulsi, Krishnai, Dudhnoi, Jinjiram.[cite: 1]"
-                  ]
+                    "Alluvial plain from Sadiya to Dhubri, annual monsoonal floods.",
+                    "Tributaries: Burhi Dihing, Disang, Dikhou, Jhanji, Bhogdoi, Dhansiri (South), Kopili, Kulsi, Krishnai, Dudhnoi, Jinjiram."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-4",
+                      "Fact": "Alluvial plain from Sadiya to Dhubri, annual monsoonal floods.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of South Bank Tributaries (Brahmaputra) in Brahmaputra Valley?",
+                        "Back": "Bhogdoi River.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which of the following is a South Bank tributary of the Brahmaputra River?",
+                        "Options": {
+                          "A": "Subansiri",
+                          "B": "Manas",
+                          "C": "Jia Bharali",
+                          "D": "Burhi Dihing"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Alluvial plain from Sadiya to Dhubri, annual monsoonal floods."
+                      }
+                    },
+                    {
+                      "Id": "assam-5",
+                      "Fact": "Tributaries: Burhi Dihing, Disang, Dikhou, Jhanji, Bhogdoi, Dhansiri (South), Kopili, Kulsi, Krishnai, Dudhnoi, Jinjiram.",
+                      "Flashcard": {
+                        "Front": "Which south-bank tributaries feed into the river system in Brahmaputra Valley?",
+                        "Back": "Kulsi River.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which South Bank river flows directly through Jorhat city?",
+                        "Options": {
+                          "A": "Bhogdoi",
+                          "B": "Disang",
+                          "C": "Dikhou",
+                          "D": "Kopili"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Burhi Dihing, Disang, Dikhou, Jhanji, Bhogdoi, Dhansiri (South), Kopili, Kulsi, Krishnai, Dudhnoi, Jinjiram."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Jorhat River",
+                      "Definition": "Bhogdoi River."
+                    },
+                    {
+                      "Term": "Sivasagar River",
+                      "Definition": "Dikhou River."
+                    },
+                    {
+                      "Term": "River Dolphin Habitat",
+                      "Definition": "Kulsi River."
+                    },
+                    {
+                      "Term": "Upper Assam Oil/Coal Belt",
+                      "Definition": "Burhi Dihing River."
+                    },
+                    {
+                      "Term": "Golaghat/Kaziranga SB River",
+                      "Definition": "Dhansiri (South)."
+                    },
+                    {
+                      "Term": "Karbi Anglong Divider",
+                      "Definition": "Kopili River."
+                    },
+                    {
+                      "Term": "Disang Confluence",
+                      "Definition": "Disangmukh."
+                    },
+                    {
+                      "Term": "Goalpara SB Rivers",
+                      "Definition": "Krishnai & Dudhnoi."
+                    },
+                    {
+                      "Term": "Morigaon Kopili Branch",
+                      "Definition": "Kolong River."
+                    },
+                    {
+                      "Term": "Jorhat-Sivasagar Border",
+                      "Definition": "Jhanji River."
+                    }
+                  ],
+                  "VisualisationIdea": "Bottom-Up CSS Tree Diagram merging into a thick horizontal central line."
                 }
               ]
             },
@@ -32,10 +222,87 @@
                 {
                   "SectionName": "Central Hills",
                   "Facts": [
-                    "Karbi Anglong & Dima Hasao, Meghalaya Plateau extension, Barail Range, and Haflong hill station.[cite: 1]",
-                    "Features: Situated between the two valleys (Karbi Anglong and North Cachar Hills). Geologically, it is an extension of the Indian Peninsular Plateau (Meghalaya plateau).[cite: 1]",
-                    "Significance: Comprises rugged terrains, the Barail range, and dense tropical forests. It is home to the state hill station, Haflong.[cite: 1]"
-                  ]
+                    "Karbi Anglong & Dima Hasao, Meghalaya Plateau extension, Barail Range, and Haflong hill station.",
+                    "Features: Situated between the two valleys (Karbi Anglong and North Cachar Hills). Geologically, it is an extension of the Indian Peninsular Plateau (Meghalaya plateau).",
+                    "Significance: Comprises rugged terrains, the Barail range, and dense tropical forests. It is home to the state hill station, Haflong."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-6",
+                      "Fact": "Karbi Anglong & Dima Hasao, Meghalaya Plateau extension, Barail Range, and Haflong hill station.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Central Hills in Central Hills?",
+                        "Back": "Karbi Anglong & Dima Hasao, Meghalaya Plateau extension, Barail Range, and Haflong hill station.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which statement identifies statement describes a key geographical feature of Central Hills in Central Hills?",
+                        "Options": {
+                          "A": "It is an isolated coral atoll reef structure in the Lakshadweep archipelago.",
+                          "B": "It forms part of the Malabar coastal plains with signature backwater kayals in Kerala.",
+                          "C": "Karbi Anglong & Dima Hasao, Meghalaya Plateau extension, Barail Range, and Haflong hill station.",
+                          "D": "It is a high-altitude glaciated valley situated in the Pir Panjal range of Jammu & Kashmir."
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official ASSAM Syllabus Fact: Karbi Anglong & Dima Hasao, Meghalaya Plateau extension, Barail Range, and Haflong hill station."
+                      }
+                    },
+                    {
+                      "Id": "assam-7",
+                      "Fact": "Features: Situated between the two valleys (Karbi Anglong and North Cachar Hills). Geologically, it is an extension of the Indian Peninsular Plateau (Meghalaya plateau).",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Features in Central Hills?",
+                        "Back": "Situated between the two valleys (Karbi Anglong and North Cachar Hills). Geologically, it is an extension of the Indian Peninsular Plateau (Meghalaya plateau).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which statement identifies statement describes the geographical significance of Features in Central Hills?",
+                        "Options": {
+                          "A": "It is an arid rain-shadow plateau located in the Deccan Peninsular Interior.",
+                          "B": "Situated between the two valleys (Karbi Anglong and North Cachar Hills). Geologically, it is an extension of the Indian Peninsular Plateau (Meghalaya plateau).",
+                          "C": "It represents a coastal saline wetland system along the Rann of Kutch in Gujarat.",
+                          "D": "It forms part of the Malabar coastal plains with signature backwater kayals in Kerala."
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official ASSAM Syllabus Fact: Situated between the two valleys (Karbi Anglong and North Cachar Hills). Geologically, it is an extension of the Indian Peninsular Plateau (Meghalaya plateau)."
+                      }
+                    },
+                    {
+                      "Id": "assam-8",
+                      "Fact": "Significance: Comprises rugged terrains, the Barail range, and dense tropical forests. It is home to the state hill station, Haflong.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Significance in Central Hills?",
+                        "Back": "Comprises rugged terrains, the Barail range, and dense tropical forests. It is home to the state hill station, Haflong.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which statement identifies statement describes the geographical significance of Significance in Central Hills?",
+                        "Options": {
+                          "A": "It forms part of the Malabar coastal plains with signature backwater kayals in Kerala.",
+                          "B": "Comprises rugged terrains, the Barail range, and dense tropical forests. It is home to the state hill station, Haflong.",
+                          "C": "It represents a coastal saline wetland system along the Rann of Kutch in Gujarat.",
+                          "D": "It is a rift valley bounded by the Vindhya and Satpura mountain ranges in Central India."
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official ASSAM Syllabus Fact: Comprises rugged terrains, the Barail range, and dense tropical forests. It is home to the state hill station, Haflong."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Karbi Anglong & Dima Hasa",
+                      "Definition": "Karbi Anglong & Dima Hasao, Meghalaya Plateau extension, Barail Range,..."
+                    },
+                    {
+                      "Term": "Features",
+                      "Definition": "Situated between the two valleys (Karbi Anglong and North Cachar Hills..."
+                    },
+                    {
+                      "Term": "Significance",
+                      "Definition": "Comprises rugged terrains, the Barail range, and dense tropical forest..."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive SVG/CSS concept breakdown for Central Hills in Central Hills."
                 }
               ]
             },
@@ -45,16 +312,186 @@
                 {
                   "SectionName": "North Bank Tributaries (Barak)",
                   "Facts": [
-                    "Cachar, Hailakandi, Karimganj, tea gardens, Son Beel wetland.[cite: 1]",
-                    "Tributaries (East to West): Jiri, Chiri, Madhura, Jatinga, and Larang.[cite: 1]"
-                  ]
+                    "Cachar, Hailakandi, Karimganj, tea gardens, Son Beel wetland.",
+                    "Tributaries (East to West): Jiri, Chiri, Madhura, Jatinga, and Larang."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-9",
+                      "Fact": "Cachar, Hailakandi, Karimganj, tea gardens, Son Beel wetland.",
+                      "Flashcard": {
+                        "Front": "What are the key wildlife sanctuaries and wetland sites in Barak Valley?",
+                        "Back": "Jiri, Chiri, Madhura, Jatinga, and Larang.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "What is the correct East-to-West sequence of North Bank tributaries of the Barak River?",
+                        "Options": {
+                          "A": "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari",
+                          "B": "Burhi Dihing, Dikhou, Kopili, Kulsi",
+                          "C": "Subansiri, Jia Bharali, Manas, Sankosh",
+                          "D": "Jiri, Chiri, Madhura, Jatinga, Larang"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Cachar, Hailakandi, Karimganj, tea gardens, Son Beel wetland."
+                      }
+                    },
+                    {
+                      "Id": "assam-10",
+                      "Fact": "Tributaries (East to West): Jiri, Chiri, Madhura, Jatinga, and Larang.",
+                      "Flashcard": {
+                        "Front": "Which north-bank tributaries feed into the river system in Barak Valley?",
+                        "Back": "Jatinga River.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which North Bank tributary of the Barak River flows through the Jatinga valley in Dima Hasao?",
+                        "Options": {
+                          "A": "Jiri River",
+                          "B": "Jatinga River",
+                          "C": "Madhura River",
+                          "D": "Sonai River"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Jiri, Chiri, Madhura, Jatinga, and Larang."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Jatinga River",
+                      "Definition": "Flows through Dima Hasao into Barak."
+                    },
+                    {
+                      "Term": "Jiri River",
+                      "Definition": "Manipur-Assam boundary river."
+                    },
+                    {
+                      "Term": "Barak NB Sequence",
+                      "Definition": "Jiri, Chiri, Madhura, Jatinga, Larang."
+                    },
+                    {
+                      "Term": "Madhura River",
+                      "Definition": "North bank tributary in Cachar."
+                    },
+                    {
+                      "Term": "Larang River",
+                      "Definition": "Westernmost north bank tributary."
+                    },
+                    {
+                      "Term": "Source Mountain",
+                      "Definition": "Barail Range."
+                    },
+                    {
+                      "Term": "Chiri River",
+                      "Definition": "Tributary between Jiri and Madhura."
+                    },
+                    {
+                      "Term": "Barkhola Confluence",
+                      "Definition": "Jatinga river confluence."
+                    },
+                    {
+                      "Term": "Flow Direction",
+                      "Definition": "North-to-South."
+                    },
+                    {
+                      "Term": "Barak NB Count",
+                      "Definition": "5 main tributaries."
+                    }
+                  ],
+                  "VisualisationIdea": "Top-Down CSS Tree Diagram merging into a thick horizontal central line (the Brahmaputra)."
                 },
                 {
                   "SectionName": "South Bank Tributaries (Barak)",
                   "Facts": [
-                    "Cachar, Hailakandi, Karimganj, tea gardens, Son Beel wetland.[cite: 1]",
-                    "Tributaries (East to West): Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, and Longai.[cite: 1]"
-                  ]
+                    "Cachar, Hailakandi, Karimganj, tea gardens, Son Beel wetland.",
+                    "Tributaries (East to West): Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, and Longai."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-11",
+                      "Fact": "Cachar, Hailakandi, Karimganj, tea gardens, Son Beel wetland.",
+                      "Flashcard": {
+                        "Front": "What are the key wildlife sanctuaries and wetland sites in Barak Valley?",
+                        "Back": "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, and Longai.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "What is the correct East-to-West sequence of South Bank tributaries of the Barak River?",
+                        "Options": {
+                          "A": "Burhi Dihing, Disang, Dikhou, Bhogdoi",
+                          "B": "Jiri, Chiri, Madhura, Jatinga, Larang",
+                          "C": "Subansiri, Manas, Sankosh, Raidak",
+                          "D": "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, Longai"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Cachar, Hailakandi, Karimganj, tea gardens, Son Beel wetland."
+                      }
+                    },
+                    {
+                      "Id": "assam-12",
+                      "Fact": "Tributaries (East to West): Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, and Longai.",
+                      "Flashcard": {
+                        "Front": "Which south-bank tributaries feed into the river system in Barak Valley?",
+                        "Back": "Dhaleshwari (Tlawng) / Katakhal.",
+                        "Image": "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which South Bank river flows from Mizoram through Hailakandi district to join the Barak River?",
+                        "Options": {
+                          "A": "Sonai",
+                          "B": "Jiri",
+                          "C": "Jatinga",
+                          "D": "Dhaleshwari (Katakhal)"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, and Longai."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Sonai River",
+                      "Definition": "Easternmost south bank tributary of Barak."
+                    },
+                    {
+                      "Term": "Dhaleshwari / Tlawng",
+                      "Definition": "Mizoram river entering Hailakandi."
+                    },
+                    {
+                      "Term": "Longai River",
+                      "Definition": "Karimganj south bank river."
+                    },
+                    {
+                      "Term": "Barak SB Sequence",
+                      "Definition": "Sonai, Rukni, Ghagra, Katakhal, Dhaleshwari, Longai."
+                    },
+                    {
+                      "Term": "Katakhal River",
+                      "Definition": "Distributary channel in Hailakandi."
+                    },
+                    {
+                      "Term": "Source Hills",
+                      "Definition": "Mizoram & Tripura Hills."
+                    },
+                    {
+                      "Term": "Son Beel Feeder",
+                      "Definition": "Singla & Longai rivers."
+                    },
+                    {
+                      "Term": "Flow Direction",
+                      "Definition": "South-to-North."
+                    },
+                    {
+                      "Term": "Barak Split",
+                      "Definition": "Surma and Kushiyara."
+                    },
+                    {
+                      "Term": "Cachar SB Rivers",
+                      "Definition": "Sonai, Rukni, Ghagra."
+                    }
+                  ],
+                  "VisualisationIdea": "Bottom-Up CSS Tree Diagram merging into a thick horizontal central line."
                 }
               ]
             },
@@ -64,40 +501,470 @@
                 {
                   "SectionName": "Ecological Frameworks Overview",
                   "Facts": [
-                    "Biodiversity Hotspots, WNHS (1985), Biosphere Reserves, 7 National Parks + Sikhna Jwhwlao NP (2025), Wildlife Sanctuaries, Bird Sanctuaries, and Deepor Beel Ramsar Site.[cite: 1]"
-                  ]
+                    "Biodiversity Hotspots, WNHS (1985), Biosphere Reserves, 7 National Parks + Sikhna Jwhwlao NP (2025), Wildlife Sanctuaries, Bird Sanctuaries, and Deepor Beel Ramsar Site."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-13",
+                      "Fact": "Biodiversity Hotspots, WNHS (1985), Biosphere Reserves, 7 National Parks + Sikhna Jwhwlao NP (2025), Wildlife Sanctuaries, Bird Sanctuaries, and Deepor Beel Ramsar Site.",
+                      "Flashcard": {
+                        "Front": "What are the major declared National Parks located in Ecology?",
+                        "Back": "Eastern Himalayas and Indo-Burma Hotspots.",
+                        "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which two global Biodiversity Hotspots overlap across Assam?",
+                        "Options": {
+                          "A": "Western Ghats and Sundaland",
+                          "B": "Eastern Himalayas and Indo-Burma",
+                          "C": "Himalayas and Western Ghats",
+                          "D": "Indo-Burma and Sundaland"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Biodiversity Hotspots, WNHS (1985), Biosphere Reserves, 7 National Parks + Sikhna Jwhwlao NP (2025), Wildlife Sanctuaries, Bird Sanctuaries, and Deepor Beel Ramsar Site."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Assam Hotspots",
+                      "Definition": "Eastern Himalayas and Indo-Burma."
+                    },
+                    {
+                      "Term": "1985 WNHS Sites",
+                      "Definition": "Kaziranga NP and Manas Sanctuary."
+                    },
+                    {
+                      "Term": "Assam Ramsar Site",
+                      "Definition": "Deepor Beel near Guwahati."
+                    },
+                    {
+                      "Term": "Biggest WS in Assam",
+                      "Definition": "Marat Longri WS."
+                    },
+                    {
+                      "Term": "Oldest/Smallest WS",
+                      "Definition": "Garampani WS."
+                    },
+                    {
+                      "Term": "Earthquake Lake",
+                      "Definition": "Chandubi Beel in Kamrup."
+                    },
+                    {
+                      "Term": "2025 Proposed NP",
+                      "Definition": "Sikhna Jwhwlao NP."
+                    },
+                    {
+                      "Term": "Largest Assam Wetland",
+                      "Definition": "Son Beel in Karimganj."
+                    },
+                    {
+                      "Term": "Assam Biosphere Reserves",
+                      "Definition": "Manas BR and Dibru-Saikhowa BR."
+                    },
+                    {
+                      "Term": "Declared National Parks",
+                      "Definition": "7 National Parks."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive SVG/CSS concept breakdown for Ecological Frameworks Overview in Ecology."
                 },
                 {
                   "SectionName": "Biodiversity Hotspots (BH)",
                   "Facts": [
-                    "Assam falls within two distinct global hotspots: the Eastern Himalayas and the Indo-Burma hotspot.[cite: 1]"
-                  ]
+                    "Assam falls within two distinct global hotspots: the Eastern Himalayas and the Indo-Burma hotspot."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-14",
+                      "Fact": "Assam falls within two distinct global hotspots: the Eastern Himalayas and the Indo-Burma hotspot.",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Ecology?",
+                        "Back": "Eastern Himalayas and Indo-Burma Hotspots.",
+                        "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which two global Biodiversity Hotspots overlap across the state of Assam?",
+                        "Options": {
+                          "A": "Himalayas and Western Ghats",
+                          "B": "Indo-Burma and Sundaland",
+                          "C": "Western Ghats and Sundaland",
+                          "D": "Eastern Himalayas and Indo-Burma"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: the Eastern Himalayas and the Indo-Burma hotspot."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Eastern Himalayas Hotspot",
+                      "Definition": "Foothill duars & northern Assam."
+                    },
+                    {
+                      "Term": "Indo-Burma Hotspot",
+                      "Definition": "Patkai, Karbi Hills & Upper Assam."
+                    },
+                    {
+                      "Term": "Endemic Primate",
+                      "Definition": "Golden Langur & Hoolock Gibbon."
+                    },
+                    {
+                      "Term": "Global Hotspots Count",
+                      "Definition": "36 Worldwide (4 in India)."
+                    },
+                    {
+                      "Term": "Hotspot Endemic Criteria",
+                      "Definition": "Min 1,500 endemic vascular plants."
+                    },
+                    {
+                      "Term": "Habitat Loss Criteria",
+                      "Definition": "Lost 70%+ of primary vegetation."
+                    },
+                    {
+                      "Term": "Assam Avian Diversity",
+                      "Definition": "Over 50% of India bird species."
+                    },
+                    {
+                      "Term": "Biogeographical Role",
+                      "Definition": "Junction of Indian & Indo-Chinese realms."
+                    },
+                    {
+                      "Term": "Ecological Bridge",
+                      "Definition": "Brahmaputra Floodplain."
+                    },
+                    {
+                      "Term": "Hotspot Overlap",
+                      "Definition": "Eastern Himalayas & Indo-Burma."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive SVG/CSS concept breakdown for Biodiversity Hotspots (BH) in Ecology."
                 },
                 {
                   "SectionName": "World Natural Heritage Sites (WNHS)",
                   "Facts": [
-                    "Kaziranga National Park (1985) and Manas Wildlife Sanctuary (1985).[cite: 1]"
-                  ]
+                    "Kaziranga National Park (1985) and Manas Wildlife Sanctuary (1985)."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-15",
+                      "Fact": "Kaziranga National Park (1985) and Manas Wildlife Sanctuary (1985).",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of World Natural Heritage Sites (WNHS) in Ecology?",
+                        "Back": "Kaziranga National Park and Manas Wildlife Sanctuary.",
+                        "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "In which year were Kaziranga National Park and Manas Wildlife Sanctuary officially inscribed as UNESCO World Natural Heritage Sites?",
+                        "Options": {
+                          "A": "2000",
+                          "B": "1974",
+                          "C": "1992",
+                          "D": "1985"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Kaziranga National Park (1985) and Manas Wildlife Sanctuary (1985)."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Kaziranga WNHS Inscription",
+                      "Definition": "1985 (1-horned rhino & tiger refuge)."
+                    },
+                    {
+                      "Term": "Manas WNHS Inscription",
+                      "Definition": "1985 (Pygmy hog & golden langur)."
+                    },
+                    {
+                      "Term": "Transboundary WNHS Partner",
+                      "Definition": "Royal Manas National Park (Bhutan)."
+                    },
+                    {
+                      "Term": "2024 Cultural WNHS",
+                      "Definition": "Charaideo Moidams."
+                    },
+                    {
+                      "Term": "Kaziranga Northern Border",
+                      "Definition": "Brahmaputra River."
+                    },
+                    {
+                      "Term": "Manas Main River",
+                      "Definition": "Manas and Beki rivers."
+                    },
+                    {
+                      "Term": "Kaziranga Rhino Fraction",
+                      "Definition": "Two-thirds of world population."
+                    },
+                    {
+                      "Term": "UNESCO Natural Sites Count",
+                      "Definition": "2 Natural Heritage Sites in Assam."
+                    },
+                    {
+                      "Term": "Manas Endemic Primate",
+                      "Definition": "Golden Langur."
+                    },
+                    {
+                      "Term": "Kaziranga Landscape",
+                      "Definition": "Tall elephant grass & riverine swamps."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive SVG/CSS concept breakdown for World Natural Heritage Sites (WNHS) in Ecology."
                 },
                 {
                   "SectionName": "Biosphere Reserves (BR)",
                   "Facts": [
-                    "Manas Biosphere Reserve (foothills) and Dibru-Saikhowa Biosphere Reserve (765 sq. km).[cite: 1]"
-                  ]
+                    "Manas Biosphere Reserve (foothills) and Dibru-Saikhowa Biosphere Reserve (765 sq. km)."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-16",
+                      "Fact": "Manas Biosphere Reserve (foothills) and Dibru-Saikhowa Biosphere Reserve (765 sq. km).",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Ecology?",
+                        "Back": "Manas Biosphere Reserve (foothills) and Dibru-Saikhowa Biosphere Reserve (765 sq. km).",
+                        "Image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which two Biosphere Reserves are situated in Assam?",
+                        "Options": {
+                          "A": "Manas BR and Dibru-Saikhowa BR",
+                          "B": "Khangchendzonga BR and Nilgiri BR",
+                          "C": "Nokrek BR and Dehang-Debang BR",
+                          "D": "Sunderbans BR and Similipal BR"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Manas Biosphere Reserve (foothills) and Dibru-Saikhowa Biosphere Reserve (765 sq. km)."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Manas BR Notification",
+                      "Definition": "1989 (2,837 sq. km)."
+                    },
+                    {
+                      "Term": "Dibru-Saikhowa BR Notification",
+                      "Definition": "1997 (765 sq. km)."
+                    },
+                    {
+                      "Term": "Dibru-Saikhowa Fauna",
+                      "Definition": "Feral horses & White-winged wood duck."
+                    },
+                    {
+                      "Term": "BR Zonation Schema",
+                      "Definition": "Core, Buffer, Transition zones."
+                    },
+                    {
+                      "Term": "Dibru-Saikhowa Rivers",
+                      "Definition": "Brahmaputra, Lohit, Dibru."
+                    },
+                    {
+                      "Term": "UNESCO BR Programme",
+                      "Definition": "Man and the Biosphere (MAB)."
+                    },
+                    {
+                      "Term": "Assam BR Count",
+                      "Definition": "2 Biosphere Reserves."
+                    },
+                    {
+                      "Term": "Dibru-Saikhowa Vegetation",
+                      "Definition": "Salix swamp forests & grasslands."
+                    },
+                    {
+                      "Term": "Core Zone Function",
+                      "Definition": "Strict, legally protected wilderness area."
+                    },
+                    {
+                      "Term": "Buffer Zone Function",
+                      "Definition": "Controlled research, education & eco-tourism."
+                    }
+                  ],
+                  "VisualisationIdea": "Two distinct CSS rounded floating containers (Manas and Dibru-Saikhowa) with a subtle riverine background texture."
                 },
                 {
                   "SectionName": "7 Declared National Parks (NP)",
                   "Facts": [
-                    "Kaziranga NP (1974), Manas NP (1990), Nameri NP (1998), Dibru-Saikhowa NP (1999), Orang NP (1999), Dehing Patkai NP (2021), Raimona NP (2021), plus Sikhna Jwhwlao NP (2025).[cite: 1]"
-                  ]
+                    "Kaziranga NP (1974), Manas NP (1990), Nameri NP (1998), Dibru-Saikhowa NP (1999), Orang NP (1999), Dehing Patkai NP (2021), Raimona NP (2021), plus Sikhna Jwhwlao NP (2025)."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-17",
+                      "Fact": "Kaziranga NP (1974), Manas NP (1990), Nameri NP (1998), Dibru-Saikhowa NP (1999), Orang NP (1999), Dehing Patkai NP (2021), Raimona NP (2021), plus Sikhna Jwhwlao NP (2025).",
+                      "Flashcard": {
+                        "Front": "What are the major declared National Parks located in Ecology?",
+                        "Back": "Kaziranga NP (1974), Manas NP (1990), Nameri NP (1998), Dibru-Saikhowa NP (1999), Orang NP (1999), Dehing Patkai NP (2021), Raimona NP (2021).",
+                        "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which is the oldest declared National Park in Assam (declared in 1974)?",
+                        "Options": {
+                          "A": "Orang NP",
+                          "B": "Manas NP",
+                          "C": "Nameri NP",
+                          "D": "Kaziranga NP"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Kaziranga NP (1974), Manas NP (1990), Nameri NP (1998), Dibru-Saikhowa NP (1999), Orang NP (1999), Dehing Patkai NP (2021), Raimona NP (2021), plus Sikhna Jwhwlao NP (2025)."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Kaziranga NP",
+                      "Definition": "1974 (Oldest NP in Assam)."
+                    },
+                    {
+                      "Term": "Manas NP",
+                      "Definition": "1990."
+                    },
+                    {
+                      "Term": "Nameri NP",
+                      "Definition": "1998 (Golden Mahseer habitat)."
+                    },
+                    {
+                      "Term": "Dibru-Saikhowa NP",
+                      "Definition": "1999."
+                    },
+                    {
+                      "Term": "Orang NP",
+                      "Definition": "1999 (Mini Kaziranga)."
+                    },
+                    {
+                      "Term": "Dehing Patkai NP",
+                      "Definition": "2021 (Amazon of the East)."
+                    },
+                    {
+                      "Term": "Raimona NP",
+                      "Definition": "2021 (Golden Langur in Kokrajhar)."
+                    },
+                    {
+                      "Term": "Sikhna Jwhwlao NP",
+                      "Definition": "2025 (Newest addition in BTR)."
+                    },
+                    {
+                      "Term": "Smallest NP",
+                      "Definition": "Orang NP (78.8 sq. km)."
+                    },
+                    {
+                      "Term": "Rainforest NP",
+                      "Definition": "Dehing Patkai NP."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive SVG/CSS concept breakdown for 7 Declared National Parks (NP) in Ecology."
                 },
                 {
                   "SectionName": "Sanctuaries & Wetlands",
                   "Facts": [
-                    "Key Wildlife Sanctuaries: Pobitora WS (Morigaon, highest density of one-horned rhino), Hollongapar Gibbon Sanctuary (Jorhat, India only ape - Hoolock Gibbon), Bornadi WS (Udalguri/Baksa, hispid hare & pygmy hog), Chakrashila WS (Dhubri/Kokrajhar, golden langur), Deepor Beel WS (Kamrup Metro, major Ramsar wetland site for water birds).[cite: 1]",
-                    "Complete List of Sanctuaries in Assam: Amchang WS (Kamrup Metro), Borail WS (Cachar & Dima Hasao), Bherjan-Borajan-Padumoni WS (Tinsukia), Bura-Chapori WS (Sonitpur), East Karbi Anglong WS (Karbi Anglong), Garampani WS (Karbi Anglong, oldest & smallest), Laokhowa WS (Nagaon), Marat Longri WS (Karbi Anglong, biggest), Nambor WS (Karbi Anglong), Nambor-Doigrung WS (Golaghat), Pani Dihing WS (Sibsagar), Sonai Rupai WS (Sonitpur).[cite: 1]",
-                    "Wetland Marvels: Son Beel (Karimganj, largest wetland in Assam), Chandubi Beel (Kamrup, natural earthquake lake).[cite: 1]"
-                  ]
+                    "Key Wildlife Sanctuaries: Pobitora WS (Morigaon, highest density of one-horned rhino), Hollongapar Gibbon Sanctuary (Jorhat, India only ape - Hoolock Gibbon), Bornadi WS (Udalguri/Baksa, hispid hare & pygmy hog), Chakrashila WS (Dhubri/Kokrajhar, golden langur), Deepor Beel WS (Kamrup Metro, major Ramsar wetland site for water birds).",
+                    "Complete List of Sanctuaries in Assam: Amchang WS (Kamrup Metro), Borail WS (Cachar & Dima Hasao), Bherjan-Borajan-Padumoni WS (Tinsukia), Bura-Chapori WS (Sonitpur), East Karbi Anglong WS (Karbi Anglong), Garampani WS (Karbi Anglong, oldest & smallest), Laokhowa WS (Nagaon), Marat Longri WS (Karbi Anglong, biggest), Nambor WS (Karbi Anglong), Nambor-Doigrung WS (Golaghat), Pani Dihing WS (Sibsagar), Sonai Rupai WS (Sonitpur).",
+                    "Wetland Marvels: Son Beel (Karimganj, largest wetland in Assam), Chandubi Beel (Kamrup, natural earthquake lake)."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-18",
+                      "Fact": "Key Wildlife Sanctuaries: Pobitora WS (Morigaon, highest density of one-horned rhino), Hollongapar Gibbon Sanctuary (Jorhat, India only ape - Hoolock Gibbon), Bornadi WS (Udalguri/Baksa, hispid hare & pygmy hog), Chakrashila WS (Dhubri/Kokrajhar, golden langur), Deepor Beel WS (Kamrup Metro, major Ramsar wetland site for water birds).",
+                      "Flashcard": {
+                        "Front": "What are the key wildlife sanctuaries and wetland sites in Ecology?",
+                        "Back": "Pobitora Wildlife Sanctuary.",
+                        "Image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which Wildlife Sanctuary in Morigaon district is known for having the world highest density of Indian one-horned rhinoceroses?",
+                        "Options": {
+                          "A": "Bornadi Wildlife Sanctuary",
+                          "B": "Amchang Wildlife Sanctuary",
+                          "C": "Pobitora Wildlife Sanctuary",
+                          "D": "Hollongapar Gibbon Sanctuary"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Pobitora WS (Morigaon, highest density of one-horned rhino), Hollongapar Gibbon Sanctuary (Jorhat, India only ape - Hoolock Gibbon), Bornadi WS (Udalguri/Baksa, hispid hare & pygmy hog), Chakrashila WS (Dhubri/Kokrajhar, golden langur), Deepor Beel WS (Kamrup Metro, major Ramsar wetland site for water birds)."
+                      }
+                    },
+                    {
+                      "Id": "assam-19",
+                      "Fact": "Complete List of Sanctuaries in Assam: Amchang WS (Kamrup Metro), Borail WS (Cachar & Dima Hasao), Bherjan-Borajan-Padumoni WS (Tinsukia), Bura-Chapori WS (Sonitpur), East Karbi Anglong WS (Karbi Anglong), Garampani WS (Karbi Anglong, oldest & smallest), Laokhowa WS (Nagaon), Marat Longri WS (Karbi Anglong, biggest), Nambor WS (Karbi Anglong), Nambor-Doigrung WS (Golaghat), Pani Dihing WS (Sibsagar), Sonai Rupai WS (Sonitpur).",
+                      "Flashcard": {
+                        "Front": "What are the key wildlife sanctuaries and wetland sites in Ecology?",
+                        "Back": "Hollongapar Gibbon Sanctuary.",
+                        "Image": "https://images.unsplash.com/photo-1540573133985-778788170485?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which sanctuary in Jorhat district protects India only wild ape species, the Hoolock Gibbon?",
+                        "Options": {
+                          "A": "Chakrashila Wildlife Sanctuary",
+                          "B": "Nambor Wildlife Sanctuary",
+                          "C": "Hollongapar Gibbon Sanctuary",
+                          "D": "Garampani Wildlife Sanctuary"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Amchang WS (Kamrup Metro), Borail WS (Cachar & Dima Hasao), Bherjan-Borajan-Padumoni WS (Tinsukia), Bura-Chapori WS (Sonitpur), East Karbi Anglong WS (Karbi Anglong), Garampani WS (Karbi Anglong, oldest & smallest), Laokhowa WS (Nagaon), Marat Longri WS (Karbi Anglong, biggest), Nambor WS (Karbi Anglong), Nambor-Doigrung WS (Golaghat), Pani Dihing WS (Sibsagar), Sonai Rupai WS (Sonitpur)."
+                      }
+                    },
+                    {
+                      "Id": "assam-20",
+                      "Fact": "Wetland Marvels: Son Beel (Karimganj, largest wetland in Assam), Chandubi Beel (Kamrup, natural earthquake lake).",
+                      "Flashcard": {
+                        "Front": "What are the key wildlife sanctuaries and wetland sites in Ecology?",
+                        "Back": "Bornadi Wildlife Sanctuary.",
+                        "Image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which sanctuary in Dhubri and Kokrajhar districts is famous as a secure habitat for the endangered Golden Langur?",
+                        "Options": {
+                          "A": "Chakrashila Wildlife Sanctuary",
+                          "B": "Pobitora Wildlife Sanctuary",
+                          "C": "Bura-Chapori Wildlife Sanctuary",
+                          "D": "Sonai Rupai Wildlife Sanctuary"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Son Beel (Karimganj, largest wetland in Assam), Chandubi Beel (Kamrup, natural earthquake lake)."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Pobitora WS",
+                      "Definition": "Morigaon; highest density of one-horned rhino."
+                    },
+                    {
+                      "Term": "Hollongapar Gibbon WS",
+                      "Definition": "Jorhat; India only ape (Hoolock Gibbon)."
+                    },
+                    {
+                      "Term": "Bornadi WS",
+                      "Definition": "Udalguri/Baksa; hispid hare & pygmy hog."
+                    },
+                    {
+                      "Term": "Chakrashila WS",
+                      "Definition": "Dhubri/Kokrajhar; golden langur."
+                    },
+                    {
+                      "Term": "Deepor Beel WS",
+                      "Definition": "Kamrup Metro; Ramsar site for water birds."
+                    },
+                    {
+                      "Term": "Amchang WS",
+                      "Definition": "Kamrup Metro near Guwahati."
+                    },
+                    {
+                      "Term": "Borail WS",
+                      "Definition": "Cachar & Dima Hasao."
+                    },
+                    {
+                      "Term": "Marat Longri WS",
+                      "Definition": "Karbi Anglong; biggest WS in Assam."
+                    },
+                    {
+                      "Term": "Garampani WS",
+                      "Definition": "Karbi Anglong; oldest & smallest WS."
+                    },
+                    {
+                      "Term": "Laokhowa / Bura-Chapori WS",
+                      "Definition": "Nagaon & Sonitpur buffer zone."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive SVG/CSS concept breakdown for Sanctuaries & Wetlands in Ecology."
                 }
               ]
             },
@@ -107,10 +974,115 @@
                 {
                   "SectionName": "Mega-fauna Project Reserves",
                   "Facts": [
-                    "Project Tiger (4 Reserves) and Project Elephant (5 Reserves).[cite: 1]",
-                    "Project Tiger (TR, 1973): Assam has 4 Tiger Reserves: Manas TR, Nameri TR, Kaziranga TR, and Orang TR.[cite: 1]",
-                    "Project Elephant (ER, 1992): Assam has 5 Elephant Reserves: Kaziranga-Karbi Anglong ER (largest at 3,270 sq. km), Dhansiri-Lungding ER, Chirang-Ripu ER, Sonitpur ER, and Dihing Patkai ER.[cite: 1]"
-                  ]
+                    "Project Tiger (4 Reserves) and Project Elephant (5 Reserves).",
+                    "Project Tiger (TR, 1973): Assam has 4 Tiger Reserves: Manas TR, Nameri TR, Kaziranga TR, and Orang TR.",
+                    "Project Elephant (ER, 1992): Assam has 5 Elephant Reserves: Kaziranga-Karbi Anglong ER (largest at 3,270 sq. km), Dhansiri-Lungding ER, Chirang-Ripu ER, Sonitpur ER, and Dihing Patkai ER."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-21",
+                      "Fact": "Project Tiger (4 Reserves) and Project Elephant (5 Reserves).",
+                      "Flashcard": {
+                        "Front": "What are the designated mega-fauna project reserves in Wildlife Reserves?",
+                        "Back": "Project Tiger (4 Reserves) and Project Elephant (5 Reserves).",
+                        "Image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "What comprises the Mega-fauna Project Reserves of Assam?",
+                        "Options": {
+                          "A": "Project Snow Leopard and Project Dolphin",
+                          "B": "Project Tiger (4 Reserves) and Project Elephant (5 Reserves)",
+                          "C": "Project Lion and Project Cheetah",
+                          "D": "Project Rhino and Project Great Indian Bustard"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Project Tiger (4 Reserves) and Project Elephant (5 Reserves)."
+                      }
+                    },
+                    {
+                      "Id": "assam-22",
+                      "Fact": "Project Tiger (TR, 1973): Assam has 4 Tiger Reserves: Manas TR, Nameri TR, Kaziranga TR, and Orang TR.",
+                      "Flashcard": {
+                        "Front": "What are the designated mega-fauna project reserves in Wildlife Reserves?",
+                        "Back": "1973.",
+                        "Image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "How many Tiger Reserves (governed under Project Tiger 1973) are located in Assam?",
+                        "Options": {
+                          "A": "4",
+                          "B": "5",
+                          "C": "7",
+                          "D": "3"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Assam has 4 Tiger Reserves"
+                      }
+                    },
+                    {
+                      "Id": "assam-23",
+                      "Fact": "Project Elephant (ER, 1992): Assam has 5 Elephant Reserves: Kaziranga-Karbi Anglong ER (largest at 3,270 sq. km), Dhansiri-Lungding ER, Chirang-Ripu ER, Sonitpur ER, and Dihing Patkai ER.",
+                      "Flashcard": {
+                        "Front": "What are the designated mega-fauna project reserves in Wildlife Reserves?",
+                        "Back": "4 Tiger Reserves (Manas, Nameri, Kaziranga, Orang).",
+                        "Image": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which is the largest Elephant Reserve in Assam by total area (3,270 sq. km)?",
+                        "Options": {
+                          "A": "Sonitpur ER",
+                          "B": "Dhansiri-Lungding ER",
+                          "C": "Kaziranga-Karbi Anglong ER",
+                          "D": "Chirang-Ripu ER"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Assam has 5 Elephant Reserves"
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Mega-fauna Project Reserves Definition",
+                      "Definition": "Project Tiger (4 Reserves) and Project Elephant (5 Reserves)."
+                    },
+                    {
+                      "Term": "Project Tiger Launch",
+                      "Definition": "1973."
+                    },
+                    {
+                      "Term": "Assam Tiger Reserves Count",
+                      "Definition": "4 Tiger Reserves."
+                    },
+                    {
+                      "Term": "Project Elephant Launch",
+                      "Definition": "1992."
+                    },
+                    {
+                      "Term": "Assam Elephant Reserves Count",
+                      "Definition": "5 Elephant Reserves."
+                    },
+                    {
+                      "Term": "Largest Elephant Reserve",
+                      "Definition": "Kaziranga-Karbi Anglong ER (3,270 sq. km)."
+                    },
+                    {
+                      "Term": "Assam Tiger Reserves List",
+                      "Definition": "Manas, Nameri, Kaziranga, Orang."
+                    },
+                    {
+                      "Term": "Chirang-Ripu ER",
+                      "Definition": "BTR Elephant Reserve."
+                    },
+                    {
+                      "Term": "Dhansiri-Lungding ER",
+                      "Definition": "Central Assam Elephant Reserve."
+                    },
+                    {
+                      "Term": "Dihing Patkai ER",
+                      "Definition": "Upper Assam Rainforest Elephant Reserve."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive SVG/CSS concept breakdown for Mega-fauna Project Reserves in Wildlife Reserves."
                 }
               ]
             },
@@ -120,27 +1092,294 @@
                 {
                   "SectionName": "National Highways (NH)",
                   "Facts": [
-                    "Assam acts as the transit hub for Northeast India with an extensive network of National Highways connecting all Seven Sister states.[cite: 1]",
-                    "Key Highways: NH-27 (formerly NH-37) is the lifeline corridor traversing Assam east-west from Srirampur to Silchar/Sadiya.[cite: 1]",
-                    "Connectivity: Bridges like Bhupen Hazarika Setu (Dhola-Sadiya) and Bogibeel Bridge connect crucial NH networks across the Brahmaputra River.[cite: 1]"
-                  ]
+                    "Assam acts as the transit hub for Northeast India with an extensive network of National Highways connecting all Seven Sister states.",
+                    "Key Highways: NH-27 (formerly NH-37) is the lifeline corridor traversing Assam east-west from Srirampur to Silchar/Sadiya.",
+                    "Connectivity: Bridges like Bhupen Hazarika Setu (Dhola-Sadiya) and Bogibeel Bridge connect crucial NH networks across the Brahmaputra River."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-24",
+                      "Fact": "Assam acts as the transit hub for Northeast India with an extensive network of National Highways connecting all Seven Sister states.",
+                      "Flashcard": {
+                        "Front": "What are the primary transport corridors and waterways in Transport?",
+                        "Back": "NH-27 (formerly NH-37).",
+                        "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which bridge is the longest water bridge in India, located in Assam?",
+                        "Options": {
+                          "A": "Saraighat Bridge",
+                          "B": "Kalia Bhomora Setu",
+                          "C": "Bogibeel Bridge",
+                          "D": "Bhupen Hazarika Setu (Dhola-Sadiya Bridge)"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Assam acts as the transit hub for Northeast India with an extensive network of National Highways connecting all Seven Sister states."
+                      }
+                    },
+                    {
+                      "Id": "assam-25",
+                      "Fact": "Key Highways: NH-27 (formerly NH-37) is the lifeline corridor traversing Assam east-west from Srirampur to Silchar/Sadiya.",
+                      "Flashcard": {
+                        "Front": "What are the primary transport corridors and waterways in Transport?",
+                        "Back": "Bhupen Hazarika Setu (Dhola-Sadiya Bridge).",
+                        "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which NH runs along the North Bank of the Brahmaputra River in Assam?",
+                        "Options": {
+                          "A": "NH-15",
+                          "B": "NH-27",
+                          "C": "NH-17",
+                          "D": "NH-2"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: NH-27 (formerly NH-37) is the lifeline corridor traversing Assam east-west from Srirampur to Silchar/Sadiya."
+                      }
+                    },
+                    {
+                      "Id": "assam-26",
+                      "Fact": "Connectivity: Bridges like Bhupen Hazarika Setu (Dhola-Sadiya) and Bogibeel Bridge connect crucial NH networks across the Brahmaputra River.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Connectivity in Transport?",
+                        "Back": "NH-15.",
+                        "Image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which Setu connects Tezpur on the North Bank to Nagaon on the South Bank?",
+                        "Options": {
+                          "A": "Bhupen Hazarika Setu",
+                          "B": "Kalia Bhomora Setu",
+                          "C": "Naranarayan Setu",
+                          "D": "Saraighat Setu"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Bridges like Bhupen Hazarika Setu (Dhola-Sadiya) and Bogibeel Bridge connect crucial NH networks across the Brahmaputra River."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "NH-27",
+                      "Definition": "East-west lifeline highway of Assam connecting Srirampur to Sadiya."
+                    },
+                    {
+                      "Term": "Dhola-Sadiya Bridge",
+                      "Definition": "Bhupen Hazarika Setu, connecting NH networks across Lohit River."
+                    },
+                    {
+                      "Term": "NH-15",
+                      "Definition": "Runs along the North Bank of Brahmaputra River."
+                    },
+                    {
+                      "Term": "Kalia Bhomora Setu",
+                      "Definition": "Connects Tezpur to Nagaon on NH-715."
+                    },
+                    {
+                      "Term": "Srirampur",
+                      "Definition": "Western gateway entry node for NH-27 on Bengal border."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive roadmap highlighting key national highways (NH-27) across Assam."
                 },
                 {
                   "SectionName": "Railways",
                   "Facts": [
-                    "Administered by the Northeast Frontier Railway (NFR) zone headquartered in Maligaon, Guwahati.[cite: 1]",
-                    "Network: Extensive broad gauge railway tracks connect Upper Assam to Lower Assam and the rest of mainland India via the Siliguri Corridor.[cite: 1]",
-                    "Landmark Projects: Bogibeel Bridge is the longest rail-cum-road bridge in India, providing seamless connectivity between north and south banks.[cite: 1]"
-                  ]
+                    "Administered by the Northeast Frontier Railway (NFR) zone headquartered in Maligaon, Guwahati.",
+                    "Network: Extensive broad gauge railway tracks connect Upper Assam to Lower Assam and the rest of mainland India via the Siliguri Corridor.",
+                    "Landmark Projects: Bogibeel Bridge is the longest rail-cum-road bridge in India, providing seamless connectivity between north and south banks."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-27",
+                      "Fact": "Administered by the Northeast Frontier Railway (NFR) zone headquartered in Maligaon, Guwahati.",
+                      "Flashcard": {
+                        "Front": "What are the primary transport corridors and waterways in Transport?",
+                        "Back": "Northeast Frontier Railway (NFR) zone.",
+                        "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Where is the headquarters of the Northeast Frontier Railway (NFR) located?",
+                        "Options": {
+                          "A": "Tinsukia",
+                          "B": "Maligaon (Guwahati)",
+                          "C": "Siliguri",
+                          "D": "Lumding"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Administered by the Northeast Frontier Railway (NFR) zone headquartered in Maligaon, Guwahati."
+                      }
+                    },
+                    {
+                      "Id": "assam-28",
+                      "Fact": "Network: Extensive broad gauge railway tracks connect Upper Assam to Lower Assam and the rest of mainland India via the Siliguri Corridor.",
+                      "Flashcard": {
+                        "Front": "What are the primary transport corridors and waterways in Transport?",
+                        "Back": "Maligaon, Guwahati.",
+                        "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which is the longest rail-cum-road bridge in India?",
+                        "Options": {
+                          "A": "Bogibeel Bridge",
+                          "B": "Bhupen Hazarika Setu",
+                          "C": "Naranarayan Setu",
+                          "D": "Saraighat Bridge"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Extensive broad gauge railway tracks connect Upper Assam to Lower Assam and the rest of mainland India via the Siliguri Corridor."
+                      }
+                    },
+                    {
+                      "Id": "assam-29",
+                      "Fact": "Landmark Projects: Bogibeel Bridge is the longest rail-cum-road bridge in India, providing seamless connectivity between north and south banks.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Landmark Projects in Transport?",
+                        "Back": "Bogibeel Bridge (4.94 km).",
+                        "Image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which two main railway junctions are connected by the scenic Hill Section?",
+                        "Options": {
+                          "A": "Lumding and Badarpur",
+                          "B": "Badarpur and Silchar",
+                          "C": "Guwahati and Lumding",
+                          "D": "Rangiya and Tezpur"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Bogibeel Bridge is the longest rail-cum-road bridge in India, providing seamless connectivity between north and south banks."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "NFR Headquarters",
+                      "Definition": "Maligaon, Guwahati."
+                    },
+                    {
+                      "Term": "Bogibeel Bridge",
+                      "Definition": "Longest rail-cum-road bridge in India."
+                    },
+                    {
+                      "Term": "Hill Section",
+                      "Definition": "Broad gauge track connecting Lumding to Badarpur."
+                    },
+                    {
+                      "Term": "New Bongaigaon",
+                      "Definition": "Major junction connecting lower Assam to Goalpara/Guwahati."
+                    },
+                    {
+                      "Term": "Ledo",
+                      "Definition": "Easternmost broad gauge railway station in India."
+                    }
+                  ],
+                  "VisualisationIdea": "Schematic route map showing Northeast Frontier Railway (NFR) routes and divisions."
                 },
                 {
                   "SectionName": "National Waterways (NW)",
                   "Facts": [
-                    "National Waterway 2 (NW-2) comprises the Brahmaputra River running from Sadiya to Dhubri (891 km).[cite: 1]",
-                    "National Waterway 57 (NW-57): Developed on the Kopili River, spanning 48 km from the Brahmaputra confluence to the Teliagaon Railway Bridge, operationalized in August 2025.[cite: 1]",
-                    "Infrastructure: Pandu Port in Guwahati is the largest and most developed river port in Assam, serving as an inland water terminal.[cite: 1]",
-                    "Logistics: Promotes eco-friendly and cost-effective bulk cargo trade connecting Northeast India to international ports via Bangladesh.[cite: 1]"
-                  ]
+                    "National Waterway 2 (NW-2) comprises the Brahmaputra River running from Sadiya to Dhubri (891 km).",
+                    "National Waterway 57 (NW-57): Developed on the Kopili River, spanning 48 km from the Brahmaputra confluence to the Teliagaon Railway Bridge, operationalized in August 2025.",
+                    "Infrastructure: Pandu Port in Guwahati is the largest and most developed river port in Assam, serving as an inland water terminal.",
+                    "Logistics: Promotes eco-friendly and cost-effective bulk cargo trade connecting Northeast India to international ports via Bangladesh."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "assam-30",
+                      "Fact": "National Waterway 2 (NW-2) comprises the Brahmaputra River running from Sadiya to Dhubri (891 km).",
+                      "Flashcard": {
+                        "Front": "What are the primary transport corridors and waterways in Transport?",
+                        "Back": "The Brahmaputra River from Sadiya to Dhubri.",
+                        "Image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "What is the total length of National Waterway 2 (NW-2) along the Brahmaputra River?",
+                        "Options": {
+                          "A": "650 km",
+                          "B": "720 km",
+                          "C": "930 km",
+                          "D": "891 km"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: National Waterway 2 (NW-2) comprises the Brahmaputra River running from Sadiya to Dhubri (891 km)."
+                      }
+                    },
+                    {
+                      "Id": "assam-31",
+                      "Fact": "National Waterway 57 (NW-57): Developed on the Kopili River, spanning 48 km from the Brahmaputra confluence to the Teliagaon Railway Bridge, operationalized in August 2025.",
+                      "Flashcard": {
+                        "Front": "What are the primary transport corridors and waterways in Transport?",
+                        "Back": "Pandu Port.",
+                        "Image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which river in Assam is designated as National Waterway 57 (NW-57)?",
+                        "Options": {
+                          "A": "Barak River",
+                          "B": "Subansiri River",
+                          "C": "Kopili River",
+                          "D": "Dhansiri River"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Developed on the Kopili River, spanning 48 km from the Brahmaputra confluence to the Teliagaon Railway Bridge, operationalized in August 2025."
+                      }
+                    },
+                    {
+                      "Id": "assam-32",
+                      "Fact": "Infrastructure: Pandu Port in Guwahati is the largest and most developed river port in Assam, serving as an inland water terminal.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Infrastructure in Transport?",
+                        "Back": "National Waterway 57 (NW-57).",
+                        "Image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80"
+                      },
+                      "Quiz": {
+                        "Question": "Which statement identifies statement describes the geographical significance of Infrastructure in Transport?",
+                        "Options": {
+                          "A": "It forms part of the mangrove delta wetlands in the Sundarbans of West Bengal.",
+                          "B": "Pandu Port in Guwahati is the largest and most developed river port in Assam, serving as an inland water terminal.",
+                          "C": "It is a major south-flowing river basin originating near Mahabaleshwar in the Western Ghats.",
+                          "D": "It is an isolated coral atoll reef structure in the Lakshadweep archipelago."
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official ASSAM Syllabus Fact: Pandu Port in Guwahati is the largest and most developed river port in Assam, serving as an inland water terminal."
+                      }
+                    },
+                    {
+                      "Id": "assam-33",
+                      "Fact": "Logistics: Promotes eco-friendly and cost-effective bulk cargo trade connecting Northeast India to international ports via Bangladesh.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Logistics in Transport?",
+                        "Back": "Promotes eco-friendly and cost-effective bulk cargo trade connecting Northeast India to international ports via Bangladesh.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which statement identifies statement describes the geographical significance of Logistics in Transport?",
+                        "Options": {
+                          "A": "Promotes eco-friendly and cost-effective bulk cargo trade connecting Northeast India to international ports via Bangladesh.",
+                          "B": "It forms part of the mangrove delta wetlands in the Sundarbans of West Bengal.",
+                          "C": "It is a high-altitude glaciated valley situated in the Pir Panjal range of Jammu & Kashmir.",
+                          "D": "It is an isolated coral atoll reef structure in the Lakshadweep archipelago."
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official ASSAM Syllabus Fact: Promotes eco-friendly and cost-effective bulk cargo trade connecting Northeast India to international ports via Bangladesh."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "NW-2 Length",
+                      "Definition": "891 km stretch along the Brahmaputra River."
+                    },
+                    {
+                      "Term": "Pandu Port",
+                      "Definition": "The main river port terminal in Guwahati."
+                    },
+                    {
+                      "Term": "NW-57",
+                      "Definition": "National Waterway developed on the Kopili River (48 km)."
+                    }
+                  ],
+                  "VisualisationIdea": "River shipping lane diagram tracking National Waterway 2 (NW-2) along the Brahmaputra River from Sadiya to Dhubri."
                 }
               ]
             }

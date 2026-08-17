@@ -1,92 +1,123 @@
-# ADRE Geography Hub
+# 🗺️ ADRE & APSC Geography Platform
+### *Brilliant.org-Style Interactive Learning Experience for Assam, Northeast 7 Sisters, and Indian Geography*
 
-ADRE Geography Hub is an interactive, gamified learning platform for studying the geography of India, Assam, and the Northeast. It transforms raw syllabus data into an engaging visual experience with interactive maps, 3D visualizers, gamified learning activities, and a dedicated Home Page schema.
-
-🌐 **Live Online Site:** [https://angsumi.github.io/adre-master/](https://angsumi.github.io/adre-master/)
-
----
-
-## 🌟 Key Features
-
-- **🏠 Home Page Launcher & Site Schema Overview:** An interactive dashboard featuring 3 vivid chapter launcher cards (`INDIA`, `ASSAM`, `NE`) with stats & highlights, alongside a 4-step site architecture flow map.
-- **🎨 Dynamic Chapter Color System:** Custom vivid neon theme palettes for each chapter (`#34d399` Emerald Green for INDIA, `#fb923c` Amber for ASSAM, `#f472b6` Neon Pink for NE).
-- **🚩 Handcrafted 3D Animated Icons:** Features an authentic Assamese **Gamusa (Gamosa) Flag Icon** with S-curve fabric waving contours, 3D fold highlights, woven *Pori* borders, *Phulam* diamond motifs, and fluttering *Anchali* fringes.
-- **🗺️ Interactive Geography Map:** Clickable vector maps of India, Assam districts, and the 7 Northeast Sister States built on lightweight GeoJSON datasets.
-- **📑 Responsive Sidebar UI:** A modern glassmorphism design with a sticky sidebar for quick subtopic filtering and an explicit **`📑 Topics Menu`** header toggle button for off-canvas drawer navigation.
-- **🌋 Bespoke 3D/SVG Section Visualizers:** 18 custom React visualizer components explaining complex geographical structures (e.g., Deccan Plateau volcanic basalt trap, soil horizons, river basins, biosphere reserve layers).
-- **🎓 Tri-Fold Gamified Learning Suite (1,100 Curated Items across 53 Sections):**
-  - **Visual Flashcards (+10 XP):** 420 3D flipping cards with visual prompts.
-  - **Practice Matching (+10 XP):** 418 drag-and-drop key term matching pairs (with zero generic fallback strings).
-  - **Examine MCQ (+15 XP):** 262 multiple-choice questions with plausible distractors and instant feedback.
-- **📈 Gamified Progress & Streak Tracking:** Earn XP and maintain daily streaks with browser `localStorage` persistence and procedural Web Audio API sound effects.
+[![Vite](https://img.shields.io/badge/Vite-8.2-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.43-0055FF?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+[![Build Status](https://img.shields.io/badge/Build-Passing-22c55e?style=flat-square)]()
 
 ---
 
-## 🏗️ Architecture & Data Flow
+## 🌟 Overview
 
-The application is completely decoupled from hardcoded logic, building its UI, visualizers, and game states dynamically from regional JSON datasets:
+The **ADRE & APSC Geography Platform** is a state-of-the-art interactive learning web application designed for serious competitive exam aspirants in Assam (ADRE Grade III/IV, APSC CCE, and allied state examinations). Modeled after the active-learning principles of **Brilliant.org**, the platform delivers 100% pedagogical alignment across every topic in Assam, Northeast, and Indian Geography.
+
+---
+
+## ✨ Key Features
+
+- 🌲 **3-Tier Nested Accordion Tree Sidebar**:
+  - **Level 1 (Chapter)**: Toggle between **Assam Geography**, **Northeast 7 Sisters**, and **Indian Geography**.
+  - **Level 2 (Subtopics)**: Explore subtopics (e.g. *Brahmaputra Valley*, *Central Hills*, *Physiographic Divisions*) with section count badges.
+  - **Level 3 (Sections)**: Access individual sections with direct **`▶ Start Section Player`** launch buttons.
+
+- 🎯 **Fact-by-Fact Interleaved Section Player**:
+  - **Step 1: Fact Read Phase**: High-yield syllabus fact card accompanied by interactive SVG concept visualizers.
+  - **Step 2: Flashcard Recall Phase**: Instant flashcard active recall testing the exact concept.
+  - **Step 3: Exam MCQ Quiz Phase**: Exam-style multiple-choice questions with instant rationale and explanation.
+  - **Final Phase: Match the Following Recap**: Organically connected term-matching game with dynamic thread connection lines.
+  - **Completion Scorecard**: Gamified XP awards and streak tracking.
+
+- 🎨 **Rich Interactive Concept Visualizers**:
+  - **River Systems Simulator**: Animated stream pulses and clickable tributary nodes for *Indus*, *Ganga*, *Brahmaputra*, and *Peninsular Rivers*.
+  - **Coastal Plains Inspector**: West vs. East Coast comparison covering Konkan, Malabar, Northern Circars, Coromandel deltas, and major sea ports.
+  - **Elevation Profile Diagram**: Interactive 3D peak profile for *Himadri*, *Himachal*, and *Shivalik* mountain ranges.
+  - **State Profile Dashboards**: Comprehensive emblem, capital, fauna, and mountain peak dashboards for all Northeast 7 Sisters states.
+  - **Transport & Logistics Simulator**: National Highways (NH-27), NFR Railways (Bogibeel Bridge), and National Waterways (NW-2 & NW-57 Kopili River).
+
+- 🗺️ **Interactive Vector Map Inspector**:
+  - High-precision vector maps for Assam districts, Northeast 7 Sisters, and Indian physiographic boundaries.
+
+- 🏆 **Gamified XP & Streak Engine**:
+  - Dynamic XP awards (+10 XP Flashcards, +10 XP Match Pairs, +15 XP Exam Quizzes, +25 XP Section Mastery).
+  - Daily streak tracking persisted in local storage.
+
+---
+
+## 📂 Repository Structure
 
 ```
-src/
-├── App.jsx                    ← Main orchestrator (state, viewMode, activeChapter, header menu)
-├── index.css                  ← Full dark glassmorphism design system
-├── components/
-│   ├── HomePage.jsx           ← Home Page launcher (3 chapter cards + 4-step schema flow)
-│   ├── Flashcard.jsx          ← 3D flip card game module
-│   ├── MatchGame.jsx          ← Drag-and-drop matching column game
-│   ├── ExamineMCQ.jsx         ← MCQ quiz module with instant feedback
-│   ├── GeographyMap.jsx       ← HTML5 Canvas interactive map renderer
-│   ├── SectionVisualizer.jsx  ← Visualizer router (keyword → component)
-│   ├── icons/
-│   │   └── GamusaIcon.jsx     ← 3D animated waving Assamese Gamusa flag icon
-│   └── visualizers/           ← 18 specialized SVG/CSS React visualizers
-└── data/
-    ├── india/                 ← 10 subtopics / 19 sections (287 practice items)
-    ├── assam/                 ← 6 subtopics / 15 sections (338 practice items)
-    └── northeast/             ← 9 subtopics / 19 sections (475 practice items)
+GEOGRAPHY/
+├── src/
+│   ├── components/
+│   │   ├── HomePage.jsx             # Main syllabus directory & hero dashboard
+│   │   ├── InteractiveLesson.jsx    # Fact-by-Fact Interleaved Section Player
+│   │   ├── SectionVisualizer.jsx    # Universal interactive visualization router
+│   │   ├── Flashcard.jsx            # Flip-card active recall deck player
+│   │   ├── MatchGame.jsx            # SVG thread connection term-matching game
+│   │   ├── ExamineMCQ.jsx           # Exam-style MCQ quiz player
+│   │   ├── GeographyMap.jsx         # Canvas vector map inspector
+│   │   └── visualizers/             # Custom SVG & CSS interactive visualizers
+│   ├── data/
+│   │   ├── assam/GEography.json     # Assam Geography syllabus & ConceptUnits
+│   │   ├── northeast/GEography.json # Northeast 7 Sisters syllabus & ConceptUnits
+│   │   └── india/GEography.json     # Indian Geography syllabus & ConceptUnits
+│   ├── utils/
+│   │   └── lessonGenerator.jsx      # Section & Subtopic lesson player pipeline generator
+│   ├── App.jsx                      # App root, state router, and 3-tier sidebar
+│   └── index.css                    # Glassmorphism dark-mode styling design system
+├── package.json
+└── vite.config.js
 ```
 
-- **`GEography.json`**: Defines the syllabus hierarchy (Subjects > Topics > Subtopics > Sections > Facts).
-- **`Activity.json`**: Contains curated flashcards, matching pairs, and MCQs for every section (minimum 5–10 per category).
-- **`stringMatcher.js`**: Connects section names to activities and visualizers smoothly, ignoring citations (`[cite: 1]`) and minor formatting differences.
-
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Getting Started Locally
 
-- **React 19:** Component-based frontend library.
-- **Vite 8:** Next-generation lightning-fast frontend tooling.
-- **Framer Motion 12:** For smooth page transitions, waving flag physics, drawer animations, and 3D card flips.
-- **Lucide React:** Modern vector icon library.
-- **Vanilla CSS:** Custom dark glassmorphism design system with responsive media queries.
-- **Web Audio API:** Procedural audio synthesizer for card flip, correct, and victory sound effects.
+### Prerequisites
+- **Node.js**: v18.0.0 or higher
+- **npm**: v9.0.0 or higher
 
----
+### Installation & Execution
 
-## 🚀 Getting Started
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/GEOGRAPHY.git
+   cd GEOGRAPHY
+   ```
 
-1. **Install Dependencies:**
+2. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-2. **Run Local Development Server:**
+3. **Start Development Server**:
    ```bash
    npm run dev
    ```
+   Open [http://localhost:5173/](http://localhost:5173/) in your browser.
 
-3. **Build for Production:**
+4. **Build Production Bundle**:
    ```bash
    npm run build
    ```
 
-4. **Deploy to GitHub Pages:**
+5. **Deploy to GitHub Pages**:
    ```bash
    npm run deploy
    ```
 
 ---
 
-## 📜 Documentation
+## 📜 Syllabus Coverage
 
-For an in-depth guide on the database schemas, visualizer mapping, and architecture, see [context.txt](context.txt).
+| Chapter | Topics & Subtopics | Key Highlights & Visualizers |
+|---|---|---|
+| **ASSAM** | Brahmaputra Valley, Central Hills, Barak Valley, Ecology, Wildlife Reserves, Transport | North/South Tributaries, Kaziranga NP, Manas TR, Bogibeel Bridge, NW-57 Kopili River |
+| **NORTHEAST 7 SISTERS** | State Profiles (Arunachal, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Tripura), WNHS, Biosphere Reserves | Nokrek Citrus Gene Sanctuary, Dihang-Dibang Takin, Moidams Ahom Mounds |
+| **INDIA** | Physiographic Divisions, River Systems, Ecological Markers | Himadri/Himachal/Shiwalik Elevation, Indus/Ganga/Brahmaputra/Peninsular Rivers, Coastal Deltas |
+
+---
+
+## 📄 License
+This project is developed for educational purposes under the MIT License.

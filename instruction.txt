@@ -1,0 +1,494 @@
+[/goal](slashCommand;goal) 
+
+Act as a **senior product designer, learning-experience designer, UX/UI designer, and frontend architect** specializing in interactive education platforms such as Brilliant.org.
+
+## Project Goal
+
+Transform my existing website into a **mobile-first, interactive learning platform for Geography**, specifically designed around **Assam-focused competitive examinations**.
+
+The goal is **not to make it look like a conventional coaching website, PDF notes website, or LMS**.
+
+I want the learning experience to feel closer to **Brilliant.org**: interactive, visual, engaging, minimal, intuitive, and designed around *learning by doing* rather than passive reading.
+
+## Existing Website
+
+I have already built the website and it currently contains:
+
+* Interactive CSS components
+* Geography learning content
+* Images and visual explanations
+* Practice questions
+* Interactive elements
+* Existing page structure and functionality
+
+**Do not unnecessarily rebuild everything from scratch.** First understand the existing structure, components, content, and interactions. Improve and restructure what already exists where possible.
+
+## Core Design Philosophy
+
+The platform should follow these principles:
+
+### 1. Mobile First
+
+Design for smartphones first, then progressively enhance for tablets and desktops.
+
+Prioritize:
+
+* One-handed usability
+* Large, comfortable touch targets
+* Minimal navigation
+* Short content sections
+* Swipe-friendly interactions where appropriate
+* Fast loading
+* Responsive images
+* Minimal visual clutter
+* Clear hierarchy
+
+The mobile experience should feel like a **learning app**, even though it is a website.
+
+### 2. Learning Before Information
+
+Do not simply present Geography notes.
+
+Turn information into **interactive learning experiences**.
+
+Instead of:
+
+> "The Brahmaputra enters Assam through..."
+
+Prefer experiences such as:
+
+> "Can you identify where the Brahmaputra enters Assam?"
+
+Then reveal the answer through an interactive map or visual explanation.
+
+Use:
+
+* Interactive maps
+* Clickable regions
+* Image-based questions
+* Drag-and-drop where useful
+* MCQs
+* Match-the-following
+* Ordering activities
+* Hotspots
+* Progressive reveals
+* Visual comparisons
+* Mini simulations
+* Timelines
+* Before/after interactions
+* Immediate feedback
+* Short challenges
+
+Every interaction should have a **learning purpose**. Avoid adding animation or gamification merely for decoration.
+
+### 3. Progressive Learning
+
+Break large topics into small learning units.
+
+For example:
+
+**Physical Geography of Assam**
+
+→ Location
+→ Physiographic divisions
+→ Brahmaputra Valley
+→ Barak Valley
+→ Hills
+→ Rivers
+→ Floods
+→ Climate
+→ Soil
+→ Forests
+→ Resources
+
+Each lesson should feel achievable in a few minutes.
+
+Use a structure such as:
+
+**Learn → Interact → Practice → Review**
+
+### 4. Assam Exam Perspective
+
+The platform must be specifically optimized for examinations relevant to Assam, such as:
+
+* ADRE
+* APSC
+* Assam government recruitment examinations
+* Other Assam-focused competitive examinations
+
+Clearly distinguish between:
+
+**Conceptual knowledge**
+
+and
+
+**Exam-oriented knowledge**
+
+For example:
+
+> Learn why Assam experiences flooding.
+
+Then:
+
+> **Exam Check:** Which river is known as the "Sorrow of Assam"?
+
+This allows the user to understand the concept first and then convert it into exam-ready knowledge.
+
+## UX Structure
+
+Create a simple learning flow such as:
+
+**Home → Subject → Topic → Lesson → Interaction → Practice → Result → Review**
+
+Avoid complicated dashboards.
+
+The user should always know:
+
+1. Where am I?
+2. What am I learning?
+3. What should I do next?
+4. How well am I doing?
+
+## Interface Design
+
+Aim for a **minimal, premium educational interface**.
+
+Avoid:
+
+* Excessive gradients
+* Excessive shadows
+* Crowded cards
+* Too many colors
+* Decorative animations
+* Huge hero sections
+* Corporate SaaS-style dashboards
+* Traditional coaching-site aesthetics
+* Information overload
+
+Prefer:
+
+* Strong typography
+* Generous whitespace
+* Clear visual hierarchy
+* Simple cards
+* Subtle borders
+* Restrained color palette
+* Consistent spacing
+* Smooth micro-interactions
+* High-quality maps and illustrations
+* Clear feedback states
+
+The interface should feel **calm and intelligent**, not noisy or gamified.
+
+## Interaction Design
+
+Every interactive component should answer:
+
+> **"What does the student learn by interacting with this?"**
+
+Use interaction patterns such as:
+
+### Explore
+
+Allow students to explore Assam geographically.
+
+Example:
+
+**Tap a district → see its location, rivers, geography, important facts and exam relevance.**
+
+### Predict
+
+Ask a question before revealing the explanation.
+
+Example:
+
+> "Which region of Assam is more vulnerable to annual flooding?"
+
+Let the student choose first.
+
+Then explain why.
+
+### Identify
+
+Show a map/image and ask the student to identify:
+
+* River
+* District
+* Hill range
+* National park
+* Valley
+* Border
+* Geographic feature
+
+### Compare
+
+Allow students to compare:
+
+* Brahmaputra Valley vs Barak Valley
+* Upper Assam vs Lower Assam
+* Hills vs Plains
+* Different rivers
+* Different climatic regions
+
+### Practice
+
+After learning a concept, immediately test it.
+
+Avoid separating "study" and "practice" too far apart.
+
+## Feedback
+
+Feedback should teach, not merely say:
+
+> Correct / Incorrect.
+
+Instead:
+
+**Correct**
+
+> Good. The Brahmaputra flows east-to-west across much of Assam before turning south toward Bangladesh.
+
+**Incorrect**
+
+> Not quite. Look at the direction of the river in the map. Notice how...
+
+Use explanations to reinforce the underlying concept.
+
+## Gamification
+
+Use **lightweight, meaningful gamification**.
+
+Possible elements:
+
+* Progress
+* Streaks
+* Topic completion
+* XP
+* Mastery levels
+* Daily challenges
+* Accuracy
+* Weak-topic identification
+
+Do not turn the platform into a children's game.
+
+The target audience is **serious competitive-exam aspirants**.
+
+## Information Architecture
+
+Design a scalable structure that can eventually support:
+
+**Geography**
+
+* Assam Geography
+* Indian Geography
+* World Geography
+
+But initially optimize the product around:
+
+> **Assam Geography**
+
+Possible main sections:
+
+* Learn
+* Explore
+* Practice
+* Revision
+* Progress
+
+Keep navigation extremely simple on mobile.
+
+## Lesson Architecture
+
+Design a reusable lesson component system.
+
+A lesson could follow:
+
+**1. Hook**
+
+A question, image, map, or surprising fact.
+
+↓
+
+**2. Concept**
+
+Short explanation.
+
+↓
+
+**3. Interactive visualization**
+
+Map / image / diagram / interaction.
+
+↓
+
+**4. Check your understanding**
+
+One or two questions.
+
+↓
+
+**5. Exam connection**
+
+Important competitive-exam facts.
+
+↓
+
+**6. Practice**
+
+A few progressively difficult questions.
+
+↓
+
+**7. Quick recap**
+
+3–5 key takeaways.
+
+↓
+
+**8. Mastery**
+
+Show whether the learner has understood the topic.
+
+## Content Presentation
+
+Avoid long paragraphs.
+
+Convert information into:
+
+* Short explanations
+* Visual diagrams
+* Maps
+* Interactive elements
+* Comparison tables
+* Highlighted facts
+* Question prompts
+* Progressive disclosure
+
+Important exam facts should be visually distinguishable without overwhelming the page.
+
+## Responsive Design
+
+The website must work beautifully across:
+
+* Small smartphones
+* Large smartphones
+* Tablets
+* Laptops
+* Large desktop screens
+
+Do not simply shrink the desktop layout.
+
+**Design the mobile experience first.**
+
+Then adapt the interaction and layout for larger screens.
+
+## Performance
+
+Prioritize:
+
+* Fast initial load
+* Lazy-loaded images
+* Optimized assets
+* Minimal JavaScript
+* Efficient CSS
+* Responsive images
+* No unnecessary libraries
+* Smooth interactions on low-end Android devices
+
+Assume a significant portion of users may have **budget Android phones and average mobile internet connections**.
+
+## Accessibility
+
+Follow good accessibility practices:
+
+* Adequate contrast
+* Large touch targets
+* Keyboard accessibility
+* Semantic HTML
+* Screen-reader-friendly labels
+* Avoid relying only on color
+* Clear focus states
+* Reduced-motion support
+
+## Technical Approach
+
+Before changing code:
+
+1. Audit the existing website.
+2. Identify reusable components.
+3. Identify redundant components.
+4. Identify UX problems.
+5. Identify mobile problems.
+6. Identify performance bottlenecks.
+7. Identify inconsistent design patterns.
+8. Create a unified design system.
+9. Refactor only where necessary.
+
+Do not introduce unnecessary complexity.
+
+## Design System
+
+Create a consistent system for:
+
+* Typography
+* Colors
+* Spacing
+* Buttons
+* Cards
+* Questions
+* Answer states
+* Progress indicators
+* Interactive maps
+* Tooltips
+* Navigation
+* Modals
+* Feedback
+* Lesson sections
+* Practice components
+
+Components should be **reusable and composable**, so new Geography lessons can be created quickly.
+
+## Most Important Product Principle
+
+Think of the website as:
+
+> **"Brilliant.org for Assam Geography."**
+
+Not:
+
+> "A website containing Assam Geography notes."
+
+The user should **interact with Geography rather than simply read about Geography.**
+
+Every major concept should ideally become something the learner can **explore, predict, identify, compare, manipulate, or answer**.
+
+## Final Objective
+
+Transform the existing website into a platform that feels:
+
+**Interactive
+Visual
+Minimal
+Mobile-first
+Exam-focused
+Learning-oriented
+Fast
+Premium
+Scalable**
+
+The final experience should make a student think:
+
+> **"I'm not studying notes. I'm actually exploring and learning Assam Geography."**
+
+Before implementing major changes, provide:
+
+1. A UX audit of the existing website
+2. The biggest problems you identify
+3. A proposed information architecture
+4. A mobile-first design system
+5. A reusable interactive lesson architecture
+6. Specific recommendations for improving the existing components
+7. A prioritized implementation roadmap
+
+Then implement the improvements systematically rather than redesigning everything blindly.
+

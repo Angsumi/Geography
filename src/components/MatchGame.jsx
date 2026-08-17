@@ -3,27 +3,27 @@ import { motion } from 'framer-motion';
 import { Sparkles, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { playCorrect, playWrong, playComplete, playPickup, playDrop } from '../hooks/useSound';
 
-export default function MatchGame({ data, onComplete }) {
-  // Subset of data items (Questions)
+export default function MatchGame({ data = [], onComplete }) {
   const [questions, setQuestions] = useState([]);
-  // Shuffled definitions (Answers)
   const [answers, setAnswers] = useState([]);
 
-  // Selections & Connections
-  // selectedQuestionIndex: index of currently active question item clicked (left column)
   const [selectedQ, setSelectedQ] = useState(null);
-  // connections: mapping of questionIndex -> answerIndex
   const [connections, setConnections] = useState({});
 
-  // Container refs for drawing dynamic SVG thread lines
   const containerRef = useRef(null);
   const leftRefs = useRef([]);
   const rightRefs = useRef([]);
   const [lineCoords, setLineCoords] = useState([]);
 
   useEffect(() => {
-    // Take up to 5 items for matching
-    const subset = data.slice(0, 5);
+    const rawData = Array.isArray(data) ? data : [];
+    // Normalize data items to support both { q, a } and { Term, Definition }
+    const normalized = rawData.map(item => ({
+      q: item.q || item.Term || item.term || 'Term',
+      a: item.a || item.Definition || item.definition || 'Definition'
+    }));
+
+    const subset = normalized.slice(0, 5);
     setQuestions(subset);
 
     const answerList = subset.map((item, originalIndex) => ({
@@ -38,7 +38,6 @@ export default function MatchGame({ data, onComplete }) {
     setConnections({});
   }, [data]);
 
-  // Update line coordinates whenever connections, selected item, or window resizes
   const calculateLines = () => {
     if (!containerRef.current) return;
     const containerRect = containerRef.current.getBoundingClientRect();
@@ -81,24 +80,20 @@ export default function MatchGame({ data, onComplete }) {
     return () => window.removeEventListener('resize', calculateLines);
   }, [connections, questions, answers]);
 
-  // Handle clicking a Question (Left column)
   const handleSelectQuestion = (qIdx) => {
     playPickup();
     if (selectedQ === qIdx) {
-      setSelectedQ(null); // toggle off selection
+      setSelectedQ(null);
     } else {
       setSelectedQ(qIdx);
     }
   };
 
-  // Handle clicking an Answer (Right column)
   const handleSelectAnswer = (aIdx) => {
     playDrop();
     if (selectedQ !== null) {
-      // Connect selected Question to this Answer
       setConnections(prev => {
         const next = { ...prev };
-        // If this answer was connected elsewhere, break that connection
         Object.keys(next).forEach(key => {
           if (next[key] === aIdx) {
             delete next[key];
@@ -107,12 +102,10 @@ export default function MatchGame({ data, onComplete }) {
         next[selectedQ] = aIdx;
         return next;
       });
-      setSelectedQ(null); // Clear selection after connecting
+      setSelectedQ(null);
     } else {
-      // If user clicked answer first, see if an un-connected left item exists or remove existing connection
       const existingQKey = Object.keys(connections).find(qKey => connections[qKey] === aIdx);
       if (existingQKey !== undefined) {
-        // Disconnect on click if already connected
         setConnections(prev => {
           const next = { ...prev };
           delete next[existingQKey];
@@ -122,7 +115,6 @@ export default function MatchGame({ data, onComplete }) {
     }
   };
 
-  // Derive scores and status
   let correctCount = 0;
   let filledCount = Object.keys(connections).length;
 
@@ -148,70 +140,96 @@ export default function MatchGame({ data, onComplete }) {
   }, [allCorrect]);
 
   const handleReset = () => {
-    const subset = data.slice(0, 5);
-    setQuestions(subset);
-    const answerList = subset.map((item, originalIndex) => ({
+    setConnections({});
+    setSelectedQ(null);
+    const answerList = questions.map((item, originalIndex) => ({
       id: `ans-${originalIndex}`,
       text: item.a,
       matchIndex: originalIndex
     }));
     setAnswers([...answerList].sort(() => Math.random() - 0.5));
-    setSelectedQ(null);
-    setConnections({});
   };
 
+  if (!questions || questions.length === 0) {
+    return (
+      <div className="glass-panel" style={{ textAlign: 'center', padding: '2rem' }}>
+        <p style={{ color: '#94a3b8' }}>No term-matching data available for this topic.</p>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', width: '100%' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+      
+      {/* Header bar */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h3 style={{ margin: 0 }}>Matching Concepts</h3>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-            Select a term on the left, then click its matching definition on the right to connect them with a thread.
-          </span>
+          <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#fff', fontWeight: 800 }}>Match the Following</h3>
+          <p style={{ margin: 0, fontSize: '0.78rem', color: '#94a3b8' }}>
+            Tap a term on the left, then tap its matching definition on the right.
+          </p>
         </div>
-        <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>Earned: {earnedScore} pts</span>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <button
+            onClick={handleReset}
+            className="btn btn-glass"
+            style={{ padding: '0.4rem 0.75rem', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+          >
+            <RefreshCw size={14} /> Reset
+          </button>
+        </div>
       </div>
 
-      {/* Prominent top status feedback */}
-      {anyFilled && (
-        <div style={{
-          padding: '0.85rem 1.25rem',
-          borderRadius: '12px',
-          background: allCorrect ? 'rgba(34, 197, 94, 0.15)' : 'rgba(15, 17, 26, 0.6)',
-          border: allCorrect ? '1px solid #22c55e' : '1px solid var(--glass-border)',
-          marginBottom: '1rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-        }}>
-          <div>
-            <h4 style={{ margin: 0, color: allCorrect ? '#22c55e' : 'var(--text-main)', fontSize: '1rem' }}>
-              {allCorrect ? '🎉 Perfect Match!' : 'Connect matching pairs with threads.'}
-            </h4>
-            <span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)' }}>
-              {correctCount} out of {questions.length} correct matching pairs.
-            </span>
+      {/* Connection Status Banner */}
+      {allCorrect ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          style={{
+            background: 'rgba(34, 197, 94, 0.15)',
+            border: '1px solid #22c55e',
+            borderRadius: '12px',
+            padding: '1rem',
+            display: 'flex',
+            alignItems: 'center',
+            justify: 'space-between'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+            <CheckCircle2 size={24} color="#4ade80" />
+            <div>
+              <div style={{ fontWeight: 800, color: '#4ade80', fontSize: '0.95rem' }}>All Matches Correct! 🎉</div>
+              <div style={{ fontSize: '0.8rem', color: '#cbd5e1' }}>You earned +{earnedScore} XP!</div>
+            </div>
           </div>
-          <span style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#fff', background: 'rgba(0,0,0,0.3)', padding: '0.25rem 0.75rem', borderRadius: '8px' }}>
-            Marks: {earnedScore} / {questions.length * 10}
-          </span>
+          <button
+            className="btn btn-primary"
+            onClick={() => onComplete && onComplete(earnedScore)}
+            style={{ padding: '0.5rem 1rem', fontSize: '0.82rem', background: '#22c55e', color: '#000', fontWeight: 800 }}
+          >
+            Continue
+          </button>
+        </motion.div>
+      ) : (
+        <div style={{ fontSize: '0.8rem', color: '#94a3b8', display: 'flex', justifyContent: 'space-between' }}>
+          <span>Matched: <strong>{correctCount} / {questions.length}</strong></span>
+          <span>{selectedQ !== null ? '⚡ Now tap matching definition on the right' : 'Tap a term on the left to begin'}</span>
         </div>
       )}
 
-      {/* Matching Container with SVG Overlay */}
+      {/* Matching Container with SVG Thread Overlay */}
       <div 
         ref={containerRef}
         style={{ 
           position: 'relative', 
           display: 'grid', 
           gridTemplateColumns: '1fr 1fr', 
-          gap: '4rem', 
-          marginTop: '1rem',
-          minHeight: '350px'
+          gap: '3.5rem', 
+          marginTop: '0.5rem',
+          minHeight: '300px'
         }}
       >
-        {/* SVG overlay for drawing thread lines */}
         <svg
           style={{
             position: 'absolute',
@@ -240,12 +258,10 @@ export default function MatchGame({ data, onComplete }) {
 
           {lineCoords.map((line, idx) => {
             const dx = (line.x2 - line.x1) * 0.45;
-            // Curved Bezier path for organic thread connection look
             const pathData = `M ${line.x1} ${line.y1} C ${line.x1 + dx} ${line.y1}, ${line.x2 - dx} ${line.y2}, ${line.x2} ${line.y2}`;
 
             return (
               <g key={idx}>
-                {/* Glow thread */}
                 <path
                   d={pathData}
                   fill="none"
@@ -254,7 +270,6 @@ export default function MatchGame({ data, onComplete }) {
                   strokeLinecap="round"
                   filter="url(#glow)"
                 />
-                {/* Main line thread */}
                 <path
                   d={pathData}
                   fill="none"
@@ -263,7 +278,6 @@ export default function MatchGame({ data, onComplete }) {
                   strokeLinecap="round"
                   strokeDasharray={line.isCorrect ? 'none' : '6 4'}
                 />
-                {/* Endpoint dots */}
                 <circle cx={line.x1} cy={line.y1} r="5" fill={line.isCorrect ? '#22c55e' : '#ef4444'} />
                 <circle cx={line.x2} cy={line.y2} r="5" fill={line.isCorrect ? '#22c55e' : '#ef4444'} />
               </g>
@@ -272,8 +286,8 @@ export default function MatchGame({ data, onComplete }) {
         </svg>
 
         {/* Left Column: Terms */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', zIndex: 1 }}>
-          <h4 style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', zIndex: 1 }}>
+          <h4 style={{ fontSize: '0.8rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>
             Geographical Terms
           </h4>
           {questions.map((qItem, qIdx) => {
@@ -288,27 +302,27 @@ export default function MatchGame({ data, onComplete }) {
                 ref={el => leftRefs.current[qIdx] = el}
                 onClick={() => handleSelectQuestion(qIdx)}
                 style={{
-                  padding: '1rem 1.25rem',
+                  padding: '0.85rem 1.1rem',
                   borderRadius: '12px',
                   background: isSelected 
-                    ? 'linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(79, 70, 229, 0.25))'
+                    ? 'rgba(16, 185, 129, 0.2)'
                     : isConnected
                       ? isCorrect ? 'rgba(34, 197, 94, 0.12)' : 'rgba(239, 68, 68, 0.12)'
-                      : 'var(--glass-bg)',
+                      : 'rgba(255, 255, 255, 0.03)',
                   border: isSelected
-                    ? '2px solid var(--secondary)'
+                    ? '2px solid #10b981'
                     : isConnected
                       ? isCorrect ? '2px solid #22c55e' : '2px solid #ef4444'
-                      : '1px solid var(--glass-border)',
+                      : '1px solid rgba(255, 255, 255, 0.08)',
                   cursor: 'pointer',
-                  fontWeight: '600',
-                  fontSize: '0.9rem',
-                  color: 'var(--text-main)',
+                  fontWeight: 600,
+                  fontSize: '0.88rem',
+                  color: isSelected ? '#34d399' : '#f8fafc',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
-                  minHeight: '65px',
-                  boxShadow: isSelected ? '0 0 16px rgba(99, 102, 241, 0.4)' : 'none',
+                  justify: 'space-between',
+                  minHeight: '58px',
+                  boxShadow: isSelected ? '0 0 16px rgba(16, 185, 129, 0.4)' : 'none',
                   transition: 'all 0.2s ease',
                   userSelect: 'none'
                 }}
@@ -324,9 +338,9 @@ export default function MatchGame({ data, onComplete }) {
                     width: '12px',
                     height: '12px',
                     borderRadius: '50%',
-                    background: isSelected ? 'var(--secondary)' : isConnected ? (isCorrect ? '#22c55e' : '#ef4444') : 'rgba(255,255,255,0.2)',
+                    background: isSelected ? '#10b981' : isConnected ? (isCorrect ? '#22c55e' : '#ef4444') : 'rgba(255,255,255,0.2)',
                     border: '2px solid rgba(255,255,255,0.4)',
-                    boxShadow: isSelected ? '0 0 8px var(--secondary)' : 'none'
+                    boxShadow: isSelected ? '0 0 8px #10b981' : 'none'
                   }} />
                 </div>
               </div>
@@ -335,15 +349,14 @@ export default function MatchGame({ data, onComplete }) {
         </div>
 
         {/* Right Column: Definitions */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', zIndex: 1 }}>
-          <h4 style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
-            Definitions
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', zIndex: 1 }}>
+          <h4 style={{ fontSize: '0.8rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>
+            Definitions / Features
           </h4>
           {answers.map((aItem, aIdx) => {
-            // Find if any question is connected to this answer
-            const connectedQStr = Object.keys(connections).find(qKey => connections[qKey] === aIdx);
-            const connectedQIdx = connectedQStr !== undefined ? parseInt(connectedQStr, 10) : null;
-            const isConnected = connectedQIdx !== null;
+            const connectedQKey = Object.keys(connections).find(key => connections[key] === aIdx);
+            const isConnected = connectedQKey !== undefined;
+            const connectedQIdx = isConnected ? parseInt(connectedQKey, 10) : null;
             const isCorrect = isConnected ? aItem.matchIndex === connectedQIdx : false;
 
             return (
@@ -356,63 +369,42 @@ export default function MatchGame({ data, onComplete }) {
                   borderRadius: '12px',
                   background: isConnected
                     ? isCorrect ? 'rgba(34, 197, 94, 0.12)' : 'rgba(239, 68, 68, 0.12)'
-                    : selectedQ !== null
-                      ? 'rgba(255,255,255,0.06)'
-                      : 'var(--glass-bg)',
+                    : 'rgba(255, 255, 255, 0.03)',
                   border: isConnected
                     ? isCorrect ? '2px solid #22c55e' : '2px solid #ef4444'
-                    : selectedQ !== null
-                      ? '1px dashed var(--secondary)'
-                      : '1px solid var(--glass-border)',
+                    : '1px solid rgba(255, 255, 255, 0.08)',
                   cursor: 'pointer',
-                  fontSize: '0.85rem',
-                  lineHeight: 1.4,
-                  color: 'var(--text-main)',
+                  fontWeight: 600,
+                  fontSize: '0.88rem',
+                  color: '#e2e8f0',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.75rem',
-                  minHeight: '65px',
+                  justify: 'space-between',
+                  minHeight: '58px',
                   transition: 'all 0.2s ease',
                   userSelect: 'none'
                 }}
               >
-                <div style={{
-                  width: '12px',
-                  height: '12px',
-                  borderRadius: '50%',
-                  flexShrink: 0,
-                  background: isConnected ? (isCorrect ? '#22c55e' : '#ef4444') : selectedQ !== null ? 'rgba(99, 102, 241, 0.6)' : 'rgba(255,255,255,0.2)',
-                  border: '2px solid rgba(255,255,255,0.4)'
-                }} />
-                <span style={{ flex: 1 }}>{aItem.text}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <div style={{
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    background: isConnected ? (isCorrect ? '#22c55e' : '#ef4444') : 'rgba(255,255,255,0.2)',
+                    border: '2px solid rgba(255,255,255,0.4)'
+                  }} />
+                  {isConnected && (
+                    <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: isCorrect ? '#4ade80' : '#f87171' }}>
+                      {isCorrect ? '✓' : '✗'}
+                    </span>
+                  )}
+                </div>
+                <span style={{ textAlign: 'right' }}>{aItem.text}</span>
               </div>
             );
           })}
         </div>
       </div>
-
-      {/* Control Actions */}
-      <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', justifyContent: 'flex-end' }}>
-        {allCorrect && (
-          <button 
-            onClick={() => onComplete(earnedScore)}
-            className="btn btn-primary" 
-            style={{ padding: '0.85rem 1.5rem', background: 'linear-gradient(135deg, #22c55e, #10b981)', color: '#fff', fontWeight: 'bold' }}
-          >
-            🎉 Claim +{earnedScore} Points & Return
-          </button>
-        )}
-        
-        <button 
-          onClick={handleReset}
-          className="btn btn-glass"
-          style={{ padding: '0.85rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-          title="Reset Connections"
-        >
-          <RefreshCw size={16} /> Reset Connections
-        </button>
-      </div>
     </div>
   );
 }
-

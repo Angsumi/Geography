@@ -12,18 +12,188 @@
                 {
                   "SectionName": "Subdivisions (West to East)",
                   "Facts": [
-                    "Suleyman (Karakoram).[cite: 1]",
-                    "Main Himalaya (Great Himalaya).[cite: 1]",
-                    "Purvanchal (Eastern Himalaya).[cite: 1]"
-                  ]
+                    "Suleyman (Karakoram).",
+                    "Main Himalaya (Great Himalaya).",
+                    "Purvanchal (Eastern Himalaya)."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-1",
+                      "Fact": "Suleyman (Karakoram).",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Subdivisions (West to East) in Himalayas?",
+                        "Back": "Suleyman (Karakoram range).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which eastern wing of the Himalayas forms the hill ranges along the North-Eastern Indian border?",
+                        "Options": {
+                          "A": "Zaskar",
+                          "B": "Shiwaliks",
+                          "C": "Pir Panjal",
+                          "D": "Purvanchal"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Suleyman (Karakoram)."
+                      }
+                    },
+                    {
+                      "Id": "india-2",
+                      "Fact": "Main Himalaya (Great Himalaya).",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Subdivisions (West to East) in Himalayas?",
+                        "Back": "Main Himalaya (Great Himalaya).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "What is the westernmost mountain extension of the Trans-Himalayan region?",
+                        "Options": {
+                          "A": "Patkai Bum",
+                          "B": "Shiwaliks",
+                          "C": "Suleyman / Karakoram",
+                          "D": "Purvanchal"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Main Himalaya (Great Himalaya)."
+                      }
+                    },
+                    {
+                      "Id": "india-3",
+                      "Fact": "Purvanchal (Eastern Himalaya).",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Subdivisions (West to East) in Himalayas?",
+                        "Back": "Purvanchal (Eastern Himalaya).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which mountain peak marks the sharp eastern syntaxial bend of the Himalayas?",
+                        "Options": {
+                          "A": "K2",
+                          "B": "Anaimudi",
+                          "C": "Nanga Parbat",
+                          "D": "Namcha Barwa"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Purvanchal (Eastern Himalaya)."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Suleyman / Karakoram",
+                      "Definition": "Westernmost mountain range extension."
+                    },
+                    {
+                      "Term": "Main Himalaya",
+                      "Definition": "Central backbone containing the Great Himalayan peaks."
+                    },
+                    {
+                      "Term": "Purvanchal",
+                      "Definition": "Eastern Himalayan wing forming North-Eastern border hills."
+                    },
+                    {
+                      "Term": "Nanga Parbat",
+                      "Definition": "Western syntaxial bend anchor point of the Himalayas."
+                    },
+                    {
+                      "Term": "Namcha Barwa",
+                      "Definition": "Eastern syntaxial bend anchor point in Tibet/Arunachal."
+                    }
+                  ],
+                  "VisualisationIdea": "\ud83d\udd04 Interactive Syntaxial Bends Diagram using CSS SVG paths with animated drawing effects (stroke-dashoffset) to show the horizontal span."
                 },
                 {
                   "SectionName": "Vertical Divisions (South to North)",
                   "Facts": [
-                    "Himadri (Greater Himalayas): The innermost, continuous range containing the highest peaks like Mt. Everest and Kanchenjunga.[cite: 1]",
-                    "Himachal (Lesser Himalayas): Known for hill stations and rugged terrain like Pir Panjal and Dhaula Dhar.[cite: 1]",
-                    "Shiwaliks (Outer Himalayas): The outermost range composed of unconsolidated sediments.[cite: 1]"
-                  ]
+                    "Himadri (Greater Himalayas): The innermost, continuous range containing the highest peaks like Mt. Everest and Kanchenjunga.",
+                    "Himachal (Lesser Himalayas): Known for hill stations and rugged terrain like Pir Panjal and Dhaula Dhar.",
+                    "Shiwaliks (Outer Himalayas): The outermost range composed of unconsolidated sediments."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-4",
+                      "Fact": "Himadri (Greater Himalayas): The innermost, continuous range containing the highest peaks like Mt. Everest and Kanchenjunga.",
+                      "Flashcard": {
+                        "Front": "What is the highest mountain peak in Himalayas?",
+                        "Back": "Himadri (Greater Himalayas).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which of the following ranges contains the highest peaks such as Mt. Everest and Kanchenjunga?",
+                        "Options": {
+                          "A": "Himachal",
+                          "B": "Himadri",
+                          "C": "Purvanchal",
+                          "D": "Shiwaliks"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: The innermost, continuous range containing the highest peaks like Mt. Everest and Kanchenjunga."
+                      }
+                    },
+                    {
+                      "Id": "india-5",
+                      "Fact": "Himachal (Lesser Himalayas): Known for hill stations and rugged terrain like Pir Panjal and Dhaula Dhar.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Himachal (Lesser Himalayas) in Himalayas?",
+                        "Back": "Himadri (Greater Himalayas).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "The Himachal range is best known for which of the following features?",
+                        "Options": {
+                          "A": "Unconsolidated sediments",
+                          "B": "Highest peaks",
+                          "C": "Coastal plains",
+                          "D": "Hill stations and rugged terrain"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Known for hill stations and rugged terrain like Pir Panjal and Dhaula Dhar."
+                      }
+                    },
+                    {
+                      "Id": "india-6",
+                      "Fact": "Shiwaliks (Outer Himalayas): The outermost range composed of unconsolidated sediments.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Shiwaliks (Outer Himalayas) in Himalayas?",
+                        "Back": "Himachal.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which Himalayan division is composed of unconsolidated sediments?",
+                        "Options": {
+                          "A": "Himadri",
+                          "B": "Karakoram",
+                          "C": "Himachal",
+                          "D": "Shiwaliks"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: The outermost range composed of unconsolidated sediments."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Himadri",
+                      "Definition": "The innermost, continuous range containing Mt. Everest."
+                    },
+                    {
+                      "Term": "Himachal",
+                      "Definition": "Lesser Himalayas featuring hill stations and Pir Panjal."
+                    },
+                    {
+                      "Term": "Shiwaliks",
+                      "Definition": "The outermost range composed of unconsolidated sediments."
+                    },
+                    {
+                      "Term": "Duns",
+                      "Definition": "Longitudinal valleys between Himachal and Shiwaliks (e.g., Dehradun)."
+                    },
+                    {
+                      "Term": "Mt. Everest & Kanchenjunga",
+                      "Definition": "Highest peaks located in the Himadri range."
+                    }
+                  ],
+                  "VisualisationIdea": "\ud83c\udfd4\ufe0f CSS Stacked Elevation Layers using overlapping divs with varying z-indexes and heights to represent Himadri, Himachal, and Shivalik."
                 }
               ]
             },
@@ -33,17 +203,167 @@
                 {
                   "SectionName": "Formation & Soil",
                   "Facts": [
-                    "Formed by the interplay of three major river systems: the Indus, the Ganga, and the Brahmaputra, along with their tributaries.[cite: 1]",
-                    "Features highly fertile alluvial soil, making it the most agriculturally productive and densely populated region.[cite: 1]"
-                  ]
+                    "Formed by the interplay of three major river systems: the Indus, the Ganga, and the Brahmaputra, along with their tributaries.",
+                    "Features highly fertile alluvial soil, making it the most agriculturally productive and densely populated region."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-7",
+                      "Fact": "Formed by the interplay of three major river systems: the Indus, the Ganga, and the Brahmaputra, along with their tributaries.",
+                      "Flashcard": {
+                        "Front": "What are the major tributaries associated with Northern Plains?",
+                        "Back": "The Indus, Ganga, and Brahmaputra river systems.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "The Northern Plains of India were primarily created by alluvial deposits from which three river systems?",
+                        "Options": {
+                          "A": "Indus, Ganga & Brahmaputra",
+                          "B": "Luni, Sabarmati & Banas",
+                          "C": "Narmada, Tapi & Mahanadi",
+                          "D": "Godavari, Krishna & Cauvery"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: the Indus, the Ganga, and the Brahmaputra, along with their tributaries."
+                      }
+                    },
+                    {
+                      "Id": "india-8",
+                      "Fact": "Features highly fertile alluvial soil, making it the most agriculturally productive and densely populated region.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Formation & Soil in Northern Plains?",
+                        "Back": "Alluvial soil deposited by river systems.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "What is the dominant, highly fertile soil type covering the Northern Plains?",
+                        "Options": {
+                          "A": "Red Soil",
+                          "B": "Black Regur Soil",
+                          "C": "Alluvial Soil",
+                          "D": "Laterite Soil"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Features highly fertile alluvial soil, making it the most agriculturally productive and densely populated region."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Alluvial Soil",
+                      "Definition": "Highly fertile river sediment covering the Northern Plains."
+                    },
+                    {
+                      "Term": "Indus, Ganga & Brahmaputra",
+                      "Definition": "Three major river systems that formed the Northern Plains."
+                    },
+                    {
+                      "Term": "Bhangar",
+                      "Definition": "Older, less fertile alluvium on elevated river terraces."
+                    },
+                    {
+                      "Term": "Khadar",
+                      "Definition": "Newer, highly fertile floodplain alluvial deposits."
+                    },
+                    {
+                      "Term": "Bhabar Belt",
+                      "Definition": "Porous pebble belt along the Shiwalik foothills."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Layered Soil Profile Box using linear gradients to show the rich alluvial soil layers formed by the river systems."
                 },
                 {
                   "SectionName": "Regional Divisions",
                   "Facts": [
-                    "Punjab Plains.[cite: 1]",
-                    "Ganga Plains.[cite: 1]",
-                    "Brahmaputra / Luit Valley.[cite: 1]"
-                  ]
+                    "Punjab Plains.",
+                    "Ganga Plains.",
+                    "Brahmaputra / Luit Valley."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-9",
+                      "Fact": "Punjab Plains.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Regional Divisions in Northern Plains?",
+                        "Back": "Punjab Plains.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which regional division of the Northern Plains is situated in the eastern region, primarily covering Assam?",
+                        "Options": {
+                          "A": "Ganga Plains",
+                          "B": "Brahmaputra / Luit Valley",
+                          "C": "Punjab Plains",
+                          "D": "Rann of Kutch"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Punjab Plains."
+                      }
+                    },
+                    {
+                      "Id": "india-10",
+                      "Fact": "Ganga Plains.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Regional Divisions in Northern Plains?",
+                        "Back": "Ganga Plains.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which regional division of the Northern Plains is formed by the Indus and its five main tributaries?",
+                        "Options": {
+                          "A": "Brahmaputra Valley",
+                          "B": "Punjab Plains",
+                          "C": "Coromandel Plains",
+                          "D": "Ganga Plains"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Ganga Plains."
+                      }
+                    },
+                    {
+                      "Id": "india-11",
+                      "Fact": "Brahmaputra / Luit Valley.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Regional Divisions in Northern Plains?",
+                        "Back": "Brahmaputra / Luit Valley.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which central division of the Northern Plains stretches between the Ghaggar and Teesta rivers?",
+                        "Options": {
+                          "A": "Assam Plains",
+                          "B": "Punjab Plains",
+                          "C": "Ganga Plains",
+                          "D": "Konkan Plains"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Brahmaputra / Luit Valley."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Punjab Plains",
+                      "Definition": "Western section of Northern Plains formed by Indus system."
+                    },
+                    {
+                      "Term": "Ganga Plains",
+                      "Definition": "Central section spanning Haryana, UP, Bihar, and West Bengal."
+                    },
+                    {
+                      "Term": "Brahmaputra Valley",
+                      "Definition": "Eastern plain section traversing Assam."
+                    },
+                    {
+                      "Term": "Doab",
+                      "Definition": "Fertile tract of land situated between two rivers."
+                    },
+                    {
+                      "Term": "Terai Belt",
+                      "Definition": "Marshy, densely forested wet region south of Bhabar."
+                    }
+                  ],
+                  "VisualisationIdea": "Interactive HTML/CSS Map with three distinct hoverable zones (Punjab, Ganga, Brahmaputra plains) that expand on hover."
                 }
               ]
             },
@@ -53,25 +373,260 @@
                 {
                   "SectionName": "Central Highlands (Midlands)",
                   "Facts": [
-                    "Lies to the north of the Narmada river, bounded by the Vindhya range and Aravalis.[cite: 1]",
-                    "Includes the Malwa Plateau, Marwar Plateau, Bundelkhand, Baghelkhand, and Chotanagpur Plateau.[cite: 1]"
-                  ]
+                    "Lies to the north of the Narmada river, bounded by the Vindhya range and Aravalis.",
+                    "Includes the Malwa Plateau, Marwar Plateau, Bundelkhand, Baghelkhand, and Chotanagpur Plateau."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-12",
+                      "Fact": "Lies to the north of the Narmada river, bounded by the Vindhya range and Aravalis.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Central Highlands (Midlands) in Peninsular Plateau?",
+                        "Back": "Lies to the north of the Narmada river.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which plateau region lies directly north of the Narmada river, bounded by the Vindhyas and Aravalis?",
+                        "Options": {
+                          "A": "Central Highlands (Midlands)",
+                          "B": "Karnataka Plateau",
+                          "C": "Deccan Plateau",
+                          "D": "Shillong Plateau"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Lies to the north of the Narmada river, bounded by the Vindhya range and Aravalis."
+                      }
+                    },
+                    {
+                      "Id": "india-13",
+                      "Fact": "Includes the Malwa Plateau, Marwar Plateau, Bundelkhand, Baghelkhand, and Chotanagpur Plateau.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Central Highlands (Midlands) in Peninsular Plateau?",
+                        "Back": "Bounded by the Vindhya range and Aravalis.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which mountain range forms the northwest boundary of the Central Highlands?",
+                        "Options": {
+                          "A": "Western Ghats",
+                          "B": "Barail Range",
+                          "C": "Satpura Range",
+                          "D": "Aravali Range"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Includes the Malwa Plateau, Marwar Plateau, Bundelkhand, Baghelkhand, and Chotanagpur Plateau."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Central Highlands",
+                      "Definition": "Plateau region lying north of the Narmada river."
+                    },
+                    {
+                      "Term": "Aravali Range",
+                      "Definition": "Oldest fold mountain range forming northwest boundary."
+                    },
+                    {
+                      "Term": "Vindhya Range",
+                      "Definition": "Southern mountain border of the Central Highlands."
+                    },
+                    {
+                      "Term": "Chotanagpur Plateau",
+                      "Definition": "Eastern mineral-rich plateau in Jharkhand."
+                    },
+                    {
+                      "Term": "Malwa Plateau",
+                      "Definition": "Plateau section draining towards the Chambal & Yamuna."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Grid Layout displaying distinct plateau tiles (Malwa, Marwar, Bundelkhand, etc.) that elevate (box-shadow/transform) on hover."
                 },
                 {
                   "SectionName": "Deccan Plateau",
                   "Facts": [
-                    "A triangular landmass situated to the south of the Narmada river, flanked by the Eastern and Western Ghats.[cite: 1]",
-                    "Rich in mineral resources and features black soil (Deccan Trap) ideal for cotton cultivation.[cite: 1]"
-                  ]
+                    "A triangular landmass situated to the south of the Narmada river, flanked by the Eastern and Western Ghats.",
+                    "Rich in mineral resources and features black soil (Deccan Trap) ideal for cotton cultivation."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-14",
+                      "Fact": "A triangular landmass situated to the south of the Narmada river, flanked by the Eastern and Western Ghats.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Deccan Plateau in Peninsular Plateau?",
+                        "Back": "Triangular landmass.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "The volcanic Deccan Trap region is famous for which type of soil essential for cotton cultivation?",
+                        "Options": {
+                          "A": "Black Soil (Deccan Trap)",
+                          "B": "Desert Soil",
+                          "C": "Red & Yellow Soil",
+                          "D": "Laterite Soil"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: A triangular landmass situated to the south of the Narmada river, flanked by the Eastern and Western Ghats."
+                      }
+                    },
+                    {
+                      "Id": "india-15",
+                      "Fact": "Rich in mineral resources and features black soil (Deccan Trap) ideal for cotton cultivation.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Deccan Plateau in Peninsular Plateau?",
+                        "Back": "Black soil (Deccan Trap) ideal for cotton.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "What geometrical shape best describes the Deccan Plateau south of Narmada?",
+                        "Options": {
+                          "A": "Rectangular",
+                          "B": "Oval",
+                          "C": "Circular",
+                          "D": "Triangular"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Rich in mineral resources and features black soil (Deccan Trap) ideal for cotton cultivation."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Deccan Trap",
+                      "Definition": "Volcanic basaltic region dominated by rich black cotton soil."
+                    },
+                    {
+                      "Term": "Triangular Landmass",
+                      "Definition": "Geometrical contour of Deccan Plateau south of Narmada."
+                    },
+                    {
+                      "Term": "Regur Soil",
+                      "Definition": "Local name for fertile black cotton soil."
+                    },
+                    {
+                      "Term": "Western Ghats",
+                      "Definition": "Continuous mountain wall along western edge of Deccan."
+                    },
+                    {
+                      "Term": "Eastern Ghats",
+                      "Definition": "Discontinuous, eroded hills along eastern edge of Deccan."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Triangle shape created using `clip-path: polygon()` with a dark textured background to represent the black soil Deccan Trap."
                 },
                 {
                   "SectionName": "Mountain Ranges & Peaks",
                   "Facts": [
-                    "Encompasses the Western Ghats and Eastern Ghats.[cite: 1]",
-                    "Nilgiri is the point where the Western and Eastern Ghats join.[cite: 1]",
-                    "Anaimudi is identified as the southernmost peak.[cite: 1]",
-                    "Jindagarha is the highest peak in Peninsular India.[cite: 1]"
-                  ]
+                    "Encompasses the Western Ghats and Eastern Ghats.",
+                    "Nilgiri is the point where the Western and Eastern Ghats join.",
+                    "Anaimudi is identified as the southernmost peak.",
+                    "Jindagarha is the highest peak in Peninsular India."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-16",
+                      "Fact": "Encompasses the Western Ghats and Eastern Ghats.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Mountain Ranges & Peaks in Peninsular Plateau?",
+                        "Back": "The Western Ghats and Eastern Ghats.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "At which point do the Western Ghats and Eastern Ghats join?",
+                        "Options": {
+                          "A": "Anaimudi",
+                          "B": "Jindagarha",
+                          "C": "Nilgiri",
+                          "D": "Aravali"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Encompasses the Western Ghats and Eastern Ghats."
+                      }
+                    },
+                    {
+                      "Id": "india-17",
+                      "Fact": "Nilgiri is the point where the Western and Eastern Ghats join.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Mountain Ranges & Peaks in Peninsular Plateau?",
+                        "Back": "Nilgiri.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which of the following is identified as the southernmost peak?",
+                        "Options": {
+                          "A": "Nilgiri",
+                          "B": "Kanchenjunga",
+                          "C": "Anaimudi",
+                          "D": "Jindagarha"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Nilgiri is the point where the Western and Eastern Ghats join."
+                      }
+                    },
+                    {
+                      "Id": "india-18",
+                      "Fact": "Anaimudi is identified as the southernmost peak.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Mountain Ranges & Peaks in Peninsular Plateau?",
+                        "Back": "Anaimudi.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "What is the highest peak in Peninsular India?",
+                        "Options": {
+                          "A": "Nilgiri",
+                          "B": "Mt. Everest",
+                          "C": "Anaimudi",
+                          "D": "Jindagarha"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Anaimudi is identified as the southernmost peak."
+                      }
+                    },
+                    {
+                      "Id": "india-19",
+                      "Fact": "Jindagarha is the highest peak in Peninsular India.",
+                      "Flashcard": {
+                        "Front": "What is the highest mountain peak in Peninsular Plateau?",
+                        "Back": "Jindagarha (1,690 m).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which is the highest peak in the Aravali Range?",
+                        "Options": {
+                          "A": "Anaimudi",
+                          "B": "Guru Shikhar",
+                          "C": "Dhupgarh",
+                          "D": "Jindagarha"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Jindagarha is the highest peak in Peninsular India."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Nilgiri",
+                      "Definition": "The point where the Western and Eastern Ghats join."
+                    },
+                    {
+                      "Term": "Anaimudi",
+                      "Definition": "Identified as the southernmost peak in Peninsular India."
+                    },
+                    {
+                      "Term": "Jindagarha",
+                      "Definition": "The highest peak in Peninsular India (Eastern Ghats)."
+                    },
+                    {
+                      "Term": "Guru Shikhar",
+                      "Definition": "Highest peak of the Aravali Range in Rajasthan."
+                    },
+                    {
+                      "Term": "Western & Eastern Ghats",
+                      "Definition": "Mountain ranges encompassed by the Peninsular Plateau."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS/SVG V-Shape Diagram showing the Western and Eastern Ghats converging at a central node labeled Nilgiri, with a pulsing CSS marker for Anaimudi."
                 }
               ]
             },
@@ -81,23 +636,218 @@
                 {
                   "SectionName": "The Indian Desert (Thar Desert)",
                   "Facts": [
-                    "Lies towards the western margins of the Aravali Hills in Rajasthan.[cite: 1]",
-                    "Features an arid climate with low vegetation cover and very low annual rainfall (below 150 mm).[cite: 1]"
-                  ]
+                    "Lies towards the western margins of the Aravali Hills in Rajasthan.",
+                    "Features an arid climate with low vegetation cover and very low annual rainfall (below 150 mm)."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-20",
+                      "Fact": "Lies towards the western margins of the Aravali Hills in Rajasthan.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of The Indian Desert (Thar Desert) in Thar & Coastal Plains?",
+                        "Back": "Towards the western margins of the Aravali Hills in Rajasthan.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "The Thar Desert lies towards which margin of the Aravali Hills in Rajasthan?",
+                        "Options": {
+                          "A": "Eastern margin",
+                          "B": "Western margin",
+                          "C": "Northern margin",
+                          "D": "Southern margin"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Lies towards the western margins of the Aravali Hills in Rajasthan."
+                      }
+                    },
+                    {
+                      "Id": "india-21",
+                      "Fact": "Features an arid climate with low vegetation cover and very low annual rainfall (below 150 mm).",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of The Indian Desert (Thar Desert) in Thar & Coastal Plains?",
+                        "Back": "Very low annual rainfall below 150 mm.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "What is the average annual rainfall received in the Thar Desert?",
+                        "Options": {
+                          "A": "Below 150 mm",
+                          "B": "Over 2000 mm",
+                          "C": "500 mm to 750 mm",
+                          "D": "1000 mm"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Features an arid climate with low vegetation cover and very low annual rainfall (below 150 mm)."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Thar Desert",
+                      "Definition": "Arid desert region west of Aravali Hills in Rajasthan."
+                    },
+                    {
+                      "Term": "Below 150 mm",
+                      "Definition": "Average annual rainfall in the Indian Desert."
+                    },
+                    {
+                      "Term": "Barchans",
+                      "Definition": "Crescent-shaped sand dunes prevalent in Thar Desert."
+                    },
+                    {
+                      "Term": "Luni River",
+                      "Definition": "Only major river flowing through the Thar Desert."
+                    },
+                    {
+                      "Term": "Playas",
+                      "Definition": "Saline lake basins found in arid desert regions."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Animated Heat Waves and Sand Dunes created using overlapping radial gradients and keyframe animations for an arid effect."
                 },
                 {
                   "SectionName": "Western Coastal Plains",
                   "Facts": [
-                    "A narrow strip between the Western Ghats and the Arabian Sea.[cite: 1]",
-                    "Divided into Konkan, Kannad, and Malabar coasts.[cite: 1]"
-                  ]
+                    "A narrow strip between the Western Ghats and the Arabian Sea.",
+                    "Divided into Konkan, Kannad, and Malabar coasts."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-22",
+                      "Fact": "A narrow strip between the Western Ghats and the Arabian Sea.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Western Coastal Plains in Thar & Coastal Plains?",
+                        "Back": "A narrow strip between the Western Ghats and the Arabian Sea.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which of the following is the southern coast of the Western Coastal Plains?",
+                        "Options": {
+                          "A": "Malabar",
+                          "B": "Northern Circars",
+                          "C": "Konkan",
+                          "D": "Coromandel"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: A narrow strip between the Western Ghats and the Arabian Sea."
+                      }
+                    },
+                    {
+                      "Id": "india-23",
+                      "Fact": "Divided into Konkan, Kannad, and Malabar coasts.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Western Coastal Plains in Thar & Coastal Plains?",
+                        "Back": "Konkan, Kannad, and Malabar coasts.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which section of the Western Coastal Plains stretches from Mumbai to Goa?",
+                        "Options": {
+                          "A": "Konkan Coast",
+                          "B": "Kannad Coast",
+                          "C": "Coromandel Coast",
+                          "D": "Malabar Coast"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Divided into Konkan, Kannad, and Malabar coasts."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Konkan Coast",
+                      "Definition": "Northern section of the Western Coastal Plains (Mumbai to Goa)."
+                    },
+                    {
+                      "Term": "Kannad Coast",
+                      "Definition": "Central section of the Western Coastal Plains in Karnataka."
+                    },
+                    {
+                      "Term": "Malabar Coast",
+                      "Definition": "Southern section of the Western Coastal Plains in Kerala."
+                    },
+                    {
+                      "Term": "Kayals",
+                      "Definition": "Famous backwater lagoons of Kerala on the Malabar Coast."
+                    },
+                    {
+                      "Term": "Arabian Sea",
+                      "Definition": "Sea bordering the Western Coastal Plains."
+                    }
+                  ],
+                  "VisualisationIdea": "Narrow CSS Flex Column adjacent to a blue gradient, with sticky scrolling to explore Konkan, Kannad, and Malabar."
                 },
                 {
                   "SectionName": "Eastern Coastal Plains",
                   "Facts": [
-                    "Broader plains between the Eastern Ghats and the Bay of Bengal, known for large river deltas.[cite: 1]",
-                    "Divided into Northern Circars and the Coromandel Coast.[cite: 1]"
-                  ]
+                    "Broader plains between the Eastern Ghats and the Bay of Bengal, known for large river deltas.",
+                    "Divided into Northern Circars and the Coromandel Coast."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-24",
+                      "Fact": "Broader plains between the Eastern Ghats and the Bay of Bengal, known for large river deltas.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Eastern Coastal Plains in Thar & Coastal Plains?",
+                        "Back": "Broader plains between the Eastern Ghats and the Bay of Bengal.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "The southern part of the Eastern Coastal Plains is referred to as which coast?",
+                        "Options": {
+                          "A": "Konkan Coast",
+                          "B": "Malabar Coast",
+                          "C": "Coromandel Coast",
+                          "D": "Kannad Coast"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Broader plains between the Eastern Ghats and the Bay of Bengal, known for large river deltas."
+                      }
+                    },
+                    {
+                      "Id": "india-25",
+                      "Fact": "Divided into Northern Circars and the Coromandel Coast.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Eastern Coastal Plains in Thar & Coastal Plains?",
+                        "Back": "Northern Circars and the Coromandel Coast.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which is the largest brackish water lagoon located on the Eastern Coastal Plain in Odisha?",
+                        "Options": {
+                          "A": "Dal Lake",
+                          "B": "Vembanad Lake",
+                          "C": "Wular Lake",
+                          "D": "Chilika Lake"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Divided into Northern Circars and the Coromandel Coast."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Northern Circars",
+                      "Definition": "Northern section of the Eastern Coastal Plains."
+                    },
+                    {
+                      "Term": "Coromandel Coast",
+                      "Definition": "Southern section of the Eastern Coastal Plains along Tamil Nadu."
+                    },
+                    {
+                      "Term": "Chilika Lake",
+                      "Definition": "Largest brackish water lagoon in India on Odisha coast."
+                    },
+                    {
+                      "Term": "River Deltas",
+                      "Definition": "Broad fertile deltas formed by Godavari, Krishna, and Cauvery."
+                    },
+                    {
+                      "Term": "Bay of Bengal",
+                      "Definition": "Sea bordering the Eastern Coastal Plains."
+                    }
+                  ],
+                  "VisualisationIdea": "Broader CSS Flex Column featuring expanding horizontal border-radiuses to visually represent the large river deltas."
                 }
               ]
             },
@@ -107,9 +857,74 @@
                 {
                   "SectionName": "Major Island Groups",
                   "Facts": [
-                    "Andaman and Nicobar (Bay of Bengal): Volcanic origin, larger in size, and rich in biodiversity.[cite: 1]",
-                    "Lakshadweep (Arabian Sea): Coral origin (atolls), covering a smaller geographical area.[cite: 1]"
-                  ]
+                    "Andaman and Nicobar (Bay of Bengal): Volcanic origin, larger in size, and rich in biodiversity.",
+                    "Lakshadweep (Arabian Sea): Coral origin (atolls), covering a smaller geographical area."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-26",
+                      "Fact": "Andaman and Nicobar (Bay of Bengal): Volcanic origin, larger in size, and rich in biodiversity.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Andaman and Nicobar (Bay of Bengal) in The Islands?",
+                        "Back": "Andaman and Nicobar Islands.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "The Lakshadweep Islands in the Arabian Sea are primarily formed from what structure?",
+                        "Options": {
+                          "A": "Volcanic rock",
+                          "B": "Coral origin (atolls)",
+                          "C": "Fold mountain roots",
+                          "D": "Glacial moraines"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Volcanic origin, larger in size, and rich in biodiversity."
+                      }
+                    },
+                    {
+                      "Id": "india-27",
+                      "Fact": "Lakshadweep (Arabian Sea): Coral origin (atolls), covering a smaller geographical area.",
+                      "Flashcard": {
+                        "Front": "What is the geographical significance of Lakshadweep (Arabian Sea) in The Islands?",
+                        "Back": "Lakshadweep Islands (atolls).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which island group is located in the Bay of Bengal?",
+                        "Options": {
+                          "A": "Andaman and Nicobar",
+                          "B": "Maldives",
+                          "C": "Sri Lanka",
+                          "D": "Lakshadweep"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Coral origin (atolls), covering a smaller geographical area."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Andaman and Nicobar",
+                      "Definition": "Volcanic origin island chain in the Bay of Bengal."
+                    },
+                    {
+                      "Term": "Lakshadweep",
+                      "Definition": "Coral origin (atolls) island group in the Arabian Sea."
+                    },
+                    {
+                      "Term": "Barren Island",
+                      "Definition": "India's only active volcano in the Andaman Sea."
+                    },
+                    {
+                      "Term": "Ten Degree Channel",
+                      "Definition": "Water strait separating Andaman from Nicobar Islands."
+                    },
+                    {
+                      "Term": "Atoll",
+                      "Definition": "Ring-shaped coral reef structure surrounding a lagoon."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Floating Bubbles scattered on a blue background container, clustered into a large group (Andaman) and a small coral ring group (Lakshadweep)."
                 }
               ]
             }
@@ -124,23 +939,218 @@
                 {
                   "SectionName": "The Indus System",
                   "Facts": [
-                    "Originates in Tibet near Lake Mansarovar.[cite: 1]",
-                    "Major tributaries include the Jhelum, Chenab, Ravi, Beas, and Sutlej.[cite: 1]"
-                  ]
+                    "Originates in Tibet near Lake Mansarovar.",
+                    "Major tributaries include the Jhelum, Chenab, Ravi, Beas, and Sutlej."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-28",
+                      "Fact": "Originates in Tibet near Lake Mansarovar.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of The Indus System in Himalayan Rivers?",
+                        "Back": "In Tibet near Lake Mansarovar.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Near which landmark in Tibet does the Indus river originate?",
+                        "Options": {
+                          "A": "Gangotri Glacier",
+                          "B": "Yamunotri Glacier",
+                          "C": "Lake Mansarovar",
+                          "D": "Badrinath"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Originates in Tibet near Lake Mansarovar."
+                      }
+                    },
+                    {
+                      "Id": "india-29",
+                      "Fact": "Major tributaries include the Jhelum, Chenab, Ravi, Beas, and Sutlej.",
+                      "Flashcard": {
+                        "Front": "What are the major tributaries associated with Himalayan Rivers?",
+                        "Back": "Jhelum, Chenab, Ravi, Beas, and Sutlej.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which is the largest tributary of the Indus river system?",
+                        "Options": {
+                          "A": "Jhelum",
+                          "B": "Beas",
+                          "C": "Ravi",
+                          "D": "Chenab"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Major tributaries include the Jhelum, Chenab, Ravi, Beas, and Sutlej."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Lake Mansarovar (Tibet)",
+                      "Definition": "Origin point of the Indus river system."
+                    },
+                    {
+                      "Term": "Chenab",
+                      "Definition": "Largest tributary of the Indus system."
+                    },
+                    {
+                      "Term": "Jhelum",
+                      "Definition": "Tributary flowing through Srinagar and Wular Lake."
+                    },
+                    {
+                      "Term": "Sutlej",
+                      "Definition": "Tributary originating near Rakshastal in Tibet."
+                    },
+                    {
+                      "Term": "Arabian Sea",
+                      "Definition": "Final drainage destination of the Indus river."
+                    }
+                  ],
+                  "VisualisationIdea": "SVG Branching Path Diagram flowing top-to-left, with tributaries lighting up consecutively using CSS animations."
                 },
                 {
                   "SectionName": "The Ganga System",
                   "Facts": [
-                    "Originates as the Bhagirathi from the Gangotri glacier.[cite: 1]",
-                    "Major tributaries include the Yamuna, Ghaghara, Gandak, Kosi, and Son.[cite: 1]"
-                  ]
+                    "Originates as the Bhagirathi from the Gangotri glacier.",
+                    "Major tributaries include the Yamuna, Ghaghara, Gandak, Kosi, and Son."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-30",
+                      "Fact": "Originates as the Bhagirathi from the Gangotri glacier.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of The Ganga System in Himalayan Rivers?",
+                        "Back": "From the Gangotri glacier.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "From which glacier does the Bhagirathi headstream of the Ganga originate?",
+                        "Options": {
+                          "A": "Pindari glacier",
+                          "B": "Yamunotri glacier",
+                          "C": "Siachen glacier",
+                          "D": "Gangotri glacier"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Originates as the Bhagirathi from the Gangotri glacier."
+                      }
+                    },
+                    {
+                      "Id": "india-31",
+                      "Fact": "Major tributaries include the Yamuna, Ghaghara, Gandak, Kosi, and Son.",
+                      "Flashcard": {
+                        "Front": "What are the major tributaries associated with Himalayan Rivers?",
+                        "Back": "Devprayag.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "At which confluence do the Bhagirathi and Alaknanda meet to form the Ganga?",
+                        "Options": {
+                          "A": "Vishnuprayag",
+                          "B": "Karnaprayag",
+                          "C": "Rudraprayag",
+                          "D": "Devprayag"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Major tributaries include the Yamuna, Ghaghara, Gandak, Kosi, and Son."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Gangotri Glacier",
+                      "Definition": "Origin point of the Bhagirathi headstream of Ganga."
+                    },
+                    {
+                      "Term": "Devprayag",
+                      "Definition": "Confluence of Bhagirathi and Alaknanda forming the Ganga."
+                    },
+                    {
+                      "Term": "Yamuna River",
+                      "Definition": "Largest right-bank tributary originating at Yamunotri."
+                    },
+                    {
+                      "Term": "Kosi River",
+                      "Definition": "Major left-bank tributary known for shifting channels."
+                    },
+                    {
+                      "Term": "Son River",
+                      "Definition": "Right-bank Peninsular tributary joining Ganga near Patna."
+                    }
+                  ],
+                  "VisualisationIdea": "Animated SVG River Flow (stroke-dasharray) starting from a single point and widening as major tributaries (Yamuna, Kosi) join in."
                 },
                 {
                   "SectionName": "The Brahmaputra System",
                   "Facts": [
-                    "Originates in Tibet where it is known as Tsangpo.[cite: 1]",
-                    "Enters India through Arunachal Pradesh and forms a massive network in Assam.[cite: 1]"
-                  ]
+                    "Originates in Tibet where it is known as Tsangpo.",
+                    "Enters India through Arunachal Pradesh and forms a massive network in Assam."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-32",
+                      "Fact": "Originates in Tibet where it is known as Tsangpo.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of The Brahmaputra System in Himalayan Rivers?",
+                        "Back": "Tsangpo.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "What is the name given to the Brahmaputra river in Tibet?",
+                        "Options": {
+                          "A": "Jamuna",
+                          "B": "Padma",
+                          "C": "Meghna",
+                          "D": "Tsangpo"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Originates in Tibet where it is known as Tsangpo."
+                      }
+                    },
+                    {
+                      "Id": "india-33",
+                      "Fact": "Enters India through Arunachal Pradesh and forms a massive network in Assam.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of The Brahmaputra System in Himalayan Rivers?",
+                        "Back": "Arunachal Pradesh (as the Dihang/Siang).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Under what name does Brahmaputra enter Arunachal Pradesh?",
+                        "Options": {
+                          "A": "Lohit",
+                          "B": "Manas",
+                          "C": "Subansiri",
+                          "D": "Dihang / Siang"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Enters India through Arunachal Pradesh and forms a massive network in Assam."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Tsangpo",
+                      "Definition": "Tibetan name for the Brahmaputra river."
+                    },
+                    {
+                      "Term": "Dihang / Siang",
+                      "Definition": "Name of Brahmaputra as it enters Arunachal Pradesh."
+                    },
+                    {
+                      "Term": "Subansiri",
+                      "Definition": "Largest north-bank tributary of the Brahmaputra."
+                    },
+                    {
+                      "Term": "Majuli",
+                      "Definition": "World's largest inhabited riverine island in Assam."
+                    },
+                    {
+                      "Term": "Jamuna",
+                      "Definition": "Name of Brahmaputra River upon entering Bangladesh."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS U-Turn Animation path reflecting the river's entry into Arunachal Pradesh and its massive spreading network in Assam."
                 }
               ]
             },
@@ -150,16 +1160,146 @@
                 {
                   "SectionName": "West-Flowing Rivers",
                   "Facts": [
-                    "Narmada & Tapi flow through rift valleys into the Arabian Sea.[cite: 1]",
-                    "They form estuaries instead of deltas.[cite: 1]"
-                  ]
+                    "Narmada & Tapi flow through rift valleys into the Arabian Sea.",
+                    "They form estuaries instead of deltas."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-34",
+                      "Fact": "Narmada & Tapi flow through rift valleys into the Arabian Sea.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of West-Flowing Rivers in Peninsular Rivers?",
+                        "Back": "Narmada & Tapi.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which two major Peninsular rivers flow westwards through rift valleys into the Arabian Sea?",
+                        "Options": {
+                          "A": "Mahanadi & Cauvery",
+                          "B": "Narmada & Tapi",
+                          "C": "Luni & Sabarmati",
+                          "D": "Godavari & Krishna"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Narmada & Tapi flow through rift valleys into the Arabian Sea."
+                      }
+                    },
+                    {
+                      "Id": "india-35",
+                      "Fact": "They form estuaries instead of deltas.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of West-Flowing Rivers in Peninsular Rivers?",
+                        "Back": "Amarkantak Plateau in Madhya Pradesh.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Where does the Narmada river originate?",
+                        "Options": {
+                          "A": "Brahmagiri",
+                          "B": "Amarkantak Plateau",
+                          "C": "Trimbakeshwar",
+                          "D": "Mahabaleshwar"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: They form estuaries instead of deltas."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Narmada",
+                      "Definition": "West-flowing river originating at Amarkantak."
+                    },
+                    {
+                      "Term": "Tapi",
+                      "Definition": "West-flowing river originating at Multai in Betul."
+                    },
+                    {
+                      "Term": "Rift Valleys",
+                      "Definition": "Fault structures through which Narmada and Tapi flow."
+                    },
+                    {
+                      "Term": "Dhuandhar Falls",
+                      "Definition": "Waterfall formed by Narmada at Marble Rocks in Jabalpur."
+                    },
+                    {
+                      "Term": "Estuaries",
+                      "Definition": "Coastal features formed instead of deltas by west-flowing rivers."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Horizontal Scroll/Flow right-to-left, ending abruptly in a straight edge to represent estuaries instead of deltas."
                 },
                 {
                   "SectionName": "East-Flowing Rivers",
                   "Facts": [
-                    "Mahanadi, Godavari, Krishna, and Cauvery flow into the Bay of Bengal and form large, fertile deltas at their mouths.[cite: 1]",
-                    "The Godavari is the largest peninsular river and is often called Dakshin Ganga.[cite: 1]"
-                  ]
+                    "Mahanadi, Godavari, Krishna, and Cauvery flow into the Bay of Bengal and form large, fertile deltas at their mouths.",
+                    "The Godavari is the largest peninsular river and is often called Dakshin Ganga."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-36",
+                      "Fact": "Mahanadi, Godavari, Krishna, and Cauvery flow into the Bay of Bengal and form large, fertile deltas at their mouths.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of East-Flowing Rivers in Peninsular Rivers?",
+                        "Back": "Mahanadi, Godavari, Krishna, and Cauvery.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which is the largest peninsular river in India?",
+                        "Options": {
+                          "A": "Godavari",
+                          "B": "Krishna",
+                          "C": "Cauvery",
+                          "D": "Mahanadi"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Mahanadi, Godavari, Krishna, and Cauvery flow into the Bay of Bengal and form large, fertile deltas at their mouths."
+                      }
+                    },
+                    {
+                      "Id": "india-37",
+                      "Fact": "The Godavari is the largest peninsular river and is often called Dakshin Ganga.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of East-Flowing Rivers in Peninsular Rivers?",
+                        "Back": "The Godavari (often called Dakshin Ganga).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "The Godavari river is often referred to by what alternative name?",
+                        "Options": {
+                          "A": "Uttara Ganga",
+                          "B": "Luit",
+                          "C": "Dakshin Ganga",
+                          "D": "Tsangpo"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: The Godavari is the largest peninsular river and is often called Dakshin Ganga."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Godavari",
+                      "Definition": "Longest Peninsular river, known as 'Dakshin Ganga'."
+                    },
+                    {
+                      "Term": "Krishna",
+                      "Definition": "Major east-flowing river originating at Mahabaleshwar."
+                    },
+                    {
+                      "Term": "Cauvery",
+                      "Definition": "East-flowing river originating in Brahmagiri Hills."
+                    },
+                    {
+                      "Term": "Mahanadi",
+                      "Definition": "Major east-flowing river originating in Chhattisgarh."
+                    },
+                    {
+                      "Term": "Bay of Bengal Deltas",
+                      "Definition": "Fertile coastal deltas formed by east-flowing rivers."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Horizontal Flow left-to-right that fans out into multiple small branches using CSS Grid/Flex to represent fertile deltas."
                 }
               ]
             }
@@ -174,13 +1314,158 @@
                 {
                   "SectionName": "Overview & Indian Hotspots",
                   "Facts": [
-                    "Biogeographic regions that are significant reservoirs of biodiversity threatened by human destruction.[cite: 1]",
-                    "India hosts 4 out of the 36 globally recognized hotspots.[cite: 1]",
-                    "The Himalayas hotspot includes the entire Indian Himalayan region.[cite: 1]",
-                    "Indo-Burma hotspot includes the entire North-Eastern India (except Assam and Andaman).[cite: 1]",
-                    "Western Ghats and Sri Lanka hotspot runs parallel to the western coast of the Indian peninsula.[cite: 1]",
-                    "Sundaland hotspot includes the Nicobar group of Islands.[cite: 1]"
-                  ]
+                    "Biogeographic regions that are significant reservoirs of biodiversity threatened by human destruction.",
+                    "India hosts 4 out of the 36 globally recognized hotspots.",
+                    "The Himalayas hotspot includes the entire Indian Himalayan region.",
+                    "Indo-Burma hotspot includes the entire North-Eastern India (except Assam and Andaman).",
+                    "Western Ghats and Sri Lanka hotspot runs parallel to the western coast of the Indian peninsula.",
+                    "Sundaland hotspot includes the Nicobar group of Islands."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-38",
+                      "Fact": "Biogeographic regions that are significant reservoirs of biodiversity threatened by human destruction.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Overview & Indian Hotspots in Biodiversity Hotspots (BH)?",
+                        "Back": "4 out of the 36 globally recognized hotspots.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "How many globally recognized biodiversity hotspots are hosted in India?",
+                        "Options": {
+                          "A": "4 out of 36",
+                          "B": "2 out of 36",
+                          "C": "18 out of 36",
+                          "D": "12 out of 36"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: Biogeographic regions that are significant reservoirs of biodiversity threatened by human destruction."
+                      }
+                    },
+                    {
+                      "Id": "india-39",
+                      "Fact": "India hosts 4 out of the 36 globally recognized hotspots.",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Biodiversity Hotspots (BH)?",
+                        "Back": "The Himalayas hotspot.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which hotspot includes the entire North-Eastern India (except Assam and Andaman)?",
+                        "Options": {
+                          "A": "Indo-Burma hotspot",
+                          "B": "Sundaland hotspot",
+                          "C": "Western Ghats hotspot",
+                          "D": "The Himalayas hotspot"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: India hosts 4 out of the 36 globally recognized hotspots."
+                      }
+                    },
+                    {
+                      "Id": "india-40",
+                      "Fact": "The Himalayas hotspot includes the entire Indian Himalayan region.",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Biodiversity Hotspots (BH)?",
+                        "Back": "Indo-Burma hotspot.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "The Nicobar group of Islands is included in which biodiversity hotspot?",
+                        "Options": {
+                          "A": "The Himalayas hotspot",
+                          "B": "Indo-Burma hotspot",
+                          "C": "Sundaland hotspot",
+                          "D": "Western Ghats and Sri Lanka hotspot"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: The Himalayas hotspot includes the entire Indian Himalayan region."
+                      }
+                    },
+                    {
+                      "Id": "india-41",
+                      "Fact": "Indo-Burma hotspot includes the entire North-Eastern India (except Assam and Andaman).",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Biodiversity Hotspots (BH)?",
+                        "Back": "Western Ghats and Sri Lanka hotspot.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which hotspot covers the entire northern mountain belt of India?",
+                        "Options": {
+                          "A": "Sundaland hotspot",
+                          "B": "Western Ghats hotspot",
+                          "C": "Indo-Burma hotspot",
+                          "D": "The Himalayas hotspot"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Indo-Burma hotspot includes the entire North-Eastern India (except Assam and Andaman)."
+                      }
+                    },
+                    {
+                      "Id": "india-42",
+                      "Fact": "Western Ghats and Sri Lanka hotspot runs parallel to the western coast of the Indian peninsula.",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Biodiversity Hotspots (BH)?",
+                        "Back": "Sundaland hotspot.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which hotspot runs parallel to the western coastal margin of Peninsular India?",
+                        "Options": {
+                          "A": "The Himalayas hotspot",
+                          "B": "Sundaland hotspot",
+                          "C": "Indo-Burma hotspot",
+                          "D": "Western Ghats and Sri Lanka hotspot"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Western Ghats and Sri Lanka hotspot runs parallel to the western coast of the Indian peninsula."
+                      }
+                    },
+                    {
+                      "Id": "india-43",
+                      "Fact": "Sundaland hotspot includes the Nicobar group of Islands.",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Biodiversity Hotspots (BH)?",
+                        "Back": "Sundaland hotspot includes the Nicobar group of Islands.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "What ecological markers and conservation zones define Biodiversity Hotspots (BH)?",
+                        "Options": {
+                          "A": "It is an isolated coral atoll reef structure in the Lakshadweep archipelago.",
+                          "B": "It is an arid rain-shadow plateau located in the Deccan Peninsular Interior.",
+                          "C": "It is a high-altitude glaciated valley situated in the Pir Panjal range of Jammu & Kashmir.",
+                          "D": "Sundaland hotspot includes the Nicobar group of Islands."
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official INDIA Syllabus Fact: Sundaland hotspot includes the Nicobar group of Islands."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "The Himalayas hotspot",
+                      "Definition": "Includes the entire Indian Himalayan region."
+                    },
+                    {
+                      "Term": "Indo-Burma hotspot",
+                      "Definition": "Includes North-Eastern India (except Assam and Andaman)."
+                    },
+                    {
+                      "Term": "Western Ghats and Sri Lanka hotspot",
+                      "Definition": "Runs parallel to the western coast of the Indian peninsula."
+                    },
+                    {
+                      "Term": "Sundaland hotspot",
+                      "Definition": "Includes the Nicobar group of Islands."
+                    },
+                    {
+                      "Term": "4 out of 36",
+                      "Definition": "Proportion of global biodiversity hotspots hosted in India."
+                    }
+                  ],
+                  "VisualisationIdea": "HTML/CSS Radar Map with 4 pulsing animated ring markers (using `@keyframes`) representing the 4 biodiversity hotspots."
                 }
               ]
             },
@@ -190,9 +1475,74 @@
                 {
                   "SectionName": "Key Indian Sites",
                   "Facts": [
-                    "Designated by UNESCO for outstanding universal value based on science, conservation, or natural beauty.[cite: 1]",
-                    "Examples include Kaziranga National Park, Manas Wildlife Sanctuary, Keoladeo National Park, Sundarbans National Park, Nanda Devi and Valley of Flowers National Parks, Western Ghats, and Great Himalayan National Park Conservation Area.[cite: 1]"
-                  ]
+                    "Designated by UNESCO for outstanding universal value based on science, conservation, or natural beauty.",
+                    "Examples include Kaziranga National Park, Manas Wildlife Sanctuary, Keoladeo National Park, Sundarbans National Park, Nanda Devi and Valley of Flowers National Parks, Western Ghats, and Great Himalayan National Park Conservation Area."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-44",
+                      "Fact": "Designated by UNESCO for outstanding universal value based on science, conservation, or natural beauty.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Key Indian Sites in Natural Heritage?",
+                        "Back": "UNESCO.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which international body designates World Natural Heritage Sites?",
+                        "Options": {
+                          "A": "WWF",
+                          "B": "IUCN",
+                          "C": "UNEP",
+                          "D": "UNESCO"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Designated by UNESCO for outstanding universal value based on science, conservation, or natural beauty."
+                      }
+                    },
+                    {
+                      "Id": "india-45",
+                      "Fact": "Examples include Kaziranga National Park, Manas Wildlife Sanctuary, Keoladeo National Park, Sundarbans National Park, Nanda Devi and Valley of Flowers National Parks, Western Ghats, and Great Himalayan National Park Conservation Area.",
+                      "Flashcard": {
+                        "Front": "What are the major declared National Parks located in Natural Heritage?",
+                        "Back": "Kaziranga National Park.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which national park in Assam is designated as a UNESCO World Natural Heritage Site for its rhino population?",
+                        "Options": {
+                          "A": "Orang NP",
+                          "B": "Dibru-Saikhowa NP",
+                          "C": "Kaziranga National Park",
+                          "D": "Pobitora WS"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Examples include Kaziranga National Park, Manas Wildlife Sanctuary, Keoladeo National Park, Sundarbans National Park, Nanda Devi and Valley of Flowers National Parks, Western Ghats, and Great Himalayan National Park Conservation Area."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "Kaziranga NP",
+                      "Definition": "UNESCO World Heritage Site famous for one-horned rhinos."
+                    },
+                    {
+                      "Term": "Manas WS",
+                      "Definition": "UNESCO World Heritage tiger & elephant reserve in Assam."
+                    },
+                    {
+                      "Term": "Sundarbans NP",
+                      "Definition": "UNESCO World Heritage mangrove forest in West Bengal."
+                    },
+                    {
+                      "Term": "Nanda Devi & Valley of Flowers",
+                      "Definition": "UNESCO World Heritage alpine site in Uttarakhand."
+                    },
+                    {
+                      "Term": "Keoladeo NP",
+                      "Definition": "UNESCO World Heritage bird sanctuary in Bharatpur, Rajasthan."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Masonry Gallery Layout showcasing image placeholder cards for Kaziranga, Manas, and Sundarbans that flip to reveal facts."
                 }
               ]
             },
@@ -202,12 +1552,137 @@
                 {
                   "SectionName": "Network & Recognition",
                   "Facts": [
-                    "Large, multi-purpose protected areas created to conserve genetic diversity while integrating sustainable human development and research.[cite: 1]",
-                    "India has a total of 18 officially notified Biosphere Reserves.[cite: 1]",
-                    "12 of these are internationally recognized under the UNESCO Man and the Biosphere (MAB) Programme.[cite: 1]",
-                    "Nilgiri was the first established reserve.[cite: 1]",
-                    "Kachchh (Gujarat) is the largest by geographical area, and Dibru-Saikhowa (Assam) is the smallest.[cite: 1]"
-                  ]
+                    "Large, multi-purpose protected areas created to conserve genetic diversity while integrating sustainable human development and research.",
+                    "India has a total of 18 officially notified Biosphere Reserves.",
+                    "12 of these are internationally recognized under the UNESCO Man and the Biosphere (MAB) Programme.",
+                    "Nilgiri was the first established reserve.",
+                    "Kachchh (Gujarat) is the largest by geographical area, and Dibru-Saikhowa (Assam) is the smallest."
+                  ],
+                  "ConceptUnits": [
+                    {
+                      "Id": "india-46",
+                      "Fact": "Large, multi-purpose protected areas created to conserve genetic diversity while integrating sustainable human development and research.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Network & Recognition in Biosphere Reserves?",
+                        "Back": "18 officially notified Biosphere Reserves.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which is the largest Biosphere Reserve in India by geographical area?",
+                        "Options": {
+                          "A": "Dibru-Saikhowa (Assam)",
+                          "B": "Kachchh (Gujarat)",
+                          "C": "Nilgiri",
+                          "D": "Manas"
+                        },
+                        "CorrectAnswer": "B",
+                        "Explanation": "Official Syllabus Fact: Large, multi-purpose protected areas created to conserve genetic diversity while integrating sustainable human development and research."
+                      }
+                    },
+                    {
+                      "Id": "india-47",
+                      "Fact": "India has a total of 18 officially notified Biosphere Reserves.",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Biosphere Reserves?",
+                        "Back": "12 of these are internationally recognized.",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which was the first established Biosphere Reserve in India in 1986?",
+                        "Options": {
+                          "A": "Nilgiri",
+                          "B": "Dibru-Saikhowa",
+                          "C": "Sundarbans",
+                          "D": "Kachchh"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: India has a total of 18 officially notified Biosphere Reserves."
+                      }
+                    },
+                    {
+                      "Id": "india-48",
+                      "Fact": "12 of these are internationally recognized under the UNESCO Man and the Biosphere (MAB) Programme.",
+                      "Flashcard": {
+                        "Front": "What ecological markers and conservation zones define Biosphere Reserves?",
+                        "Back": "Nilgiri (1986).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "How many Indian Biosphere Reserves are internationally recognized under the UNESCO Man and the Biosphere (MAB) Programme?",
+                        "Options": {
+                          "A": "12",
+                          "B": "4",
+                          "C": "36",
+                          "D": "18"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "Official Syllabus Fact: 12 of these are internationally recognized under the UNESCO Man and the Biosphere (MAB) Programme."
+                      }
+                    },
+                    {
+                      "Id": "india-49",
+                      "Fact": "Nilgiri was the first established reserve.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Network & Recognition in Biosphere Reserves?",
+                        "Back": "Kachchh (Gujarat).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "What is the total number of officially notified Biosphere Reserves in India?",
+                        "Options": {
+                          "A": "12",
+                          "B": "7",
+                          "C": "18",
+                          "D": "25"
+                        },
+                        "CorrectAnswer": "C",
+                        "Explanation": "Official Syllabus Fact: Nilgiri was the first established reserve."
+                      }
+                    },
+                    {
+                      "Id": "india-50",
+                      "Fact": "Kachchh (Gujarat) is the largest by geographical area, and Dibru-Saikhowa (Assam) is the smallest.",
+                      "Flashcard": {
+                        "Front": "What is a key geographical feature of Network & Recognition in Biosphere Reserves?",
+                        "Back": "Dibru-Saikhowa (Assam).",
+                        "Image": null
+                      },
+                      "Quiz": {
+                        "Question": "Which is the smallest Biosphere Reserve in India by geographical area?",
+                        "Options": {
+                          "A": "Gulf of Mannar",
+                          "B": "Pobitora",
+                          "C": "Nokrek",
+                          "D": "Dibru-Saikhowa (Assam)"
+                        },
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Kachchh (Gujarat) is the largest by geographical area, and Dibru-Saikhowa (Assam) is the smallest."
+                      }
+                    }
+                  ],
+                  "PracticeMatching": [
+                    {
+                      "Term": "18 Notified Reserves",
+                      "Definition": "The total number of officially notified Biosphere Reserves in India."
+                    },
+                    {
+                      "Term": "12 MAB Reserves",
+                      "Definition": "The number of Biosphere Reserves internationally recognized under the UNESCO MAB Programme."
+                    },
+                    {
+                      "Term": "Nilgiri (1986)",
+                      "Definition": "The first established biosphere reserve in India."
+                    },
+                    {
+                      "Term": "Kachchh (Gujarat)",
+                      "Definition": "The largest biosphere reserve by geographical area."
+                    },
+                    {
+                      "Term": "Dibru-Saikhowa (Assam)",
+                      "Definition": "The smallest biosphere reserve in India."
+                    }
+                  ],
+                  "VisualisationIdea": "CSS Concentric Circles representing the Core, Buffer, and Transition zones of a Biosphere Reserve, with tooltips for Nilgiri and Kachchh."
                 }
               ]
             }
