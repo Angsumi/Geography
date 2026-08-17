@@ -20,10 +20,11 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   const [unitIndex, setUnitIndex] = useState(0);
   const [unitStep, setUnitStep] = useState('fact'); // 'fact' | 'flashcard' | 'quiz' | 'matching_recap' | 'completed'
   
-  // MCQ state
+  // MCQ & Floating XP state
   const [selectedOption, setSelectedOption] = useState(null);
   const [isQuizAnswered, setIsQuizAnswered] = useState(false);
   const [earnedXp, setEarnedXp] = useState(0);
+  const [floatingXp, setFloatingXp] = useState(null);
 
   const currentUnit = conceptUnits[unitIndex] || {
     Fact: `${topicName} key syllabus concept.`,
@@ -35,7 +36,11 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
     setUnitStep('flashcard');
   };
 
-  const handleFlashcardDone = () => {
+  const handleFlashcardDone = (pts = 10) => {
+    setEarnedXp(x => x + pts);
+    setFloatingXp('+10 XP');
+    setTimeout(() => setFloatingXp(null), 1000);
+    
     setSelectedOption(null);
     setIsQuizAnswered(false);
     setUnitStep('quiz');
@@ -46,12 +51,21 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
     setSelectedOption(optKey);
     setIsQuizAnswered(true);
 
-    if (optKey === currentUnit.Quiz.CorrectAnswer) {
+    const isCorrect = optKey === currentUnit.Quiz?.CorrectAnswer;
+
+    if (isCorrect) {
       setEarnedXp(x => x + 15);
+      setFloatingXp('+15 XP');
       playCorrect();
     } else {
       playWrong();
     }
+
+    // Auto-advance to next unit or match recap after smooth delay
+    setTimeout(() => {
+      setFloatingXp(null);
+      handleNextUnit();
+    }, 1500);
   };
 
   const handleNextUnit = () => {
@@ -67,10 +81,14 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
     }
   };
 
-  const handleMatchingComplete = (pts) => {
-    setEarnedXp(x => x + (pts || 25));
+  const handleMatchingComplete = (pts = 25) => {
+    setEarnedXp(x => x + pts);
+    setFloatingXp('+25 XP');
     playComplete();
-    setUnitStep('completed');
+    setTimeout(() => {
+      setFloatingXp(null);
+      setUnitStep('completed');
+    }, 1200);
   };
 
   if (unitStep === 'completed') {
@@ -166,8 +184,32 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   }
 
   return (
-    <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+    <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative' }}>
       
+      {/* Floating XP Animation Banner */}
+      <AnimatePresence>
+        {floatingXp && (
+          <motion.div
+            initial={{ opacity: 0, y: 0, scale: 0.8 }}
+            animate={{ opacity: 1, y: -45, scale: 1.4 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9 }}
+            style={{
+              position: 'absolute',
+              top: '-15px',
+              right: '25px',
+              color: '#34d399',
+              fontWeight: 900,
+              fontSize: '1.5rem',
+              zIndex: 100,
+              textShadow: '0 0 14px rgba(16,185,129,0.8)'
+            }}
+          >
+            {floatingXp}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ── Student Location Breadcrumb Header ── */}
       <div className="glass-panel" style={{ padding: '0.85rem 1.25rem', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', border: '1px solid rgba(16,185,129,0.25)' }}>
         <button
@@ -238,7 +280,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </div>
       )}
 
-      {/* STEP 1: FACT READING CARD */}
+      {/* STEP 1: FACT READING CARD (With explicit Next button) */}
       {unitStep === 'fact' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -284,13 +326,13 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                 boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
               }}
             >
-              Continue to Flashcard Recall <ArrowRight size={18} />
+              Next: Flashcard Recall <ArrowRight size={18} />
             </button>
           </motion.div>
         </AnimatePresence>
       )}
 
-      {/* STEP 2: FLASHCARD RECALL */}
+      {/* STEP 2: FLASHCARD RECALL (Auto-advancing on flip) */}
       {unitStep === 'flashcard' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -299,11 +341,12 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                 ACTIVE RECALL
               </span>
               <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
-                Flashcard Recall Phase
+                Flashcard Recall Phase (Auto-Advances on Flip)
               </span>
             </div>
 
             <Flashcard
+              isEmbedded={true}
               data={[{
                 q: currentUnit.Flashcard?.Front || `What is a key feature of ${topicName}?`,
                 a: currentUnit.Flashcard?.Back || currentUnit.Fact,
@@ -316,7 +359,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </AnimatePresence>
       )}
 
-      {/* STEP 3: EXAM MCQ QUIZ */}
+      {/* STEP 3: EXAM MCQ QUIZ (Auto-advancing on selection) */}
       {unitStep === 'quiz' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -407,34 +450,11 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                 </p>
               </motion.div>
             )}
-
-            {isQuizAnswered && (
-              <button
-                onClick={handleNextUnit}
-                style={{
-                  padding: '0.85rem 1.5rem',
-                  borderRadius: 14,
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  color: '#000',
-                  border: 'none',
-                  fontWeight: 900,
-                  fontSize: '0.95rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  gap: '0.45rem',
-                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
-                }}
-              >
-                {unitIndex < conceptUnits.length - 1 ? 'Proceed to Next Concept Unit' : 'Proceed to Match the Following Recap'} <ArrowRight size={18} />
-              </button>
-            )}
           </motion.div>
         </AnimatePresence>
       )}
 
-      {/* FINAL STEP: MATCH THE FOLLOWING RECAP */}
+      {/* FINAL STEP: MATCH THE FOLLOWING RECAP (Auto-advancing on completion) */}
       {unitStep === 'matching_recap' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -457,6 +477,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
             </div>
 
             <MatchGame
+              isEmbedded={true}
               data={practiceMatching.length > 0 ? practiceMatching : conceptUnits.map((u, i) => ({ q: `Term ${i + 1}`, a: u.Fact.substring(0, 50) }))}
               onComplete={handleMatchingComplete}
             />
@@ -464,7 +485,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </AnimatePresence>
       )}
 
-      {/* ── Mid-Play Skip Toolbar Options Below Player ── */}
+      {/* ── Mid-Play Skip Navigation Toolbar Options Below Player ── */}
       {unitStep !== 'completed' && (
         <div style={{
           display: 'flex',

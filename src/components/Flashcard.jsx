@@ -1,25 +1,39 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Check, X, Sparkles } from 'lucide-react';
 import { playCorrect, playWrong, playComplete, playFlip } from '../hooks/useSound';
 
-export default function Flashcard({ data, onComplete }) {
+export default function Flashcard({ data, onComplete, isEmbedded = false }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [score, setScore] = useState(0);
   const [completed, setCompleted] = useState(false);
+  const [floatingXp, setFloatingXp] = useState(null);
 
-  const currentCard = data[currentIndex];
+  const currentCard = data[currentIndex] || {};
 
   const handleFlip = () => {
     playFlip();
-    setFlipped(!flipped);
+    const willBeFlipped = !flipped;
+    setFlipped(willBeFlipped);
+
+    // If flipping to back in embedded mode, show floating XP and auto-advance
+    if (willBeFlipped && isEmbedded) {
+      setFloatingXp('+10 XP');
+      playCorrect();
+      setTimeout(() => {
+        setFloatingXp(null);
+        if (onComplete) onComplete(10);
+      }, 1100);
+    }
   };
 
   const handleScore = (correct) => {
     if (correct) {
       setScore(score + 10);
       playCorrect();
+      setFloatingXp('+10 XP');
+      setTimeout(() => setFloatingXp(null), 1000);
     } else {
       playWrong();
     }
@@ -30,10 +44,13 @@ export default function Flashcard({ data, onComplete }) {
     } else {
       playComplete();
       setCompleted(true);
+      if (isEmbedded && onComplete) {
+        onComplete(score + (correct ? 10 : 0));
+      }
     }
   };
 
-  if (completed) {
+  if (completed && !isEmbedded) {
     return (
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
@@ -56,104 +73,98 @@ export default function Flashcard({ data, onComplete }) {
   }
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%' }}>
-      {/* Progress bar */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)' }}>
-          <span>Card {currentIndex + 1} of {data.length}</span>
-          <span>Score: <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{score}</span></span>
-        </div>
-        <div style={{ height: '4px', background: 'rgba(255,255,255,0.08)', borderRadius: '2px', overflow: 'hidden' }}>
+    <div style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%', position: 'relative' }}>
+      
+      {/* Floating XP Animation */}
+      <AnimatePresence>
+        {floatingXp && (
           <motion.div
-            style={{ height: '100%', background: 'linear-gradient(90deg, var(--primary), var(--secondary))', borderRadius: '2px' }}
-            initial={{ width: 0 }}
-            animate={{ width: `${((currentIndex + 1) / data.length) * 100}%` }}
-            transition={{ duration: 0.3 }}
-          />
-        </div>
-      </div>
+            initial={{ opacity: 0, y: 0, scale: 0.8 }}
+            animate={{ opacity: 1, y: -45, scale: 1.3 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9 }}
+            style={{
+              position: 'absolute',
+              top: '-10px',
+              right: '20px',
+              color: '#34d399',
+              fontWeight: 900,
+              fontSize: '1.4rem',
+              zIndex: 100,
+              textShadow: '0 0 12px rgba(16,185,129,0.8)'
+            }}
+          >
+            {floatingXp}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      <div style={{ perspective: '1000px', height: '400px', cursor: 'pointer' }} onClick={handleFlip}>
+      {!isEmbedded && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)' }}>
+            <span>Card {currentIndex + 1} of {data.length}</span>
+            <span>Score: <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{score}</span></span>
+          </div>
+          <div style={{ height: '4px', background: 'rgba(255,255,255,0.08)', borderRadius: '2px', overflow: 'hidden' }}>
+            <motion.div
+              style={{ height: '100%', background: 'linear-gradient(90deg, var(--primary), var(--secondary))', borderRadius: '2px' }}
+              initial={{ width: 0 }}
+              animate={{ width: `${((currentIndex + 1) / data.length) * 100}%` }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
+        </div>
+      )}
+
+      <div style={{ perspective: '1000px', height: '360px', cursor: 'pointer' }} onClick={handleFlip}>
         <motion.div
           style={{
             width: '100%', height: '100%', position: 'relative',
             transformStyle: 'preserve-3d'
           }}
-          initial={false}
           animate={{ rotateY: flipped ? 180 : 0 }}
-          transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+          transition={{ duration: 0.5 }}
         >
-          {/* Front (Question) */}
-          <div style={{
-            position: 'absolute', width: '100%', height: '100%',
-            backfaceVisibility: 'hidden',
-            background: 'var(--glass-bg)', border: '1px solid var(--primary-glow)',
-            borderRadius: '20px', display: 'flex', flexDirection: 'column',
-            overflow: 'hidden', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.3)'
+          {/* Front */}
+          <div className="glass-panel" style={{
+            position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            padding: '2rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)'
           }}>
-            {currentCard?.img && (
-              <div style={{ width: '100%', height: '180px', overflow: 'hidden', position: 'relative' }}>
-                <img 
-                  src={currentCard.img} 
-                  alt={currentCard.q} 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, rgba(15, 17, 26, 0.8))' }} />
-              </div>
-            )}
-            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', textAlign: 'center' }}>
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 500, lineHeight: 1.4, margin: 0 }}>{currentCard?.q}</h2>
-            </div>
+            <span style={{ fontSize: '0.75rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '1rem' }}>
+              TAP TO FLIP FLASHCARD
+            </span>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
+              {currentCard.q}
+            </h2>
           </div>
 
-          {/* Back (Answer) */}
-          <div style={{
-            position: 'absolute', width: '100%', height: '100%',
-            backfaceVisibility: 'hidden', transform: 'rotateY(180deg)',
-            background: 'linear-gradient(135deg, rgba(129, 140, 248, 0.1), rgba(74, 222, 128, 0.1))',
-            border: '1px solid var(--secondary-glow)',
-            borderRadius: '20px', display: 'flex', flexDirection: 'column',
-            overflow: 'hidden', boxShadow: '0 8px 32px 0 rgba(0,0,0,0.3)'
+          {/* Back */}
+          <div className="glass-panel" style={{
+            position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            padding: '2rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981'
           }}>
-            {currentCard?.img && (
-              <div style={{ width: '100%', height: '140px', overflow: 'hidden', opacity: 0.7 }}>
-                <img 
-                  src={currentCard.img} 
-                  alt="Answer hint" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                />
-              </div>
-            )}
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', textAlign: 'center', gap: '0.75rem' }}>
-              <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)', margin: 0 }}>{currentCard?.a}</h2>
-              {currentCard?.exp && (
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: 0, maxHeight: '100px', overflowY: 'auto' }}>{currentCard.exp}</p>
-              )}
-            </div>
+            <span style={{ fontSize: '0.75rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '1rem' }}>
+              KEY ANSWER RECALL
+            </span>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
+              {currentCard.a}
+            </h2>
           </div>
         </motion.div>
       </div>
 
-      {flipped ? (
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flashcard-actions"
-          style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}
-        >
-          <button className="btn btn-glass" onClick={(e) => { e.stopPropagation(); handleScore(false); }} style={{ borderColor: 'var(--danger)', color: 'var(--danger)' }}>
-            <X size={20} /> I missed it
+      {!isEmbedded && flipped && (
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', gap: '1rem' }}>
+          <button className="btn" onClick={() => handleScore(false)} style={{ flex: 1, background: 'rgba(239,68,68,0.15)', border: '1px solid #ef4444', color: '#f87171' }}>
+            <X size={18} /> Need Review
           </button>
-          <button className="btn btn-primary" onClick={(e) => { e.stopPropagation(); handleScore(true); }}>
-            <Check size={20} /> I knew it (+10)
+          <button className="btn" onClick={() => handleScore(true)} style={{ flex: 1, background: 'rgba(34,197,94,0.15)', border: '1px solid #22c55e', color: '#4ade80' }}>
+            <Check size={18} /> Got It (+10 XP)
           </button>
         </motion.div>
-      ) : (
-        <div style={{ display: 'flex', justifyContent: 'center', height: '48px', alignItems: 'center' }}>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Click card to flip</p>
-        </div>
       )}
     </div>
   );

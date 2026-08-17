@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { playCorrect, playWrong, playComplete, playPickup, playDrop } from '../hooks/useSound';
 
-export default function MatchGame({ data = [], onComplete }) {
+export default function MatchGame({ data = [], onComplete, isEmbedded = false }) {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
 
   const [selectedQ, setSelectedQ] = useState(null);
   const [connections, setConnections] = useState({});
+  const [floatingXp, setFloatingXp] = useState(null);
 
   const containerRef = useRef(null);
   const leftRefs = useRef([]);
@@ -17,7 +18,6 @@ export default function MatchGame({ data = [], onComplete }) {
 
   useEffect(() => {
     const rawData = Array.isArray(data) ? data : [];
-    // Normalize data items to support both { q, a } and { Term, Definition }
     const normalized = rawData.map(item => ({
       q: item.q || item.Term || item.term || 'Term',
       a: item.a || item.Definition || item.definition || 'Definition'
@@ -32,7 +32,6 @@ export default function MatchGame({ data = [], onComplete }) {
       matchIndex: originalIndex
     }));
 
-    // Shuffle right column answers
     setAnswers([...answerList].sort(() => Math.random() - 0.5));
     setSelectedQ(null);
     setConnections({});
@@ -58,16 +57,7 @@ export default function MatchGame({ data = [], onComplete }) {
         const y2 = rightRect.top + rightRect.height / 2 - containerRect.top;
 
         const isCorrect = answers[aIdx]?.matchIndex === qIdx;
-
-        newCoords.push({
-          qIdx,
-          aIdx,
-          x1,
-          y1,
-          x2,
-          y2,
-          isCorrect
-        });
+        newCoords.push({ x1, y1, x2, y2, isCorrect });
       }
     });
 
@@ -128,123 +118,74 @@ export default function MatchGame({ data = [], onComplete }) {
   const allSlotsFilled = filledCount === questions.length && questions.length > 0;
   const allCorrect = allSlotsFilled && correctCount === questions.length;
   const anyFilled = filledCount > 0;
-  const earnedScore = correctCount * 10;
 
   useEffect(() => {
     if (allCorrect) {
-      playCorrect();
-      setTimeout(() => {
-        playComplete();
-      }, 500);
+      playComplete();
+      setFloatingXp('+25 XP');
+      if (isEmbedded) {
+        setTimeout(() => {
+          setFloatingXp(null);
+          if (onComplete) onComplete(25);
+        }, 1200);
+      }
     }
-  }, [allCorrect]);
+  }, [allCorrect, isEmbedded, onComplete]);
 
   const handleReset = () => {
     setConnections({});
     setSelectedQ(null);
-    const answerList = questions.map((item, originalIndex) => ({
-      id: `ans-${originalIndex}`,
-      text: item.a,
-      matchIndex: originalIndex
-    }));
-    setAnswers([...answerList].sort(() => Math.random() - 0.5));
   };
 
-  if (!questions || questions.length === 0) {
-    return (
-      <div className="glass-panel" style={{ textAlign: 'center', padding: '2rem' }}>
-        <p style={{ color: '#94a3b8' }}>No term-matching data available for this topic.</p>
-      </div>
-    );
-  }
-
   return (
-    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+    <div ref={containerRef} style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       
-      {/* Header bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#fff', fontWeight: 800 }}>Match the Following</h3>
-          <p style={{ margin: 0, fontSize: '0.78rem', color: '#94a3b8' }}>
-            Tap a term on the left, then tap its matching definition on the right.
-          </p>
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <button
-            onClick={handleReset}
-            className="btn btn-glass"
-            style={{ padding: '0.4rem 0.75rem', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}
+      {/* Floating XP Animation */}
+      <AnimatePresence>
+        {floatingXp && (
+          <motion.div
+            initial={{ opacity: 0, y: 0, scale: 0.8 }}
+            animate={{ opacity: 1, y: -45, scale: 1.4 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9 }}
+            style={{
+              position: 'absolute',
+              top: '-15px',
+              right: '20px',
+              color: '#34d399',
+              fontWeight: 900,
+              fontSize: '1.5rem',
+              zIndex: 100,
+              textShadow: '0 0 14px rgba(16,185,129,0.8)'
+            }}
           >
-            <RefreshCw size={14} /> Reset
-          </button>
-        </div>
-      </div>
+            {floatingXp}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Connection Status Banner */}
-      {allCorrect ? (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          style={{
-            background: 'rgba(34, 197, 94, 0.15)',
-            border: '1px solid #22c55e',
-            borderRadius: '12px',
-            padding: '1rem',
-            display: 'flex',
-            alignItems: 'center',
-            justify: 'space-between'
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <CheckCircle2 size={24} color="#4ade80" />
-            <div>
-              <div style={{ fontWeight: 800, color: '#4ade80', fontSize: '0.95rem' }}>All Matches Correct! 🎉</div>
-              <div style={{ fontSize: '0.8rem', color: '#cbd5e1' }}>You earned +{earnedScore} XP!</div>
-            </div>
+      {!isEmbedded && (
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1rem', background: 'rgba(15, 23, 42, 0.6)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Sparkles size={18} color="#38bdf8" />
+            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f8fafc' }}>
+              Match Pairs ({correctCount}/{questions.length} Correct)
+            </span>
           </div>
-          <button
-            className="btn btn-primary"
-            onClick={() => onComplete && onComplete(earnedScore)}
-            style={{ padding: '0.5rem 1rem', fontSize: '0.82rem', background: '#22c55e', color: '#000', fontWeight: 800 }}
-          >
-            Continue
+
+          <button onClick={handleReset} className="btn btn-glass" style={{ padding: '0.35rem 0.65rem', fontSize: '0.75rem' }}>
+            <RefreshCw size={13} /> Reset
           </button>
-        </motion.div>
-      ) : (
-        <div style={{ fontSize: '0.8rem', color: '#94a3b8', display: 'flex', justifyContent: 'space-between' }}>
-          <span>Matched: <strong>{correctCount} / {questions.length}</strong></span>
-          <span>{selectedQ !== null ? '⚡ Now tap matching definition on the right' : 'Tap a term on the left to begin'}</span>
         </div>
       )}
 
-      {/* Matching Container with SVG Thread Overlay */}
-      <div 
-        ref={containerRef}
-        style={{ 
-          position: 'relative', 
-          display: 'grid', 
-          gridTemplateColumns: '1fr 1fr', 
-          gap: '3.5rem', 
-          marginTop: '0.5rem',
-          minHeight: '300px'
-        }}
-      >
-        <svg
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            pointerEvents: 'none',
-            zIndex: 2
-          }}
-        >
+      {/* SVG Canvas & Pair Columns */}
+      <div className="match-columns-grid" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', minHeight: '340px' }}>
+        <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 2 }}>
           <defs>
             <linearGradient id="correctGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#22c55e" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#4ade80" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#34d399" stopOpacity="0.8" />
             </linearGradient>
             <linearGradient id="incorrectGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#ef4444" stopOpacity="0.8" />
@@ -322,27 +263,18 @@ export default function MatchGame({ data = [], onComplete }) {
                   alignItems: 'center',
                   justify: 'space-between',
                   minHeight: '58px',
-                  boxShadow: isSelected ? '0 0 16px rgba(16, 185, 129, 0.4)' : 'none',
                   transition: 'all 0.2s ease',
                   userSelect: 'none'
                 }}
               >
                 <span>{qItem.q}</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  {isConnected && (
-                    <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: isCorrect ? '#4ade80' : '#f87171' }}>
-                      {isCorrect ? '✓' : '✗'}
-                    </span>
-                  )}
-                  <div style={{
-                    width: '12px',
-                    height: '12px',
-                    borderRadius: '50%',
-                    background: isSelected ? '#10b981' : isConnected ? (isCorrect ? '#22c55e' : '#ef4444') : 'rgba(255,255,255,0.2)',
-                    border: '2px solid rgba(255,255,255,0.4)',
-                    boxShadow: isSelected ? '0 0 8px #10b981' : 'none'
-                  }} />
-                </div>
+                <div style={{
+                  width: '12px',
+                  height: '12px',
+                  borderRadius: '50%',
+                  background: isSelected ? '#10b981' : isConnected ? (isCorrect ? '#22c55e' : '#ef4444') : 'rgba(255,255,255,0.2)',
+                  border: '2px solid rgba(255,255,255,0.4)'
+                }} />
               </div>
             );
           })}
@@ -350,14 +282,13 @@ export default function MatchGame({ data = [], onComplete }) {
 
         {/* Right Column: Definitions */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', zIndex: 1 }}>
-          <h4 style={{ fontSize: '0.8rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>
-            Definitions / Features
+          <h4 style={{ fontSize: '0.8rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0, textAlign: 'right' }}>
+            Matching Definitions
           </h4>
           {answers.map((aItem, aIdx) => {
-            const connectedQKey = Object.keys(connections).find(key => connections[key] === aIdx);
-            const isConnected = connectedQKey !== undefined;
-            const connectedQIdx = isConnected ? parseInt(connectedQKey, 10) : null;
-            const isCorrect = isConnected ? aItem.matchIndex === connectedQIdx : false;
+            const connectedQIdx = Object.keys(connections).find(qKey => connections[qKey] === aIdx);
+            const isConnected = connectedQIdx !== undefined;
+            const isCorrect = isConnected ? aItem.matchIndex === parseInt(connectedQIdx, 10) : false;
 
             return (
               <div
@@ -405,6 +336,15 @@ export default function MatchGame({ data = [], onComplete }) {
           })}
         </div>
       </div>
+
+      {!isEmbedded && allCorrect && (
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '1.25rem', textAlign: 'center', background: 'rgba(16,185,129,0.15)', border: '1.5px solid #10b981', marginTop: '0.5rem' }}>
+          <h3 style={{ color: '#34d399', margin: '0 0 0.5rem' }}>All Matches Correct! 🎉</h3>
+          <button className="btn btn-primary" onClick={() => onComplete && onComplete(50)}>
+            Continue (+50 XP)
+          </button>
+        </motion.div>
+      )}
     </div>
   );
 }
