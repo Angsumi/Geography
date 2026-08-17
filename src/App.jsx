@@ -676,7 +676,7 @@ export default function App() {
                                               {isLesDone ? '✓ Mastered' : `${lesPct}% (${completedTopicsInLes}/${totalTopicsInLes})`}
                                             </span>
                                             <span style={{ fontSize: '0.72rem', color: 'var(--primary)', background: 'var(--primary-bg)', border: '1px solid var(--primary-border)', padding: '0.12rem 0.4rem', borderRadius: 6, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
-                                              <Clock size={11} /> ⏱️ 3 min
+                                              <Clock size={11} /> 3 min
                                             </span>
                                             {isLesOpen ? <ChevronDown size={16} color="var(--primary)" /> : <ChevronRight size={16} color="var(--text-muted)" />}
                                           </div>
