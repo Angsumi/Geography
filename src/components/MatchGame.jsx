@@ -15,6 +15,7 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
   const leftRefs = useRef([]);
   const rightRefs = useRef([]);
   const [lineCoords, setLineCoords] = useState([]);
+  const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     const rawData = Array.isArray(data) ? data : [];
@@ -40,6 +41,8 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
   const calculateLines = () => {
     if (!containerRef.current) return;
     const containerRect = containerRef.current.getBoundingClientRect();
+    setContainerDimensions({ width: containerRect.width, height: containerRect.height });
+
     const newCoords = [];
 
     Object.entries(connections).forEach(([qIdxStr, aIdx]) => {
@@ -66,8 +69,26 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
 
   useEffect(() => {
     calculateLines();
-    window.addEventListener('resize', calculateLines);
-    return () => window.removeEventListener('resize', calculateLines);
+    const handleResizeOrScroll = () => calculateLines();
+
+    window.addEventListener('resize', handleResizeOrScroll);
+    window.addEventListener('scroll', handleResizeOrScroll, true);
+
+    let resizeObserver = null;
+    if (containerRef.current && window.ResizeObserver) {
+      resizeObserver = new ResizeObserver(() => calculateLines());
+      resizeObserver.observe(containerRef.current);
+    }
+
+    // Delayed recalculation for animation frames
+    const timer = setTimeout(calculateLines, 100);
+
+    return () => {
+      window.removeEventListener('resize', handleResizeOrScroll);
+      window.removeEventListener('scroll', handleResizeOrScroll, true);
+      if (resizeObserver) resizeObserver.disconnect();
+      clearTimeout(timer);
+    };
   }, [connections, questions, answers]);
 
   const handleSelectQuestion = (qIdx) => {
@@ -117,7 +138,6 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
 
   const allSlotsFilled = filledCount === questions.length && questions.length > 0;
   const allCorrect = allSlotsFilled && correctCount === questions.length;
-  const anyFilled = filledCount > 0;
 
   useEffect(() => {
     if (allCorrect) {
@@ -138,7 +158,7 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
   };
 
   return (
-    <div ref={containerRef} style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+    <div ref={containerRef} style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       
       {/* Floating XP Animation */}
       <AnimatePresence>
@@ -179,38 +199,43 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
         </div>
       )}
 
-      {/* SVG Canvas & Pair Columns */}
-      <div className="match-columns-grid" style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', minHeight: '340px' }}>
-        <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 2 }}>
+      {/* SVG Canvas & 2-Column Grid (Enforced side-by-side even on small screens) */}
+      <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', minHeight: '300px', width: '100%' }}>
+        
+        {/* SVG Thread Lines Overlay */}
+        <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 10 }}>
           <defs>
             <linearGradient id="correctGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#22c55e" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#34d399" stopOpacity="0.8" />
+              <stop offset="0%" stopColor="#22c55e" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#34d399" stopOpacity="0.9" />
             </linearGradient>
             <linearGradient id="incorrectGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#ef4444" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#f87171" stopOpacity="0.8" />
+              <stop offset="0%" stopColor="#ef4444" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#f87171" stopOpacity="0.9" />
             </linearGradient>
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
+            <filter id="glowThread" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3.5" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
           </defs>
 
           {lineCoords.map((line, idx) => {
-            const dx = (line.x2 - line.x1) * 0.45;
+            const horizontalDistance = Math.abs(line.x2 - line.x1);
+            const dx = Math.max(12, horizontalDistance * 0.45);
             const pathData = `M ${line.x1} ${line.y1} C ${line.x1 + dx} ${line.y1}, ${line.x2 - dx} ${line.y2}, ${line.x2} ${line.y2}`;
 
             return (
               <g key={idx}>
+                {/* Glow Underlay */}
                 <path
                   d={pathData}
                   fill="none"
-                  stroke={line.isCorrect ? 'rgba(34, 197, 94, 0.4)' : 'rgba(239, 68, 68, 0.4)'}
+                  stroke={line.isCorrect ? 'rgba(34, 197, 94, 0.5)' : 'rgba(239, 68, 68, 0.5)'}
                   strokeWidth="8"
                   strokeLinecap="round"
-                  filter="url(#glow)"
+                  filter="url(#glowThread)"
                 />
+                {/* Main Thread Line */}
                 <path
                   d={pathData}
                   fill="none"
@@ -219,17 +244,18 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
                   strokeLinecap="round"
                   strokeDasharray={line.isCorrect ? 'none' : '6 4'}
                 />
-                <circle cx={line.x1} cy={line.y1} r="5" fill={line.isCorrect ? '#22c55e' : '#ef4444'} />
-                <circle cx={line.x2} cy={line.y2} r="5" fill={line.isCorrect ? '#22c55e' : '#ef4444'} />
+                {/* Connection End Anchor Dots */}
+                <circle cx={line.x1} cy={line.y1} r="5" fill={line.isCorrect ? '#22c55e' : '#ef4444'} stroke="#fff" strokeWidth="1.5" />
+                <circle cx={line.x2} cy={line.y2} r="5" fill={line.isCorrect ? '#22c55e' : '#ef4444'} stroke="#fff" strokeWidth="1.5" />
               </g>
             );
           })}
         </svg>
 
         {/* Left Column: Terms */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', zIndex: 1 }}>
-          <h4 style={{ fontSize: '0.8rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>
-            Geographical Terms
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', zIndex: 2, minWidth: 0 }}>
+          <h4 style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>
+            Terms
           </h4>
           {questions.map((qItem, qIdx) => {
             const isSelected = selectedQ === qIdx;
@@ -243,12 +269,12 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
                 ref={el => leftRefs.current[qIdx] = el}
                 onClick={() => handleSelectQuestion(qIdx)}
                 style={{
-                  padding: '0.85rem 1.1rem',
+                  padding: '0.65rem 0.8rem',
                   borderRadius: '12px',
                   background: isSelected 
                     ? 'rgba(16, 185, 129, 0.2)'
                     : isConnected
-                      ? isCorrect ? 'rgba(34, 197, 94, 0.12)' : 'rgba(239, 68, 68, 0.12)'
+                      ? isCorrect ? 'rgba(34, 197, 94, 0.14)' : 'rgba(239, 68, 68, 0.14)'
                       : 'rgba(255, 255, 255, 0.03)',
                   border: isSelected
                     ? '2px solid #10b981'
@@ -257,23 +283,26 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
                       : '1px solid rgba(255, 255, 255, 0.08)',
                   cursor: 'pointer',
                   fontWeight: 600,
-                  fontSize: '0.88rem',
+                  fontSize: '0.82rem',
                   color: isSelected ? '#34d399' : '#f8fafc',
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'space-between',
-                  minHeight: '58px',
+                  gap: '0.35rem',
+                  minHeight: '52px',
                   transition: 'all 0.2s ease',
-                  userSelect: 'none'
+                  userSelect: 'none',
+                  wordBreak: 'break-word'
                 }}
               >
-                <span>{qItem.q}</span>
+                <span style={{ lineHeight: 1.3 }}>{qItem.q}</span>
                 <div style={{
-                  width: '12px',
-                  height: '12px',
+                  width: '10px',
+                  height: '10px',
                   borderRadius: '50%',
+                  flexShrink: 0,
                   background: isSelected ? '#10b981' : isConnected ? (isCorrect ? '#22c55e' : '#ef4444') : 'rgba(255,255,255,0.2)',
-                  border: '2px solid rgba(255,255,255,0.4)'
+                  border: '1.5px solid rgba(255,255,255,0.4)'
                 }} />
               </div>
             );
@@ -281,9 +310,9 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
         </div>
 
         {/* Right Column: Definitions */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', zIndex: 1 }}>
-          <h4 style={{ fontSize: '0.8rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0, textAlign: 'right' }}>
-            Matching Definitions
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', zIndex: 2, minWidth: 0 }}>
+          <h4 style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0, textAlign: 'right' }}>
+            Definitions
           </h4>
           {answers.map((aItem, aIdx) => {
             const connectedQIdx = Object.keys(connections).find(qKey => connections[qKey] === aIdx);
@@ -296,41 +325,43 @@ export default function MatchGame({ data = [], onComplete, isEmbedded = false })
                 ref={el => rightRefs.current[aIdx] = el}
                 onClick={() => handleSelectAnswer(aIdx)}
                 style={{
-                  padding: '0.85rem 1.1rem',
+                  padding: '0.65rem 0.8rem',
                   borderRadius: '12px',
                   background: isConnected
-                    ? isCorrect ? 'rgba(34, 197, 94, 0.12)' : 'rgba(239, 68, 68, 0.12)'
+                    ? isCorrect ? 'rgba(34, 197, 94, 0.14)' : 'rgba(239, 68, 68, 0.14)'
                     : 'rgba(255, 255, 255, 0.03)',
                   border: isConnected
                     ? isCorrect ? '2px solid #22c55e' : '2px solid #ef4444'
                     : '1px solid rgba(255, 255, 255, 0.08)',
                   cursor: 'pointer',
                   fontWeight: 600,
-                  fontSize: '0.88rem',
+                  fontSize: '0.82rem',
                   color: '#e2e8f0',
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'space-between',
-                  minHeight: '58px',
+                  gap: '0.35rem',
+                  minHeight: '52px',
                   transition: 'all 0.2s ease',
-                  userSelect: 'none'
+                  userSelect: 'none',
+                  wordBreak: 'break-word'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
                   <div style={{
-                    width: '12px',
-                    height: '12px',
+                    width: '10px',
+                    height: '10px',
                     borderRadius: '50%',
                     background: isConnected ? (isCorrect ? '#22c55e' : '#ef4444') : 'rgba(255,255,255,0.2)',
-                    border: '2px solid rgba(255,255,255,0.4)'
+                    border: '1.5px solid rgba(255,255,255,0.4)'
                   }} />
                   {isConnected && (
-                    <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: isCorrect ? '#4ade80' : '#f87171' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 'bold', color: isCorrect ? '#4ade80' : '#f87171' }}>
                       {isCorrect ? '✓' : '✗'}
                     </span>
                   )}
                 </div>
-                <span style={{ textAlign: 'right' }}>{aItem.text}</span>
+                <span style={{ textAlign: 'right', lineHeight: 1.3 }}>{aItem.text}</span>
               </div>
             );
           })}

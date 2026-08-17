@@ -423,51 +423,57 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
               </motion.div>
             </div>
 
-            {/* Self-Assessment Buttons */}
-            <div style={{ display: 'flex', gap: '0.75rem' }}>
-              <button
-                onClick={() => handleFlashcardSelfAssess(false)}
-                style={{
-                  flex: 1,
-                  padding: '0.85rem 1rem',
-                  borderRadius: 14,
-                  background: 'rgba(244,63,94,0.12)',
-                  border: '1.5px solid rgba(244,63,94,0.35)',
-                  color: '#f43f5e',
-                  fontWeight: 800,
-                  fontSize: '0.88rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  gap: '0.4rem'
-                }}
-              >
-                <ThumbsDown size={17} /> I Didn't Know
-              </button>
+            {/* Self-Assessment Buttons - REVEALED ONLY AFTER FLIPPING */}
+            {isFlipped ? (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', gap: '0.75rem' }}>
+                <button
+                  onClick={() => handleFlashcardSelfAssess(false)}
+                  style={{
+                    flex: 1,
+                    padding: '0.85rem 1rem',
+                    borderRadius: 14,
+                    background: 'rgba(244,63,94,0.12)',
+                    border: '1.5px solid rgba(244,63,94,0.35)',
+                    color: '#f43f5e',
+                    fontWeight: 800,
+                    fontSize: '0.88rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justify: 'center',
+                    gap: '0.4rem'
+                  }}
+                >
+                  <ThumbsDown size={17} /> I Didn't Know
+                </button>
 
-              <button
-                onClick={() => handleFlashcardSelfAssess(true)}
-                style={{
-                  flex: 1,
-                  padding: '0.85rem 1rem',
-                  borderRadius: 14,
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  border: 'none',
-                  color: '#000',
-                  fontWeight: 900,
-                  fontSize: '0.88rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  gap: '0.4rem',
-                  boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
-                }}
-              >
-                <ThumbsUp size={17} /> I Knew It (+10 XP)
-              </button>
-            </div>
+                <button
+                  onClick={() => handleFlashcardSelfAssess(true)}
+                  style={{
+                    flex: 1,
+                    padding: '0.85rem 1rem',
+                    borderRadius: 14,
+                    background: 'linear-gradient(135deg, #10b981, #34d399)',
+                    border: 'none',
+                    color: '#000',
+                    fontWeight: 900,
+                    fontSize: '0.88rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justify: 'center',
+                    gap: '0.4rem',
+                    boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
+                  }}
+                >
+                  <ThumbsUp size={17} /> I Knew It (+10 XP)
+                </button>
+              </motion.div>
+            ) : (
+              <div style={{ textAlign: 'center', padding: '0.5rem', fontSize: '0.78rem', color: '#94a3b8', fontStyle: 'italic' }}>
+                👆 Tap the card above to flip and reveal recall self-assessment options
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
       )}
