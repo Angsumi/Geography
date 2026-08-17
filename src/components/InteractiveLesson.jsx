@@ -106,120 +106,125 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
 
   if (unitStep === 'completed') {
     return (
-      <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2rem', textAlign: 'center', maxWidth: 660, margin: '1rem auto', height: '560px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-        <div>
-          <Award size={56} color="#34d399" style={{ margin: '0 auto 0.75rem' }} />
-          <span style={{ color: '#10b981', fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-            TOPIC MASTERED
-          </span>
-          <h1 style={{ fontSize: '2rem', fontWeight: 900, margin: '0.2rem 0 0.4rem', color: '#fff' }}>
-            {topicName} Mastered!
-          </h1>
+      <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2rem', textAlign: 'center', maxWidth: 660, margin: '1rem auto' }}>
+        <Award size={64} color="#34d399" style={{ margin: '0 auto 1rem' }} />
+        <span style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+          TOPIC MASTERED
+        </span>
+        <h1 style={{ fontSize: '2.2rem', fontWeight: 900, margin: '0.3rem 0 0.5rem', color: '#fff' }}>
+          {topicName} Mastered!
+        </h1>
 
-          {/* Student Mindset Breadcrumb Location */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700, margin: '0 0 1rem', flexWrap: 'wrap' }}>
-            <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
-            <span>➔</span>
-            <span style={{ color: '#cbd5e1' }}>Unit: {unitName}</span>
-            <span>➔</span>
-            <span style={{ color: '#cbd5e1' }}>Lesson: {lessonName}</span>
-          </div>
+        {/* Student Mindset Breadcrumb Location */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', fontWeight: 700, margin: '0 0 1.25rem', flexWrap: 'wrap' }}>
+          <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
+          <span>➔</span>
+          <span style={{ color: '#cbd5e1' }}>Unit: {unitName}</span>
+          <span>➔</span>
+          <span style={{ color: '#cbd5e1' }}>Lesson: {lessonName}</span>
+        </div>
 
-          <div style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 16, padding: '1rem', marginBottom: '1.25rem' }}>
-            <span style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Total XP Awarded</span>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 900, color: '#34d399', margin: '0.1rem 0' }}>
-              +{earnedXp} XP
-            </h2>
-          </div>
+        <div style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 16, padding: '1.25rem', marginBottom: '1.75rem' }}>
+          <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Total XP Awarded</span>
+          <h2 style={{ fontSize: '2.8rem', fontWeight: 900, color: '#34d399', margin: '0.2rem 0' }}>
+            +{earnedXp} XP
+          </h2>
+        </div>
 
-          {/* ── HIGH PROMINENCE "LEARN THIS" RE-PLAY BUTTON ── */}
+        {/* ── HIGH PROMINENCE "LEARN THIS" RE-PLAY BUTTON ── */}
+        <div style={{ marginBottom: '1.5rem' }}>
           <button
             onClick={handleRelearnTopic}
             style={{
               width: '100%',
-              padding: '1rem 1.5rem',
-              borderRadius: 14,
+              padding: '1.1rem 1.75rem',
+              borderRadius: 16,
               background: 'linear-gradient(135deg, #10b981, #34d399, #059669)',
               color: '#000',
               border: '2px solid #6ee7b7',
               fontWeight: 900,
-              fontSize: '1.05rem',
+              fontSize: '1.1rem',
               letterSpacing: '0.02em',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justify: 'center',
-              gap: '0.55rem',
-              boxShadow: '0 6px 24px rgba(16, 185, 129, 0.5)'
+              gap: '0.65rem',
+              boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)',
+              transform: 'scale(1.02)'
             }}
           >
-            <BookMarked size={22} /> 💡 Learn This (Re-Play Topic)
+            <BookMarked size={24} /> 💡 Learn This (Re-Play Topic)
           </button>
         </div>
 
         {/* ── Topic Completion Navigation Options ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.55rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.25rem' }}>
+          <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            Or Continue Curriculum Flow:
+          </span>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.65rem' }}>
             {navTargets?.nextTopic && (
               <button
                 onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-                style={{ padding: '0.7rem 0.85rem', borderRadius: 10, background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', color: '#34d399', fontWeight: 900, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', color: '#34d399', fontWeight: 900, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
               >
-                <PlayCircle size={15} /> Next Topic ▶
+                <PlayCircle size={16} /> Next Topic ▶
               </button>
             )}
 
             {navTargets?.nextLesson && (
               <button
                 onClick={() => onNavigateToTarget(navTargets.nextLesson)}
-                style={{ padding: '0.7rem 0.85rem', borderRadius: 10, background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38bdf8', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38bdf8', fontWeight: 800, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
               >
-                <FastForward size={15} /> Next Lesson ▶▶
+                <FastForward size={16} /> Next Lesson ▶▶
               </button>
             )}
 
             {navTargets?.nextUnit && (
               <button
                 onClick={() => onNavigateToTarget(navTargets.nextUnit)}
-                style={{ padding: '0.7rem 0.85rem', borderRadius: 10, background: 'rgba(192, 132, 252, 0.15)', border: '1px solid rgba(192, 132, 252, 0.4)', color: '#c084fc', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(192, 132, 252, 0.15)', border: '1px solid rgba(192, 132, 252, 0.4)', color: '#c084fc', fontWeight: 800, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
               >
-                <ChevronsRight size={15} /> Next Unit ⏭
+                <ChevronsRight size={16} /> Next Unit ⏭
               </button>
             )}
 
             {navTargets?.nextChapter && (
               <button
                 onClick={() => onNavigateToTarget(navTargets.nextChapter)}
-                style={{ padding: '0.7rem 0.85rem', borderRadius: 10, background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.4)', color: '#fb923c', fontWeight: 900, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.4)', color: '#fb923c', fontWeight: 900, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
               >
-                <Flag size={15} /> Next Chapter 🏁
+                <Flag size={16} /> Next Chapter 🏁
               </button>
             )}
           </div>
-
-          <button
-            onClick={() => onComplete(earnedXp)}
-            style={{
-              width: '100%',
-              padding: '0.65rem 1.25rem',
-              borderRadius: 12,
-              background: 'rgba(255,255,255,0.05)',
-              color: '#cbd5e1',
-              border: '1px solid rgba(255,255,255,0.08)',
-              fontWeight: 800,
-              fontSize: '0.82rem',
-              cursor: 'pointer'
-            }}
-          >
-            Return to Syllabus Directory
-          </button>
         </div>
+
+        <button
+          onClick={() => onComplete(earnedXp)}
+          style={{
+            width: '100%',
+            padding: '0.75rem 1.5rem',
+            borderRadius: 14,
+            background: 'rgba(255,255,255,0.06)',
+            color: '#cbd5e1',
+            border: '1px solid rgba(255,255,255,0.1)',
+            fontWeight: 800,
+            fontSize: '0.88rem',
+            cursor: 'pointer'
+          }}
+        >
+          Return to Syllabus Directory
+        </button>
       </motion.div>
     );
   }
 
   return (
-    <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1rem', position: 'relative' }}>
+    <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative' }}>
       
       {/* Floating XP Banner */}
       <AnimatePresence>
@@ -246,28 +251,28 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
       </AnimatePresence>
 
       {/* ── Student Location Breadcrumb Header ── */}
-      <div className="glass-panel" style={{ padding: '0.75rem 1.15rem', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', border: '1px solid rgba(16,185,129,0.25)' }}>
+      <div className="glass-panel" style={{ padding: '0.85rem 1.25rem', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', border: '1px solid rgba(16,185,129,0.25)' }}>
         <button
           onClick={onBack}
           style={{
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
             color: '#cbd5e1',
-            padding: '0.4rem 0.75rem',
-            borderRadius: '10px',
-            fontSize: '0.78rem',
+            padding: '0.45rem 0.85rem',
+            borderRadius: '12px',
+            fontSize: '0.8rem',
             fontWeight: 700,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.3rem'
+            gap: '0.35rem'
           }}
         >
-          <ArrowLeft size={15} /> Exit
+          <ArrowLeft size={16} /> Exit
         </button>
 
         {/* 4-Tier Location Breadcrumb */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', fontWeight: 700, flexWrap: 'wrap' }}>
           <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
           <span>➔</span>
           <span style={{ color: '#cbd5e1' }}>Unit: {unitName}</span>
@@ -277,19 +282,19 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
           <span style={{ color: '#34d399', fontWeight: 800 }}>Topic: {topicName}</span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: 'rgba(16,185,129,0.15)', padding: '0.3rem 0.6rem', borderRadius: 10, border: '1px solid rgba(16,185,129,0.3)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: 'rgba(16,185,129,0.15)', padding: '0.35rem 0.65rem', borderRadius: 12, border: '1px solid rgba(16,185,129,0.3)' }}>
           <Trophy size={14} color="#34d399" />
-          <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#34d399' }}>{earnedXp} XP</span>
+          <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#34d399' }}>{earnedXp} XP</span>
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: '#cbd5e1', fontWeight: 700 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 700 }}>
           <span>{topicName}</span>
           <span>Concept Unit {unitIndex + 1} of {conceptUnits.length}</span>
         </div>
-        <div style={{ height: 5, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
+        <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
           <motion.div
             style={{ height: '100%', background: 'linear-gradient(90deg, #10b981, #34d399)', borderRadius: 3 }}
             animate={{ width: `${((unitIndex + 1) / conceptUnits.length) * 100}%` }}
@@ -300,348 +305,322 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
 
       {/* 3-Step Unit Phase Indicators */}
       {unitStep !== 'matching_recap' && (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: unitStep === 'fact' ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'fact' ? '#10b981' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'fact' ? '#34d399' : '#64748b', padding: '0.25rem 0.55rem', borderRadius: 8, fontSize: '0.7rem', fontWeight: 800 }}>
-            <BookOpen size={11} /> 1. Read Fact
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: unitStep === 'fact' ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'fact' ? '#10b981' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'fact' ? '#34d399' : '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
+            <BookOpen size={12} /> 1. Read Fact
           </div>
-          <span style={{ color: '#475569', fontSize: '0.75rem' }}>➔</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: unitStep === 'flashcard' ? 'rgba(192,132,252,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'flashcard' ? '#c084fc' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'flashcard' ? '#c084fc' : '#64748b', padding: '0.25rem 0.55rem', borderRadius: 8, fontSize: '0.7rem', fontWeight: 800 }}>
-            <Layers size={11} /> 2. Flashcard Recall
+          <span style={{ color: '#475569', fontSize: '0.8rem' }}>➔</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: unitStep === 'flashcard' ? 'rgba(192,132,252,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'flashcard' ? '#c084fc' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'flashcard' ? '#c084fc' : '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
+            <Layers size={12} /> 2. Flashcard Recall
           </div>
-          <span style={{ color: '#475569', fontSize: '0.75rem' }}>➔</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: unitStep === 'quiz' ? 'rgba(244,63,94,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'quiz' ? '#f43f5e' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'quiz' ? '#f43f5e' : '#64748b', padding: '0.25rem 0.55rem', borderRadius: 8, fontSize: '0.7rem', fontWeight: 800 }}>
-            <HelpCircle size={11} /> 3. Test Quiz
+          <span style={{ color: '#475569', fontSize: '0.8rem' }}>➔</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: unitStep === 'quiz' ? 'rgba(244,63,94,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'quiz' ? '#f43f5e' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'quiz' ? '#f43f5e' : '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
+            <HelpCircle size={12} /> 3. Test Quiz
           </div>
         </div>
       )}
 
-      {/* ── RIGID UNIFORM 560px OUTER PLAYER FRAME FOR ZERO BUTTON SHIFT ── */}
-      <div className="glass-panel" style={{ height: '560px', maxHeight: '560px', padding: '1.5rem', borderRadius: 20, background: 'rgba(15,23,42,0.92)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', overflow: 'hidden' }}>
+      {/* STEP 1: FACT READING CARD */}
+      {unitStep === 'fact' && (
+        <AnimatePresence mode="wait">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(16,185,129,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                CONCEPT UNIT {unitIndex + 1} OF {conceptUnits.length}
+              </span>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                Fact Read Phase
+              </span>
+            </div>
 
-        {/* STEP 1: FACT READING CARD */}
-        {unitStep === 'fact' && (
-          <AnimatePresence mode="wait">
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(16,185,129,0.15)', padding: '0.2rem 0.6rem', borderRadius: 6 }}>
-                    CONCEPT UNIT {unitIndex + 1} OF {conceptUnits.length}
+            <h2 style={{ margin: 0, fontSize: '1.4rem', color: '#fff', fontWeight: 900, lineHeight: 1.4 }}>
+              {topicName} Fact
+            </h2>
+
+            <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: '1.25rem' }}>
+              <p style={{ margin: 0, fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6, fontWeight: 500 }}>
+                {currentUnit.Fact}
+              </p>
+            </div>
+
+            {/* Visualizer for concept unit */}
+            <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <SectionVisualizer sectionName={topicName} facts={[currentUnit.Fact]} />
+            </div>
+
+            <button
+              onClick={handleNextFact}
+              style={{
+                padding: '0.85rem 1.5rem',
+                borderRadius: 14,
+                background: 'linear-gradient(135deg, #10b981, #34d399)',
+                color: '#000',
+                border: 'none',
+                fontWeight: 900,
+                fontSize: '0.95rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'center',
+                gap: '0.45rem',
+                boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
+              }}
+            >
+              Next: Flashcard Recall <ArrowRight size={18} />
+            </button>
+          </motion.div>
+        </AnimatePresence>
+      )}
+
+      {/* STEP 2: FLASHCARD RECALL */}
+      {unitStep === 'flashcard' && (
+        <AnimatePresence mode="wait">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.75rem', color: '#c084fc', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(192,132,252,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                ACTIVE RECALL
+              </span>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                Flashcard Recall Phase
+              </span>
+            </div>
+
+            {/* Flip Canvas Card */}
+            <div style={{ perspective: '1000px', minHeight: '260px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
+              <motion.div
+                style={{ width: '100%', minHeight: '260px', position: 'relative', transformStyle: 'preserve-3d' }}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Front Side */}
+                <div className="glass-panel" style={{
+                  position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                  padding: '2rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)', borderRadius: 16
+                }}>
+                  <span style={{ fontSize: '0.75rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '1rem' }}>
+                    TAP CARD TO FLIP
                   </span>
-                  <span style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 700 }}>
-                    Fact Read Phase
+                  <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
+                    {currentUnit.Flashcard?.Front || `What is a key feature of ${topicName}?`}
+                  </h2>
+                </div>
+
+                {/* Back Side */}
+                <div className="glass-panel" style={{
+                  position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)',
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                  padding: '2rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981', borderRadius: 16
+                }}>
+                  <span style={{ fontSize: '0.75rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.75rem' }}>
+                    KEY RECALL ANSWER
                   </span>
+                  <h2 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
+                    {currentUnit.Flashcard?.Back || currentUnit.Fact}
+                  </h2>
                 </div>
+              </motion.div>
+            </div>
 
-                <h2 style={{ margin: 0, fontSize: '1.25rem', color: '#fff', fontWeight: 900, lineHeight: 1.3 }}>
-                  {topicName} Fact
-                </h2>
+            {/* Self-Assessment Buttons */}
+            <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <button
+                onClick={() => handleFlashcardSelfAssess(false)}
+                style={{
+                  flex: 1,
+                  padding: '0.85rem 1rem',
+                  borderRadius: 14,
+                  background: 'rgba(244,63,94,0.12)',
+                  border: '1.5px solid rgba(244,63,94,0.35)',
+                  color: '#f43f5e',
+                  fontWeight: 800,
+                  fontSize: '0.88rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  gap: '0.4rem'
+                }}
+              >
+                <ThumbsDown size={17} /> I Didn't Know
+              </button>
 
-                <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, padding: '0.85rem 1rem', maxHeight: '110px', overflowY: 'auto' }}>
-                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#e2e8f0', lineHeight: 1.45, fontWeight: 500 }}>
-                    {currentUnit.Fact}
-                  </p>
-                </div>
+              <button
+                onClick={() => handleFlashcardSelfAssess(true)}
+                style={{
+                  flex: 1,
+                  padding: '0.85rem 1rem',
+                  borderRadius: 14,
+                  background: 'linear-gradient(135deg, #10b981, #34d399)',
+                  border: 'none',
+                  color: '#000',
+                  fontWeight: 900,
+                  fontSize: '0.88rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  gap: '0.4rem',
+                  boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
+                }}
+              >
+                <ThumbsUp size={17} /> I Knew It (+10 XP)
+              </button>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      )}
 
-                {/* Rigid Visualizer Window (Height: 220px) */}
-                <div style={{ height: '220px', maxHeight: '220px', borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)', overflowY: 'auto' }}>
-                  <SectionVisualizer sectionName={topicName} facts={[currentUnit.Fact]} />
-                </div>
-              </div>
+      {/* STEP 3: EXAM MCQ QUIZ */}
+      {unitStep === 'quiz' && (
+        <AnimatePresence mode="wait">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.75rem', color: '#f43f5e', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(244,63,94,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                EXAM MCQ QUIZ
+              </span>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                Exam Quiz Phase
+              </span>
+            </div>
 
-              {/* Pinned Bottom Action Button (Fixed height row) */}
-              <div style={{ height: '52px', display: 'flex', alignItems: 'flex-end' }}>
-                <button
-                  onClick={handleNextFact}
-                  style={{
-                    width: '100%',
-                    height: '48px',
-                    borderRadius: 12,
-                    background: 'linear-gradient(135deg, #10b981, #34d399)',
-                    color: '#000',
-                    border: 'none',
-                    fontWeight: 900,
-                    fontSize: '0.92rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justify: 'center',
-                    gap: '0.45rem',
-                    boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
-                  }}
-                >
-                  Next: Flashcard Recall <ArrowRight size={17} />
-                </button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        )}
+            <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 800, lineHeight: 1.5 }}>
+              {currentUnit.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
+            </h3>
 
-        {/* STEP 2: FLASHCARD RECALL */}
-        {unitStep === 'flashcard' && (
-          <AnimatePresence mode="wait">
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: '0.72rem', color: '#c084fc', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(192,132,252,0.15)', padding: '0.2rem 0.6rem', borderRadius: 6 }}>
-                    ACTIVE RECALL
-                  </span>
-                  <span style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 700 }}>
-                    Flashcard Recall Phase
-                  </span>
-                </div>
+            {/* Options List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              {Object.entries(currentUnit.Quiz?.Options || {}).map(([key, label]) => {
+                const isSelected = selectedOption === key;
+                const isCorrect = key === currentUnit.Quiz?.CorrectAnswer;
 
-                {/* Flip Canvas Card (Height: 330px) */}
-                <div style={{ perspective: '1000px', height: '330px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
-                  <motion.div
-                    style={{ width: '100%', height: '100%', position: 'relative', transformStyle: 'preserve-3d' }}
-                    animate={{ rotateY: isFlipped ? 180 : 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {/* Front Side */}
-                    <div className="glass-panel" style={{
-                      position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                      padding: '1.5rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)', borderRadius: 16
-                    }}>
-                      <span style={{ fontSize: '0.72rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.75rem' }}>
-                        TAP CARD TO FLIP
-                      </span>
-                      <h2 style={{ fontSize: '1.18rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.45 }}>
-                        {currentUnit.Flashcard?.Front || `What is a key feature of ${topicName}?`}
-                      </h2>
-                    </div>
+                let btnBg = 'rgba(255,255,255,0.02)';
+                let btnBorder = '1px solid rgba(255,255,255,0.08)';
+                let textColor = '#e2e8f0';
 
-                    {/* Back Side */}
-                    <div className="glass-panel" style={{
-                      position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
-                      transform: 'rotateY(180deg)',
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                      padding: '1.5rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981', borderRadius: 16
-                    }}>
-                      <span style={{ fontSize: '0.72rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.6rem' }}>
-                        KEY RECALL ANSWER
-                      </span>
-                      <h2 style={{ fontSize: '1.18rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.45 }}>
-                        {currentUnit.Flashcard?.Back || currentUnit.Fact}
-                      </h2>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
+                if (isQuizAnswered) {
+                  if (isCorrect) {
+                    btnBg = 'rgba(16,185,129,0.2)';
+                    btnBorder = '1.5px solid #10b981';
+                    textColor = '#34d399';
+                  } else if (isSelected) {
+                    btnBg = 'rgba(244,63,94,0.2)';
+                    btnBorder = '1.5px solid #f43f5e';
+                    textColor = '#f43f5e';
+                  }
+                }
 
-              {/* Pinned Bottom Self-Assessment Action Bar (Fixed height: 52px) */}
-              <div style={{ height: '52px', display: 'flex', gap: '0.65rem', alignItems: 'flex-end' }}>
-                <button
-                  onClick={() => handleFlashcardSelfAssess(false)}
-                  style={{
-                    flex: 1,
-                    height: '48px',
-                    borderRadius: 12,
-                    background: 'rgba(244,63,94,0.12)',
-                    border: '1.5px solid rgba(244,63,94,0.35)',
-                    color: '#f43f5e',
-                    fontWeight: 800,
-                    fontSize: '0.85rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justify: 'center',
-                    gap: '0.35rem'
-                  }}
-                >
-                  <ThumbsDown size={16} /> I Didn't Know
-                </button>
-
-                <button
-                  onClick={() => handleFlashcardSelfAssess(true)}
-                  style={{
-                    flex: 1,
-                    height: '48px',
-                    borderRadius: 12,
-                    background: 'linear-gradient(135deg, #10b981, #34d399)',
-                    border: 'none',
-                    color: '#000',
-                    fontWeight: 900,
-                    fontSize: '0.85rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justify: 'center',
-                    gap: '0.35rem',
-                    boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
-                  }}
-                >
-                  <ThumbsUp size={16} /> I Knew It (+10 XP)
-                </button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        )}
-
-        {/* STEP 3: EXAM MCQ QUIZ */}
-        {unitStep === 'quiz' && (
-          <AnimatePresence mode="wait">
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', overflowY: 'auto' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: '0.72rem', color: '#f43f5e', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(244,63,94,0.15)', padding: '0.2rem 0.6rem', borderRadius: 6 }}>
-                    EXAM MCQ QUIZ
-                  </span>
-                  <span style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 700 }}>
-                    Exam Quiz Phase
-                  </span>
-                </div>
-
-                <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#fff', fontWeight: 800, lineHeight: 1.35 }}>
-                  {currentUnit.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
-                </h3>
-
-                {/* Options List */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                  {Object.entries(currentUnit.Quiz?.Options || {}).map(([key, label]) => {
-                    const isSelected = selectedOption === key;
-                    const isCorrect = key === currentUnit.Quiz?.CorrectAnswer;
-
-                    let btnBg = 'rgba(255,255,255,0.02)';
-                    let btnBorder = '1px solid rgba(255,255,255,0.08)';
-                    let textColor = '#e2e8f0';
-
-                    if (isQuizAnswered) {
-                      if (isCorrect) {
-                        btnBg = 'rgba(16,185,129,0.2)';
-                        btnBorder = '1.5px solid #10b981';
-                        textColor = '#34d399';
-                      } else if (isSelected) {
-                        btnBg = 'rgba(244,63,94,0.2)';
-                        btnBorder = '1.5px solid #f43f5e';
-                        textColor = '#f43f5e';
-                      }
-                    }
-
-                    return (
-                      <button
-                        key={key}
-                        onClick={() => handleQuizOptionSelect(key)}
-                        style={{
-                          background: btnBg,
-                          border: btnBorder,
-                          color: textColor,
-                          padding: '0.65rem 0.85rem',
-                          borderRadius: 10,
-                          fontSize: '0.82rem',
-                          fontWeight: isSelected ? 800 : 500,
-                          textAlign: 'left',
-                          cursor: isQuizAnswered ? 'default' : 'pointer',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.55rem'
-                        }}
-                      >
-                        <span style={{
-                          width: 22,
-                          height: 22,
-                          borderRadius: 6,
-                          background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.06)',
-                          color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justify: 'center',
-                          fontWeight: 800,
-                          fontSize: '0.75rem'
-                        }}>
-                          {key}
-                        </span>
-                        <span style={{ flex: 1 }}>{label}</span>
-                        {isQuizAnswered && isCorrect && <Check size={15} color="#34d399" />}
-                        {isQuizAnswered && isSelected && !isCorrect && <X size={15} color="#f43f5e" />}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Explanation Rationale Box */}
-                {isQuizAnswered && (
-                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 10, padding: '0.75rem' }}>
-                    <span style={{ fontSize: '0.68rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
-                      SYLLABUS RATIONALE & EXPLANATION
-                    </span>
-                    <p style={{ margin: '0.2rem 0 0', fontSize: '0.8rem', color: '#cbd5e1', lineHeight: 1.4 }}>
-                      {currentUnit.Quiz?.Explanation || `Official Fact: ${currentUnit.Fact}`}
-                    </p>
-                  </motion.div>
-                )}
-              </div>
-
-              {/* Pinned Bottom Action Button Bar (Fixed height: 52px) */}
-              <div style={{ height: '52px', display: 'flex', alignItems: 'flex-end' }}>
-                {isQuizAnswered ? (
+                return (
                   <button
-                    onClick={handleNextUnit}
+                    key={key}
+                    onClick={() => handleQuizOptionSelect(key)}
                     style={{
-                      width: '100%',
-                      height: '48px',
-                      borderRadius: 12,
-                      background: 'linear-gradient(135deg, #10b981, #34d399)',
-                      color: '#000',
-                      border: 'none',
-                      fontWeight: 900,
-                      fontSize: '0.92rem',
-                      cursor: 'pointer',
+                      background: btnBg,
+                      border: btnBorder,
+                      color: textColor,
+                      padding: '0.85rem 1.1rem',
+                      borderRadius: 14,
+                      fontSize: '0.9rem',
+                      fontWeight: isSelected ? 800 : 500,
+                      textAlign: 'left',
+                      cursor: isQuizAnswered ? 'default' : 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.75rem'
+                    }}
+                  >
+                    <span style={{
+                      width: 28,
+                      height: 28,
+                      borderRadius: 8,
+                      background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.06)',
+                      color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
                       display: 'flex',
                       alignItems: 'center',
                       justify: 'center',
-                      gap: '0.45rem',
-                      boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
-                    }}
-                  >
-                    {unitIndex < conceptUnits.length - 1 ? 'Proceed to Next Concept Unit ➔' : 'Proceed to Match the Following Recap ➔'}
+                      fontWeight: 800,
+                      fontSize: '0.82rem'
+                    }}>
+                      {key}
+                    </span>
+                    <span style={{ flex: 1 }}>{label}</span>
+                    {isQuizAnswered && isCorrect && <Check size={18} color="#34d399" />}
+                    {isQuizAnswered && isSelected && !isCorrect && <X size={18} color="#f43f5e" />}
                   </button>
-                ) : (
-                  <div style={{ fontSize: '0.75rem', color: '#64748b', textAlign: 'center', width: '100%', fontStyle: 'italic' }}>
-                    Select an answer option above to unlock next unit
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        )}
+                );
+              })}
+            </div>
 
-        {/* FINAL STEP: MATCH THE FOLLOWING RECAP */}
-        {unitStep === 'matching_recap' && (
-          <AnimatePresence mode="wait">
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', overflowY: 'auto' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: '0.72rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(56,189,248,0.15)', padding: '0.2rem 0.6rem', borderRadius: 6 }}>
-                    FINAL RECAP GAME
-                  </span>
-                  <span style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 700 }}>
-                    Match the Following
-                  </span>
-                </div>
+            {/* Explanation Rationale Box */}
+            {isQuizAnswered && (
+              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 14, padding: '1rem' }}>
+                <span style={{ fontSize: '0.72rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
+                  SYLLABUS RATIONALE & EXPLANATION
+                </span>
+                <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+                  {currentUnit.Quiz?.Explanation || `Official Fact: ${currentUnit.Fact}`}
+                </p>
+              </motion.div>
+            )}
 
-                <div>
-                  <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 900 }}>
-                    {topicName} Term Matching Recap
-                  </h2>
-                  <p style={{ color: '#94a3b8', fontSize: '0.78rem', margin: '0.15rem 0 0' }}>
-                    Connect terms on the left to definitions on the right to master topic connections.
-                  </p>
-                </div>
+            {/* Explicit Proceed Button After Quiz */}
+            {isQuizAnswered && (
+              <button
+                onClick={handleNextUnit}
+                style={{
+                  padding: '0.85rem 1.5rem',
+                  borderRadius: 14,
+                  background: 'linear-gradient(135deg, #10b981, #34d399)',
+                  color: '#000',
+                  border: 'none',
+                  fontWeight: 900,
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  gap: '0.45rem',
+                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
+                }}
+              >
+                {unitIndex < conceptUnits.length - 1 ? 'Proceed to Next Concept Unit ➔' : 'Proceed to Match the Following Recap ➔'}
+              </button>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      )}
 
-                <div style={{ height: '360px', overflowY: 'auto' }}>
-                  <MatchGame
-                    isEmbedded={true}
-                    data={practiceMatching.length > 0 ? practiceMatching : conceptUnits.map((u, i) => ({ q: `Term ${i + 1}`, a: u.Fact.substring(0, 50) }))}
-                    onComplete={handleMatchingComplete}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        )}
+      {/* FINAL STEP: MATCH THE FOLLOWING RECAP */}
+      {unitStep === 'matching_recap' && (
+        <AnimatePresence mode="wait">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(56,189,248,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                FINAL RECAP GAME
+              </span>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                Match the Following
+              </span>
+            </div>
 
-      </div>
+            <div>
+              <h2 style={{ margin: 0, fontSize: '1.4rem', color: '#fff', fontWeight: 900 }}>
+                {topicName} Term Matching Recap
+              </h2>
+              <p style={{ color: '#94a3b8', fontSize: '0.88rem', margin: '0.2rem 0 0' }}>
+                Connect terms on the left to definitions on the right to master topic connections.
+              </p>
+            </div>
+
+            <MatchGame
+              isEmbedded={true}
+              data={practiceMatching.length > 0 ? practiceMatching : conceptUnits.map((u, i) => ({ q: `Term ${i + 1}`, a: u.Fact.substring(0, 50) }))}
+              onComplete={handleMatchingComplete}
+            />
+          </motion.div>
+        </AnimatePresence>
+      )}
 
       {/* ── Mid-Play Skip Navigation Toolbar Options Below Player ── */}
       {unitStep !== 'completed' && (
@@ -651,7 +630,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
           justify: 'center',
           gap: '0.45rem',
           flexWrap: 'wrap',
-          padding: '0.65rem 1rem',
+          padding: '0.75rem 1rem',
           background: 'rgba(15, 23, 42, 0.75)',
           border: '1px solid rgba(255, 255, 255, 0.08)',
           borderRadius: 16
