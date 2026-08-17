@@ -1,0 +1,54 @@
+Chapter,Topic,Subtopic,Section,VisualisationIdea
+ASSAM,Physiographic Divisions & Conservation,Brahmaputra Valley,North Bank Tributaries (Brahmaputra),Top-Down CSS Tree Diagram merging into a thick horizontal central line (the Brahmaputra).
+ASSAM,Physiographic Divisions & Conservation,Brahmaputra Valley,South Bank Tributaries (Brahmaputra),Bottom-Up CSS Tree Diagram merging into a thick horizontal central line.
+ASSAM,Physiographic Divisions & Conservation,Central Hills,Central Hills,Interactive SVG/CSS concept breakdown for Central Hills in Central Hills.
+ASSAM,Physiographic Divisions & Conservation,Barak Valley,North Bank Tributaries (Barak),Top-Down CSS Tree Diagram merging into a thick horizontal central line (the Brahmaputra).
+ASSAM,Physiographic Divisions & Conservation,Barak Valley,South Bank Tributaries (Barak),Bottom-Up CSS Tree Diagram merging into a thick horizontal central line.
+ASSAM,Physiographic Divisions & Conservation,Ecology,Ecological Frameworks Overview,Interactive SVG/CSS concept breakdown for Ecological Frameworks Overview in Ecology.
+ASSAM,Physiographic Divisions & Conservation,Ecology,Biodiversity Hotspots (BH),Interactive SVG/CSS concept breakdown for Biodiversity Hotspots (BH) in Ecology.
+ASSAM,Physiographic Divisions & Conservation,Ecology,World Natural Heritage Sites (WNHS),Interactive SVG/CSS concept breakdown for World Natural Heritage Sites (WNHS) in Ecology.
+ASSAM,Physiographic Divisions & Conservation,Ecology,Biosphere Reserves (BR),Two distinct CSS rounded floating containers (Manas and Dibru-Saikhowa) with a subtle riverine background texture.
+ASSAM,Physiographic Divisions & Conservation,Ecology,7 Declared National Parks (NP),Interactive SVG/CSS concept breakdown for 7 Declared National Parks (NP) in Ecology.
+ASSAM,Physiographic Divisions & Conservation,Ecology,Sanctuaries & Wetlands,Interactive SVG/CSS concept breakdown for Sanctuaries & Wetlands in Ecology.
+ASSAM,Physiographic Divisions & Conservation,Wildlife Reserves,Mega-fauna Project Reserves,Interactive SVG/CSS concept breakdown for Mega-fauna Project Reserves in Wildlife Reserves.
+ASSAM,Physiographic Divisions & Conservation,Transport,National Highways (NH),Interactive roadmap highlighting key national highways (NH-27) across Assam.
+ASSAM,Physiographic Divisions & Conservation,Transport,Railways,Schematic route map showing Northeast Frontier Railway (NFR) routes and divisions.
+ASSAM,Physiographic Divisions & Conservation,Transport,National Waterways (NW),River shipping lane diagram tracking National Waterway 2 (NW-2) along the Brahmaputra River from Sadiya to Dhubri.
+NE,Arunachal Pradesh,Arunachal Pradesh,Arunachal Pradesh Profile,Interactive SVG/CSS concept breakdown for Arunachal Pradesh Profile in Arunachal Pradesh.
+NE,Arunachal Pradesh,Arunachal Pradesh,Major Hill Ranges (Arunachal Pradesh),Interactive SVG/CSS concept breakdown for Major Hill Ranges (Arunachal Pradesh) in Arunachal Pradesh.
+NE,Assam,Assam Profile,Assam Profile,Interactive SVG/CSS concept breakdown for Assam Profile in Assam Profile.
+NE,Assam,Assam Profile,Major Hill Ranges (Assam),Interactive SVG/CSS concept breakdown for Major Hill Ranges (Assam) in Assam Profile.
+NE,Manipur,Manipur,Manipur Profile,Interactive SVG/CSS concept breakdown for Manipur Profile in Manipur.
+NE,Meghalaya,Meghalaya,Meghalaya Profile,Interactive SVG/CSS concept breakdown for Meghalaya Profile in Meghalaya.
+NE,Meghalaya,Meghalaya,Major Hill Ranges (Meghalaya),Interactive SVG/CSS concept breakdown for Major Hill Ranges (Meghalaya) in Meghalaya.
+NE,Mizoram,Mizoram,Mizoram Profile,Interactive SVG/CSS concept breakdown for Mizoram Profile in Mizoram.
+NE,Nagaland,Nagaland,Nagaland Profile,Interactive SVG/CSS concept breakdown for Nagaland Profile in Nagaland.
+NE,Tripura,Tripura,Tripura Profile,Interactive SVG/CSS concept breakdown for Tripura Profile in Tripura.
+NE,World Natural Heritage Sites (WNHS),NE Heritage,Kaziranga National Park (Assam),Interactive SVG/CSS concept breakdown for Kaziranga National Park (Assam) in NE Heritage.
+NE,World Natural Heritage Sites (WNHS),NE Heritage,Manas Wildlife Sanctuary (Assam),Interactive SVG/CSS concept breakdown for Manas Wildlife Sanctuary (Assam) in NE Heritage.
+NE,World Natural Heritage Sites (WNHS),NE Heritage,Moidams – Ahom Dynasty Mounds (Assam),Interactive SVG/CSS concept breakdown for Moidams – Ahom Dynasty Mounds (Assam) in NE Heritage.
+NE,World Natural Heritage Sites (WNHS),NE Heritage,Khangchendzonga National Park (Sikkim),Interactive SVG/CSS concept breakdown for Khangchendzonga National Park (Sikkim) in NE Heritage.
+NE,Biosphere Reserves (BR),NE Biosphere,"General Schema (Core, Buffer & Eco-Sensitive Zone)","Interactive SVG/CSS concept breakdown for General Schema (Core, Buffer & Eco-Sensitive Zone) in NE Biosphere."
+NE,Biosphere Reserves (BR),NE Biosphere,Manas Biosphere Reserve (Assam),Interactive SVG/CSS concept breakdown for Manas Biosphere Reserve (Assam) in NE Biosphere.
+NE,Biosphere Reserves (BR),NE Biosphere,Dibru-Saikhowa Biosphere Reserve (Assam),Interactive SVG/CSS concept breakdown for Dibru-Saikhowa Biosphere Reserve (Assam) in NE Biosphere.
+NE,Biosphere Reserves (BR),NE Biosphere,Nokrek Biosphere Reserve (Meghalaya),Interactive SVG/CSS concept breakdown for Nokrek Biosphere Reserve (Meghalaya) in NE Biosphere.
+NE,Biosphere Reserves (BR),NE Biosphere,Dihang-Dibang Biosphere Reserve (Arunachal Pradesh),Interactive SVG/CSS concept breakdown for Dihang-Dibang Biosphere Reserve (Arunachal Pradesh) in NE Biosphere.
+INDIA,Physiographic Divisions of India,Himalayas,Subdivisions (West to East),🔄 Interactive Syntaxial Bends Diagram using CSS SVG paths with animated drawing effects (stroke-dashoffset) to show the horizontal span.
+INDIA,Physiographic Divisions of India,Himalayas,Vertical Divisions (South to North),"🏔️ CSS Stacked Elevation Layers using overlapping divs with varying z-indexes and heights to represent Himadri, Himachal, and Shivalik."
+INDIA,Physiographic Divisions of India,Northern Plains,Formation & Soil,CSS Layered Soil Profile Box using linear gradients to show the rich alluvial soil layers formed by the river systems.
+INDIA,Physiographic Divisions of India,Northern Plains,Regional Divisions,"Interactive HTML/CSS Map with three distinct hoverable zones (Punjab, Ganga, Brahmaputra plains) that expand on hover."
+INDIA,Physiographic Divisions of India,Peninsular Plateau,Central Highlands (Midlands),"CSS Grid Layout displaying distinct plateau tiles (Malwa, Marwar, Bundelkhand, etc.) that elevate (box-shadow/transform) on hover."
+INDIA,Physiographic Divisions of India,Peninsular Plateau,Deccan Plateau,CSS Triangle shape created using `clip-path: polygon()` with a dark textured background to represent the black soil Deccan Trap.
+INDIA,Physiographic Divisions of India,Peninsular Plateau,Mountain Ranges & Peaks,"CSS/SVG V-Shape Diagram showing the Western and Eastern Ghats converging at a central node labeled Nilgiri, with a pulsing CSS marker for Anaimudi."
+INDIA,Physiographic Divisions of India,Thar & Coastal Plains,The Indian Desert (Thar Desert),CSS Animated Heat Waves and Sand Dunes created using overlapping radial gradients and keyframe animations for an arid effect.
+INDIA,Physiographic Divisions of India,Thar & Coastal Plains,Western Coastal Plains,"Narrow CSS Flex Column adjacent to a blue gradient, with sticky scrolling to explore Konkan, Kannad, and Malabar."
+INDIA,Physiographic Divisions of India,Thar & Coastal Plains,Eastern Coastal Plains,Broader CSS Flex Column featuring expanding horizontal border-radiuses to visually represent the large river deltas.
+INDIA,Physiographic Divisions of India,The Islands,Major Island Groups,"CSS Floating Bubbles scattered on a blue background container, clustered into a large group (Andaman) and a small coral ring group (Lakshadweep)."
+INDIA,Major River Systems,Himalayan Rivers,The Indus System,"SVG Branching Path Diagram flowing top-to-left, with tributaries lighting up consecutively using CSS animations."
+INDIA,Major River Systems,Himalayan Rivers,The Ganga System,"Animated SVG River Flow (stroke-dasharray) starting from a single point and widening as major tributaries (Yamuna, Kosi) join in."
+INDIA,Major River Systems,Himalayan Rivers,The Brahmaputra System,CSS U-Turn Animation path reflecting the river's entry into Arunachal Pradesh and its massive spreading network in Assam.
+INDIA,Major River Systems,Peninsular Rivers,West-Flowing Rivers,"CSS Horizontal Scroll/Flow right-to-left, ending abruptly in a straight edge to represent estuaries instead of deltas."
+INDIA,Major River Systems,Peninsular Rivers,East-Flowing Rivers,CSS Horizontal Flow left-to-right that fans out into multiple small branches using CSS Grid/Flex to represent fertile deltas.
+INDIA,Ecological Markers & Conservation,Biodiversity Hotspots (BH),Overview & Indian Hotspots,HTML/CSS Radar Map with 4 pulsing animated ring markers (using `@keyframes`) representing the 4 biodiversity hotspots.
+INDIA,Ecological Markers & Conservation,Natural Heritage,Key Indian Sites,"CSS Masonry Gallery Layout showcasing image placeholder cards for Kaziranga, Manas, and Sundarbans that flip to reveal facts."
+INDIA,Ecological Markers & Conservation,Biosphere Reserves,Network & Recognition,"CSS Concentric Circles representing the Core, Buffer, and Transition zones of a Biosphere Reserve, with tooltips for Nilgiri and Kachchh."
