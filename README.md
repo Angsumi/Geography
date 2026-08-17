@@ -1,4 +1,4 @@
-# 🗺️ ADRE & APSC Geography Platform
+# 🗺️ Geography Platform
 ### *Brilliant.org-Style Interactive Learning Experience for Assam, Northeast 7 Sisters, and Indian Geography*
 
 [![Vite](https://img.shields.io/badge/Vite-8.2-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -76,8 +76,8 @@ GEOGRAPHY/
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Angsumi/adre-master.git
-   cd adre-master
+   git clone https://github.com/Angsumi/Geography.git
+   cd Geography
    ```
 
 2. **Install & Run**:
