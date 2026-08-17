@@ -533,35 +533,40 @@ export default function App() {
                 return (
                   <div key={chName} className="glass-panel" style={{ padding: '1rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                     {/* Level 1: Chapter Accordion Header */}
-                    <button
-                      onClick={() => toggleChapter(chName)}
-                      style={{
-                        background: 'transparent',
-                        border: 'none',
-                        color: 'var(--text-main)',
-                        fontSize: '1.05rem',
-                        fontWeight: 800,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justify: 'space-between',
-                        padding: 0,
-                        width: '100%'
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
-                        <BookOpen size={18} color="var(--primary)" />
-                        <span>CHAPTER: {shortName} ({chObj.units.length} Units)</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        {completedTopicsInCh > 0 && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                      <button
+                        onClick={() => toggleChapter(chName)}
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          color: 'var(--text-main)',
+                          fontSize: '1.05rem',
+                          fontWeight: 800,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justify: 'space-between',
+                          padding: 0,
+                          width: '100%'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                          <BookOpen size={18} color="var(--primary)" />
+                          <span>CHAPTER: {shortName} ({chObj.units.length} Units)</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                           <span className="badge badge-sage" style={{ fontSize: '0.74rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                            <CheckCircle size={12} /> {chPct === 100 ? '✓ Mastered' : `📊 ${chPct}%`}
+                            <CheckCircle size={12} /> {chPct === 100 ? '✓ 100% Mastered' : `${chPct}% (${completedTopicsInCh}/${totalTopicsInCh})`}
                           </span>
-                        )}
-                        {isChOpen ? <ChevronDown size={18} color="var(--primary)" /> : <ChevronRight size={18} color="var(--text-muted)" />}
+                          {isChOpen ? <ChevronDown size={18} color="var(--primary)" /> : <ChevronRight size={18} color="var(--text-muted)" />}
+                        </div>
+                      </button>
+
+                      {/* Chapter Progress Bar */}
+                      <div style={{ height: 4, background: 'var(--bg-subtle)', borderRadius: 2, overflow: 'hidden', width: '100%' }}>
+                        <div style={{ height: '100%', width: `${chPct}%`, background: 'var(--primary)', borderRadius: 2, transition: 'width 0.4s ease' }} />
                       </div>
-                    </button>
+                    </div>
 
                     {/* Level 2: Units (Collapsed by Default) */}
                     {isChOpen && (
@@ -580,39 +585,44 @@ export default function App() {
                           const unitPct = totalTopicsInUnit > 0 ? Math.round((completedTopicsInUnit / totalTopicsInUnit) * 100) : 0;
 
                           return (
-                            <div key={uName} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', background: 'var(--bg-subtle)', borderRadius: 10, padding: '0.75rem' }}>
+                            <div key={uName} style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', background: 'var(--bg-subtle)', borderRadius: 10, padding: '0.75rem' }}>
                               {/* Unit Accordion Header */}
-                              <button
-                                onClick={() => toggleUnit(uName)}
-                                style={{
-                                  background: 'transparent',
-                                  border: 'none',
-                                  color: 'var(--primary)',
-                                  fontSize: '0.85rem',
-                                  fontWeight: 800,
-                                  cursor: 'pointer',
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  justify: 'space-between',
-                                  padding: 0,
-                                  width: '100%',
-                                  textTransform: 'uppercase',
-                                  letterSpacing: '0.04em'
-                                }}
-                              >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                                  <Layers size={15} color="var(--primary)" />
-                                  <span>UNIT: {uName} ({unitObj.lessons.length} Lessons)</span>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                  {completedTopicsInUnit > 0 && (
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                                <button
+                                  onClick={() => toggleUnit(uName)}
+                                  style={{
+                                    background: 'transparent',
+                                    border: 'none',
+                                    color: 'var(--primary)',
+                                    fontSize: '0.85rem',
+                                    fontWeight: 800,
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justify: 'space-between',
+                                    padding: 0,
+                                    width: '100%',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.04em'
+                                  }}
+                                >
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                                    <Layers size={15} color="var(--primary)" />
+                                    <span>UNIT: {uName} ({unitObj.lessons.length} Lessons)</span>
+                                  </div>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                                     <span className="badge badge-sage" style={{ fontSize: '0.72rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                                      <CheckCircle size={11} /> {unitPct === 100 ? '✓ 100%' : `${unitPct}%`}
+                                      <CheckCircle size={11} /> {unitPct === 100 ? '✓ 100%' : `${unitPct}% (${completedTopicsInUnit}/${totalTopicsInUnit})`}
                                     </span>
-                                  )}
-                                  {isUnitOpen ? <ChevronDown size={16} color="var(--primary)" /> : <ChevronRight size={16} color="var(--text-muted)" />}
+                                    {isUnitOpen ? <ChevronDown size={16} color="var(--primary)" /> : <ChevronRight size={16} color="var(--text-muted)" />}
+                                  </div>
+                                </button>
+
+                                {/* Unit Progress Bar */}
+                                <div style={{ height: 3, background: 'rgba(255,255,255,0.06)', borderRadius: 2, overflow: 'hidden', width: '100%' }}>
+                                  <div style={{ height: '100%', width: `${unitPct}%`, background: '#10b981', borderRadius: 2, transition: 'width 0.4s ease' }} />
                                 </div>
-                              </button>
+                              </div>
 
                               {/* Level 3: Lessons & Subtopics (Collapsed by Default) */}
                               {isUnitOpen && (
@@ -624,6 +634,7 @@ export default function App() {
 
                                     const totalTopicsInLes = les.topics.length;
                                     const completedTopicsInLes = les.topics.filter(t => t.topicName && completedTopics[t.topicName]).length;
+                                    const lesPct = totalTopicsInLes > 0 ? Math.round((completedTopicsInLes / totalTopicsInLes) * 100) : 0;
                                     const isLesDone = totalTopicsInLes > 0 && completedTopicsInLes === totalTopicsInLes;
 
                                     return (
@@ -661,35 +672,75 @@ export default function App() {
                                             <span>{lesName}</span>
                                           </div>
                                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                            {isLesDone ? (
-                                              <span className="badge badge-sage" style={{ fontSize: '0.7rem', display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
-                                                <CheckCircle size={11} /> ✓ Mastered
-                                              </span>
-                                            ) : completedTopicsInLes > 0 ? (
-                                              <span style={{ fontSize: '0.72rem', color: 'var(--primary)', fontWeight: 700 }}>
-                                                {Math.round((completedTopicsInLes / totalTopicsInLes) * 100)}%
-                                              </span>
-                                            ) : null}
+                                            <span style={{ fontSize: '0.72rem', color: isLesDone ? 'var(--primary)' : 'var(--text-muted)', fontWeight: 700 }}>
+                                              {isLesDone ? '✓ Mastered' : `${lesPct}% (${completedTopicsInLes}/${totalTopicsInLes})`}
+                                            </span>
                                             <span style={{ fontSize: '0.72rem', color: 'var(--primary)', background: 'var(--primary-bg)', border: '1px solid var(--primary-border)', padding: '0.12rem 0.4rem', borderRadius: 6, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.2rem' }}>
                                               <Clock size={11} /> ⏱️ 3 min
-                                            </span>
-                                            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-                                              {les.topics.length} Subtopics
                                             </span>
                                             {isLesOpen ? <ChevronDown size={16} color="var(--primary)" /> : <ChevronRight size={16} color="var(--text-muted)" />}
                                           </div>
                                         </button>
 
-                                        {/* Level 4: Subtopics List & Start Player CTA (Collapsed by Default) */}
+                                        {/* Level 4: Subtopics List & Action Buttons */}
                                         {isLesOpen && (
                                           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.35rem', paddingTop: '0.35rem', borderTop: '1px dashed var(--border-subtle)' }}>
-                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                                              {les.topics.map((top, idx) => (
-                                                <div key={idx} style={{ fontSize: '0.78rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                                                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--primary)' }} />
-                                                  <span>{top.topicName}</span>
-                                                </div>
-                                              ))}
+                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                                              {les.topics.map((top, idx) => {
+                                                const isTopDone = top.topicName && !!completedTopics[top.topicName];
+                                                return (
+                                                  <div
+                                                    key={idx}
+                                                    style={{
+                                                      fontSize: '0.8rem',
+                                                      display: 'flex',
+                                                      alignItems: 'center',
+                                                      justify: 'space-between',
+                                                      padding: '0.35rem 0.6rem',
+                                                      borderRadius: 6,
+                                                      background: isTopDone ? 'rgba(16, 185, 129, 0.08)' : 'var(--bg-subtle)',
+                                                      border: isTopDone ? '1px solid rgba(16, 185, 129, 0.25)' : '1px solid transparent'
+                                                    }}
+                                                  >
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                                                      {isTopDone ? (
+                                                        <CheckCircle size={14} color="#34d399" />
+                                                      ) : (
+                                                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--primary)' }} />
+                                                      )}
+                                                      <span style={{ color: isTopDone ? 'var(--text-main)' : 'var(--text-muted)', fontWeight: isTopDone ? 700 : 500 }}>
+                                                        {top.topicName}
+                                                      </span>
+                                                    </div>
+
+                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                                      {isTopDone && (
+                                                        <span className="badge badge-sage" style={{ fontSize: '0.68rem', padding: '0.1rem 0.4rem' }}>
+                                                          ✓ Done
+                                                        </span>
+                                                      )}
+                                                      <button
+                                                        onClick={() => startSectionPlayer(top, lesName, uName, chName)}
+                                                        style={{
+                                                          padding: '0.2rem 0.55rem',
+                                                          fontSize: '0.72rem',
+                                                          borderRadius: 6,
+                                                          background: 'var(--primary-bg)',
+                                                          border: '1px solid var(--primary-border)',
+                                                          color: 'var(--primary)',
+                                                          fontWeight: 700,
+                                                          cursor: 'pointer',
+                                                          display: 'flex',
+                                                          alignItems: 'center',
+                                                          gap: '0.25rem'
+                                                        }}
+                                                      >
+                                                        <PlayCircle size={12} /> {isTopDone ? 'Review' : 'Play'}
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                );
+                                              })}
                                             </div>
 
                                             <button
@@ -697,7 +748,7 @@ export default function App() {
                                               onClick={() => startLessonPlayer(lesName)}
                                               style={{ padding: '0.45rem 0.75rem', fontSize: '0.78rem', marginTop: '0.25rem', alignSelf: 'flex-start' }}
                                             >
-                                              <PlayCircle size={14} /> Start learning this lesson
+                                              <PlayCircle size={14} /> Start complete lesson module
                                             </button>
                                           </div>
                                         )}
@@ -822,6 +873,7 @@ export default function App() {
             xp={xp}
             streak={streak}
             syllabusHierarchy={syllabusHierarchy}
+            completedTopics={completedTopics}
           />
         ) : null}
       </main>

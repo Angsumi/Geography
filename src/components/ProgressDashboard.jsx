@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Flame, Target, Award, CheckCircle2, BookOpen, MapPin, Sparkles, TrendingUp } from 'lucide-react';
+import { Trophy, Flame, CheckCircle, BookOpen, MapPin, TrendingUp, CheckCircle2 } from 'lucide-react';
 
-export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
+export function ProgressDashboard({ xp, streak, syllabusHierarchy = [], completedTopics = {} }) {
   // Calculate level based on XP
   const level = Math.floor(xp / 100) + 1;
-  const xpForNextLevel = level * 100;
   const currentLevelXp = xp % 100;
   const levelProgressPercent = Math.min(100, Math.round((currentLevelXp / 100) * 100));
 
@@ -14,14 +13,29 @@ export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
   else if (level >= 5) levelTitle = 'APSC Candidate Specialist 🎯';
   else if (level >= 3) levelTitle = 'ADRE Scholar 📚';
 
-  // Topic counts across chapters
-  const assamSubj = syllabusHierarchy?.find(s => s.subjectName === 'ASSAM');
-  const indiaSubj = syllabusHierarchy?.find(s => s.subjectName === 'INDIA');
-  const neSubj = syllabusHierarchy?.find(s => s.subjectName === 'NE');
+  // Calculate detailed topic completion metrics per chapter
+  const getChapterMetrics = (chName) => {
+    const chapter = syllabusHierarchy.find(c => c.chapterName === chName);
+    if (!chapter) return { total: 0, completed: 0, pct: 0 };
+    let total = 0;
+    let completed = 0;
+    chapter.units.forEach(u => {
+      u.lessons.forEach(l => {
+        total += l.topics.length;
+        completed += l.topics.filter(t => t.topicName && completedTopics[t.topicName]).length;
+      });
+    });
+    const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+    return { total, completed, pct };
+  };
 
-  const assamTopicsCount = assamSubj?.topics?.length || 4;
-  const indiaTopicsCount = indiaSubj?.topics?.length || 5;
-  const neTopicsCount = neSubj?.topics?.length || 2;
+  const assamStats = getChapterMetrics('ASSAM');
+  const neStats = getChapterMetrics('NE');
+  const indiaStats = getChapterMetrics('INDIA');
+
+  const totalSyllabusTopics = assamStats.total + neStats.total + indiaStats.total;
+  const totalCompletedTopics = assamStats.completed + neStats.completed + indiaStats.completed;
+  const overallPct = totalSyllabusTopics > 0 ? Math.round((totalCompletedTopics / totalSyllabusTopics) * 100) : 0;
 
   return (
     <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -32,14 +46,14 @@ export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
           Personal Learning Analytics
         </span>
         <h1 style={{ fontSize: '2.2rem', fontWeight: 900, margin: '0.2rem 0', color: '#fff' }}>
-          Mastery & Exam Readiness
+          Mastery & Completion Dashboard
         </h1>
         <p style={{ color: '#94a3b8', margin: 0, fontSize: '0.9rem' }}>
-          Track your progress, daily learning streak, and ADRE/APSC competitive exam readiness.
+          Track your topic completion percentages, daily learning streak, and competitive exam mastery.
         </p>
       </div>
 
-      {/* Main Profile Card */}
+      {/* Main Profile & Overall Progress Card */}
       <div className="glass-panel" style={{ padding: '1.75rem', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.95))', border: '1.5px solid rgba(16, 185, 129, 0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -65,15 +79,34 @@ export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
           </div>
         </div>
 
+        {/* Overall Syllabus Completion Rate */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem', background: 'rgba(255,255,255,0.03)', padding: '0.85rem 1rem', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.85rem', color: '#fff', fontWeight: 800 }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <CheckCircle2 size={16} color="#34d399" /> Overall Syllabus Completion
+            </span>
+            <span style={{ color: '#34d399', fontSize: '1.05rem', fontWeight: 900 }}>
+              {overallPct}% ({totalCompletedTopics} / {totalSyllabusTopics} Topics)
+            </span>
+          </div>
+          <div style={{ height: 10, background: 'rgba(255,255,255,0.08)', borderRadius: 6, overflow: 'hidden' }}>
+            <motion.div
+              style={{ height: '100%', background: 'linear-gradient(90deg, #10b981, #38bdf8)', borderRadius: 6 }}
+              animate={{ width: `${overallPct}%` }}
+              transition={{ duration: 0.6 }}
+            />
+          </div>
+        </div>
+
         {/* Level XP Progress Bar */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '0.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', color: '#cbd5e1', fontWeight: 700 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.76rem', color: '#cbd5e1', fontWeight: 700 }}>
             <span>Progress to Level {level + 1}</span>
             <span>{currentLevelXp} / 100 XP</span>
           </div>
-          <div style={{ height: 8, background: 'rgba(255,255,255,0.08)', borderRadius: 4, overflow: 'hidden' }}>
+          <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
             <motion.div
-              style={{ height: '100%', background: 'linear-gradient(90deg, #10b981, #34d399)', borderRadius: 4 }}
+              style={{ height: '100%', background: 'linear-gradient(90deg, #f97316, #fb923c)', borderRadius: 3 }}
               animate={{ width: `${levelProgressPercent}%` }}
               transition={{ duration: 0.5 }}
             />
@@ -81,7 +114,7 @@ export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
         </div>
       </div>
 
-      {/* Syllabus Mastery Breakdowns */}
+      {/* Syllabus Mastery & Completion Breakdowns by Chapter */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
         
         {/* Assam Geography */}
@@ -90,19 +123,27 @@ export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
             <span style={{ fontSize: '0.78rem', color: '#fb923c', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
               <MapPin size={15} /> ASSAM GEOGRAPHY
             </span>
-            <span style={{ fontSize: '0.75rem', background: 'rgba(251, 146, 60, 0.15)', color: '#fb923c', padding: '0.2rem 0.5rem', borderRadius: 8, fontWeight: 800 }}>
-              Primary Focus
+            <span className="badge badge-sage" style={{ fontSize: '0.75rem', fontWeight: 800 }}>
+              {assamStats.pct}% Mastered
             </span>
           </div>
-          <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Physical & Human Geography</h3>
+          <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 800 }}>Physical & Human Geography</h3>
           <p style={{ margin: 0, fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.4 }}>
             Brahmaputra Valley, Barak Valley, Central Hills, Ecology, Wildlife Reserves & Transport.
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
-            <TrendingUp size={16} color="#fb923c" />
-            <span style={{ fontSize: '0.8rem', color: '#e2e8f0', fontWeight: 700 }}>
-              {assamTopicsCount} Core Topics Unlocked
-            </span>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', marginTop: '0.25rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#e2e8f0', fontWeight: 700 }}>
+              <span>Completion: {assamStats.completed} of {assamStats.total} topics</span>
+              <span style={{ color: '#fb923c', fontWeight: 800 }}>{assamStats.pct}%</span>
+            </div>
+            <div style={{ height: 7, background: 'rgba(255,255,255,0.08)', borderRadius: 4, overflow: 'hidden' }}>
+              <motion.div
+                style={{ height: '100%', background: '#fb923c', borderRadius: 4 }}
+                animate={{ width: `${assamStats.pct}%` }}
+                transition={{ duration: 0.5 }}
+              />
+            </div>
           </div>
         </div>
 
@@ -112,19 +153,27 @@ export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
             <span style={{ fontSize: '0.78rem', color: '#c084fc', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
               <BookOpen size={15} /> NORTHEAST INDIA
             </span>
-            <span style={{ fontSize: '0.75rem', background: 'rgba(192, 132, 252, 0.15)', color: '#c084fc', padding: '0.2rem 0.5rem', borderRadius: 8, fontWeight: 800 }}>
-              7 Sister States
+            <span className="badge badge-sage" style={{ fontSize: '0.75rem', fontWeight: 800 }}>
+              {neStats.pct}% Mastered
             </span>
           </div>
-          <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Regional & Border Geography</h3>
+          <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 800 }}>Regional & Border Geography</h3>
           <p style={{ margin: 0, fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.4 }}>
             Arunachal Pradesh, Meghalaya, Manipur, Mizoram, Nagaland, Tripura state highlights.
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
-            <TrendingUp size={16} color="#c084fc" />
-            <span style={{ fontSize: '0.8rem', color: '#e2e8f0', fontWeight: 700 }}>
-              {neTopicsCount} Regional Modules
-            </span>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', marginTop: '0.25rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#e2e8f0', fontWeight: 700 }}>
+              <span>Completion: {neStats.completed} of {neStats.total} topics</span>
+              <span style={{ color: '#c084fc', fontWeight: 800 }}>{neStats.pct}%</span>
+            </div>
+            <div style={{ height: 7, background: 'rgba(255,255,255,0.08)', borderRadius: 4, overflow: 'hidden' }}>
+              <motion.div
+                style={{ height: '100%', background: '#c084fc', borderRadius: 4 }}
+                animate={{ width: `${neStats.pct}%` }}
+                transition={{ duration: 0.5 }}
+              />
+            </div>
           </div>
         </div>
 
@@ -132,21 +181,29 @@ export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
         <div className="glass-panel" style={{ padding: '1.25rem', borderLeft: '4px solid #38bdf8', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <span style={{ fontSize: '0.78rem', color: '#38bdf8', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-              <Award size={15} /> INDIAN GEOGRAPHY
+              <TrendingUp size={15} /> INDIAN GEOGRAPHY
             </span>
-            <span style={{ fontSize: '0.75rem', background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', padding: '0.2rem 0.5rem', borderRadius: 8, fontWeight: 800 }}>
-              National Syllabus
+            <span className="badge badge-sage" style={{ fontSize: '0.75rem', fontWeight: 800 }}>
+              {indiaStats.pct}% Mastered
             </span>
           </div>
-          <h3 style={{ margin: 0, fontSize: '1.2rem' }}>Physiographic Divisions</h3>
+          <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 800 }}>Physiographic Divisions</h3>
           <p style={{ margin: 0, fontSize: '0.82rem', color: '#cbd5e1', lineHeight: 1.4 }}>
             Himalayas, Northern Plains, Peninsular Plateau, Thar Desert, Coastal Plains & Islands.
           </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
-            <TrendingUp size={16} color="#38bdf8" />
-            <span style={{ fontSize: '0.8rem', color: '#e2e8f0', fontWeight: 700 }}>
-              {indiaTopicsCount} Major Physiographic Zones
-            </span>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', marginTop: '0.25rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: '#e2e8f0', fontWeight: 700 }}>
+              <span>Completion: {indiaStats.completed} of {indiaStats.total} topics</span>
+              <span style={{ color: '#38bdf8', fontWeight: 800 }}>{indiaStats.pct}%</span>
+            </div>
+            <div style={{ height: 7, background: 'rgba(255,255,255,0.08)', borderRadius: 4, overflow: 'hidden' }}>
+              <motion.div
+                style={{ height: '100%', background: '#38bdf8', borderRadius: 4 }}
+                animate={{ width: `${indiaStats.pct}%` }}
+                transition={{ duration: 0.5 }}
+              />
+            </div>
           </div>
         </div>
 
@@ -154,3 +211,4 @@ export function ProgressDashboard({ xp, streak, syllabusHierarchy }) {
     </motion.div>
   );
 }
+
