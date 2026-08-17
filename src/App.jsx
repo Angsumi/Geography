@@ -725,9 +725,9 @@ export default function App() {
                                                           padding: '0.2rem 0.55rem',
                                                           fontSize: '0.72rem',
                                                           borderRadius: 6,
-                                                          background: 'var(--primary-bg)',
-                                                          border: '1px solid var(--primary-border)',
-                                                          color: 'var(--primary)',
+                                                          background: isTopDone ? 'var(--bg-subtle)' : 'var(--primary-bg)',
+                                                          border: isTopDone ? '1px solid var(--border-subtle)' : '1px solid var(--primary-border)',
+                                                          color: isTopDone ? 'var(--text-muted)' : 'var(--primary)',
                                                           fontWeight: 700,
                                                           cursor: 'pointer',
                                                           display: 'flex',
@@ -735,7 +735,7 @@ export default function App() {
                                                           gap: '0.25rem'
                                                         }}
                                                       >
-                                                        <PlayCircle size={12} /> {isTopDone ? 'Review' : 'Play'}
+                                                        <PlayCircle size={12} color={isTopDone ? 'var(--text-muted)' : 'var(--primary)'} /> {isTopDone ? 'Review' : 'Play'}
                                                       </button>
                                                     </div>
                                                   </div>
@@ -744,11 +744,22 @@ export default function App() {
                                             </div>
 
                                             <button
-                                              className="btn btn-primary"
+                                              className={isLesDone ? "btn btn-subtle" : "btn btn-primary"}
                                               onClick={() => startLessonPlayer(lesName)}
-                                              style={{ padding: '0.45rem 0.75rem', fontSize: '0.78rem', marginTop: '0.25rem', alignSelf: 'flex-start' }}
+                                              style={{
+                                                padding: '0.45rem 0.75rem',
+                                                fontSize: '0.78rem',
+                                                marginTop: '0.25rem',
+                                                alignSelf: 'flex-start',
+                                                ...(isLesDone ? {
+                                                  background: 'var(--bg-subtle)',
+                                                  border: '1px solid var(--border-subtle)',
+                                                  color: 'var(--text-muted)',
+                                                  boxShadow: 'none'
+                                                } : {})
+                                              }}
                                             >
-                                              <PlayCircle size={14} /> Start complete lesson module
+                                              <PlayCircle size={14} color={isLesDone ? 'var(--text-muted)' : undefined} /> {isLesDone ? 'Review completed lesson' : 'Start complete lesson module'}
                                             </button>
                                           </div>
                                         )}
