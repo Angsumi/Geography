@@ -15,17 +15,17 @@ export function HomePage({
   onStartMCQ,
   onExploreMap
 }) {
-  const [expandedTopic, setExpandedTopic] = React.useState(null);
+  const [expandedUnit, setExpandedUnit] = React.useState(null);
 
   const chapters = [
-    { id: 'ASSAM', label: 'Assam Geography', icon: <GamusaIcon size={20} />, desc: '6 Subtopics · 15 Sections' },
-    { id: 'NE', label: 'Northeast 7 Sisters', icon: '🏔️', desc: '9 Topics · State Profiles & Biospheres' },
-    { id: 'INDIA', label: 'Indian Geography', icon: '🇮🇳', desc: '3 Topics · 10 Physical Subtopics' }
+    { id: 'ASSAM', label: 'Assam Geography', icon: <GamusaIcon size={20} />, desc: 'Unit 1 · 6 Lessons · 15 Topics' },
+    { id: 'NE', label: 'Northeast 7 Sisters', icon: '🏔️', desc: '9 Units · 9 Lessons · 19 Topics' },
+    { id: 'INDIA', label: 'Indian Geography', icon: '🇮🇳', desc: '3 Units · 10 Lessons · 19 Topics' }
   ];
 
   const activeTab = activeChapter || 'ASSAM';
-  const currentSubjectObj = syllabusHierarchy?.find(s => s.subjectName === activeTab) || syllabusHierarchy?.[0];
-  const topics = currentSubjectObj?.topics || [];
+  const currentChapterObj = syllabusHierarchy?.find(s => s.chapterName === activeTab) || syllabusHierarchy?.[0];
+  const units = currentChapterObj?.units || [];
 
   return (
     <motion.div
@@ -75,7 +75,7 @@ export function HomePage({
             WebkitTextFillColor: 'transparent',
             lineHeight: 1.25
           }}>
-            Geography Syllabus Directory
+            Curriculum Directory
           </h1>
 
           <p style={{
@@ -85,7 +85,7 @@ export function HomePage({
             margin: '0 auto 1.25rem',
             lineHeight: 1.6
           }}>
-            Start dedicated Section Players on any topic to learn individual section facts step-by-step with interactive visualizers, Flashcards, and Quizzes.
+            Structured by <strong>Chapter ➔ Unit ➔ Lesson ➔ Topic</strong>. Select any topic to play fact-by-fact lessons with interactive visualizers, Flashcards, and Quizzes.
           </p>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
@@ -106,7 +106,7 @@ export function HomePage({
                 boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
               }}
             >
-              <PlayCircle size={17} /> Launch Brahmaputra Valley Player
+              <PlayCircle size={17} /> Launch Brahmaputra Valley Lesson
             </button>
 
             <button
@@ -139,7 +139,7 @@ export function HomePage({
               CHAPTER SELECTOR
             </span>
             <h2 style={{ margin: '0.1rem 0 0', fontSize: '1.4rem', fontWeight: 900, color: '#fff' }}>
-              {activeTab === 'ASSAM' ? 'Assam Geography' : activeTab === 'NE' ? 'Northeast 7 Sisters' : 'Indian Geography'}
+              Chapter: {activeTab === 'ASSAM' ? 'Assam Geography' : activeTab === 'NE' ? 'Northeast 7 Sisters' : 'Indian Geography'}
             </h2>
           </div>
 
@@ -149,7 +149,7 @@ export function HomePage({
               return (
                 <button
                   key={ch.id}
-                  onClick={() => { onSelectChapter(ch.id); setExpandedTopic(null); }}
+                  onClick={() => { onSelectChapter(ch.id); setExpandedUnit(null); }}
                   style={{
                     background: isActive ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
                     border: `1.5px solid ${isActive ? '#10b981' : 'transparent'}`,
@@ -172,37 +172,37 @@ export function HomePage({
           </div>
         </div>
 
-        {/* ── Topic Directory List ── */}
+        {/* ── Units & Lessons Directory List ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          {topics.map((topic, tIdx) => {
-            const isTopicOpen = expandedTopic === tIdx || expandedTopic === null;
+          {units.map((unitObj, uIdx) => {
+            const isUnitOpen = expandedUnit === uIdx || expandedUnit === null;
 
             return (
-              <div key={tIdx} className="glass-panel" style={{ padding: '1.5rem', borderRadius: '20px', background: 'rgba(15, 23, 42, 0.8)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+              <div key={uIdx} className="glass-panel" style={{ padding: '1.5rem', borderRadius: '20px', background: 'rgba(15, 23, 42, 0.8)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
                 
-                {/* Topic Header */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', paddingBottom: isTopicOpen ? '1rem' : 0, borderBottom: isTopicOpen ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
+                {/* Unit Header */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', paddingBottom: isUnitOpen ? '1rem' : 0, borderBottom: isUnitOpen ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
                   <div
-                    onClick={() => setExpandedTopic(expandedTopic === tIdx ? -1 : tIdx)}
+                    onClick={() => setExpandedUnit(expandedUnit === uIdx ? -1 : uIdx)}
                     style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', flex: 1 }}
                   >
                     <div style={{ width: 36, height: 36, borderRadius: 12, background: 'linear-gradient(135deg, #10b981, #34d399)', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '0.9rem' }}>
-                      {tIdx + 1}
+                      U{uIdx + 1}
                     </div>
                     <div>
                       <span style={{ fontSize: '0.68rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                        TOPIC {tIdx + 1} OF {topics.length}
+                        UNIT {uIdx + 1} OF {units.length}
                       </span>
                       <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#fff', fontWeight: 900 }}>
-                        {topic.topicName}
+                        {unitObj.unitName}
                       </h3>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                    {topic.subtopics[0] && (
+                    {unitObj.lessons[0] && (
                       <button
-                        onClick={() => onStartLessonPlayer(topic.subtopics[0].subtopicName)}
+                        onClick={() => onStartLessonPlayer(unitObj.lessons[0].lessonName)}
                         style={{
                           background: 'linear-gradient(135deg, #10b981, #34d399)',
                           border: 'none',
@@ -218,23 +218,23 @@ export function HomePage({
                           boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
                         }}
                       >
-                        <PlayCircle size={14} /> Full Subtopic Player
+                        <PlayCircle size={14} /> Full Lesson Player
                       </button>
                     )}
 
-                    <div onClick={() => setExpandedTopic(expandedTopic === tIdx ? -1 : tIdx)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                      {isTopicOpen ? <ChevronDown size={20} color="#94a3b8" /> : <ChevronRight size={20} color="#94a3b8" />}
+                    <div onClick={() => setExpandedUnit(expandedUnit === uIdx ? -1 : uIdx)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                      {isUnitOpen ? <ChevronDown size={20} color="#94a3b8" /> : <ChevronRight size={20} color="#94a3b8" />}
                     </div>
                   </div>
                 </div>
 
-                {/* Subtopic Items */}
-                {isTopicOpen && (
+                {/* Lessons Items */}
+                {isUnitOpen && (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginTop: '1rem' }}>
-                    {topic.subtopics.map((sub, sIdx) => {
+                    {unitObj.lessons.map((les, lIdx) => {
                       return (
                         <div
-                          key={sIdx}
+                          key={lIdx}
                           style={{
                             background: 'rgba(30, 41, 59, 0.5)',
                             border: '1.5px solid rgba(255, 255, 255, 0.08)',
@@ -248,15 +248,15 @@ export function HomePage({
                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
                             <div>
                               <span style={{ fontSize: '0.65rem', color: '#fb923c', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                                SUBTOPIC {sIdx + 1}
+                                LESSON {lIdx + 1}
                               </span>
                               <h4 style={{ margin: 0, fontSize: '1.1rem', color: '#34d399', fontWeight: 900 }}>
-                                {sub.subtopicName}
+                                {les.lessonName}
                               </h4>
                             </div>
 
                             <button
-                              onClick={() => onStartLessonPlayer(sub.subtopicName)}
+                              onClick={() => onStartLessonPlayer(les.lessonName)}
                               style={{
                                 background: 'rgba(16, 185, 129, 0.2)',
                                 border: '1px solid #10b981',
@@ -271,15 +271,15 @@ export function HomePage({
                                 gap: '0.35rem'
                               }}
                             >
-                              <PlayCircle size={14} /> Play All Subtopic Sections
+                              <PlayCircle size={14} /> Play All Lesson Topics
                             </button>
                           </div>
 
-                          {/* Sections, Visualizer, & Dedicated Section Player Buttons */}
+                          {/* Topics List & Dedicated Topic Player Launchers */}
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {sub.sections?.map((sec, secIdx) => (
+                            {les.topics?.map((top, topIdx) => (
                               <div
-                                key={secIdx}
+                                key={topIdx}
                                 style={{
                                   background: 'rgba(15, 23, 42, 0.6)',
                                   borderLeft: '3.5px solid #fb923c',
@@ -293,12 +293,12 @@ export function HomePage({
                               >
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
                                   <span style={{ fontSize: '0.88rem', color: '#fb923c', fontWeight: 800 }}>
-                                    📌 Section {secIdx + 1}: {sec.sectionName}
+                                    📌 Topic {topIdx + 1}: {top.topicName}
                                   </span>
 
-                                  {/* Dedicated Section Player Launch Button */}
+                                  {/* Dedicated Topic Player Launch Button */}
                                   <button
-                                    onClick={() => onStartSectionPlayer(sec, sub.subtopicName, topic.topicName, activeTab)}
+                                    onClick={() => onStartSectionPlayer(top, les.lessonName, unitObj.unitName, activeTab)}
                                     style={{
                                       background: 'linear-gradient(135deg, #10b981, #34d399)',
                                       border: 'none',
@@ -314,17 +314,17 @@ export function HomePage({
                                       boxShadow: '0 4px 12px rgba(16, 185, 129, 0.35)'
                                     }}
                                   >
-                                    <PlayCircle size={14} /> Start Section Player
+                                    <PlayCircle size={14} /> Start Topic Player
                                   </button>
                                 </div>
 
                                 {/* Section Visualizer Diagram */}
                                 <div style={{ borderRadius: 12, overflow: 'hidden' }}>
-                                  <SectionVisualizer sectionName={sec.sectionName} facts={sec.facts || []} />
+                                  <SectionVisualizer sectionName={top.topicName} facts={top.facts || []} />
                                 </div>
 
                                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                                  {sec.facts?.map((fact, fIdx) => (
+                                  {top.facts?.map((fact, fIdx) => (
                                     <li key={fIdx} style={{ fontSize: '0.82rem', color: '#e2e8f0', lineHeight: 1.5, display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
                                       <span style={{ color: '#10b981', fontWeight: 800 }}>•</span>
                                       <span>{fact}</span>
@@ -338,7 +338,7 @@ export function HomePage({
                           {/* Standalone Practice Launchers */}
                           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.55rem', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
                             <button
-                              onClick={() => onStartFlashcard(sub.subtopicName)}
+                              onClick={() => onStartFlashcard(les.lessonName)}
                               style={{
                                 background: 'rgba(255, 255, 255, 0.05)',
                                 border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -358,7 +358,7 @@ export function HomePage({
                             </button>
 
                             <button
-                              onClick={() => onStartMatch(sub.subtopicName)}
+                              onClick={() => onStartMatch(les.lessonName)}
                               style={{
                                 background: 'rgba(56, 189, 248, 0.12)',
                                 border: '1px solid rgba(56, 189, 248, 0.3)',
@@ -378,7 +378,7 @@ export function HomePage({
                             </button>
 
                             <button
-                              onClick={() => onStartMCQ(sub.subtopicName)}
+                              onClick={() => onStartMCQ(les.lessonName)}
                               style={{
                                 background: 'rgba(244, 63, 94, 0.14)',
                                 border: '1px solid rgba(244, 63, 94, 0.3)',

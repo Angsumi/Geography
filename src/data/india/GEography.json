@@ -1,21 +1,22 @@
 {
   "GeographySyllabus": [
     {
-      "Subject": "INDIA",
-      "Topics": [
+      "Chapter": "INDIA",
+      "Units": [
         {
-          "TopicName": "Physiographic Divisions of India",
-          "Subtopics": [
+          "UnitName": "Physiographic Divisions of India",
+          "Lessons": [
             {
-              "SubtopicName": "Himalayas",
-              "Sections": [
+              "LessonName": "Himalayas",
+              "Topics": [
                 {
-                  "SectionName": "Subdivisions (West to East)",
+                  "TopicName": "Subdivisions (West to East)",
                   "Facts": [
                     "Suleyman (Karakoram).",
                     "Main Himalaya (Great Himalaya).",
                     "Purvanchal (Eastern Himalaya)."
                   ],
+                  "VisualisationIdea": "\ud83d\udd04 Interactive Syntaxial Bends Diagram using CSS SVG paths with animated drawing effects (stroke-dashoffset) to show the horizontal span.",
                   "ConceptUnits": [
                     {
                       "Id": "india-1",
@@ -99,16 +100,16 @@
                       "Term": "Namcha Barwa",
                       "Definition": "Eastern syntaxial bend anchor point in Tibet/Arunachal."
                     }
-                  ],
-                  "VisualisationIdea": "\ud83d\udd04 Interactive Syntaxial Bends Diagram using CSS SVG paths with animated drawing effects (stroke-dashoffset) to show the horizontal span."
+                  ]
                 },
                 {
-                  "SectionName": "Vertical Divisions (South to North)",
+                  "TopicName": "Vertical Divisions (South to North)",
                   "Facts": [
                     "Himadri (Greater Himalayas): The innermost, continuous range containing the highest peaks like Mt. Everest and Kanchenjunga.",
                     "Himachal (Lesser Himalayas): Known for hill stations and rugged terrain like Pir Panjal and Dhaula Dhar.",
                     "Shiwaliks (Outer Himalayas): The outermost range composed of unconsolidated sediments."
                   ],
+                  "VisualisationIdea": "\ud83c\udfd4\ufe0f CSS Stacked Elevation Layers using overlapping divs with varying z-indexes and heights to represent Himadri, Himachal, and Shivalik.",
                   "ConceptUnits": [
                     {
                       "Id": "india-4",
@@ -192,20 +193,20 @@
                       "Term": "Mt. Everest & Kanchenjunga",
                       "Definition": "Highest peaks located in the Himadri range."
                     }
-                  ],
-                  "VisualisationIdea": "\ud83c\udfd4\ufe0f CSS Stacked Elevation Layers using overlapping divs with varying z-indexes and heights to represent Himadri, Himachal, and Shivalik."
+                  ]
                 }
               ]
             },
             {
-              "SubtopicName": "Northern Plains",
-              "Sections": [
+              "LessonName": "Northern Plains",
+              "Topics": [
                 {
-                  "SectionName": "Formation & Soil",
+                  "TopicName": "Formation & Soil",
                   "Facts": [
                     "Formed by the interplay of three major river systems: the Indus, the Ganga, and the Brahmaputra, along with their tributaries.",
                     "Features highly fertile alluvial soil, making it the most agriculturally productive and densely populated region."
                   ],
+                  "VisualisationIdea": "CSS Layered Soil Profile Box using linear gradients to show the rich alluvial soil layers formed by the river systems.",
                   "ConceptUnits": [
                     {
                       "Id": "india-7",
@@ -269,16 +270,16 @@
                       "Term": "Bhabar Belt",
                       "Definition": "Porous pebble belt along the Shiwalik foothills."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Layered Soil Profile Box using linear gradients to show the rich alluvial soil layers formed by the river systems."
+                  ]
                 },
                 {
-                  "SectionName": "Regional Divisions",
+                  "TopicName": "Regional Divisions",
                   "Facts": [
                     "Punjab Plains.",
                     "Ganga Plains.",
                     "Brahmaputra / Luit Valley."
                   ],
+                  "VisualisationIdea": "Interactive HTML/CSS Map with three distinct hoverable zones (Punjab, Ganga, Brahmaputra plains) that expand on hover.",
                   "ConceptUnits": [
                     {
                       "Id": "india-9",
@@ -362,20 +363,20 @@
                       "Term": "Terai Belt",
                       "Definition": "Marshy, densely forested wet region south of Bhabar."
                     }
-                  ],
-                  "VisualisationIdea": "Interactive HTML/CSS Map with three distinct hoverable zones (Punjab, Ganga, Brahmaputra plains) that expand on hover."
+                  ]
                 }
               ]
             },
             {
-              "SubtopicName": "Peninsular Plateau",
-              "Sections": [
+              "LessonName": "Peninsular Plateau",
+              "Topics": [
                 {
-                  "SectionName": "Central Highlands (Midlands)",
+                  "TopicName": "Central Highlands (Midlands)",
                   "Facts": [
                     "Lies to the north of the Narmada river, bounded by the Vindhya range and Aravalis.",
                     "Includes the Malwa Plateau, Marwar Plateau, Bundelkhand, Baghelkhand, and Chotanagpur Plateau."
                   ],
+                  "VisualisationIdea": "CSS Grid Layout displaying distinct plateau tiles (Malwa, Marwar, Bundelkhand, etc.) that elevate (box-shadow/transform) on hover.",
                   "ConceptUnits": [
                     {
                       "Id": "india-12",
@@ -439,15 +440,15 @@
                       "Term": "Malwa Plateau",
                       "Definition": "Plateau section draining towards the Chambal & Yamuna."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Grid Layout displaying distinct plateau tiles (Malwa, Marwar, Bundelkhand, etc.) that elevate (box-shadow/transform) on hover."
+                  ]
                 },
                 {
-                  "SectionName": "Deccan Plateau",
+                  "TopicName": "Deccan Plateau",
                   "Facts": [
                     "A triangular landmass situated to the south of the Narmada river, flanked by the Eastern and Western Ghats.",
                     "Rich in mineral resources and features black soil (Deccan Trap) ideal for cotton cultivation."
                   ],
+                  "VisualisationIdea": "CSS Triangle shape created using `clip-path: polygon()` with a dark textured background to represent the black soil Deccan Trap.",
                   "ConceptUnits": [
                     {
                       "Id": "india-14",
@@ -511,17 +512,17 @@
                       "Term": "Eastern Ghats",
                       "Definition": "Discontinuous, eroded hills along eastern edge of Deccan."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Triangle shape created using `clip-path: polygon()` with a dark textured background to represent the black soil Deccan Trap."
+                  ]
                 },
                 {
-                  "SectionName": "Mountain Ranges & Peaks",
+                  "TopicName": "Mountain Ranges & Peaks",
                   "Facts": [
                     "Encompasses the Western Ghats and Eastern Ghats.",
                     "Nilgiri is the point where the Western and Eastern Ghats join.",
                     "Anaimudi is identified as the southernmost peak.",
                     "Jindagarha is the highest peak in Peninsular India."
                   ],
+                  "VisualisationIdea": "CSS/SVG V-Shape Diagram showing the Western and Eastern Ghats converging at a central node labeled Nilgiri, with a pulsing CSS marker for Anaimudi.",
                   "ConceptUnits": [
                     {
                       "Id": "india-16",
@@ -625,20 +626,20 @@
                       "Term": "Western & Eastern Ghats",
                       "Definition": "Mountain ranges encompassed by the Peninsular Plateau."
                     }
-                  ],
-                  "VisualisationIdea": "CSS/SVG V-Shape Diagram showing the Western and Eastern Ghats converging at a central node labeled Nilgiri, with a pulsing CSS marker for Anaimudi."
+                  ]
                 }
               ]
             },
             {
-              "SubtopicName": "Thar & Coastal Plains",
-              "Sections": [
+              "LessonName": "Thar & Coastal Plains",
+              "Topics": [
                 {
-                  "SectionName": "The Indian Desert (Thar Desert)",
+                  "TopicName": "The Indian Desert (Thar Desert)",
                   "Facts": [
                     "Lies towards the western margins of the Aravali Hills in Rajasthan.",
                     "Features an arid climate with low vegetation cover and very low annual rainfall (below 150 mm)."
                   ],
+                  "VisualisationIdea": "CSS Animated Heat Waves and Sand Dunes created using overlapping radial gradients and keyframe animations for an arid effect.",
                   "ConceptUnits": [
                     {
                       "Id": "india-20",
@@ -702,15 +703,15 @@
                       "Term": "Playas",
                       "Definition": "Saline lake basins found in arid desert regions."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Animated Heat Waves and Sand Dunes created using overlapping radial gradients and keyframe animations for an arid effect."
+                  ]
                 },
                 {
-                  "SectionName": "Western Coastal Plains",
+                  "TopicName": "Western Coastal Plains",
                   "Facts": [
                     "A narrow strip between the Western Ghats and the Arabian Sea.",
                     "Divided into Konkan, Kannad, and Malabar coasts."
                   ],
+                  "VisualisationIdea": "Narrow CSS Flex Column adjacent to a blue gradient, with sticky scrolling to explore Konkan, Kannad, and Malabar.",
                   "ConceptUnits": [
                     {
                       "Id": "india-22",
@@ -774,15 +775,15 @@
                       "Term": "Arabian Sea",
                       "Definition": "Sea bordering the Western Coastal Plains."
                     }
-                  ],
-                  "VisualisationIdea": "Narrow CSS Flex Column adjacent to a blue gradient, with sticky scrolling to explore Konkan, Kannad, and Malabar."
+                  ]
                 },
                 {
-                  "SectionName": "Eastern Coastal Plains",
+                  "TopicName": "Eastern Coastal Plains",
                   "Facts": [
                     "Broader plains between the Eastern Ghats and the Bay of Bengal, known for large river deltas.",
                     "Divided into Northern Circars and the Coromandel Coast."
                   ],
+                  "VisualisationIdea": "Broader CSS Flex Column featuring expanding horizontal border-radiuses to visually represent the large river deltas.",
                   "ConceptUnits": [
                     {
                       "Id": "india-24",
@@ -846,20 +847,20 @@
                       "Term": "Bay of Bengal",
                       "Definition": "Sea bordering the Eastern Coastal Plains."
                     }
-                  ],
-                  "VisualisationIdea": "Broader CSS Flex Column featuring expanding horizontal border-radiuses to visually represent the large river deltas."
+                  ]
                 }
               ]
             },
             {
-              "SubtopicName": "The Islands",
-              "Sections": [
+              "LessonName": "The Islands",
+              "Topics": [
                 {
-                  "SectionName": "Major Island Groups",
+                  "TopicName": "Major Island Groups",
                   "Facts": [
                     "Andaman and Nicobar (Bay of Bengal): Volcanic origin, larger in size, and rich in biodiversity.",
                     "Lakshadweep (Arabian Sea): Coral origin (atolls), covering a smaller geographical area."
                   ],
+                  "VisualisationIdea": "CSS Floating Bubbles scattered on a blue background container, clustered into a large group (Andaman) and a small coral ring group (Lakshadweep).",
                   "ConceptUnits": [
                     {
                       "Id": "india-26",
@@ -923,25 +924,25 @@
                       "Term": "Atoll",
                       "Definition": "Ring-shaped coral reef structure surrounding a lagoon."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Floating Bubbles scattered on a blue background container, clustered into a large group (Andaman) and a small coral ring group (Lakshadweep)."
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "TopicName": "Major River Systems",
-          "Subtopics": [
+          "UnitName": "Major River Systems",
+          "Lessons": [
             {
-              "SubtopicName": "Himalayan Rivers",
-              "Sections": [
+              "LessonName": "Himalayan Rivers",
+              "Topics": [
                 {
-                  "SectionName": "The Indus System",
+                  "TopicName": "The Indus System",
                   "Facts": [
                     "Originates in Tibet near Lake Mansarovar.",
                     "Major tributaries include the Jhelum, Chenab, Ravi, Beas, and Sutlej."
                   ],
+                  "VisualisationIdea": "SVG Branching Path Diagram flowing top-to-left, with tributaries lighting up consecutively using CSS animations.",
                   "ConceptUnits": [
                     {
                       "Id": "india-28",
@@ -1005,15 +1006,15 @@
                       "Term": "Arabian Sea",
                       "Definition": "Final drainage destination of the Indus river."
                     }
-                  ],
-                  "VisualisationIdea": "SVG Branching Path Diagram flowing top-to-left, with tributaries lighting up consecutively using CSS animations."
+                  ]
                 },
                 {
-                  "SectionName": "The Ganga System",
+                  "TopicName": "The Ganga System",
                   "Facts": [
                     "Originates as the Bhagirathi from the Gangotri glacier.",
                     "Major tributaries include the Yamuna, Ghaghara, Gandak, Kosi, and Son."
                   ],
+                  "VisualisationIdea": "Animated SVG River Flow (stroke-dasharray) starting from a single point and widening as major tributaries (Yamuna, Kosi) join in.",
                   "ConceptUnits": [
                     {
                       "Id": "india-30",
@@ -1077,15 +1078,15 @@
                       "Term": "Son River",
                       "Definition": "Right-bank Peninsular tributary joining Ganga near Patna."
                     }
-                  ],
-                  "VisualisationIdea": "Animated SVG River Flow (stroke-dasharray) starting from a single point and widening as major tributaries (Yamuna, Kosi) join in."
+                  ]
                 },
                 {
-                  "SectionName": "The Brahmaputra System",
+                  "TopicName": "The Brahmaputra System",
                   "Facts": [
                     "Originates in Tibet where it is known as Tsangpo.",
                     "Enters India through Arunachal Pradesh and forms a massive network in Assam."
                   ],
+                  "VisualisationIdea": "CSS U-Turn Animation path reflecting the river's entry into Arunachal Pradesh and its massive spreading network in Assam.",
                   "ConceptUnits": [
                     {
                       "Id": "india-32",
@@ -1149,20 +1150,20 @@
                       "Term": "Jamuna",
                       "Definition": "Name of Brahmaputra River upon entering Bangladesh."
                     }
-                  ],
-                  "VisualisationIdea": "CSS U-Turn Animation path reflecting the river's entry into Arunachal Pradesh and its massive spreading network in Assam."
+                  ]
                 }
               ]
             },
             {
-              "SubtopicName": "Peninsular Rivers",
-              "Sections": [
+              "LessonName": "Peninsular Rivers",
+              "Topics": [
                 {
-                  "SectionName": "West-Flowing Rivers",
+                  "TopicName": "West-Flowing Rivers",
                   "Facts": [
                     "Narmada & Tapi flow through rift valleys into the Arabian Sea.",
                     "They form estuaries instead of deltas."
                   ],
+                  "VisualisationIdea": "CSS Horizontal Scroll/Flow right-to-left, ending abruptly in a straight edge to represent estuaries instead of deltas.",
                   "ConceptUnits": [
                     {
                       "Id": "india-34",
@@ -1226,15 +1227,15 @@
                       "Term": "Estuaries",
                       "Definition": "Coastal features formed instead of deltas by west-flowing rivers."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Horizontal Scroll/Flow right-to-left, ending abruptly in a straight edge to represent estuaries instead of deltas."
+                  ]
                 },
                 {
-                  "SectionName": "East-Flowing Rivers",
+                  "TopicName": "East-Flowing Rivers",
                   "Facts": [
                     "Mahanadi, Godavari, Krishna, and Cauvery flow into the Bay of Bengal and form large, fertile deltas at their mouths.",
                     "The Godavari is the largest peninsular river and is often called Dakshin Ganga."
                   ],
+                  "VisualisationIdea": "CSS Horizontal Flow left-to-right that fans out into multiple small branches using CSS Grid/Flex to represent fertile deltas.",
                   "ConceptUnits": [
                     {
                       "Id": "india-36",
@@ -1298,21 +1299,20 @@
                       "Term": "Bay of Bengal Deltas",
                       "Definition": "Fertile coastal deltas formed by east-flowing rivers."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Horizontal Flow left-to-right that fans out into multiple small branches using CSS Grid/Flex to represent fertile deltas."
+                  ]
                 }
               ]
             }
           ]
         },
         {
-          "TopicName": "Ecological Markers & Conservation",
-          "Subtopics": [
+          "UnitName": "Ecological Markers & Conservation",
+          "Lessons": [
             {
-              "SubtopicName": "Biodiversity Hotspots (BH)",
-              "Sections": [
+              "LessonName": "Biodiversity Hotspots (BH)",
+              "Topics": [
                 {
-                  "SectionName": "Overview & Indian Hotspots",
+                  "TopicName": "Overview & Indian Hotspots",
                   "Facts": [
                     "Biogeographic regions that are significant reservoirs of biodiversity threatened by human destruction.",
                     "India hosts 4 out of the 36 globally recognized hotspots.",
@@ -1321,6 +1321,7 @@
                     "Western Ghats and Sri Lanka hotspot runs parallel to the western coast of the Indian peninsula.",
                     "Sundaland hotspot includes the Nicobar group of Islands."
                   ],
+                  "VisualisationIdea": "HTML/CSS Radar Map with 4 pulsing animated ring markers (using `@keyframes`) representing the 4 biodiversity hotspots.",
                   "ConceptUnits": [
                     {
                       "Id": "india-38",
@@ -1464,20 +1465,20 @@
                       "Term": "4 out of 36",
                       "Definition": "Proportion of global biodiversity hotspots hosted in India."
                     }
-                  ],
-                  "VisualisationIdea": "HTML/CSS Radar Map with 4 pulsing animated ring markers (using `@keyframes`) representing the 4 biodiversity hotspots."
+                  ]
                 }
               ]
             },
             {
-              "SubtopicName": "Natural Heritage",
-              "Sections": [
+              "LessonName": "Natural Heritage",
+              "Topics": [
                 {
-                  "SectionName": "Key Indian Sites",
+                  "TopicName": "Key Indian Sites",
                   "Facts": [
                     "Designated by UNESCO for outstanding universal value based on science, conservation, or natural beauty.",
                     "Examples include Kaziranga National Park, Manas Wildlife Sanctuary, Keoladeo National Park, Sundarbans National Park, Nanda Devi and Valley of Flowers National Parks, Western Ghats, and Great Himalayan National Park Conservation Area."
                   ],
+                  "VisualisationIdea": "CSS Masonry Gallery Layout showcasing image placeholder cards for Kaziranga, Manas, and Sundarbans that flip to reveal facts.",
                   "ConceptUnits": [
                     {
                       "Id": "india-44",
@@ -1541,16 +1542,15 @@
                       "Term": "Keoladeo NP",
                       "Definition": "UNESCO World Heritage bird sanctuary in Bharatpur, Rajasthan."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Masonry Gallery Layout showcasing image placeholder cards for Kaziranga, Manas, and Sundarbans that flip to reveal facts."
+                  ]
                 }
               ]
             },
             {
-              "SubtopicName": "Biosphere Reserves",
-              "Sections": [
+              "LessonName": "Biosphere Reserves",
+              "Topics": [
                 {
-                  "SectionName": "Network & Recognition",
+                  "TopicName": "Network & Recognition",
                   "Facts": [
                     "Large, multi-purpose protected areas created to conserve genetic diversity while integrating sustainable human development and research.",
                     "India has a total of 18 officially notified Biosphere Reserves.",
@@ -1558,6 +1558,7 @@
                     "Nilgiri was the first established reserve.",
                     "Kachchh (Gujarat) is the largest by geographical area, and Dibru-Saikhowa (Assam) is the smallest."
                   ],
+                  "VisualisationIdea": "CSS Concentric Circles representing the Core, Buffer, and Transition zones of a Biosphere Reserve, with tooltips for Nilgiri and Kachchh.",
                   "ConceptUnits": [
                     {
                       "Id": "india-46",
@@ -1681,8 +1682,7 @@
                       "Term": "Dibru-Saikhowa (Assam)",
                       "Definition": "The smallest biosphere reserve in India."
                     }
-                  ],
-                  "VisualisationIdea": "CSS Concentric Circles representing the Core, Buffer, and Transition zones of a Biosphere Reserve, with tooltips for Nilgiri and Kachchh."
+                  ]
                 }
               ]
             }

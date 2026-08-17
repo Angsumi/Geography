@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, BookOpen, Layers, Link2, HelpCircle, Trophy, Check, X, Award, AlertCircle, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Layers, Link2, HelpCircle, Trophy, Check, X, Award, AlertCircle, Sparkles, PlayCircle } from 'lucide-react';
 import Flashcard from './Flashcard';
 import MatchGame from './MatchGame';
 import { SectionVisualizer } from './SectionVisualizer';
 import { playCorrect, playWrong, playComplete } from '../hooks/useSound';
 
-export function InteractiveLesson({ lessonData, onComplete, onBack }) {
-  const subtopicName = lessonData.title || lessonData.subtopicName || 'Lesson';
-  const topicName = lessonData.topicName || 'Geography';
+export function InteractiveLesson({ lessonData, onComplete, onBack, onStartNextTopic }) {
+  const chapterName = lessonData.chapterName || 'ASSAM';
+  const unitName = lessonData.unitName || 'Syllabus Unit';
+  const lessonName = lessonData.lessonName || 'Lesson';
+  const topicName = lessonData.topicName || lessonData.title || 'Topic';
+
   const conceptUnits = lessonData.conceptUnits || [];
   const practiceMatching = lessonData.practiceMatching || [];
+  const nextTopicInfo = lessonData.nextTopicInfo;
 
   // State
   const [unitIndex, setUnitIndex] = useState(0);
@@ -22,9 +26,9 @@ export function InteractiveLesson({ lessonData, onComplete, onBack }) {
   const [earnedXp, setEarnedXp] = useState(0);
 
   const currentUnit = conceptUnits[unitIndex] || {
-    Fact: `${subtopicName} key syllabus concept.`,
-    Flashcard: { Front: `What is a key feature of ${subtopicName}?`, Back: `Key geography topic.` },
-    Quiz: { Question: `Which statement is accurate regarding ${subtopicName}?`, Options: { A: 'Option A', B: 'Option B' }, CorrectAnswer: 'A', Explanation: 'Official syllabus fact.' }
+    Fact: `${topicName} key syllabus concept.`,
+    Flashcard: { Front: `What is a key feature of ${topicName}?`, Back: `Key geography fact.` },
+    Quiz: { Question: `Which statement is accurate regarding ${topicName}?`, Options: { A: 'Option A', B: 'Option B' }, CorrectAnswer: 'A', Explanation: 'Official syllabus fact.' }
   };
 
   const handleNextFact = () => {
@@ -57,7 +61,6 @@ export function InteractiveLesson({ lessonData, onComplete, onBack }) {
       setSelectedOption(null);
       setIsQuizAnswered(false);
     } else {
-      // Completed all concept units -> Go to Match the Following recap
       setEarnedXp(x => x + 25);
       playCorrect();
       setUnitStep('matching_recap');
@@ -72,48 +75,86 @@ export function InteractiveLesson({ lessonData, onComplete, onBack }) {
 
   if (unitStep === 'completed') {
     return (
-      <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', maxWidth: 600, margin: '1rem auto' }}>
+      <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', maxWidth: 620, margin: '1rem auto' }}>
         <Award size={64} color="#34d399" style={{ margin: '0 auto 1rem' }} />
         <span style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-          CONNECTED LESSON MASTERED
+          TOPIC MASTERED
         </span>
-        <h1 style={{ fontSize: '2.2rem', fontWeight: 900, margin: '0.3rem 0 1rem', color: '#fff' }}>
-          {subtopicName} Mastered!
+        <h1 style={{ fontSize: '2.2rem', fontWeight: 900, margin: '0.3rem 0 0.5rem', color: '#fff' }}>
+          {topicName} Mastered!
         </h1>
-        <p style={{ color: '#94a3b8', fontSize: '0.95rem', margin: '0 0 1.5rem' }}>
+
+        {/* Student Mindset Breadcrumb Location */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', fontWeight: 700, margin: '0 0 1.25rem', flexWrap: 'wrap' }}>
+          <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
+          <span>➔</span>
+          <span style={{ color: '#cbd5e1' }}>Unit: {unitName}</span>
+          <span>➔</span>
+          <span style={{ color: '#cbd5e1' }}>Lesson: {lessonName}</span>
+        </div>
+
+        <p style={{ color: '#94a3b8', fontSize: '0.92rem', margin: '0 0 1.5rem' }}>
           You completed all {conceptUnits.length} concept units (Fact → Flashcard → Quiz) and mastered the term-matching recap game!
         </p>
+
         <div style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 16, padding: '1.25rem', marginBottom: '1.75rem' }}>
           <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Total XP Awarded</span>
           <h2 style={{ fontSize: '2.8rem', fontWeight: 900, color: '#34d399', margin: '0.2rem 0' }}>
             +{earnedXp} XP
           </h2>
         </div>
+
+        {/* Automatic Flow to Next Topic */}
+        {nextTopicInfo && onStartNextTopic ? (
+          <button
+            onClick={() => onStartNextTopic(nextTopicInfo)}
+            style={{
+              width: '100%',
+              padding: '0.85rem 1.5rem',
+              borderRadius: 14,
+              background: 'linear-gradient(135deg, #10b981, #34d399)',
+              color: '#000',
+              border: 'none',
+              fontWeight: 900,
+              fontSize: '0.95rem',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justify: 'center',
+              gap: '0.45rem',
+              boxShadow: '0 4px 16px rgba(16,185,129,0.4)',
+              marginBottom: '0.75rem'
+            }}
+          >
+            <PlayCircle size={18} /> Automatic Flow: Proceed to Next Topic ▶
+          </button>
+        ) : null}
+
         <button
           onClick={() => onComplete(earnedXp)}
           style={{
             width: '100%',
-            padding: '0.85rem 1.5rem',
+            padding: '0.75rem 1.5rem',
             borderRadius: 14,
-            background: 'linear-gradient(135deg, #10b981, #34d399)',
-            color: '#000',
-            border: 'none',
-            fontWeight: 900,
-            fontSize: '0.95rem',
+            background: 'rgba(255,255,255,0.06)',
+            color: '#cbd5e1',
+            border: '1px solid rgba(255,255,255,0.1)',
+            fontWeight: 800,
+            fontSize: '0.88rem',
             cursor: 'pointer'
           }}
         >
-          Return to Learning Hub
+          Return to Syllabus Directory
         </button>
       </motion.div>
     );
   }
 
   return (
-    <div style={{ maxWidth: 800, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+    <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       
-      {/* Top Header & Concept Unit Progress Bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+      {/* ── Student Mindset Breadcrumb Location Header ── */}
+      <div className="glass-panel" style={{ padding: '0.85rem 1.25rem', borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', border: '1px solid rgba(16,185,129,0.25)' }}>
         <button
           onClick={onBack}
           style={{
@@ -130,26 +171,38 @@ export function InteractiveLesson({ lessonData, onComplete, onBack }) {
             gap: '0.35rem'
           }}
         >
-          <ArrowLeft size={16} /> Exit Lesson
+          <ArrowLeft size={16} /> Exit
         </button>
 
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem', maxWidth: 380 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 700 }}>
-            <span>{subtopicName}</span>
-            <span>Concept Unit {unitIndex + 1} of {conceptUnits.length}</span>
-          </div>
-          <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
-            <motion.div
-              style={{ height: '100%', background: 'linear-gradient(90deg, #10b981, #34d399)', borderRadius: 3 }}
-              animate={{ width: `${((unitIndex + 1) / conceptUnits.length) * 100}%` }}
-              transition={{ duration: 0.3 }}
-            />
-          </div>
+        {/* 4-Tier Student Location Breadcrumb */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', fontWeight: 700, flexWrap: 'wrap' }}>
+          <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
+          <span>➔</span>
+          <span style={{ color: '#cbd5e1' }}>Unit: {unitName}</span>
+          <span>➔</span>
+          <span style={{ color: '#cbd5e1' }}>Lesson: {lessonName}</span>
+          <span>➔</span>
+          <span style={{ color: '#34d399', fontWeight: 800 }}>Topic: {topicName}</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: 'rgba(16,185,129,0.15)', padding: '0.35rem 0.65rem', borderRadius: 12, border: '1px solid rgba(16,185,129,0.3)' }}>
           <Trophy size={14} color="#34d399" />
           <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#34d399' }}>{earnedXp} XP</span>
+        </div>
+      </div>
+
+      {/* Progress Bar */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: '#cbd5e1', fontWeight: 700 }}>
+          <span>{topicName}</span>
+          <span>Concept Unit {unitIndex + 1} of {conceptUnits.length}</span>
+        </div>
+        <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
+          <motion.div
+            style={{ height: '100%', background: 'linear-gradient(90deg, #10b981, #34d399)', borderRadius: 3 }}
+            animate={{ width: `${((unitIndex + 1) / conceptUnits.length) * 100}%` }}
+            transition={{ duration: 0.3 }}
+          />
         </div>
       </div>
 
@@ -184,7 +237,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack }) {
             </div>
 
             <h2 style={{ margin: 0, fontSize: '1.4rem', color: '#fff', fontWeight: 900, lineHeight: 1.4 }}>
-              {subtopicName} Syllabus Fact
+              {topicName} Fact
             </h2>
 
             <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: '1.25rem' }}>
@@ -193,185 +246,207 @@ export function InteractiveLesson({ lessonData, onComplete, onBack }) {
               </p>
             </div>
 
-            {/* Visualizer for every concept unit */}
+            {/* Visualizer for concept unit */}
             <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <SectionVisualizer sectionName={subtopicName} facts={[currentUnit.Fact]} />
+              <SectionVisualizer sectionName={topicName} facts={[currentUnit.Fact]} />
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-              <button
-                onClick={handleNextFact}
-                style={{
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  border: 'none',
-                  color: '#000',
-                  padding: '0.7rem 1.35rem',
-                  borderRadius: 12,
-                  fontSize: '0.88rem',
-                  fontWeight: 900,
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  boxShadow: '0 4px 16px rgba(16,185,129,0.35)'
-                }}
-              >
-                <span>Test Flashcard Recall</span>
-                <ArrowRight size={16} />
-              </button>
-            </div>
+            <button
+              onClick={handleNextFact}
+              style={{
+                padding: '0.85rem 1.5rem',
+                borderRadius: 14,
+                background: 'linear-gradient(135deg, #10b981, #34d399)',
+                color: '#000',
+                border: 'none',
+                fontWeight: 900,
+                fontSize: '0.95rem',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'center',
+                gap: '0.45rem',
+                boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
+              }}
+            >
+              Continue to Flashcard Recall <ArrowRight size={18} />
+            </button>
           </motion.div>
         </AnimatePresence>
       )}
 
       {/* STEP 2: FLASHCARD RECALL */}
       {unitStep === 'flashcard' && (
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="glass-panel" style={{ padding: '1.75rem', borderRadius: 20 }}>
-          <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span style={{ background: 'rgba(192, 132, 252, 0.15)', color: '#c084fc', padding: '0.25rem 0.65rem', borderRadius: 8, fontSize: '0.75rem', fontWeight: 800 }}>
-              UNIT {unitIndex + 1} FLASHCARD RECALL
-            </span>
-            <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Tap card to flip</span>
-          </div>
-          <Flashcard
-            data={[{
-              q: currentUnit.Flashcard?.Front || `What is a key feature of this concept?`,
-              a: currentUnit.Flashcard?.Back || currentUnit.Fact,
-              img: currentUnit.Flashcard?.Image || null,
-              exp: `Concept Unit ${unitIndex + 1}`
-            }]}
-            onComplete={handleFlashcardDone}
-          />
-        </motion.div>
+        <AnimatePresence mode="wait">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.75rem', color: '#c084fc', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(192,132,252,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                ACTIVE RECALL
+              </span>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                Flashcard Recall Phase
+              </span>
+            </div>
+
+            <Flashcard
+              data={[{
+                q: currentUnit.Flashcard?.Front || `What is a key feature of ${topicName}?`,
+                a: currentUnit.Flashcard?.Back || currentUnit.Fact,
+                img: currentUnit.Flashcard?.Image || null,
+                exp: `Topic: ${topicName}`
+              }]}
+              onComplete={handleFlashcardDone}
+            />
+          </motion.div>
+        </AnimatePresence>
       )}
 
-      {/* STEP 3: QUIZ QUESTION */}
+      {/* STEP 3: EXAM MCQ QUIZ */}
       {unitStep === 'quiz' && (
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="glass-panel" style={{ padding: '1.75rem', borderRadius: 20, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span style={{ background: 'rgba(244, 63, 94, 0.15)', color: '#f43f5e', padding: '0.25rem 0.65rem', borderRadius: 8, fontSize: '0.75rem', fontWeight: 800 }}>
-              UNIT {unitIndex + 1} EXAM QUIZ
-            </span>
-            <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>Select the correct answer</span>
-          </div>
+        <AnimatePresence mode="wait">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.75rem', color: '#f43f5e', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(244,63,94,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                EXAM MCQ QUIZ
+              </span>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                Exam Quiz Phase
+              </span>
+            </div>
 
-          <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#f8fafc', lineHeight: 1.5, fontWeight: 700 }}>
-            {currentUnit.Quiz?.Question || `Which of the following is accurate regarding this concept?`}
-          </h3>
+            <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 800, lineHeight: 1.5 }}>
+              {currentUnit.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
+            </h3>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-            {Object.entries(currentUnit.Quiz?.Options || {}).map(([optKey, optText]) => {
-              const isSelected = selectedOption === optKey;
-              const isCorrectOpt = optKey === currentUnit.Quiz?.CorrectAnswer;
+            {/* Options List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              {Object.entries(currentUnit.Quiz?.Options || {}).map(([key, label]) => {
+                const isSelected = selectedOption === key;
+                const isCorrect = key === currentUnit.Quiz?.CorrectAnswer;
 
-              let btnBg = 'rgba(255, 255, 255, 0.03)';
-              let btnBorder = 'rgba(255, 255, 255, 0.08)';
-              let textColor = '#f8fafc';
+                let btnBg = 'rgba(255,255,255,0.02)';
+                let btnBorder = '1px solid rgba(255,255,255,0.08)';
+                let textColor = '#e2e8f0';
 
-              if (isQuizAnswered) {
-                if (isCorrectOpt) {
-                  btnBg = 'rgba(16, 185, 129, 0.15)';
-                  btnBorder = '#10b981';
-                  textColor = '#34d399';
-                } else if (isSelected) {
-                  btnBg = 'rgba(244, 63, 94, 0.15)';
-                  btnBorder = '#f43f5e';
-                  textColor = '#f43f5e';
+                if (isQuizAnswered) {
+                  if (isCorrect) {
+                    btnBg = 'rgba(16,185,129,0.2)';
+                    btnBorder = '1.5px solid #10b981';
+                    textColor = '#34d399';
+                  } else if (isSelected) {
+                    btnBg = 'rgba(244,63,94,0.2)';
+                    btnBorder = '1.5px solid #f43f5e';
+                    textColor = '#f43f5e';
+                  }
                 }
-              }
 
-              return (
-                <button
-                  key={optKey}
-                  disabled={isQuizAnswered}
-                  onClick={() => handleQuizOptionSelect(optKey)}
-                  style={{
-                    width: '100%',
-                    padding: '0.85rem 1.1rem',
-                    borderRadius: '14px',
-                    background: btnBg,
-                    border: `1.5px solid ${btnBorder}`,
-                    color: textColor,
-                    fontWeight: 600,
-                    fontSize: '0.9rem',
-                    textAlign: 'left',
-                    cursor: isQuizAnswered ? 'default' : 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem'
-                  }}
-                >
-                  <div style={{
-                    width: 28,
-                    height: 28,
-                    borderRadius: '50%',
-                    background: isQuizAnswered && isCorrectOpt ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.1)',
-                    color: isQuizAnswered && (isCorrectOpt || isSelected) ? '#000' : '#fff',
-                    fontWeight: 800,
-                    fontSize: '0.8rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justify: 'center',
-                    flexShrink: 0
-                  }}>
-                    {isQuizAnswered && isCorrectOpt ? <Check size={16} /> : isQuizAnswered && isSelected ? <X size={16} /> : optKey}
-                  </div>
-                  <span style={{ flex: 1, lineHeight: 1.4 }}>{optText}</span>
-                </button>
-              );
-            })}
-          </div>
+                return (
+                  <button
+                    key={key}
+                    onClick={() => handleQuizOptionSelect(key)}
+                    style={{
+                      background: btnBg,
+                      border: btnBorder,
+                      color: textColor,
+                      padding: '0.85rem 1.1rem',
+                      borderRadius: 14,
+                      fontSize: '0.9rem',
+                      fontWeight: isSelected ? 800 : 500,
+                      textAlign: 'left',
+                      cursor: isQuizAnswered ? 'default' : 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.75rem'
+                    }}
+                  >
+                    <span style={{
+                      width: 28,
+                      height: 28,
+                      borderRadius: 8,
+                      background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.06)',
+                      color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 800,
+                      fontSize: '0.82rem'
+                    }}>
+                      {key}
+                    </span>
+                    <span style={{ flex: 1 }}>{label}</span>
+                    {isQuizAnswered && isCorrect && <Check size={18} color="#34d399" />}
+                    {isQuizAnswered && isSelected && !isCorrect && <X size={18} color="#f43f5e" />}
+                  </button>
+                );
+              })}
+            </div>
 
-          {isQuizAnswered && (
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ background: selectedOption === currentUnit.Quiz?.CorrectAnswer ? 'rgba(16, 185, 129, 0.08)' : 'rgba(244, 63, 94, 0.08)', border: `1px solid ${selectedOption === currentUnit.Quiz?.CorrectAnswer ? 'rgba(16, 185, 129, 0.3)' : 'rgba(244, 63, 94, 0.3)'}`, borderRadius: 14, padding: '1rem', fontSize: '0.88rem', color: '#e2e8f0' }}>
-              <div style={{ fontWeight: 800, color: selectedOption === currentUnit.Quiz?.CorrectAnswer ? '#34d399' : '#f43f5e', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                {selectedOption === currentUnit.Quiz?.CorrectAnswer ? <Check size={16} /> : <AlertCircle size={16} />}
-                <span>{selectedOption === currentUnit.Quiz?.CorrectAnswer ? 'Correct Answer!' : 'Explanation'}</span>
-              </div>
-              <div>{currentUnit.Quiz?.Explanation || 'Official syllabus fact.'}</div>
-            </motion.div>
-          )}
+            {/* Explanation Rationale Box */}
+            {isQuizAnswered && (
+              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 14, padding: '1rem' }}>
+                <span style={{ fontSize: '0.72rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
+                  SYLLABUS RATIONALE & EXPLANATION
+                </span>
+                <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', color: '#cbd5e1', lineHeight: 1.5 }}>
+                  {currentUnit.Quiz?.Explanation || `Official Fact: ${currentUnit.Fact}`}
+                </p>
+              </motion.div>
+            )}
 
-          {isQuizAnswered && (
-            <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            {isQuizAnswered && (
               <button
                 onClick={handleNextUnit}
                 style={{
+                  padding: '0.85rem 1.5rem',
+                  borderRadius: 14,
                   background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  border: 'none',
                   color: '#000',
-                  padding: '0.75rem 1.35rem',
-                  borderRadius: 12,
-                  fontSize: '0.88rem',
+                  border: 'none',
                   fontWeight: 900,
+                  fontSize: '0.95rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.35rem',
-                  boxShadow: '0 4px 16px rgba(16,185,129,0.35)'
+                  justify: 'center',
+                  gap: '0.45rem',
+                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
                 }}
               >
-                <span>{unitIndex === conceptUnits.length - 1 ? 'Start Match the Following Recap' : 'Next Concept Unit'}</span>
-                <ArrowRight size={16} />
+                {unitIndex < conceptUnits.length - 1 ? 'Proceed to Next Concept Unit' : 'Proceed to Match the Following Recap'} <ArrowRight size={18} />
               </button>
-            </div>
-          )}
-        </motion.div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       )}
 
-      {/* RECAP PHASE: MATCH THE FOLLOWING */}
+      {/* FINAL STEP: MATCH THE FOLLOWING RECAP */}
       {unitStep === 'matching_recap' && (
-        <div className="glass-panel" style={{ padding: '1.75rem', borderRadius: 20 }}>
-          <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', padding: '0.25rem 0.65rem', borderRadius: 8, fontSize: '0.75rem', fontWeight: 800 }}>
-              FINAL RECAP GAME
-            </span>
-            <h3 style={{ margin: 0, color: '#fff', fontSize: '1.15rem', fontWeight: 900 }}>
-              Match the Following Recap ({practiceMatching.length} Pairs)
-            </h3>
-          </div>
-          <MatchGame data={practiceMatching} onComplete={handleMatchingComplete} />
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(56,189,248,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
+                FINAL RECAP GAME
+              </span>
+              <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
+                Match the Following
+              </span>
+            </div>
+
+            <div>
+              <h2 style={{ margin: 0, fontSize: '1.4rem', color: '#fff', fontWeight: 900 }}>
+                {topicName} Term Matching Recap
+              </h2>
+              <p style={{ color: '#94a3b8', fontSize: '0.88rem', margin: '0.2rem 0 0' }}>
+                Connect terms on the left to definitions on the right to master topic connections.
+              </p>
+            </div>
+
+            <MatchGame
+              data={practiceMatching.length > 0 ? practiceMatching : conceptUnits.map((u, i) => ({ q: `Term ${i + 1}`, a: u.Fact.substring(0, 50) }))}
+              onComplete={handleMatchingComplete}
+            />
+          </motion.div>
+        </AnimatePresence>
       )}
 
     </div>

@@ -8,75 +8,40 @@
 
 ---
 
-## 🌟 Overview
+## 🎓 4-Tier Student Mindset Curriculum Hierarchy
 
-The **ADRE & APSC Geography Platform** is a state-of-the-art interactive learning web application designed for serious competitive exam aspirants in Assam (ADRE Grade III/IV, APSC CCE, and allied state examinations). Modeled after the active-learning principles of **Brilliant.org**, the platform delivers 100% pedagogical alignment across every topic in Assam, Northeast, and Indian Geography.
+The platform data, UI, sidebar, and lesson players have been standardized across the board to follow the natural student mental model:
+
+```
+CHAPTER (e.g. ASSAM GEOGRAPHY, NORTHEAST 7 SISTERS, INDIAN GEOGRAPHY)
+ └── UNIT (e.g. Unit 1: Physiographic Divisions & Conservation)
+      └── LESSON (e.g. Lesson 1: Brahmaputra Valley)
+           └── TOPIC (e.g. Topic 1: North Bank Tributaries)
+                ├── Facts: [ Array of Syllabus Facts ]
+                ├── VisualisationIdea: String
+                ├── ConceptUnits: [ Fact ➔ Flashcard ➔ Quiz ]
+                └── PracticeMatching: [ Term ➔ Definition ]
+```
 
 ---
 
-## 📊 Standardized JSON Data Architecture
+## 🚀 Key Features & Automatic Student Flow
 
-All chapter data files (`assam/`, `northeast/`, `india/`) follow a **100% standardized 3-step hierarchy**:
+- 📍 **Interactive Location Breadcrumb Header**:
+  When a student enters any Topic Player, the top header displays their exact 4-tier location:
+  `📍 ASSAM ➔ Unit: Physiographic Divisions ➔ Lesson: Brahmaputra Valley ➔ Topic: North Bank Tributaries`
 
-```
-GeographySyllabus [ Array ]
- └── Subject: "ASSAM" | "NE" | "INDIA"
-      └── Topics [ Array ]
-           └── TopicName: String
-                └── Subtopics [ Array ]
-                     └── SubtopicName: String
-                          └── Sections [ Array ]
-                               ├── SectionName: String
-                               ├── Facts: [ Array of Strings ]
-                               ├── VisualisationIdea: String
-                               ├── ConceptUnits: [ Array of Concept Objects ]
-                               │    ├── Id: String (e.g. "assam-1", "ne-1", "india-1")
-                               │    ├── Fact: String
-                               │    ├── Flashcard: { Front, Back, Image }
-                               │    └── Quiz: { Question, Options: {A,B,C,D}, CorrectAnswer, Explanation }
-                               └── PracticeMatching: [ Array of { Term, Definition } ]
-```
+- 🔄 **Automatic Sequential Flow**:
+  Upon completing a Topic Player (*Fact Read + SVG Visualizer ➔ Flashcard Recall ➔ Exam Quiz ➔ Term Matching Recap*), the completion scorecard presents a high-prominence **"Automatic Flow: Proceed to Next Topic ▶"** button. Students can continuously flow from Topic 1 ➔ Topic 2 ➔ Topic 3 without having to return to the directory!
 
-### 🎨 How Visualization Components Point Directly to the JSON Structure
+- 🌲 **4-Tier Curriculum Tree Sidebar**:
+  - **Tier 1 (Chapter)**: `ASSAM`, `NE`, `INDIA`
+  - **Tier 2 (Unit)**: Curricular modules (e.g. *Unit 1: Physiographic Divisions*)
+  - **Tier 3 (Lesson)**: Learning units (e.g. *Lesson 1: Brahmaputra Valley*)
+  - **Tier 4 (Topic)**: Focused topics with instant **`▶ Play`** buttons.
 
-1. **Embedded Visualization Ideas**:
-   Every section object inside `GEography.json` contains a dedicated `"VisualisationIdea"` string (e.g. *"Interactive SVG path diagram showing north-bank tributaries..."*).
-
-2. **Dynamic Section Routing (`SectionVisualizer.jsx`)**:
-   `SectionVisualizer({ sectionName, facts })` takes the exact `sectionName` and `facts` array directly from the JSON section object:
-   - **Specialized SVG Components**: Matches `sectionName` to mount custom interactive SVG components (e.g. `<TributariesBankVisual>`, `<VerticalDivisionsVisual>`, `<CoastalPlainsVisual>`, `<RiverFlowVisual>`).
-   - **Data-Driven State Profiles**: Reads raw `facts` strings (e.g. `Capital: Itanagar`, `State Symbols: Mithun`) directly from JSON and injects them into `<StateProfileVisual>`.
-   - **Universal Concept Canvas**: For any un-matched section, it dynamically renders an animated SVG concept canvas displaying the exact `VisualisationIdea` string extracted from `GEography.json`.
-
----
-
-## ✨ Key Features
-
-- 🌲 **3-Tier Nested Accordion Tree Sidebar**:
-  - **Level 1 (Chapter)**: Toggle between **Assam Geography**, **Northeast 7 Sisters**, and **Indian Geography**.
-  - **Level 2 (Subtopics)**: Explore subtopics (e.g. *Brahmaputra Valley*, *Central Hills*, *Physiographic Divisions*) with section count badges.
-  - **Level 3 (Sections)**: Access individual sections with direct **`▶ Start Section Player`** launch buttons.
-
-- 🎯 **Fact-by-Fact Interleaved Section Player**:
-  - **Step 1: Fact Read Phase**: High-yield syllabus fact card accompanied by interactive SVG concept visualizers.
-  - **Step 2: Flashcard Recall Phase**: Instant flashcard active recall testing the exact concept.
-  - **Step 3: Exam MCQ Quiz Phase**: Exam-style multiple-choice questions with instant rationale and explanation.
-  - **Final Phase: Match the Following Recap**: Organically connected term-matching game with dynamic thread connection lines.
-  - **Completion Scorecard**: Gamified XP awards and streak tracking.
-
-- 🎨 **Rich Interactive Concept Visualizers**:
-  - **River Systems Simulator**: Animated stream pulses and clickable tributary nodes for *Indus*, *Ganga*, *Brahmaputra*, and *Peninsular Rivers*.
-  - **Coastal Plains Inspector**: West vs. East Coast comparison covering Konkan, Malabar, Northern Circars, Coromandel deltas, and major sea ports.
-  - **Elevation Profile Diagram**: Interactive 3D peak profile for *Himadri*, *Himachal*, and *Shivalik* mountain ranges.
-  - **State Profile Dashboards**: Comprehensive emblem, capital, fauna, and mountain peak dashboards for all Northeast 7 Sisters states.
-  - **Transport & Logistics Simulator**: National Highways (NH-27), NFR Railways (Bogibeel Bridge), and National Waterways (NW-2 & NW-57 Kopili River).
-
-- 🗺️ **Interactive Vector Map Inspector**:
-  - High-precision vector maps for Assam districts, Northeast 7 Sisters, and Indian physiographic boundaries.
-
-- 🏆 **Gamified XP & Streak Engine**:
-  - Dynamic XP awards (+10 XP Flashcards, +10 XP Match Pairs, +15 XP Exam Quizzes, +25 XP Section Mastery).
-  - Daily streak tracking persisted in local storage.
+- 📊 **Standardized CSV Exports**:
+  All export files under [`exports/`](file:///home/angsuman/extra_spac/GEOGRAPHY/exports/) use the exact standardized headers: `Chapter`, `Unit`, `Lesson`, `Topic`.
 
 ---
 
@@ -86,22 +51,21 @@ GeographySyllabus [ Array ]
 GEOGRAPHY/
 ├── src/
 │   ├── components/
-│   │   ├── HomePage.jsx             # Main syllabus directory & hero dashboard
-│   │   ├── InteractiveLesson.jsx    # Fact-by-Fact Interleaved Section Player
+│   │   ├── HomePage.jsx             # Main curriculum directory & hero dashboard
+│   │   ├── InteractiveLesson.jsx    # Topic Player with Breadcrumbs & Auto Flow
 │   │   ├── SectionVisualizer.jsx    # Universal interactive visualization router
 │   │   ├── Flashcard.jsx            # Flip-card active recall deck player
 │   │   ├── MatchGame.jsx            # SVG thread connection term-matching game
 │   │   ├── ExamineMCQ.jsx           # Exam-style MCQ quiz player
-│   │   ├── GeographyMap.jsx         # Canvas vector map inspector
-│   │   └── visualizers/             # Custom SVG & CSS interactive visualizers
+│   │   └── GeographyMap.jsx         # Canvas vector map inspector
 │   ├── data/
-│   │   ├── assam/GEography.json     # Assam Geography syllabus & ConceptUnits
-│   │   ├── northeast/GEography.json # Northeast 7 Sisters syllabus & ConceptUnits
-│   │   └── india/GEography.json     # Indian Geography syllabus & ConceptUnits
+│   │   ├── assam/GEography.json     # Assam Geography 4-tier syllabus
+│   │   ├── northeast/GEography.json # Northeast 7 Sisters 4-tier syllabus
+│   │   └── india/GEography.json     # Indian Geography 4-tier syllabus
 │   ├── utils/
-│   │   └── lessonGenerator.jsx      # Section & Subtopic lesson player pipeline generator
-│   ├── App.jsx                      # App root, state router, and 3-tier sidebar
-│   └── index.css                    # Glassmorphism dark-mode styling design system
+│   │   └── lessonGenerator.jsx      # Topic & Lesson player pipeline generator
+│   └── App.jsx                      # App root, state router, and 4-tier sidebar
+├── exports/                         # Standardized CSV exports (Chapter, Unit, Lesson, Topic)
 ├── package.json
 └── vite.config.js
 ```
@@ -110,48 +74,22 @@ GEOGRAPHY/
 
 ## 🛠️ Getting Started Locally
 
-### Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
-
-### Installation & Execution
-
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Angsumi/adre-master.git
    cd adre-master
    ```
 
-2. **Install Dependencies**:
+2. **Install & Run**:
    ```bash
    npm install
-   ```
-
-3. **Start Development Server**:
-   ```bash
    npm run dev
    ```
-   Open [http://localhost:5173/](http://localhost:5173/) in your browser.
 
-4. **Build Production Bundle**:
-   ```bash
-   npm run build
-   ```
-
-5. **Deploy to GitHub Pages**:
+3. **Deploy to GitHub Pages**:
    ```bash
    npm run deploy
    ```
-
----
-
-## 📜 Syllabus Coverage
-
-| Chapter | Topics & Subtopics | Key Highlights & Visualizers |
-|---|---|---|
-| **ASSAM** | Brahmaputra Valley, Central Hills, Barak Valley, Ecology, Wildlife Reserves, Transport | North/South Tributaries, Kaziranga NP, Manas TR, Bogibeel Bridge, NW-57 Kopili River |
-| **NORTHEAST 7 SISTERS** | State Profiles (Arunachal, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Tripura), WNHS, Biosphere Reserves | Nokrek Citrus Gene Sanctuary, Dihang-Dibang Takin, Moidams Ahom Mounds |
-| **INDIA** | Physiographic Divisions, River Systems, Ecological Markers | Himadri/Himachal/Shiwalik Elevation, Indus/Ganga/Brahmaputra/Peninsular Rivers, Coastal Deltas |
 
 ---
 
