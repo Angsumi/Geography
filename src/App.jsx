@@ -235,13 +235,13 @@ export default function App() {
     return { unitName: 'Overview', topics: [] };
   };
 
-  const getNextTopicInfo = (currentChapter, currentTopic) => {
-    const allTopicsInOrder = [];
+  const getNavigationTargets = (currentChapter, currentUnit, currentLesson, currentTopic) => {
+    const allTopics = [];
     syllabusHierarchy.forEach(ch => {
       ch.units.forEach(u => {
         u.lessons.forEach(l => {
           l.topics.forEach(t => {
-            allTopicsInOrder.push({
+            allTopics.push({
               chapterName: ch.chapterName,
               unitName: u.unitName,
               lessonName: l.lessonName,
@@ -253,14 +253,35 @@ export default function App() {
       });
     });
 
-    const currentIndex = allTopicsInOrder.findIndex(item =>
+    const currentIndex = allTopics.findIndex(item =>
       item.chapterName === currentChapter && item.topicName === currentTopic
     );
 
-    if (currentIndex >= 0 && currentIndex < allTopicsInOrder.length - 1) {
-      return allTopicsInOrder[currentIndex + 1];
+    let nextTopic = null;
+    let nextLesson = null;
+    let nextUnit = null;
+    let nextChapter = null;
+
+    if (currentIndex >= 0 && currentIndex < allTopics.length - 1) {
+      nextTopic = allTopics[currentIndex + 1];
+
+      // Find next lesson
+      nextLesson = allTopics.slice(currentIndex + 1).find(item =>
+        item.lessonName !== currentLesson || item.chapterName !== currentChapter
+      ) || null;
+
+      // Find next unit
+      nextUnit = allTopics.slice(currentIndex + 1).find(item =>
+        item.unitName !== currentUnit || item.chapterName !== currentChapter
+      ) || null;
+
+      // Find next chapter
+      nextChapter = allTopics.slice(currentIndex + 1).find(item =>
+        item.chapterName !== currentChapter
+      ) || null;
     }
-    return null;
+
+    return { nextTopic, nextLesson, nextUnit, nextChapter };
   };
 
   const getCompleteLessonActivity = (lessonName) => {
@@ -344,12 +365,12 @@ export default function App() {
   const startSectionPlayer = (topicObj, lessonName, unitName, chapterName) => {
     const currentCh = chapterName || activeChapter;
     const currentTop = topicObj.topicName || topicObj.SectionName;
-    const nextInfo = getNextTopicInfo(currentCh, currentTop);
+    const navTargets = getNavigationTargets(currentCh, unitName, lessonName, currentTop);
 
     if (chapterName) setActiveChapter(chapterName);
     if (lessonName) setSelectedLesson(lessonName);
 
-    const lessonData = generateSectionPlayerData(topicObj, lessonName, unitName, currentCh, nextInfo);
+    const lessonData = generateSectionPlayerData(topicObj, lessonName, unitName, currentCh, navTargets);
     setActiveLesson(lessonData);
     setViewMode('lesson');
     setIsSidebarOpen(false);
@@ -378,11 +399,18 @@ export default function App() {
 
     const lesName = foundLes ? foundLes.lessonName : (targetLessonName || selectedLesson);
     const topics = foundLes ? foundLes.topics : getLessonTopics().topics;
+    const firstTopName = topics[0]?.topicName || '';
+    const navTargets = getNavigationTargets(foundChapterName, foundUnitName, lesName, firstTopName);
 
-    const lessonData = generateLessonPlayerData(lesName, foundUnitName, foundChapterName, topics);
+    const lessonData = generateLessonPlayerData(lesName, foundUnitName, foundChapterName, topics, navTargets);
     setActiveLesson(lessonData);
     setViewMode('lesson');
     setIsSidebarOpen(false);
+  };
+
+  const handleNavigateToTarget = (targetInfo) => {
+    if (!targetInfo) return;
+    startSectionPlayer(targetInfo.topicObj, targetInfo.lessonName, targetInfo.unitName, targetInfo.chapterName);
   };
 
   const imageUrl = () => {
@@ -653,11 +681,7 @@ export default function App() {
                 setViewMode('home');
               }}
               onBack={() => setViewMode('home')}
-              onStartNextTopic={(nextInfo) => {
-                if (nextInfo) {
-                  startSectionPlayer(nextInfo.topicObj, nextInfo.lessonName, nextInfo.unitName, nextInfo.chapterName);
-                }
-              }}
+              onNavigateToTarget={handleNavigateToTarget}
             />
           ) : viewMode === 'home' ? (
             <HomePage

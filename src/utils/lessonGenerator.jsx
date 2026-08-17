@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function generateSectionPlayerData(topicObj, lessonName, unitName, chapterName, nextTopicInfo = null) {
+export function generateSectionPlayerData(topicObj, lessonName, unitName, chapterName, navTargets = {}) {
   const topicName = topicObj.topicName || topicObj.TopicName || topicObj.sectionName || topicObj.SectionName || 'Topic';
   const conceptUnits = topicObj.ConceptUnits || [];
   const practiceMatching = topicObj.PracticeMatching || [];
@@ -51,11 +51,11 @@ export function generateSectionPlayerData(topicObj, lessonName, unitName, chapte
     conceptUnits: units,
     practiceMatching: matching,
     visualisationIdea: topicObj.VisualisationIdea || null,
-    nextTopicInfo
+    navTargets
   };
 }
 
-export function generateLessonPlayerData(lessonName, unitName, chapterName, topics) {
+export function generateLessonPlayerData(lessonName, unitName, chapterName, topics, navTargets = {}) {
   const conceptUnits = [];
   const practiceMatching = [];
 
@@ -75,7 +75,8 @@ export function generateLessonPlayerData(lessonName, unitName, chapterName, topi
     topicName: `${lessonName} (All Topics)`,
     title: lessonName,
     conceptUnits,
-    practiceMatching
+    practiceMatching,
+    navTargets
   };
 }
 
