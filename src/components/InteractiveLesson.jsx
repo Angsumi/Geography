@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, BookOpen, Layers, Link2, HelpCircle, Trophy, Check, X, Award, AlertCircle, Sparkles, PlayCircle, SkipForward, FastForward, ChevronsRight, Flag, RotateCcw, ThumbsUp, ThumbsDown, BookMarked, Volume2, VolumeX, Flame } from 'lucide-react';
+import { ArrowLeft, BookOpen, Layers, HelpCircle, Trophy, Check, X, Sparkles, PlayCircle, FastForward, ChevronsRight, Flag, ThumbsUp, ThumbsDown, Volume2, VolumeX, Flame } from 'lucide-react';
 import MatchGame from './MatchGame';
 import { SectionVisualizer } from './SectionVisualizer';
 import { playCorrect, playWrong, playComplete, playFlip, toggleMute, getIsMuted } from '../hooks/useSound';
@@ -16,8 +16,8 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   const navTargets = lessonData.navTargets || {};
 
   // State
-  const [unitIndex, setUnitIndex] = useState(0);
-  const [unitStep, setUnitStep] = useState('fact'); // 'fact' | 'flashcard' | 'quiz' | 'matching_recap' | 'completed'
+  const [pairIndex, setPairIndex] = useState(0);
+  const [unitStep, setUnitStep] = useState('visualization'); // 'visualization' | 'flashcard' | 'quiz' | 'matching_recap' | 'completed'
   const [isMuted, setIsMuted] = useState(getIsMuted());
   
   // Flashcard & MCQ state
@@ -27,14 +27,17 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   const [earnedXp, setEarnedXp] = useState(0);
   const [floatingXp, setFloatingXp] = useState(null);
 
-  const currentUnit = conceptUnits[unitIndex] || {
+  const currentUnit = conceptUnits[pairIndex] || {
     Fact: `${topicName} key syllabus concept.`,
     Flashcard: { Front: `What is a key feature of ${topicName}?`, Back: `Key geography fact.` },
     Quiz: { Question: `Which statement is accurate regarding ${topicName}?`, Options: { A: 'Option A', B: 'Option B' }, CorrectAnswer: 'A', Explanation: 'Official syllabus fact.' }
   };
 
-  const handleNextFact = () => {
+  const handleStartPracticeLoop = () => {
+    setPairIndex(0);
     setIsFlipped(false);
+    setSelectedOption(null);
+    setIsQuizAnswered(false);
     setUnitStep('flashcard');
   };
 
@@ -73,10 +76,10 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
     }
   };
 
-  const handleNextUnit = () => {
-    if (unitIndex < conceptUnits.length - 1) {
-      setUnitIndex(i => i + 1);
-      setUnitStep('fact');
+  const handleNextPair = () => {
+    if (pairIndex < conceptUnits.length - 1) {
+      setPairIndex(i => i + 1);
+      setUnitStep('flashcard');
       setIsFlipped(false);
       setSelectedOption(null);
       setIsQuizAnswered(false);
@@ -88,8 +91,8 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   };
 
   const handleRelearnTopic = () => {
-    setUnitIndex(0);
-    setUnitStep('fact');
+    setPairIndex(0);
+    setUnitStep('visualization');
     setIsFlipped(false);
     setSelectedOption(null);
     setIsQuizAnswered(false);
@@ -389,85 +392,113 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </div>
       </div>
 
-      {/* Hairline Progress Bar */}
+      {/* Hairline Progress Bar & Progress Details */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', marginTop: '-0.35rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-          <span>Concept Unit {unitIndex + 1} of {conceptUnits.length}</span>
-          <span style={{ color: 'var(--primary)', fontWeight: 800 }}>{Math.round(((unitIndex + 1) / conceptUnits.length) * 100)}%</span>
+          <span>
+            {unitStep === 'visualization'
+              ? 'Phase 1: Concept Visualization'
+              : unitStep === 'matching_recap'
+              ? 'Phase 3: Term Matching Game'
+              : `Phase 2: Practice Pair ${pairIndex + 1} of ${conceptUnits.length}`}
+          </span>
+          <span style={{ color: 'var(--primary)', fontWeight: 800 }}>
+            {unitStep === 'visualization'
+              ? '15%'
+              : unitStep === 'matching_recap'
+              ? '90%'
+              : `${Math.round(15 + ((pairIndex + 1) / Math.max(1, conceptUnits.length)) * 75)}%`}
+          </span>
         </div>
         <div style={{ height: 4, background: 'var(--bg-subtle)', borderRadius: 2, overflow: 'hidden' }}>
           <motion.div
             style={{ height: '100%', background: 'var(--primary)', borderRadius: 2 }}
-            animate={{ width: `${((unitIndex + 1) / conceptUnits.length) * 100}%` }}
+            animate={{
+              width:
+                unitStep === 'visualization'
+                  ? '15%'
+                  : unitStep === 'matching_recap'
+                  ? '90%'
+                  : `${Math.round(15 + ((pairIndex + 1) / Math.max(1, conceptUnits.length)) * 75)}%`
+            }}
             transition={{ duration: 0.3 }}
           />
         </div>
       </div>
 
-      {/* 3-Step Unit Phase Indicators */}
+      {/* 3-Part Lesson Structure Phase Indicators */}
       {unitStep !== 'matching_recap' && (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: unitStep === 'fact' ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'fact' ? '#10b981' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'fact' ? '#34d399' : '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
-            <BookOpen size={12} /> 1. Read Fact
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: unitStep === 'visualization' ? 'rgba(16,185,129,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'visualization' ? '#10b981' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'visualization' ? '#34d399' : '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
+            <BookOpen size={12} /> 1. Visualization
           </div>
           <span style={{ color: '#475569', fontSize: '0.8rem' }}>➔</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: unitStep === 'flashcard' ? 'rgba(192,132,252,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'flashcard' ? '#c084fc' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'flashcard' ? '#c084fc' : '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
-            <Layers size={12} /> 2. Flashcard Recall
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: (unitStep === 'flashcard' || unitStep === 'quiz') ? 'rgba(192,132,252,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${(unitStep === 'flashcard' || unitStep === 'quiz') ? '#c084fc' : 'rgba(255,255,255,0.08)'}`, color: (unitStep === 'flashcard' || unitStep === 'quiz') ? '#c084fc' : '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
+            <Layers size={12} /> 2. Practice Loop ({pairIndex + 1}/{conceptUnits.length})
           </div>
           <span style={{ color: '#475569', fontSize: '0.8rem' }}>➔</span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: unitStep === 'quiz' ? 'rgba(244,63,94,0.2)' : 'rgba(255,255,255,0.03)', border: `1px solid ${unitStep === 'quiz' ? '#f43f5e' : 'rgba(255,255,255,0.08)'}`, color: unitStep === 'quiz' ? '#f43f5e' : '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
-            <HelpCircle size={12} /> 3. Test Quiz
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#64748b', padding: '0.3rem 0.65rem', borderRadius: 10, fontSize: '0.72rem', fontWeight: 800 }}>
+            <HelpCircle size={12} /> 3. Match Game
           </div>
         </div>
       )}
 
-      {/* STEP 1: FACT READING CARD */}
-      {unitStep === 'fact' && (
+      {/* PHASE 1: VISUALIZATION STEP */}
+      {unitStep === 'visualization' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="zen-split-container">
             {/* LEFT: Section Visualizer */}
             <div className="glass-panel" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <span style={{ fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Interactive Visualization
-              </span>
-              <SectionVisualizer sectionName={topicName} facts={[currentUnit.Fact]} />
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--primary)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  🎨 Interactive Concept Visualization
+                </span>
+                <span className="badge badge-sage" style={{ fontSize: '0.7rem' }}>
+                  Lesson Concept Overview
+                </span>
+              </div>
+              <SectionVisualizer sectionName={topicName} facts={conceptUnits.map(u => u.Fact)} />
             </div>
 
-            {/* RIGHT: Concept Text & Action */}
+            {/* RIGHT: Concept Facts List & Start Practice */}
             <div className="glass-panel" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span className="badge badge-sage">
-                  CONCEPT UNIT {unitIndex + 1} OF {conceptUnits.length}
+                  OVERVIEW FACTS ({conceptUnits.length} POINTS)
                 </span>
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                  Read & Learn
+                  Explore Concept
                 </span>
               </div>
 
               <h2 style={{ margin: 0, fontSize: '1.3rem', color: 'var(--text-main)', fontWeight: 800 }}>
-                {topicName} Fact
+                {topicName}
               </h2>
 
-              <div style={{ background: 'var(--primary-bg)', borderLeft: '4px solid var(--primary)', border: '1px solid var(--primary-border)', borderRadius: 12, padding: '1.1rem' }}>
-                <p style={{ margin: 0, fontSize: '1rem', color: 'var(--text-main)', lineHeight: 1.6, fontWeight: 500 }}>
-                  {currentUnit.Fact}
-                </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', maxHeight: '300px', overflowY: 'auto' }}>
+                {conceptUnits.map((unit, idx) => (
+                  <div key={idx} style={{ background: 'var(--primary-bg)', borderLeft: '3px solid var(--primary)', border: '1px solid var(--primary-border)', borderRadius: 10, padding: '0.85rem' }}>
+                    <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-main)', lineHeight: 1.5, fontWeight: 500 }}>
+                      <strong style={{ color: 'var(--primary)' }}>#{idx + 1}:</strong> {unit.Fact}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
         </AnimatePresence>
       )}
 
-      {/* STEP 2: FLASHCARD RECALL */}
+      {/* PHASE 2A: FLASHCARD RECALL */}
       {unitStep === 'flashcard' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '0.75rem', color: '#c084fc', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(192,132,252,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
-                ACTIVE RECALL
+                ACTIVE RECALL #{pairIndex + 1}
               </span>
               <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
-                Flashcard Recall Phase
+                Flashcard {pairIndex + 1} of {conceptUnits.length}
               </span>
             </div>
 
@@ -512,16 +543,16 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </AnimatePresence>
       )}
 
-      {/* STEP 3: EXAM MCQ QUIZ */}
+      {/* PHASE 2B: EXAM MCQ QUIZ */}
       {unitStep === 'quiz' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '0.75rem', color: '#f43f5e', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(244,63,94,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
-                EXAM MCQ QUIZ
+                QUIZ #{pairIndex + 1}
               </span>
               <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
-                Exam Quiz Phase
+                Quiz {pairIndex + 1} of {conceptUnits.length}
               </span>
             </div>
 
@@ -578,7 +609,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                       color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
                       display: 'flex',
                       alignItems: 'center',
-                      justify: 'center',
+                      justifyContent: 'center',
                       fontWeight: 800,
                       fontSize: '0.82rem'
                     }}>
@@ -607,7 +638,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </AnimatePresence>
       )}
 
-      {/* FINAL STEP: MATCH THE FOLLOWING RECAP */}
+      {/* PHASE 3: MATCH THE FOLLOWING RECAP */}
       {unitStep === 'matching_recap' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -657,12 +688,12 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         >
           <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
             
-            {/* ROW 1: PRIMARY STEP ACTION (Next: Flashcard / I Didn't Know + I Knew / Proceed) */}
+            {/* ROW 1: PRIMARY STEP ACTION */}
             {unitStep !== 'matching_recap' && (
               <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                {unitStep === 'fact' && (
+                {unitStep === 'visualization' && (
                   <button
-                    onClick={handleNextFact}
+                    onClick={handleStartPracticeLoop}
                     className="btn btn-primary"
                     style={{
                       padding: '0.65rem 1.25rem',
@@ -676,7 +707,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                       gap: '0.45rem'
                     }}
                   >
-                    Next: Flashcard Recall <ArrowRight size={16} />
+                    Start Practice Loop: Flashcard #1 ➔
                   </button>
                 )}
 
@@ -736,7 +767,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                 {unitStep === 'quiz' && (
                   isQuizAnswered ? (
                     <button
-                      onClick={handleNextUnit}
+                      onClick={handleNextPair}
                       style={{
                         width: '100%',
                         padding: '0.65rem 1.25rem',
@@ -754,7 +785,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                         boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
                       }}
                     >
-                      {unitIndex < conceptUnits.length - 1 ? 'Next Concept ➔' : 'Proceed to Match the Following Recap ➔'}
+                      {pairIndex < conceptUnits.length - 1 ? `Next Flashcard (${pairIndex + 2}/${conceptUnits.length}) ➔` : 'Proceed to Match the Following ➔'}
                     </button>
                   ) : (
                     <div style={{ textAlign: 'center', fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700, padding: '0.2rem 0' }}>
@@ -774,110 +805,42 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                 </span>
               </div>
 
-              <div className="quick-jump-buttons">
-                {/* Skip Topic */}
-                <button
-                  onClick={() => {
-                    if (navTargets?.nextTopic) {
-                      onNavigateToTarget(navTargets.nextTopic);
-                    } else {
-                      handleNextUnit();
-                    }
-                  }}
-                  style={{
-                    background: 'var(--primary-bg)',
-                    border: '1px solid var(--primary-border)',
-                    color: 'var(--primary)',
-                    padding: '0.38rem 0.62rem',
-                    borderRadius: 9,
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.25rem'
-                  }}
-                >
-                  <SkipForward size={13} /> Skip Topic
-                </button>
+              <div className="quick-jump-buttons" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                {navTargets?.nextTopic && (
+                  <button
+                    onClick={() => onNavigateToTarget(navTargets.nextTopic)}
+                    style={{ padding: '0.3rem 0.55rem', borderRadius: 8, background: 'var(--primary-bg)', border: '1px solid var(--primary-border)', color: 'var(--primary)', fontSize: '0.72rem', fontWeight: 800, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                  >
+                    <PlayCircle size={12} /> Skip Topic
+                  </button>
+                )}
 
-                {/* Skip Lesson */}
-                <button
-                  onClick={() => {
-                    if (navTargets?.nextLesson) {
-                      onNavigateToTarget(navTargets.nextLesson);
-                    } else {
-                      onBack();
-                    }
-                  }}
-                  style={{
-                    background: 'var(--bg-subtle)',
-                    border: '1px solid var(--border-subtle)',
-                    color: 'var(--text-main)',
-                    padding: '0.38rem 0.62rem',
-                    borderRadius: 9,
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.25rem'
-                  }}
-                >
-                  <FastForward size={13} /> Skip Lesson
-                </button>
+                {navTargets?.nextLesson && (
+                  <button
+                    onClick={() => onNavigateToTarget(navTargets.nextLesson)}
+                    style={{ padding: '0.3rem 0.55rem', borderRadius: 8, background: 'var(--bg-subtle)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                  >
+                    <FastForward size={12} /> Skip Lesson
+                  </button>
+                )}
 
-                {/* Skip Unit */}
-                <button
-                  onClick={() => {
-                    if (navTargets?.nextUnit) {
-                      onNavigateToTarget(navTargets.nextUnit);
-                    } else {
-                      onBack();
-                    }
-                  }}
-                  style={{
-                    background: 'var(--bg-subtle)',
-                    border: '1px solid var(--border-subtle)',
-                    color: 'var(--text-main)',
-                    padding: '0.38rem 0.62rem',
-                    borderRadius: 9,
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.25rem'
-                  }}
-                >
-                  <ChevronsRight size={13} /> Skip Unit
-                </button>
+                {navTargets?.nextUnit && (
+                  <button
+                    onClick={() => onNavigateToTarget(navTargets.nextUnit)}
+                    style={{ padding: '0.3rem 0.55rem', borderRadius: 8, background: 'var(--bg-subtle)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                  >
+                    <ChevronsRight size={12} /> Skip Unit
+                  </button>
+                )}
 
-                {/* Skip Chapter */}
-                <button
-                  onClick={() => {
-                    if (navTargets?.nextChapter) {
-                      onNavigateToTarget(navTargets.nextChapter);
-                    } else {
-                      onBack();
-                    }
-                  }}
-                  style={{
-                    background: 'var(--bg-subtle)',
-                    border: '1px solid var(--border-subtle)',
-                    color: 'var(--text-main)',
-                    padding: '0.38rem 0.62rem',
-                    borderRadius: 9,
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.25rem'
-                  }}
-                >
-                  <Flag size={13} /> Skip Chapter
-                </button>
+                {navTargets?.nextChapter && (
+                  <button
+                    onClick={() => onNavigateToTarget(navTargets.nextChapter)}
+                    style={{ padding: '0.3rem 0.55rem', borderRadius: 8, background: 'var(--bg-subtle)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+                  >
+                    <Flag size={12} /> Skip Chapter
+                  </button>
+                )}
               </div>
             </div>
 

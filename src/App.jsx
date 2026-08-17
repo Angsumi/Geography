@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Trophy, ArrowLeft, Zap, Layers, Link2, Flame, HelpCircle, GraduationCap, ChevronRight, ChevronDown, Menu, X, Home, PlayCircle, Sparkles, Map, Compass, BookOpen, Search, Clock, CheckCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, Layers, GraduationCap, ChevronRight, ChevronDown, X, PlayCircle, Sparkles, Compass, BookOpen, Search, Clock, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import indiaGeo from './data/india/GEography.json';
 import assamGeo from './data/assam/GEography.json';
 import neGeo from './data/northeast/GEography.json';
@@ -10,15 +10,13 @@ import Flashcard from './components/Flashcard';
 import MatchGame from './components/MatchGame';
 import ExamineMCQ from './components/ExamineMCQ';
 import GeographyMap from './components/GeographyMap';
-import { SectionVisualizer } from './components/SectionVisualizer';
 import { HomePage } from './components/HomePage';
-import { GamusaIcon } from './components/icons/GamusaIcon';
 import { InteractiveLesson } from './components/InteractiveLesson';
 import { MobileNavBar } from './components/MobileNavBar';
 import { PracticeHub } from './components/PracticeHub';
 import { ProgressDashboard } from './components/ProgressDashboard';
 
-import { generateLessonPlayerData, generateSectionPlayerData } from './utils/lessonGenerator.jsx';
+import { generateSectionPlayerData } from './utils/lessonGenerator.jsx';
 
 // Combine regional JSON files into unified syllabus array
 const syllabusData = {
@@ -132,41 +130,7 @@ function parseSyllabus(json) {
   return { chaptersList, syllabusHierarchy, studyDb };
 }
 
-const { chaptersList: chapters, syllabusHierarchy, studyDb: STUDY_DATABASE } = parseSyllabus(syllabusData);
-
-const CHAPTER_STYLES = {
-  'ASSAM': {
-    activeBg: 'linear-gradient(135deg, rgba(245,158,11,0.25), rgba(249,115,22,0.25))',
-    activeBorder: '1px solid #f97316',
-    activeColor: '#fb923c',
-    glow: '0 0 16px rgba(249,115,22,0.35)',
-    icon: <GamusaIcon size={22} />
-  },
-  'INDIA': {
-    activeBg: 'linear-gradient(135deg, rgba(16,185,129,0.25), rgba(6,182,212,0.25))',
-    activeBorder: '1px solid #10b981',
-    activeColor: '#34d399',
-    glow: '0 0 16px rgba(16,185,129,0.35)',
-    icon: '🇮🇳'
-  },
-  'NE': {
-    activeBg: 'linear-gradient(135deg, rgba(168,85,247,0.25), rgba(236,72,153,0.25))',
-    activeBorder: '1px solid #ec4899',
-    activeColor: '#f472b6',
-    glow: '0 0 16px rgba(236,72,153,0.35)',
-    icon: '🏔️'
-  }
-};
-
-const TOPIC_IMAGES = {
-  'Brahmaputra Valley': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&auto=format&fit=crop&q=80',
-  'Central Hills': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80',
-  'Barak Valley': 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&auto=format&fit=crop&q=80',
-  'Ecology': 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&auto=format&fit=crop&q=80',
-  'Wildlife Reserves': 'https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=1200&auto=format&fit=crop&q=80',
-  'Transport': 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&auto=format&fit=crop&q=80',
-  'Himalayas': 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80'
-};
+const { syllabusHierarchy, studyDb: STUDY_DATABASE } = parseSyllabus(syllabusData);
 
 export default function App() {
   const [xp, setXp] = useState(() => loadState('adre_xp', 0));
@@ -175,9 +139,7 @@ export default function App() {
   const [viewMode, setViewMode] = useState('home');
   const [activeLesson, setActiveLesson] = useState(null);
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedLesson, setSelectedLesson] = useState('Brahmaputra Valley');
-  const [detailedViewSubdivision, setDetailedViewSubdivision] = useState(null);
   const [mapViewerTab, setMapViewerTab] = useState('ASSAM'); // 'ASSAM' | 'NE' | 'INDIA'
   const [activeActivity, setActiveActivity] = useState(null);
   const [activeActivityData, setActiveActivityData] = useState(null);
@@ -214,7 +176,6 @@ export default function App() {
 
   useEffect(() => {
     setSelectedLesson(quickButtons.length > 0 ? quickButtons[0].name : '');
-    setDetailedViewSubdivision(null);
     setActiveActivity(null);
   }, [activeChapter]);
 
@@ -360,7 +321,6 @@ export default function App() {
 
   const handleRegionSelect = (regionName) => {
     setSelectedLesson(regionName);
-    setIsSidebarOpen(false);
     if (detailsRef.current) detailsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -395,7 +355,6 @@ export default function App() {
     const lessonData = generateSectionPlayerData(topicObj, lessonName, unitName, currentCh, navTargets);
     setActiveLesson(lessonData);
     setViewMode('lesson');
-    setIsSidebarOpen(false);
   };
 
   const startLessonPlayer = (targetLessonName) => {
@@ -439,12 +398,7 @@ export default function App() {
     }
   };
 
-  const imageUrl = () => {
-    const raw = TOPIC_IMAGES[selectedLesson] || 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80';
-    return raw.startsWith('/') ? `${import.meta.env.BASE_URL}${raw.slice(1)}` : raw;
-  };
-
-  const getChapterShortName = (name) => name.replace(/^\d+[\.\_]\s*/, '');
+  const getChapterShortName = (name) => name.replace(/^\d+[._]\s*/, '');
 
   const currentNavTab = viewMode === 'home' || viewMode === 'chapter' ? 'learn'
     : viewMode === 'map_hub' ? 'explore'
@@ -460,9 +414,9 @@ export default function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-main)', color: 'var(--text-main)', fontFamily: 'var(--font-sans)' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: 'var(--bg-main)', color: 'var(--text-main)', fontFamily: 'var(--font-sans)', paddingBottom: 'calc(4rem + env(safe-area-inset-bottom))' }}>
       
-      {/* ── Main Viewport (No Header / No Footer) ── */}
+      {/* ── Main Viewport ── */}
       <main style={{ flex: 1, padding: '1.5rem 1rem', maxWidth: 960, margin: '0 auto', width: '100%' }}>
 
         {activeActivity ? (
@@ -871,6 +825,9 @@ export default function App() {
           />
         ) : null}
       </main>
+
+      {/* 📱 Mobile-First Fixed Bottom Navigation Bar */}
+      <MobileNavBar currentTab={currentNavTab} onTabChange={handleMobileTabChange} />
     </div>
   );
 }

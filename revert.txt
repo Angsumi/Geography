@@ -1,6 +1,0 @@
-                                                                                                                                                                                  
-    git reset --hard 51ca51d                                                                                                                                                         
-    git push origin main --force                                                                                                                                                     
-    npm run deploy                                                                                                                                                                   
-    
-
