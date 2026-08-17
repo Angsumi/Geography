@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, BookOpen, Layers, Link2, HelpCircle, Trophy, Check, X, Award, AlertCircle, Sparkles, PlayCircle, SkipForward, FastForward, ChevronsRight, Flag } from 'lucide-react';
-import Flashcard from './Flashcard';
+import { ArrowLeft, ArrowRight, BookOpen, Layers, Link2, HelpCircle, Trophy, Check, X, Award, AlertCircle, Sparkles, PlayCircle, SkipForward, FastForward, ChevronsRight, Flag, RotateCcw, ThumbsUp, ThumbsDown, BookMarked } from 'lucide-react';
 import MatchGame from './MatchGame';
 import { SectionVisualizer } from './SectionVisualizer';
-import { playCorrect, playWrong, playComplete } from '../hooks/useSound';
+import { playCorrect, playWrong, playComplete, playFlip } from '../hooks/useSound';
 
 export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateToTarget }) {
   const chapterName = lessonData.chapterName || 'ASSAM';
@@ -20,7 +19,8 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   const [unitIndex, setUnitIndex] = useState(0);
   const [unitStep, setUnitStep] = useState('fact'); // 'fact' | 'flashcard' | 'quiz' | 'matching_recap' | 'completed'
   
-  // MCQ & Floating XP state
+  // Flashcard & MCQ state
+  const [isFlipped, setIsFlipped] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isQuizAnswered, setIsQuizAnswered] = useState(false);
   const [earnedXp, setEarnedXp] = useState(0);
@@ -33,17 +33,26 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   };
 
   const handleNextFact = () => {
+    setIsFlipped(false);
     setUnitStep('flashcard');
   };
 
-  const handleFlashcardDone = (pts = 10) => {
-    setEarnedXp(x => x + pts);
-    setFloatingXp('+10 XP');
-    setTimeout(() => setFloatingXp(null), 1000);
+  const handleFlashcardSelfAssess = (knewIt) => {
+    if (knewIt) {
+      setEarnedXp(x => x + 10);
+      setFloatingXp('+10 XP');
+      playCorrect();
+    } else {
+      playWrong();
+    }
     
-    setSelectedOption(null);
-    setIsQuizAnswered(false);
-    setUnitStep('quiz');
+    setTimeout(() => {
+      setFloatingXp(null);
+      setIsFlipped(false);
+      setSelectedOption(null);
+      setIsQuizAnswered(false);
+      setUnitStep('quiz');
+    }, 600);
   };
 
   const handleQuizOptionSelect = (optKey) => {
@@ -57,21 +66,17 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
       setEarnedXp(x => x + 15);
       setFloatingXp('+15 XP');
       playCorrect();
+      setTimeout(() => setFloatingXp(null), 1200);
     } else {
       playWrong();
     }
-
-    // Auto-advance to next unit or match recap after smooth delay
-    setTimeout(() => {
-      setFloatingXp(null);
-      handleNextUnit();
-    }, 1500);
   };
 
   const handleNextUnit = () => {
     if (unitIndex < conceptUnits.length - 1) {
       setUnitIndex(i => i + 1);
       setUnitStep('fact');
+      setIsFlipped(false);
       setSelectedOption(null);
       setIsQuizAnswered(false);
     } else {
@@ -79,6 +84,14 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
       playCorrect();
       setUnitStep('matching_recap');
     }
+  };
+
+  const handleRelearnTopic = () => {
+    setUnitIndex(0);
+    setUnitStep('fact');
+    setIsFlipped(false);
+    setSelectedOption(null);
+    setIsQuizAnswered(false);
   };
 
   const handleMatchingComplete = (pts = 25) => {
@@ -93,7 +106,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
 
   if (unitStep === 'completed') {
     return (
-      <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', maxWidth: 640, margin: '1rem auto' }}>
+      <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', maxWidth: 660, margin: '1rem auto' }}>
         <Award size={64} color="#34d399" style={{ margin: '0 auto 1rem' }} />
         <span style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
           TOPIC MASTERED
@@ -118,17 +131,44 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
           </h2>
         </div>
 
-        {/* ── Topic Completion Next Options Grid ── */}
+        {/* ── HIGH PROMINENCE "LEARN THIS" RE-PLAY BUTTON ── */}
+        <div style={{ marginBottom: '1.5rem' }}>
+          <button
+            onClick={handleRelearnTopic}
+            style={{
+              width: '100%',
+              padding: '1.1rem 1.75rem',
+              borderRadius: 16,
+              background: 'linear-gradient(135deg, #10b981, #34d399, #059669)',
+              color: '#000',
+              border: '2px solid #6ee7b7',
+              fontWeight: 900,
+              fontSize: '1.1rem',
+              letterSpacing: '0.02em',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justify: 'center',
+              gap: '0.65rem',
+              boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)',
+              transform: 'scale(1.02)'
+            }}
+          >
+            <BookMarked size={24} /> 💡 Learn This (Re-Play Topic)
+          </button>
+        </div>
+
+        {/* ── Topic Completion Navigation Options ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.25rem' }}>
           <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Where would you like to go next?
+            Or Continue Curriculum Flow:
           </span>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.65rem' }}>
             {navTargets?.nextTopic && (
               <button
                 onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'linear-gradient(135deg, #10b981, #34d399)', color: '#000', border: 'none', fontWeight: 900, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(16,185,129,0.3)' }}
+                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', color: '#34d399', fontWeight: 900, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
               >
                 <PlayCircle size={16} /> Next Topic ▶
               </button>
@@ -186,7 +226,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   return (
     <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative' }}>
       
-      {/* Floating XP Animation Banner */}
+      {/* Floating XP Banner */}
       <AnimatePresence>
         {floatingXp && (
           <motion.div
@@ -231,7 +271,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
           <ArrowLeft size={16} /> Exit
         </button>
 
-        {/* 4-Tier Student Location Breadcrumb */}
+        {/* 4-Tier Location Breadcrumb */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', fontWeight: 700, flexWrap: 'wrap' }}>
           <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
           <span>➔</span>
@@ -280,7 +320,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </div>
       )}
 
-      {/* STEP 1: FACT READING CARD (With explicit Next button) */}
+      {/* STEP 1: FACT READING CARD */}
       {unitStep === 'fact' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -332,7 +372,7 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
         </AnimatePresence>
       )}
 
-      {/* STEP 2: FLASHCARD RECALL (Auto-advancing on flip) */}
+      {/* STEP 2: FLASHCARD RECALL (With 'I knew it' / 'I didn't know' options) */}
       {unitStep === 'flashcard' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -341,25 +381,98 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                 ACTIVE RECALL
               </span>
               <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 700 }}>
-                Flashcard Recall Phase (Auto-Advances on Flip)
+                Flashcard Recall Phase
               </span>
             </div>
 
-            <Flashcard
-              isEmbedded={true}
-              data={[{
-                q: currentUnit.Flashcard?.Front || `What is a key feature of ${topicName}?`,
-                a: currentUnit.Flashcard?.Back || currentUnit.Fact,
-                img: currentUnit.Flashcard?.Image || null,
-                exp: `Topic: ${topicName}`
-              }]}
-              onComplete={handleFlashcardDone}
-            />
+            {/* Flip Canvas Card */}
+            <div style={{ perspective: '1000px', minHeight: '260px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
+              <motion.div
+                style={{ width: '100%', minHeight: '260px', position: 'relative', transformStyle: 'preserve-3d' }}
+                animate={{ rotateY: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Front Side */}
+                <div className="glass-panel" style={{
+                  position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                  padding: '2rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)', borderRadius: 16
+                }}>
+                  <span style={{ fontSize: '0.75rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '1rem' }}>
+                    TAP CARD TO FLIP
+                  </span>
+                  <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
+                    {currentUnit.Flashcard?.Front || `What is a key feature of ${topicName}?`}
+                  </h2>
+                </div>
+
+                {/* Back Side */}
+                <div className="glass-panel" style={{
+                  position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                  transform: 'rotateY(180deg)',
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                  padding: '2rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981', borderRadius: 16
+                }}>
+                  <span style={{ fontSize: '0.75rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.75rem' }}>
+                    KEY RECALL ANSWER
+                  </span>
+                  <h2 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
+                    {currentUnit.Flashcard?.Back || currentUnit.Fact}
+                  </h2>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Self-Assessment Buttons (Revealed when card is flipped or always accessible) */}
+            <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <button
+                onClick={() => handleFlashcardSelfAssess(false)}
+                style={{
+                  flex: 1,
+                  padding: '0.85rem 1rem',
+                  borderRadius: 14,
+                  background: 'rgba(244,63,94,0.12)',
+                  border: '1.5px solid rgba(244,63,94,0.35)',
+                  color: '#f43f5e',
+                  fontWeight: 800,
+                  fontSize: '0.88rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  gap: '0.4rem'
+                }}
+              >
+                <ThumbsDown size={17} /> I Didn't Know
+              </button>
+
+              <button
+                onClick={() => handleFlashcardSelfAssess(true)}
+                style={{
+                  flex: 1,
+                  padding: '0.85rem 1rem',
+                  borderRadius: 14,
+                  background: 'linear-gradient(135deg, #10b981, #34d399)',
+                  border: 'none',
+                  color: '#000',
+                  fontWeight: 900,
+                  fontSize: '0.88rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  gap: '0.4rem',
+                  boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
+                }}
+              >
+                <ThumbsUp size={17} /> I Knew It (+10 XP)
+              </button>
+            </div>
           </motion.div>
         </AnimatePresence>
       )}
 
-      {/* STEP 3: EXAM MCQ QUIZ (Auto-advancing on selection) */}
+      {/* STEP 3: EXAM MCQ QUIZ (With explicit 'Proceed to Next Unit' button) */}
       {unitStep === 'quiz' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -450,11 +563,35 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
                 </p>
               </motion.div>
             )}
+
+            {/* Explicit Proceed Button After Quiz */}
+            {isQuizAnswered && (
+              <button
+                onClick={handleNextUnit}
+                style={{
+                  padding: '0.85rem 1.5rem',
+                  borderRadius: 14,
+                  background: 'linear-gradient(135deg, #10b981, #34d399)',
+                  color: '#000',
+                  border: 'none',
+                  fontWeight: 900,
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  gap: '0.45rem',
+                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
+                }}
+              >
+                {unitIndex < conceptUnits.length - 1 ? 'Proceed to Next Concept Unit ➔' : 'Proceed to Match the Following Recap ➔'}
+              </button>
+            )}
           </motion.div>
         </AnimatePresence>
       )}
 
-      {/* FINAL STEP: MATCH THE FOLLOWING RECAP (Auto-advancing on completion) */}
+      {/* FINAL STEP: MATCH THE FOLLOWING RECAP */}
       {unitStep === 'matching_recap' && (
         <AnimatePresence mode="wait">
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
