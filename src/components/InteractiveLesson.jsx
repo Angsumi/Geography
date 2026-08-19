@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, BookOpen, Layers, HelpCircle, Trophy, Check, X, Award, Sparkles, PlayCircle, FastForward, ChevronsRight, Flag, ThumbsUp, ThumbsDown, BookMarked, Map, Compass, Target, Clock, ExternalLink, Eye, ChevronRight } from 'lucide-react';
 import MatchGame from './MatchGame';
 import { SectionVisualizer } from './SectionVisualizer';
-import { playCorrect, playWrong, playComplete, playFlip, toggleMute, getIsMuted } from '../hooks/useSound';
+import { playCorrect, playWrong, playComplete, playFlip } from '../hooks/useSound';
 
 export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavigateToTarget }) {
   const chapterName = lessonData?.chapterName || 'ASSAM';
@@ -47,7 +47,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
     Quiz: { Question: `Which statement is accurate regarding ${topicName}?`, Options: { A: 'Option A', B: 'Option B' }, CorrectAnswer: 'A', Explanation: 'Official syllabus fact.' }
   };
 
-  // Helper: Exam Relevance Callout Generator (Safely handles undefined/null Strings)
+  // Helper: Exam Relevance Callout Generator
   const getExamRelevance = (factStr = '', name = '') => {
     const fStr = (factStr || '').toLowerCase();
     if (fStr.includes('tributar') || fStr.includes('river')) {
@@ -254,7 +254,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
      ───────────────────────────────────────────────────────────── */
   if (unitStep === 'completed') {
     return (
-      <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', maxWidth: 660, margin: '1rem auto' }}>
+      <motion.div key="step-completed" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', maxWidth: 660, margin: '1rem auto' }}>
         <Award size={64} color="#34d399" style={{ margin: '0 auto 1rem' }} />
         <span style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
           TOPIC MASTERED
@@ -427,12 +427,12 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
       {/* Journey Header Stepper */}
       {renderJourneyHeader()}
 
-      {/* ─────────────────────────────────────────────────────────────
-         PHASE 1: MISSION BRIEFING (Orient)
-         ───────────────────────────────────────────────────────────── */}
-      {unitStep === 'briefing' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.92)', border: '1.5px solid rgba(16,185,129,0.3)', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      {/* SINGLE UNIFIED ANIMATE PRESENCE CONTAINER FOR ZERO TRANSITION FREEZE */}
+      <AnimatePresence mode="wait">
+        
+        {/* PHASE 1: MISSION BRIEFING (Orient) */}
+        {unitStep === 'briefing' && (
+          <motion.div key="step-briefing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.92)', border: '1.5px solid rgba(16,185,129,0.3)', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
               <div style={{ width: 42, height: 42, borderRadius: 12, background: 'linear-gradient(135deg, #10b981, #34d399)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000' }}>
                 <Target size={22} />
@@ -501,15 +501,11 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               START EXPLORING MAP ➔
             </button>
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
 
-      {/* ─────────────────────────────────────────────────────────────
-         PHASE 2: PURPOSEFUL EXPLORATION (Explore)
-         ───────────────────────────────────────────────────────────── */}
-      {unitStep === 'explore' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        {/* PHASE 2: PURPOSEFUL EXPLORATION (Explore) */}
+        {unitStep === 'explore' && (
+          <motion.div key="step-explore" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(56,189,248,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
                 STEP 2: MAP EXPLORATION
@@ -554,15 +550,11 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               I'M READY TO LEARN CONCEPTS ➔
             </button>
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
 
-      {/* ─────────────────────────────────────────────────────────────
-         PHASE 3: CONCEPT LOOP - LEARN (Learn)
-         ───────────────────────────────────────────────────────────── */}
-      {unitStep === 'learn' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        {/* PHASE 3: CONCEPT LOOP - LEARN (Learn) */}
+        {unitStep === 'learn' && (
+          <motion.div key={`step-learn-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             
             {renderLearningAnchor(`Concept ${conceptIndex + 1} of ${conceptUnits.length}: ${topicName}`)}
 
@@ -615,15 +607,11 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               Can you remember it? (Recall) ➔
             </button>
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
 
-      {/* ─────────────────────────────────────────────────────────────
-         PHASE 3: CONCEPT LOOP - RECALL (Flashcard)
-         ───────────────────────────────────────────────────────────── */}
-      {unitStep === 'recall' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        {/* PHASE 3: CONCEPT LOOP - RECALL (Flashcard) */}
+        {unitStep === 'recall' && (
+          <motion.div key={`step-recall-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             
             {renderLearningAnchor(`Concept ${conceptIndex + 1} of ${conceptUnits.length}: Recall Challenge`)}
 
@@ -726,15 +714,11 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               </div>
             )}
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
 
-      {/* ─────────────────────────────────────────────────────────────
-         PHASE 3: CONCEPT LOOP - CHECK (MCQ Quiz)
-         ───────────────────────────────────────────────────────────── */}
-      {unitStep === 'check' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        {/* PHASE 3: CONCEPT LOOP - CHECK (MCQ Quiz) */}
+        {unitStep === 'check' && (
+          <motion.div key={`step-check-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             
             {renderLearningAnchor(`Concept ${conceptIndex + 1} of ${conceptUnits.length}: Knowledge Check`)}
 
@@ -850,15 +834,11 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               </button>
             )}
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
 
-      {/* ─────────────────────────────────────────────────────────────
-         PHASE 4: CONNECT THE DOTS (Match Game Recap)
-         ───────────────────────────────────────────────────────────── */}
-      {unitStep === 'matching_recap' && (
-        <AnimatePresence mode="wait">
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        {/* PHASE 4: CONNECT THE DOTS (Match Game Recap) */}
+        {unitStep === 'matching_recap' && (
+          <motion.div key="step-matching" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', background: 'rgba(56,189,248,0.15)', padding: '0.25rem 0.65rem', borderRadius: 8 }}>
                 STEP 4: CONNECT THE DOTS
@@ -883,8 +863,9 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               onComplete={handleMatchingComplete}
             />
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
+
+      </AnimatePresence>
 
       {/* ── Mid-Play Skip Navigation Toolbar Options Below Player ── */}
       {unitStep !== 'completed' && (
