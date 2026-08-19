@@ -635,7 +635,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                   boxShadow: '0 4px 18px rgba(13, 148, 136, 0.3)'
                 }}
               >
-                <ThumbsUp size={16} /> I Knew It (+10 XP)
+                <ThumbsUp size={16} /> I Knew It
               </button>
             </motion.div>
           ) : (
