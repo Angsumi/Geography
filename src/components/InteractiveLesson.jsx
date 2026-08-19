@@ -156,7 +156,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
   };
 
   /* ─────────────────────────────────────────────────────────────
-     PHASE: COMPLETED SCORECARD (Reflect) - Soothing Emerald Palette
+     PHASE: COMPLETED SCORECARD (Reflect)
      ───────────────────────────────────────────────────────────── */
   if (unitStep === 'completed') {
     return (
@@ -221,7 +221,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               {navTargets?.nextTopic && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(52, 211, 153, 0.3)', color: '#34d399', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
                 >
                   <PlayCircle size={15} /> Next Topic ▶
                 </button>
@@ -230,7 +230,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               {navTargets?.nextLesson && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextLesson)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(56, 189, 248, 0.12)', border: '1px solid rgba(56, 189, 248, 0.3)', color: '#38bdf8', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
                 >
                   <FastForward size={15} /> Next Lesson ▶▶
                 </button>
@@ -239,7 +239,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               {navTargets?.nextUnit && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextUnit)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(167, 139, 250, 0.12)', border: '1px solid rgba(167, 139, 250, 0.3)', color: '#c084fc', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
                 >
                   <ChevronsRight size={15} /> Next Unit ⏭
                 </button>
@@ -248,7 +248,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               {navTargets?.nextChapter && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextChapter)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(251, 146, 60, 0.12)', border: '1px solid rgba(251, 146, 60, 0.3)', color: '#fb923c', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
                 >
                   <Flag size={15} /> Next Chapter 🏁
                 </button>
@@ -667,7 +667,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
         </div>
       )}
 
-      {/* ── FIXED BOTTOM FOOTER QUICK-JUMP TOOLBAR ── */}
+      {/* ── MINIMALIST MONOCHROME FIXED BOTTOM FOOTER TOOLBAR ── */}
       {unitStep !== 'completed' && (
         <div style={{
           position: 'fixed',
@@ -680,22 +680,22 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           gap: '0.35rem',
           flexWrap: 'nowrap',
           padding: '0.35rem 0.85rem',
-          background: 'rgba(11, 19, 41, 0.92)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          background: 'rgba(15, 23, 42, 0.88)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
           backdropFilter: 'blur(12px)',
           borderRadius: 100,
           zIndex: 90,
-          boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
           width: 'fit-content'
         }}>
-          <span style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', marginRight: '0.15rem' }}>
+          <span style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginRight: '0.15rem' }}>
             Jump:
           </span>
 
           {navTargets?.nextTopic && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#94a3b8', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <SkipForward size={11} /> Next Topic
             </button>
@@ -704,7 +704,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextLesson && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextLesson)}
-              style={{ background: 'rgba(56,189,248,0.12)', border: '1px solid rgba(56,189,248,0.25)', color: '#38bdf8', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#94a3b8', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <FastForward size={11} /> Next Lesson
             </button>
@@ -713,7 +713,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextUnit && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextUnit)}
-              style={{ background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.25)', color: '#c084fc', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#94a3b8', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <ChevronsRight size={11} /> Next Unit
             </button>
@@ -722,7 +722,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextChapter && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextChapter)}
-              style={{ background: 'rgba(251,146,60,0.12)', border: '1px solid rgba(251,146,60,0.25)', color: '#fb923c', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 800, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#94a3b8', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <Flag size={11} /> Next Chapter
             </button>
