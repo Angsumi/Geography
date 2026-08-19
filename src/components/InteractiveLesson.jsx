@@ -160,120 +160,121 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
      ───────────────────────────────────────────────────────────── */
   if (unitStep === 'completed') {
     return (
-      <motion.div key="step-completed" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', maxWidth: 660, margin: '1rem auto' }}>
-        <Award size={64} color="#34d399" style={{ margin: '0 auto 1rem' }} />
-        <span style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-          TOPIC MASTERED
-        </span>
-        <h1 style={{ fontSize: '2.2rem', fontWeight: 900, margin: '0.3rem 0 0.5rem', color: '#fff' }}>
-          {topicName} Mastered!
-        </h1>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 160px)', padding: '1rem 0' }}>
+        <motion.div key="step-completed" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.25rem', textAlign: 'center', width: '100%', maxWidth: 640 }}>
+          <Award size={58} color="#34d399" style={{ margin: '0 auto 0.85rem' }} />
+          <span style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            TOPIC MASTERED
+          </span>
+          <h1 style={{ fontSize: '2rem', fontWeight: 900, margin: '0.2rem 0 0.4rem', color: '#fff' }}>
+            {topicName} Mastered!
+          </h1>
 
-        {/* Student Mindset Breadcrumb Location */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', fontWeight: 700, margin: '0 0 1.25rem', flexWrap: 'wrap' }}>
-          <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
-          <span>➔</span>
-          <span style={{ color: '#cbd5e1' }}>Unit: {unitName}</span>
-          <span>➔</span>
-          <span style={{ color: '#cbd5e1' }}>Lesson: {lessonName}</span>
-        </div>
+          {/* Student Mindset Breadcrumb Location */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', fontWeight: 700, margin: '0 0 1.25rem', flexWrap: 'wrap' }}>
+            <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
+            <span>➔</span>
+            <span style={{ color: '#cbd5e1' }}>Unit: {unitName}</span>
+            <span>➔</span>
+            <span style={{ color: '#cbd5e1' }}>Lesson: {lessonName}</span>
+          </div>
 
-        <div style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 16, padding: '1.25rem', marginBottom: '1.75rem' }}>
-          <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Total XP Awarded</span>
-          <h2 style={{ fontSize: '2.8rem', fontWeight: 900, color: '#34d399', margin: '0.2rem 0' }}>
-            +{earnedXp} XP
-          </h2>
-        </div>
+          <div style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 16, padding: '1.1rem', marginBottom: '1.5rem' }}>
+            <span style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Total XP Awarded</span>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 900, color: '#34d399', margin: '0.1rem 0' }}>
+              +{earnedXp} XP
+            </h2>
+          </div>
 
-        {/* ── HIGH PROMINENCE "LEARN THIS" RE-PLAY BUTTON ── */}
-        <div style={{ marginBottom: '1.5rem' }}>
+          {/* ── HIGH PROMINENCE "LEARN THIS" RE-PLAY BUTTON ── */}
+          <div style={{ marginBottom: '1.25rem' }}>
+            <button
+              onClick={handleRelearnTopic}
+              style={{
+                width: '100%',
+                padding: '1rem 1.5rem',
+                borderRadius: 16,
+                background: 'linear-gradient(135deg, #10b981, #34d399, #059669)',
+                color: '#000',
+                border: '2px solid #6ee7b7',
+                fontWeight: 900,
+                fontSize: '1.05rem',
+                letterSpacing: '0.02em',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'center',
+                gap: '0.65rem',
+                boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)'
+              }}
+            >
+              <BookMarked size={22} /> 💡 Learn This (Re-Play Topic)
+            </button>
+          </div>
+
+          {/* ── Topic Completion Navigation Options ── */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.25rem' }}>
+            <span style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              Or Continue Curriculum Flow:
+            </span>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.65rem' }}>
+              {navTargets?.nextTopic && (
+                <button
+                  onClick={() => onNavigateToTarget(navTargets.nextTopic)}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', color: '#34d399', fontWeight: 900, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                >
+                  <PlayCircle size={15} /> Next Topic ▶
+                </button>
+              )}
+
+              {navTargets?.nextLesson && (
+                <button
+                  onClick={() => onNavigateToTarget(navTargets.nextLesson)}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38bdf8', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                >
+                  <FastForward size={15} /> Next Lesson ▶▶
+                </button>
+              )}
+
+              {navTargets?.nextUnit && (
+                <button
+                  onClick={() => onNavigateToTarget(navTargets.nextUnit)}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(192, 132, 252, 0.15)', border: '1px solid rgba(192, 132, 252, 0.4)', color: '#c084fc', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                >
+                  <ChevronsRight size={15} /> Next Unit ⏭
+                </button>
+              )}
+
+              {navTargets?.nextChapter && (
+                <button
+                  onClick={() => onNavigateToTarget(navTargets.nextChapter)}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.4)', color: '#fb923c', fontWeight: 900, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                >
+                  <Flag size={15} /> Next Chapter 🏁
+                </button>
+              )}
+            </div>
+          </div>
+
           <button
-            onClick={handleRelearnTopic}
+            onClick={() => onComplete(earnedXp)}
             style={{
               width: '100%',
-              padding: '1.1rem 1.75rem',
-              borderRadius: 16,
-              background: 'linear-gradient(135deg, #10b981, #34d399, #059669)',
-              color: '#000',
-              border: '2px solid #6ee7b7',
-              fontWeight: 900,
-              fontSize: '1.1rem',
-              letterSpacing: '0.02em',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justify: 'center',
-              gap: '0.65rem',
-              boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)',
-              transform: 'scale(1.02)'
+              padding: '0.7rem 1.25rem',
+              borderRadius: 14,
+              background: 'rgba(255,255,255,0.06)',
+              color: '#cbd5e1',
+              border: '1px solid rgba(255,255,255,0.1)',
+              fontWeight: 800,
+              fontSize: '0.85rem',
+              cursor: 'pointer'
             }}
           >
-            <BookMarked size={24} /> 💡 Learn This (Re-Play Topic)
+            Return to Syllabus Directory
           </button>
-        </div>
-
-        {/* ── Topic Completion Navigation Options ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.25rem' }}>
-          <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Or Continue Curriculum Flow:
-          </span>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.65rem' }}>
-            {navTargets?.nextTopic && (
-              <button
-                onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', color: '#34d399', fontWeight: 900, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
-              >
-                <PlayCircle size={16} /> Next Topic ▶
-              </button>
-            )}
-
-            {navTargets?.nextLesson && (
-              <button
-                onClick={() => onNavigateToTarget(navTargets.nextLesson)}
-                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38bdf8', fontWeight: 900, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
-              >
-                <FastForward size={16} /> Next Lesson ▶▶
-              </button>
-            )}
-
-            {navTargets?.nextUnit && (
-              <button
-                onClick={() => onNavigateToTarget(navTargets.nextUnit)}
-                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(192, 132, 252, 0.15)', border: '1px solid rgba(192, 132, 252, 0.4)', color: '#c084fc', fontWeight: 800, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
-              >
-                <ChevronsRight size={16} /> Next Unit ⏭
-              </button>
-            )}
-
-            {navTargets?.nextChapter && (
-              <button
-                onClick={() => onNavigateToTarget(navTargets.nextChapter)}
-                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.4)', color: '#fb923c', fontWeight: 900, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
-              >
-                <Flag size={16} /> Next Chapter 🏁
-              </button>
-            )}
-          </div>
-        </div>
-
-        <button
-          onClick={() => onComplete(earnedXp)}
-          style={{
-            width: '100%',
-            padding: '0.75rem 1.5rem',
-            borderRadius: 14,
-            background: 'rgba(255,255,255,0.06)',
-            color: '#cbd5e1',
-            border: '1px solid rgba(255,255,255,0.1)',
-            fontWeight: 800,
-            fontSize: '0.88rem',
-            cursor: 'pointer'
-          }}
-        >
-          Return to Syllabus Directory
-        </button>
-      </motion.div>
+        </motion.div>
+      </div>
     );
   }
 
@@ -281,7 +282,16 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
   const showFixedControls = unitStep === 'briefing' || unitStep === 'explore' || unitStep === 'learn' || unitStep === 'recall' || (unitStep === 'check' && isQuizAnswered);
 
   return (
-    <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', paddingBottom: '140px' }}>
+    <div style={{
+      maxWidth: 800,
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: 'calc(100vh - 160px)',
+      position: 'relative',
+      paddingBottom: '130px',
+      width: '100%'
+    }}>
       
       {/* Floating XP Animation Banner */}
       <AnimatePresence>
@@ -308,7 +318,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
       </AnimatePresence>
 
       {/* Clean Top Navigation Bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.2rem 0.25rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.2rem 0.25rem', width: '100%', marginBottom: '0.75rem' }}>
         <button
           onClick={onBack}
           style={{
@@ -355,212 +365,222 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
         </div>
       </div>
 
-      {/* SINGLE UNIFIED ANIMATE PRESENCE CONTAINER FOR ZERO TRANSITION FREEZE */}
-      <AnimatePresence mode="wait">
-        
-        {/* STEP 1: MISSION BRIEFING (Orient) */}
-        {unitStep === 'briefing' && (
-          <motion.div key="step-briefing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.92)', border: '1.5px solid rgba(16,185,129,0.3)', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-              <div style={{ width: 42, height: 42, borderRadius: 12, background: 'linear-gradient(135deg, #10b981, #34d399)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000' }}>
-                <Target size={22} />
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                  {chapterName} ➔ {lessonName}
-                </span>
-                <h2 style={{ margin: '0.1rem 0 0', fontSize: '1.6rem', fontWeight: 900, color: '#fff' }}>
-                  {topicName}
-                </h2>
-              </div>
-            </div>
-
-            <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', borderRadius: 14, padding: '1.25rem' }}>
-              <p style={{ margin: 0, fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6 }}>
-                In this session, you will explore <strong>{topicName}</strong>, understand its geographical landforms, and master key facts required for ADRE competitive examinations.
-              </p>
-            </div>
-          </motion.div>
-        )}
-
-        {/* STEP 2: MAP EXPLORATION (Explore) */}
-        {unitStep === 'explore' && (
-          <motion.div key="step-explore" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ background: 'rgba(56,189,248,0.1)', borderLeft: '4px solid #38bdf8', padding: '0.85rem 1.1rem', borderRadius: '0 12px 12px 0' }}>
-              <strong style={{ color: '#38bdf8', fontSize: '0.88rem' }}>
-                Explore Map Model: {topicName}
-              </strong>
-              <p style={{ margin: '0.2rem 0 0', fontSize: '0.88rem', color: '#e2e8f0', lineHeight: 1.5 }}>
-                Explore features and boundaries on the map below before learning individual concepts.
-              </p>
-            </div>
-
-            {/* Visualizer Canvas */}
-            <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <SectionVisualizer sectionName={topicName} facts={conceptUnits.map(u => u.Fact)} />
-            </div>
-          </motion.div>
-        )}
-
-        {/* STEP 3: CONCEPT LOOP - LEARN (Learn - Clean Fact Display) */}
-        {unitStep === 'learn' && (
-          <motion.div key={`step-learn-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 16, padding: '1.5rem' }}>
-              <p style={{ margin: 0, fontSize: '1.15rem', color: '#e2e8f0', lineHeight: 1.6, fontWeight: 500 }}>
-                {currentConcept.Fact}
-              </p>
-            </div>
-          </motion.div>
-        )}
-
-        {/* STEP 3: CONCEPT LOOP - RECALL (Flashcard) */}
-        {unitStep === 'recall' && (
-          <motion.div key={`step-recall-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            {/* Flip Canvas Card */}
-            <div style={{ perspective: '1000px', minHeight: '280px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
-              <motion.div
-                style={{ width: '100%', minHeight: '280px', position: 'relative', transformStyle: 'preserve-3d' }}
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                {/* Front Side */}
-                <div className="glass-panel" style={{
-                  position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                  padding: '2rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)', borderRadius: 16
-                }}>
-                  <span style={{ fontSize: '0.75rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '1rem' }}>
-                    TAP CARD TO FLIP
+      {/* CENTERED CARD CONTAINER: Both Vertically & Horizontally */}
+      <div style={{
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justify: 'center',
+        width: '100%'
+      }}>
+        <AnimatePresence mode="wait">
+          
+          {/* STEP 1: MISSION BRIEFING (Orient) */}
+          {unitStep === 'briefing' && (
+            <motion.div key="step-briefing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem 1.5rem', borderRadius: 20, background: 'rgba(15,23,42,0.92)', border: '1.5px solid rgba(16,185,129,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <div style={{ width: 42, height: 42, borderRadius: 12, background: 'linear-gradient(135deg, #10b981, #34d399)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', flexShrink: 0 }}>
+                  <Target size={22} />
+                </div>
+                <div>
+                  <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                    {chapterName} ➔ {lessonName}
                   </span>
-                  <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
-                    {currentConcept.Flashcard?.Front || `What is a key feature of ${topicName}?`}
+                  <h2 style={{ margin: '0.1rem 0 0', fontSize: '1.5rem', fontWeight: 900, color: '#fff', lineHeight: 1.3 }}>
+                    {topicName}
                   </h2>
                 </div>
+              </div>
 
-                {/* Back Side */}
-                <div className="glass-panel" style={{
-                  position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
-                  transform: 'rotateY(180deg)',
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                  padding: '2rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981', borderRadius: 16
-                }}>
-                  <span style={{ fontSize: '0.75rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.75rem' }}>
-                    KEY RECALL ANSWER
-                  </span>
-                  <h2 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
-                    {currentConcept.Flashcard?.Back || currentConcept.Fact}
-                  </h2>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-
-        {/* STEP 3: CONCEPT LOOP - CHECK (MCQ Quiz) */}
-        {unitStep === 'check' && (
-          <motion.div key={`step-check-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 800, lineHeight: 1.5 }}>
-              {currentConcept.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
-            </h3>
-
-            {/* Options List */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-              {Object.entries(currentConcept.Quiz?.Options || {}).map(([key, label]) => {
-                const isSelected = selectedOption === key;
-                const isCorrect = key === currentConcept.Quiz?.CorrectAnswer;
-
-                let btnBg = 'rgba(255,255,255,0.02)';
-                let btnBorder = '1px solid rgba(255,255,255,0.08)';
-                let textColor = '#e2e8f0';
-
-                if (isQuizAnswered) {
-                  if (isCorrect) {
-                    btnBg = 'rgba(16,185,129,0.2)';
-                    btnBorder = '1.5px solid #10b981';
-                    textColor = '#34d399';
-                  } else if (isSelected) {
-                    btnBg = 'rgba(244,63,94,0.2)';
-                    btnBorder = '1.5px solid #f43f5e';
-                    textColor = '#f43f5e';
-                  }
-                }
-
-                return (
-                  <button
-                    key={key}
-                    onClick={() => handleQuizOptionSelect(key)}
-                    style={{
-                      background: btnBg,
-                      border: btnBorder,
-                      color: textColor,
-                      padding: '0.85rem 1.1rem',
-                      borderRadius: 14,
-                      fontSize: '0.9rem',
-                      fontWeight: isSelected ? 800 : 500,
-                      textAlign: 'left',
-                      cursor: isQuizAnswered ? 'default' : 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.75rem'
-                    }}
-                  >
-                    <span style={{
-                      width: 28,
-                      height: 28,
-                      borderRadius: 8,
-                      background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.06)',
-                      color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justify: 'center',
-                      fontWeight: 800,
-                      fontSize: '0.82rem'
-                    }}>
-                      {key}
-                    </span>
-                    <span style={{ flex: 1 }}>{label}</span>
-                    {isQuizAnswered && isCorrect && <Check size={18} color="#34d399" />}
-                    {isQuizAnswered && isSelected && !isCorrect && <X size={18} color="#f43f5e" />}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Explanation Rationale Box */}
-            {isQuizAnswered && (
-              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 14, padding: '1rem' }}>
-                <span style={{ fontSize: '0.72rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
-                  SYLLABUS RATIONALE & EXPLANATION
-                </span>
-                <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', color: '#cbd5e1', lineHeight: 1.5 }}>
-                  {currentConcept.Quiz?.Explanation || `Official Fact: ${currentConcept.Fact}`}
+              <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', borderRadius: 14, padding: '1.25rem' }}>
+                <p style={{ margin: 0, fontSize: '1rem', color: '#e2e8f0', lineHeight: 1.6 }}>
+                  In this session, you will explore <strong>{topicName}</strong>, understand its geographical landforms, and master key facts required for ADRE competitive examinations.
                 </p>
-              </motion.div>
-            )}
-          </motion.div>
-        )}
+              </div>
+            </motion.div>
+          )}
 
-        {/* STEP 4: CONNECT THE DOTS (Match Game Recap) */}
-        {unitStep === 'matching_recap' && (
-          <motion.div key="step-matching" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div>
-              <h2 style={{ margin: 0, fontSize: '1.4rem', color: '#fff', fontWeight: 900 }}>
-                {topicName} Term Matching Recap
-              </h2>
-              <p style={{ color: '#94a3b8', fontSize: '0.88rem', margin: '0.2rem 0 0' }}>
-                Connect terms on the left to definitions on the right to synthesize all concepts into a unified mental model.
-              </p>
-            </div>
+          {/* STEP 2: MAP EXPLORATION (Explore) */}
+          {unitStep === 'explore' && (
+            <motion.div key="step-explore" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.5rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <div style={{ background: 'rgba(56,189,248,0.1)', borderLeft: '4px solid #38bdf8', padding: '0.75rem 1rem', borderRadius: '0 12px 12px 0' }}>
+                <strong style={{ color: '#38bdf8', fontSize: '0.85rem' }}>
+                  Explore Map Model: {topicName}
+                </strong>
+                <p style={{ margin: '0.15rem 0 0', fontSize: '0.85rem', color: '#e2e8f0', lineHeight: 1.4 }}>
+                  Explore features and boundaries on the map below before learning individual concepts.
+                </p>
+              </div>
 
-            <MatchGame
-              isEmbedded={true}
-              data={practiceMatching.length > 0 ? practiceMatching : conceptUnits.map((u, i) => ({ q: `Term ${i + 1}`, a: u.Fact.substring(0, 50) }))}
-              onComplete={handleMatchingComplete}
-            />
-          </motion.div>
-        )}
+              {/* Visualizer Canvas */}
+              <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <SectionVisualizer sectionName={topicName} facts={conceptUnits.map(u => u.Fact)} />
+              </div>
+            </motion.div>
+          )}
 
-      </AnimatePresence>
+          {/* STEP 3: CONCEPT LOOP - LEARN (Learn) */}
+          {unitStep === 'learn' && (
+            <motion.div key={`step-learn-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem 1.5rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
+              <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 16, padding: '1.5rem' }}>
+                <p style={{ margin: 0, fontSize: '1.1rem', color: '#e2e8f0', lineHeight: 1.6, fontWeight: 500 }}>
+                  {currentConcept.Fact}
+                </p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* STEP 3: CONCEPT LOOP - RECALL (Flashcard) */}
+          {unitStep === 'recall' && (
+            <motion.div key={`step-recall-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
+              {/* Flip Canvas Card */}
+              <div style={{ perspective: '1000px', minHeight: '260px', cursor: 'pointer', width: '100%' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
+                <motion.div
+                  style={{ width: '100%', minHeight: '260px', position: 'relative', transformStyle: 'preserve-3d' }}
+                  animate={{ rotateY: isFlipped ? 180 : 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {/* Front Side */}
+                  <div className="glass-panel" style={{
+                    position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    padding: '1.5rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)', borderRadius: 16
+                  }}>
+                    <span style={{ fontSize: '0.72rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.85rem' }}>
+                      TAP CARD TO FLIP
+                    </span>
+                    <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
+                      {currentConcept.Flashcard?.Front || `What is a key feature of ${topicName}?`}
+                    </h2>
+                  </div>
+
+                  {/* Back Side */}
+                  <div className="glass-panel" style={{
+                    position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                    padding: '1.5rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981', borderRadius: 16
+                  }}>
+                    <span style={{ fontSize: '0.72rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.65rem' }}>
+                      KEY RECALL ANSWER
+                    </span>
+                    <h2 style={{ fontSize: '1.15rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
+                      {currentConcept.Flashcard?.Back || currentConcept.Fact}
+                    </h2>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* STEP 3: CONCEPT LOOP - CHECK (MCQ Quiz) */}
+          {unitStep === 'check' && (
+            <motion.div key={`step-check-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.1rem', width: '100%' }}>
+              <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#fff', fontWeight: 800, lineHeight: 1.5 }}>
+                {currentConcept.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
+              </h3>
+
+              {/* Options List */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+                {Object.entries(currentConcept.Quiz?.Options || {}).map(([key, label]) => {
+                  const isSelected = selectedOption === key;
+                  const isCorrect = key === currentConcept.Quiz?.CorrectAnswer;
+
+                  let btnBg = 'rgba(255,255,255,0.02)';
+                  let btnBorder = '1px solid rgba(255,255,255,0.08)';
+                  let textColor = '#e2e8f0';
+
+                  if (isQuizAnswered) {
+                    if (isCorrect) {
+                      btnBg = 'rgba(16,185,129,0.2)';
+                      btnBorder = '1.5px solid #10b981';
+                      textColor = '#34d399';
+                    } else if (isSelected) {
+                      btnBg = 'rgba(244,63,94,0.2)';
+                      btnBorder = '1.5px solid #f43f5e';
+                      textColor = '#f43f5e';
+                    }
+                  }
+
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => handleQuizOptionSelect(key)}
+                      style={{
+                        background: btnBg,
+                        border: btnBorder,
+                        color: textColor,
+                        padding: '0.75rem 1rem',
+                        borderRadius: 14,
+                        fontSize: '0.88rem',
+                        fontWeight: isSelected ? 800 : 500,
+                        textAlign: 'left',
+                        cursor: isQuizAnswered ? 'default' : 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.65rem'
+                      }}
+                    >
+                      <span style={{
+                        width: 26,
+                        height: 26,
+                        borderRadius: 8,
+                        background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.06)',
+                        color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justify: 'center',
+                        fontWeight: 800,
+                        fontSize: '0.8rem',
+                        flexShrink: 0
+                      }}>
+                        {key}
+                      </span>
+                      <span style={{ flex: 1, lineHeight: 1.4 }}>{label}</span>
+                      {isQuizAnswered && isCorrect && <Check size={17} color="#34d399" />}
+                      {isQuizAnswered && isSelected && !isCorrect && <X size={17} color="#f43f5e" />}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Explanation Rationale Box */}
+              {isQuizAnswered && (
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 14, padding: '0.85rem 1rem' }}>
+                  <span style={{ fontSize: '0.7rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
+                    SYLLABUS RATIONALE & EXPLANATION
+                  </span>
+                  <p style={{ margin: '0.25rem 0 0', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.45 }}>
+                    {currentConcept.Quiz?.Explanation || `Official Fact: ${currentConcept.Fact}`}
+                  </p>
+                </motion.div>
+              )}
+            </motion.div>
+          )}
+
+          {/* STEP 4: CONNECT THE DOTS (Match Game Recap) */}
+          {unitStep === 'matching_recap' && (
+            <motion.div key="step-matching" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.1rem', width: '100%' }}>
+              <div>
+                <h2 style={{ margin: 0, fontSize: '1.3rem', color: '#fff', fontWeight: 900 }}>
+                  {topicName} Term Matching Recap
+                </h2>
+                <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: '0.2rem 0 0' }}>
+                  Connect terms on the left to definitions on the right to synthesize all concepts into a unified mental model.
+                </p>
+              </div>
+
+              <MatchGame
+                isEmbedded={true}
+                data={practiceMatching.length > 0 ? practiceMatching : conceptUnits.map((u, i) => ({ q: `Term ${i + 1}`, a: u.Fact.substring(0, 50) }))}
+                onComplete={handleMatchingComplete}
+              />
+            </motion.div>
+          )}
+
+        </AnimatePresence>
+      </div>
 
       {/* ── FIXED ACTION CONTROLS POSITIONED RIGHT ABOVE THE FOOTER ── */}
       {showFixedControls && (
@@ -570,7 +590,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           left: '50%',
           transform: 'translateX(-50%)',
           width: 'calc(100% - 2rem)',
-          maxWidth: '840px',
+          maxWidth: '800px',
           zIndex: 95
         }}>
           {unitStep === 'recall' && isFlipped ? (
@@ -580,18 +600,18 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 onClick={() => handleFlashcardSelfAssess(false)}
                 style={{
                   flex: 1,
-                  padding: '0.95rem 1rem',
+                  padding: '0.9rem 1rem',
                   borderRadius: 16,
                   background: 'rgba(244,63,94,0.2)',
                   border: '1.5px solid #f43f5e',
                   color: '#f43f5e',
                   fontWeight: 900,
-                  fontSize: '0.95rem',
+                  fontSize: '0.92rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'center',
-                  gap: '0.45rem',
+                  gap: '0.4rem',
                   boxShadow: '0 4px 16px rgba(244,63,94,0.3)'
                 }}
               >
@@ -602,18 +622,18 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 onClick={() => handleFlashcardSelfAssess(true)}
                 style={{
                   flex: 1,
-                  padding: '0.95rem 1rem',
+                  padding: '0.9rem 1rem',
                   borderRadius: 16,
                   background: 'linear-gradient(135deg, #10b981, #34d399)',
                   border: '2px solid #6ee7b7',
                   color: '#000',
                   fontWeight: 900,
-                  fontSize: '0.95rem',
+                  fontSize: '0.92rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'center',
-                  gap: '0.45rem',
+                  gap: '0.4rem',
                   boxShadow: '0 8px 24px rgba(16,185,129,0.45)'
                 }}
               >
@@ -626,7 +646,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               onClick={handleNextClick}
               style={{
                 width: '100%',
-                padding: '0.95rem 1.6rem',
+                padding: '0.9rem 1.5rem',
                 borderRadius: 16,
                 background: 'linear-gradient(135deg, #10b981, #34d399)',
                 color: '#000',
@@ -638,7 +658,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 display: 'flex',
                 alignItems: 'center',
                 justify: 'center',
-                gap: '0.55rem',
+                gap: '0.5rem',
                 boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)'
               }}
             >
