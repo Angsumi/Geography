@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, BookOpen, Layers, HelpCircle, Trophy, Check, X, Award, Sparkles, PlayCircle, FastForward, ChevronsRight, Flag, ThumbsUp, ThumbsDown, BookMarked, Map, Compass, Target, Clock, ExternalLink, Eye, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Layers, HelpCircle, Trophy, Check, X, Award, Sparkles, PlayCircle, SkipForward, FastForward, ChevronsRight, Flag, ThumbsUp, ThumbsDown, BookMarked, Map, Compass, Target, Clock, ExternalLink, Eye, ChevronRight } from 'lucide-react';
 import MatchGame from './MatchGame';
 import { SectionVisualizer } from './SectionVisualizer';
 import { playCorrect, playWrong, playComplete, playFlip } from '../hooks/useSound';
