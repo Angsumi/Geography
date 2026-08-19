@@ -452,7 +452,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
             </div>
 
             {/* Self-Assessment Buttons - REVEALED ONLY AFTER FLIPPING */}
-            {isFlipped ? (
+            {isFlipped && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', gap: '0.75rem' }}>
                 <button
                   onClick={() => handleFlashcardSelfAssess(false)}
@@ -497,10 +497,6 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                   <ThumbsUp size={17} /> I Knew It (+10 XP)
                 </button>
               </motion.div>
-            ) : (
-              <div style={{ textAlign: 'center', padding: '0.5rem', fontSize: '0.78rem', color: '#94a3b8', fontStyle: 'italic' }}>
-                👆 Tap the card above to flip and reveal recall self-assessment options
-              </div>
             )}
           </motion.div>
         )}
