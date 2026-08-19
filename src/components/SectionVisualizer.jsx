@@ -1,18 +1,8 @@
 import React from 'react';
-import indiaViz from '../data/india/Viz.json';
-import assamViz from '../data/assam/Viz.json';
-import neViz from '../data/northeast/Viz.json';
+import vizData from '../data/unifiedViz.json';
 import { isNameMatch } from '../utils/stringMatcher';
 import { Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const vizData = {
-  SectionVisualisations: [
-    ...(indiaViz.SectionVisualisations || []),
-    ...(assamViz.SectionVisualisations || []),
-    ...(neViz.SectionVisualisations || [])
-  ]
-};
 
 import { VerticalDivisionsVisual } from './visualizers/VerticalDivisionsVisual';
 import { SubdivisionsWestEastVisual } from './visualizers/SubdivisionsWestEastVisual';

@@ -1,0 +1,152 @@
+{
+  "SectionVisualisations": [
+    {
+      "SectionName": "Characteristics",
+      "VisualisationIdea": "CSS Elongated Horizontal Flexbox container depicting the narrow Brahmaputra and Barak valleys, with animated blue wave overlays for flood susceptibility."
+    },
+    {
+      "SectionName": "North Bank Tributaries",
+      "VisualisationIdea": "Top-Down CSS Tree Diagram merging into a thick horizontal central line (the Brahmaputra)."
+    },
+    {
+      "SectionName": "South Bank Tributaries",
+      "VisualisationIdea": "Bottom-Up CSS Tree Diagram merging into a thick horizontal central line."
+    },
+    {
+      "SectionName": "North and South Bank Tributaries",
+      "VisualisationIdea": "Interactive CSS Accordion lists styled as opposing riverbanks feeding into a central channel."
+    },
+    {
+      "SectionName": "Hotspots & Heritage Sites",
+      "VisualisationIdea": "CSS 3D Flip Cards: front shows the WNHS logo or hotspot name, back displays the unique rhinos/langur facts."
+    },
+    {
+      "SectionName": "Biosphere Reserves",
+      "VisualisationIdea": "Two distinct CSS rounded floating containers (Manas and Dibru-Saikhowa) with a subtle riverine background texture."
+    },
+    {
+      "SectionName": "Designated Parks",
+      "VisualisationIdea": "Interactive CSS Timeline (1974 to 2025) highlighting the addition of National Parks along a horizontal scrollbar."
+    },
+    {
+      "SectionName": "Wildlife Sanctuaries (WS)",
+      "VisualisationIdea": "CSS Node Map with hover-revealed expanding tooltips identifying the biggest (Marat Longri) and oldest (Garampani)."
+    },
+    {
+      "SectionName": "Bird Sanctuaries (BS) & Beels",
+      "VisualisationIdea": "CSS Wave Animation containers holding water body stats, with a distinct Ramsar Site badge for Deepor Beel."
+    },
+    {
+      "SectionName": "Tiger Reserves (TR)",
+      "VisualisationIdea": "CSS Striped Background Pattern (black and orange linear gradients) masking the 4 Tiger Reserve name blocks."
+    },
+    {
+      "SectionName": "Elephant Reserves (ER)",
+      "VisualisationIdea": "CSS Proportion Circles (bubble chart) showing the massive size of Kaziranga-Karbi Anglong compared to the other 4 reserves."
+    },
+    {
+      "SectionName": "National Highways (NH)",
+      "VisualisationIdea": "Interactive roadmap highlighting key national highways (NH-27) across Assam."
+    },
+    {
+      "SectionName": "Railways",
+      "VisualisationIdea": "Schematic route map showing Northeast Frontier Railway (NFR) routes and divisions."
+    },
+    {
+      "SectionName": "National Waterways (NW)",
+      "VisualisationIdea": "River shipping lane diagram tracking National Waterway 2 (NW-2) along the Brahmaputra River from Sadiya to Dhubri."
+    },
+    {
+      "SectionName": "Subdivisions (West to East)",
+      "VisualisationIdea": "🔄 Interactive Syntaxial Bends Diagram using CSS SVG paths with animated drawing effects (stroke-dashoffset) to show the horizontal span."
+    },
+    {
+      "SectionName": "Vertical Divisions (South to North)",
+      "VisualisationIdea": "🏔️ CSS Stacked Elevation Layers using overlapping divs with varying z-indexes and heights to represent Himadri, Himachal, and Shivalik."
+    },
+    {
+      "SectionName": "Formation & Soil",
+      "VisualisationIdea": "CSS Layered Soil Profile Box using linear gradients to show the rich alluvial soil layers formed by the river systems."
+    },
+    {
+      "SectionName": "Regional Divisions",
+      "VisualisationIdea": "Interactive HTML/CSS Map with three distinct hoverable zones (Punjab, Ganga, Brahmaputra plains) that expand on hover."
+    },
+    {
+      "SectionName": "Central Highlands (Midlands)",
+      "VisualisationIdea": "CSS Grid Layout displaying distinct plateau tiles (Malwa, Marwar, Bundelkhand, etc.) that elevate (box-shadow/transform) on hover."
+    },
+    {
+      "SectionName": "Deccan Plateau",
+      "VisualisationIdea": "CSS Triangle shape created using `clip-path: polygon()` with a dark textured background to represent the black soil Deccan Trap."
+    },
+    {
+      "SectionName": "Mountain Ranges & Peaks",
+      "VisualisationIdea": "CSS/SVG V-Shape Diagram showing the Western and Eastern Ghats converging at a central node labeled Nilgiri, with a pulsing CSS marker for Anaimudi."
+    },
+    {
+      "SectionName": "The Indian Desert (Thar Desert)",
+      "VisualisationIdea": "CSS Animated Heat Waves and Sand Dunes created using overlapping radial gradients and keyframe animations for an arid effect."
+    },
+    {
+      "SectionName": "Western Coastal Plains",
+      "VisualisationIdea": "Narrow CSS Flex Column adjacent to a blue gradient, with sticky scrolling to explore Konkan, Kannad, and Malabar."
+    },
+    {
+      "SectionName": "Eastern Coastal Plains",
+      "VisualisationIdea": "Broader CSS Flex Column featuring expanding horizontal border-radiuses to visually represent the large river deltas."
+    },
+    {
+      "SectionName": "Major Island Groups",
+      "VisualisationIdea": "CSS Floating Bubbles scattered on a blue background container, clustered into a large group (Andaman) and a small coral ring group (Lakshadweep)."
+    },
+    {
+      "SectionName": "The Indus System",
+      "VisualisationIdea": "SVG Branching Path Diagram flowing top-to-left, with tributaries lighting up consecutively using CSS animations."
+    },
+    {
+      "SectionName": "The Ganga System",
+      "VisualisationIdea": "Animated SVG River Flow (stroke-dasharray) starting from a single point and widening as major tributaries (Yamuna, Kosi) join in."
+    },
+    {
+      "SectionName": "The Brahmaputra System",
+      "VisualisationIdea": "CSS U-Turn Animation path reflecting the river's entry into Arunachal Pradesh and its massive spreading network in Assam."
+    },
+    {
+      "SectionName": "West-Flowing Rivers",
+      "VisualisationIdea": "CSS Horizontal Scroll/Flow right-to-left, ending abruptly in a straight edge to represent estuaries instead of deltas."
+    },
+    {
+      "SectionName": "East-Flowing Rivers",
+      "VisualisationIdea": "CSS Horizontal Flow left-to-right that fans out into multiple small branches using CSS Grid/Flex to represent fertile deltas."
+    },
+    {
+      "SectionName": "Overview & Indian Hotspots",
+      "VisualisationIdea": "HTML/CSS Radar Map with 4 pulsing animated ring markers (using `@keyframes`) representing the 4 biodiversity hotspots."
+    },
+    {
+      "SectionName": "Key Indian Sites",
+      "VisualisationIdea": "CSS Masonry Gallery Layout showcasing image placeholder cards for Kaziranga, Manas, and Sundarbans that flip to reveal facts."
+    },
+    {
+      "SectionName": "Network & Recognition",
+      "VisualisationIdea": "CSS Concentric Circles representing the Core, Buffer, and Transition zones of a Biosphere Reserve, with tooltips for Nilgiri and Kachchh."
+    },
+    {
+      "SectionName": "Administration & Symbols",
+      "VisualisationIdea": "CSS Grid displaying 3 Interactive Flip Cards for each state representing the Animal, Bird, and Flower symbols."
+    },
+    {
+      "SectionName": "Ecology & Topography",
+      "VisualisationIdea": "CSS Parallax Scrolling Section for each state, highlighting the highest peak elevation in the background and fauna in the foreground."
+    },
+    {
+      "SectionName": "Kaziranga & Manas National Parks",
+      "VisualisationIdea": "🏆 UNESCO World Natural Heritage Badge showcasing rhino & golden langur conservation icons."
+    },
+    {
+      "SectionName": "Key Northeast Reserves",
+      "VisualisationIdea": "🌐 UNESCO Biosphere Reserve Concentric Circles (Core, Buffer, Transition) for Nokrek and Dibru-Saikhowa."
+    }
+  ]
+}
