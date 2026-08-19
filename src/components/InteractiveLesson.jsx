@@ -367,7 +367,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
       {/* SINGLE UNIFIED ANIMATE PRESENCE CONTAINER FOR ZERO TRANSITION FREEZE */}
       <AnimatePresence mode="wait">
         
-        {/* STEP 1: MISSION BRIEFING (Orient) */}
+        {/* STEP 1: MISSION BRIEFING (Orient - Clean Minimalist View) */}
         {unitStep === 'briefing' && (
           <motion.div key="step-briefing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.92)', border: '1.5px solid rgba(16,185,129,0.3)', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
@@ -388,33 +388,6 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               <p style={{ margin: 0, fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6 }}>
                 In this session, you will explore <strong>{topicName}</strong>, understand its geographical landforms, and master key facts required for ADRE competitive examinations.
               </p>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.85rem' }}>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, padding: '0.85rem', textAlign: 'center' }}>
-                <Clock size={18} color="#34d399" style={{ margin: '0 auto 0.25rem' }} />
-                <span style={{ fontSize: '0.7rem', color: '#94a3b8', display: 'block' }}>ESTIMATED TIME</span>
-                <strong style={{ fontSize: '0.95rem', color: '#fff' }}>~5 Minutes</strong>
-              </div>
-
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, padding: '0.85rem', textAlign: 'center' }}>
-                <Layers size={18} color="#38bdf8" style={{ margin: '0 auto 0.25rem' }} />
-                <span style={{ fontSize: '0.7rem', color: '#94a3b8', display: 'block' }}>CONCEPTS</span>
-                <strong style={{ fontSize: '0.95rem', color: '#fff' }}>{conceptUnits.length} Units</strong>
-              </div>
-
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, padding: '0.85rem', textAlign: 'center' }}>
-                <Trophy size={18} color="#c084fc" style={{ margin: '0 auto 0.25rem' }} />
-                <span style={{ fontSize: '0.7rem', color: '#94a3b8', display: 'block' }}>REWARD</span>
-                <strong style={{ fontSize: '0.95rem', color: '#fff' }}>+75 XP</strong>
-              </div>
-            </div>
-
-            <div style={{ background: 'rgba(16,185,129,0.08)', border: '1px dashed rgba(16,185,129,0.3)', borderRadius: 14, padding: '1rem' }}>
-              <strong style={{ color: '#34d399', fontSize: '0.85rem', display: 'block', marginBottom: '0.2rem' }}>🎯 Your Goal:</strong>
-              <span style={{ fontSize: '0.88rem', color: '#cbd5e1', lineHeight: 1.5 }}>
-                By the end of this session, you will be able to identify major geographical features, answer exam MCQs accurately, and connect related terms.
-              </span>
             </div>
           </motion.div>
         )}
