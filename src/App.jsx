@@ -438,6 +438,7 @@ export default function App() {
         ) : viewMode === 'home' ? (
           <HomePage
             syllabusHierarchy={syllabusHierarchy}
+            completedTopics={completedTopics}
             activeChapter={activeChapter}
             onSelectChapter={(ch) => {
               setActiveChapter(ch);

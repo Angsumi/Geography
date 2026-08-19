@@ -5,6 +5,7 @@ import { GamusaIcon } from './icons/GamusaIcon';
 
 export function HomePage({
   syllabusHierarchy,
+  completedTopics = {},
   activeChapter = 'ASSAM',
   onSelectChapter,
   onStartLessonPlayer,
@@ -23,42 +24,72 @@ export function HomePage({
   const [activeRiver, setActiveRiver] = useState('subansiri');
   const [selectedQuizOption, setSelectedQuizOption] = useState(null);
 
-  // Recommended starting lesson details
-  const firstLessonName = 'Brahmaputra Valley';
+  // Compute Next Recommended Uncompleted Lesson dynamically
+  const getNextRecommendedLesson = () => {
+    const safeCompleted = completedTopics && typeof completedTopics === 'object' ? completedTopics : {};
+    let firstUncompleted = null;
+    let firstLessonEver = null;
 
-  const riverData = {
-    subansiri: {
-      name: 'Subansiri River',
-      type: 'North Bank Tributary',
-      fact: 'Largest tributary of the Brahmaputra; originates in Tibet and enters Assam through Lakhimpur district.',
-      badge: 'Length: 442 km'
-    },
-    manas: {
-      name: 'Manas River',
-      type: 'North Bank Tributary',
-      fact: 'Transboundary river flowing through Manas National Park; Beki and Aie act as major sub-tributaries.',
-      badge: 'UNESCO Heritage Zone'
-    },
-    jiabharali: {
-      name: 'Jia Bharali (Kameng)',
-      type: 'North Bank Tributary',
-      fact: 'Originates in Arunachal Pradesh, known for golden mahseer and turbulent flow entering Sonitpur.',
-      badge: 'Fast Flow'
-    },
-    kopili: {
-      name: 'Kopili River',
-      type: 'South Bank Tributary',
-      fact: 'Divides the Karbi Plateau into the Western Karbi Hills and Eastern Karbi Anglong.',
-      badge: 'Geographical Boundary'
+    for (const ch of (syllabusHierarchy || [])) {
+      for (const u of (ch.units || [])) {
+        for (const les of (u.lessons || [])) {
+          if (!firstLessonEver) {
+            firstLessonEver = {
+              lessonName: les.lessonName,
+              unitName: u.unitName,
+              chapterName: ch.chapterName,
+              topics: les.topics || []
+            };
+          }
+
+          const topics = les.topics || [];
+          const hasUncompletedTopic = topics.length === 0 || topics.some(t => t && t.topicName && !safeCompleted[t.topicName]);
+          if (hasUncompletedTopic && !firstUncompleted) {
+            firstUncompleted = {
+              lessonName: les.lessonName,
+              unitName: u.unitName,
+              chapterName: ch.chapterName,
+              topics
+            };
+          }
+        }
+      }
     }
+
+    const isAnyCompleted = Object.keys(safeCompleted).length > 0;
+
+    if (firstUncompleted) {
+      const topSummary = (firstUncompleted.topics || []).map(t => t.topicName).filter(Boolean).slice(0, 3).join(', ');
+      return {
+        tag: isAnyCompleted ? 'CONTINUE YOUR JOURNEY' : 'RECOMMENDED STARTING POINT',
+        lessonName: firstUncompleted.lessonName,
+        unitName: firstUncompleted.unitName,
+        chapterName: firstUncompleted.chapterName,
+        topicsSummary: topSummary ? `Focus: ${topSummary}` : 'Explore core geographical concepts & micro-quizzes.'
+      };
+    }
+
+    // Fallback if all topics completed
+    if (firstLessonEver) {
+      return {
+        tag: 'ALL TOPICS MASTERED 🎉',
+        lessonName: firstLessonEver.lessonName,
+        unitName: firstLessonEver.unitName,
+        chapterName: firstLessonEver.chapterName,
+        topicsSummary: 'Review your mastered curriculum topics anytime.'
+      };
+    }
+
+    return {
+      tag: 'RECOMMENDED STARTING POINT',
+      lessonName: 'Brahmaputra Valley',
+      unitName: 'Physiographic Divisions & Conservation',
+      chapterName: 'ASSAM',
+      topicsSummary: 'Physiography, north/south bank tributaries, and floodplains.'
+    };
   };
 
-  const districtData = [
-    { name: 'Majuli Island', tag: 'River Island', info: 'World’s largest inhabited river island formed by Brahmaputra & Subansiri.' },
-    { name: 'Kaziranga', tag: 'National Park', info: 'Home to 2/3rd of the world’s Great One-Horned Rhinoceros population.' },
-    { name: 'Haflong', tag: 'Hill Station', info: 'Assam’s only hill station, located in Dima Hasao district.' }
-  ];
-  const [activeDistrict, setActiveDistrict] = useState(0);
+  const nextRec = getNextRecommendedLesson();
 
   const handleExploreClick = () => {
     if (onExploreTopics) {
@@ -137,10 +168,10 @@ export function HomePage({
 
         {/* 3 Action CTAs Mobile First Centered Group */}
         <div className="hero-cta-group">
-          {/* 1. Start Learning -> Enters Player */}
+          {/* 1. Start Learning -> Enters Player with Next Recommended Lesson */}
           <button
             className="btn btn-primary"
-            onClick={() => onStartLessonPlayer(firstLessonName)}
+            onClick={() => onStartLessonPlayer(nextRec.lessonName)}
             style={{
               padding: '0.85rem 1.5rem',
               fontSize: '0.95rem',
@@ -149,7 +180,7 @@ export function HomePage({
             }}
           >
             <PlayCircle size={18} />
-            <span>Start Learning</span>
+            <span>{nextRec.tag.includes('CONTINUE') ? 'Continue Learning' : 'Start Learning'}</span>
           </button>
 
           {/* 2. Explore Topics -> Enters Student Curriculum Tree */}
@@ -167,7 +198,7 @@ export function HomePage({
             <span>Explore Topics</span>
           </button>
 
-          {/* 3. Map Viwer -> Enters Map Viewer Page */}
+          {/* 3. Map Viewer -> Enters Map Viewer Page */}
           <button
             className="btn btn-subtle"
             onClick={onExploreMap}
@@ -179,11 +210,12 @@ export function HomePage({
             }}
           >
             <Compass size={18} />
-            <span>Map Viwer</span>
+            <span>Map Viewer</span>
           </button>
         </div>
       </section>
-      {/* ── 3. MINIMAL CORE JOURNEY: Learn → Explore → Practice → Master ── */}
+
+      {/* ── 2. MINIMAL CORE JOURNEY: Learn → Explore → Practice → Master ── */}
       <section style={{ width: '100%', marginTop: '0.5rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
           <span style={{ fontSize: '0.72rem', fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
@@ -272,13 +304,13 @@ export function HomePage({
         </div>
       </section>
 
-      {/* ── 4. RECOMMENDED STARTING LESSON CARD ── */}
+      {/* ── 3. DYNAMIC RECOMMENDED / RESUME LESSON CARD ── */}
       <section style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
         <div
           className="responsive-card-center"
           style={{
-            background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.8))',
-            border: '1.5px solid rgba(16, 185, 129, 0.3)',
+            background: 'linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(15, 23, 42, 0.85))',
+            border: '1.5px solid rgba(45, 212, 191, 0.3)',
             borderRadius: '20px',
             padding: '1.25rem 1.5rem',
             display: 'flex',
@@ -291,37 +323,37 @@ export function HomePage({
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
-            <span style={{ fontSize: '0.68rem', fontWeight: 800, color: '#fb923c', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              RECOMMENDED STARTING POINT
+            <span style={{ fontSize: '0.68rem', fontWeight: 800, color: '#2dd4bf', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              {nextRec.tag}
             </span>
             <h3 style={{ margin: '0.2rem 0 0.1rem', fontSize: '1.15rem', color: '#ffffff', fontWeight: 900, textAlign: 'center' }}>
-              Lesson 1: Brahmaputra Valley
+              {nextRec.chapterName} • {nextRec.lessonName}
             </h3>
             <p style={{ margin: 0, fontSize: '0.82rem', color: '#cbd5e1', textAlign: 'center' }}>
-              Physiography, north/south bank tributaries, and floodplains.
+              {nextRec.topicsSummary}
             </p>
           </div>
 
           <button
-            onClick={() => onStartLessonPlayer(firstLessonName)}
+            onClick={() => onStartLessonPlayer(nextRec.lessonName)}
             style={{
-              background: 'linear-gradient(135deg, #10b981, #34d399)',
-              color: '#061610',
-              border: 'none',
+              background: 'linear-gradient(135deg, #0d9488, #0f766e)',
+              color: '#f0fdf4',
+              border: '1px solid rgba(45, 212, 191, 0.35)',
               padding: '0.65rem 1.25rem',
-              borderRadius: '12px',
+              borderRadius: '100px',
               fontSize: '0.85rem',
-              fontWeight: 900,
+              fontWeight: 800,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justify: 'center',
               gap: '0.4rem',
-              boxShadow: '0 4px 14px rgba(16, 185, 129, 0.35)',
+              boxShadow: '0 4px 14px rgba(13, 148, 136, 0.35)',
               margin: '0 auto'
             }}
           >
-            <span>Start Now</span>
+            <span>{nextRec.tag.includes('CONTINUE') ? 'Continue Learning ▶' : 'Start Now'}</span>
             <ChevronRight size={16} />
           </button>
         </div>
