@@ -156,7 +156,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
   };
 
   /* ─────────────────────────────────────────────────────────────
-     PHASE: COMPLETED SCORECARD (Reflect) - Calm Zen Teal Style
+     PHASE: COMPLETED SCORECARD (Reflect)
      ───────────────────────────────────────────────────────────── */
   if (unitStep === 'completed') {
     return (
@@ -192,22 +192,22 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               onClick={handleRelearnTopic}
               style={{
                 width: '100%',
-                padding: '0.95rem 1.5rem',
-                borderRadius: 16,
+                padding: '0.85rem 1.4rem',
+                borderRadius: 100,
                 background: 'linear-gradient(135deg, #0d9488, #0f766e)',
                 color: '#f0fdf4',
                 border: '1px solid rgba(45, 212, 191, 0.35)',
                 fontWeight: 800,
-                fontSize: '1rem',
+                fontSize: '0.95rem',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justify: 'center',
-                gap: '0.6rem',
+                gap: '0.55rem',
                 boxShadow: '0 6px 20px rgba(13, 148, 136, 0.25)'
               }}
             >
-              <BookMarked size={20} /> 💡 Learn This (Re-Play Topic)
+              <BookMarked size={19} /> 💡 Learn This (Re-Play Topic)
             </button>
           </div>
 
@@ -288,7 +288,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
       flexDirection: 'column',
       minHeight: 'calc(100vh - 160px)',
       position: 'relative',
-      paddingBottom: '130px',
+      paddingBottom: '150px',
       width: '100%'
     }}>
       
@@ -472,14 +472,14 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
             </motion.div>
           )}
 
-          {/* STEP 3: CONCEPT LOOP - CHECK (MCQ Quiz - Soft Zen Teal) */}
+          {/* STEP 3: CONCEPT LOOP - CHECK (MCQ Quiz) */}
           {unitStep === 'check' && (
             <motion.div key={`step-check-${conceptIndex}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(20, 30, 45, 0.88)', border: '1px solid rgba(45, 212, 191, 0.15)', boxShadow: '0 12px 36px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '1.1rem', width: '100%' }}>
               <h3 style={{ margin: 0, fontSize: '1.12rem', color: '#f0fdf4', fontWeight: 700, lineHeight: 1.5 }}>
                 {currentConcept.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
               </h3>
 
-              {/* Options List - Soft Zen Teal & Warm Sand */}
+              {/* Options List */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {Object.entries(currentConcept.Quiz?.Options || {}).map(([key, label]) => {
                   const isSelected = selectedOption === key;
@@ -580,83 +580,84 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
         </AnimatePresence>
       </div>
 
-      {/* ── FIXED ACTION CONTROLS POSITIONED RIGHT ABOVE THE FOOTER ── */}
+      {/* ── FIXED ACTION CONTROLS POSITIONED HIGHER ABOVE THE FOOTER (bottom: 64px) ── */}
       {showFixedControls && (
         <div style={{
           position: 'fixed',
-          bottom: '54px',
+          bottom: '64px',
           left: '50%',
           transform: 'translateX(-50%)',
-          width: 'calc(100% - 2rem)',
-          maxWidth: '760px',
+          width: 'calc(100% - 2.5rem)',
+          maxWidth: '720px',
           zIndex: 95
         }}>
           {unitStep === 'recall' && isFlipped ? (
-            /* When Flashcard is Flipped -> Render Self-Assessment Buttons (Soft Sand & Zen Teal) */
-            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', gap: '0.75rem', width: '100%' }}>
+            /* When Flashcard is Flipped -> Render Smaller Rounded Pill Self-Assessment Buttons */
+            <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', gap: '0.65rem', width: '100%' }}>
               <button
                 onClick={() => handleFlashcardSelfAssess(false)}
                 style={{
                   flex: 1,
-                  padding: '0.9rem 1rem',
-                  borderRadius: 16,
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: 100,
                   background: 'rgba(251, 191, 36, 0.12)',
-                  border: '1px solid rgba(251, 191, 36, 0.3)',
+                  border: '1px solid rgba(251, 191, 36, 0.35)',
                   color: '#fde68a',
-                  fontWeight: 700,
-                  fontSize: '0.92rem',
+                  fontWeight: 800,
+                  fontSize: '0.9rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'center',
-                  gap: '0.4rem'
+                  gap: '0.4rem',
+                  boxShadow: '0 4px 14px rgba(0, 0, 0, 0.25)'
                 }}
               >
-                <ThumbsDown size={17} /> I Didn't Know
+                <ThumbsDown size={16} /> I Didn't Know
               </button>
 
               <button
                 onClick={() => handleFlashcardSelfAssess(true)}
                 style={{
                   flex: 1,
-                  padding: '0.9rem 1rem',
-                  borderRadius: 16,
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: 100,
                   background: 'linear-gradient(135deg, #0d9488, #0f766e)',
-                  border: '1px solid rgba(45, 212, 191, 0.35)',
+                  border: '1px solid rgba(45, 212, 191, 0.4)',
                   color: '#f0fdf4',
                   fontWeight: 800,
-                  fontSize: '0.92rem',
+                  fontSize: '0.9rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'center',
                   gap: '0.4rem',
-                  boxShadow: '0 6px 20px rgba(13, 148, 136, 0.25)'
+                  boxShadow: '0 4px 18px rgba(13, 148, 136, 0.3)'
                 }}
               >
-                <ThumbsUp size={17} /> I Knew It (+10 XP)
+                <ThumbsUp size={16} /> I Knew It (+10 XP)
               </button>
             </motion.div>
           ) : (
-            /* Soothing Soft Zen Teal Fixed Next Button */
+            /* Smaller Rounded Pill Next Button */
             <button
               onClick={handleNextClick}
               style={{
                 width: '100%',
-                padding: '0.9rem 1.5rem',
-                borderRadius: 16,
+                padding: '0.75rem 1.4rem',
+                borderRadius: 100,
                 background: 'linear-gradient(135deg, #0d9488, #0f766e)',
                 color: '#f0fdf4',
-                border: '1px solid rgba(45, 212, 191, 0.35)',
+                border: '1px solid rgba(45, 212, 191, 0.4)',
                 fontWeight: 800,
-                fontSize: '0.98rem',
+                fontSize: '0.92rem',
                 letterSpacing: '0.02em',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justify: 'center',
-                gap: '0.5rem',
-                boxShadow: '0 6px 20px rgba(13, 148, 136, 0.25)'
+                gap: '0.45rem',
+                boxShadow: '0 4px 18px rgba(13, 148, 136, 0.3)'
               }}
             >
               Next ➔
@@ -665,7 +666,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
         </div>
       )}
 
-      {/* ── MINIMALIST MONOCHROME FIXED BOTTOM FOOTER TOOLBAR ── */}
+      {/* ── MINIMALIST MONOCHROME FIXED BOTTOM FOOTER TOOLBAR (bottom: 10px) ── */}
       {unitStep !== 'completed' && (
         <div style={{
           position: 'fixed',
