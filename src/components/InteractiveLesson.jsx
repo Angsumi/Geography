@@ -141,6 +141,12 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
       case 'learn':
         handleStartRecall();
         break;
+      case 'recall':
+        if (!isFlipped) {
+          playFlip();
+          setIsFlipped(true);
+        }
+        break;
       case 'check':
         if (isQuizAnswered) handleAdvanceToNextConcept();
         break;
@@ -271,8 +277,8 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
     );
   }
 
-  // Determine whether the fixed Next button should be enabled/visible
-  const showFixedNextButton = unitStep === 'briefing' || unitStep === 'explore' || unitStep === 'learn' || (unitStep === 'check' && isQuizAnswered);
+  // Determine whether the fixed Next button or Self-Assessment buttons should be visible
+  const showFixedControls = unitStep === 'briefing' || unitStep === 'explore' || unitStep === 'learn' || unitStep === 'recall' || (unitStep === 'check' && isQuizAnswered);
 
   return (
     <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', paddingBottom: '140px' }}>
@@ -414,9 +420,9 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
         {unitStep === 'recall' && (
           <motion.div key={`step-recall-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {/* Flip Canvas Card */}
-            <div style={{ perspective: '1000px', minHeight: '260px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
+            <div style={{ perspective: '1000px', minHeight: '280px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
               <motion.div
-                style={{ width: '100%', minHeight: '260px', position: 'relative', transformStyle: 'preserve-3d' }}
+                style={{ width: '100%', minHeight: '280px', position: 'relative', transformStyle: 'preserve-3d' }}
                 animate={{ rotateY: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.5 }}
               >
@@ -450,54 +456,6 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 </div>
               </motion.div>
             </div>
-
-            {/* Self-Assessment Buttons - REVEALED ONLY AFTER FLIPPING */}
-            {isFlipped && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', gap: '0.75rem' }}>
-                <button
-                  onClick={() => handleFlashcardSelfAssess(false)}
-                  style={{
-                    flex: 1,
-                    padding: '0.85rem 1rem',
-                    borderRadius: 14,
-                    background: 'rgba(244,63,94,0.12)',
-                    border: '1.5px solid rgba(244,63,94,0.35)',
-                    color: '#f43f5e',
-                    fontWeight: 800,
-                    fontSize: '0.88rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justify: 'center',
-                    gap: '0.4rem'
-                  }}
-                >
-                  <ThumbsDown size={17} /> I Didn't Know
-                </button>
-
-                <button
-                  onClick={() => handleFlashcardSelfAssess(true)}
-                  style={{
-                    flex: 1,
-                    padding: '0.85rem 1rem',
-                    borderRadius: 14,
-                    background: 'linear-gradient(135deg, #10b981, #34d399)',
-                    border: 'none',
-                    color: '#000',
-                    fontWeight: 900,
-                    fontSize: '0.88rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justify: 'center',
-                    gap: '0.4rem',
-                    boxShadow: '0 4px 14px rgba(16,185,129,0.35)'
-                  }}
-                >
-                  <ThumbsUp size={17} /> I Knew It (+10 XP)
-                </button>
-              </motion.div>
-            )}
           </motion.div>
         )}
 
@@ -607,8 +565,8 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
 
       </AnimatePresence>
 
-      {/* ── FIXED POSITION NEXT BUTTON RIGHT ABOVE FOOTER ── */}
-      {showFixedNextButton && (
+      {/* ── FIXED ACTION CONTROLS POSITIONED RIGHT ABOVE THE FOOTER ── */}
+      {showFixedControls && (
         <div style={{
           position: 'fixed',
           bottom: '54px',
@@ -618,28 +576,78 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           maxWidth: '840px',
           zIndex: 95
         }}>
-          <button
-            onClick={handleNextClick}
-            style={{
-              width: '100%',
-              padding: '0.95rem 1.6rem',
-              borderRadius: 16,
-              background: 'linear-gradient(135deg, #10b981, #34d399)',
-              color: '#000',
-              border: '2px solid #6ee7b7',
-              fontWeight: 900,
-              fontSize: '1rem',
-              letterSpacing: '0.02em',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justify: 'center',
-              gap: '0.55rem',
-              boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)'
-            }}
-          >
-            Next ➔
-          </button>
+          {unitStep === 'recall' && isFlipped ? (
+            /* When Flashcard is Flipped -> Render Self-Assessment Buttons in Fixed Position */
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} style={{ display: 'flex', gap: '0.75rem', width: '100%' }}>
+              <button
+                onClick={() => handleFlashcardSelfAssess(false)}
+                style={{
+                  flex: 1,
+                  padding: '0.95rem 1rem',
+                  borderRadius: 16,
+                  background: 'rgba(244,63,94,0.2)',
+                  border: '1.5px solid #f43f5e',
+                  color: '#f43f5e',
+                  fontWeight: 900,
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  gap: '0.45rem',
+                  boxShadow: '0 4px 16px rgba(244,63,94,0.3)'
+                }}
+              >
+                <ThumbsDown size={18} /> I Didn't Know
+              </button>
+
+              <button
+                onClick={() => handleFlashcardSelfAssess(true)}
+                style={{
+                  flex: 1,
+                  padding: '0.95rem 1rem',
+                  borderRadius: 16,
+                  background: 'linear-gradient(135deg, #10b981, #34d399)',
+                  border: '2px solid #6ee7b7',
+                  color: '#000',
+                  fontWeight: 900,
+                  fontSize: '0.95rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justify: 'center',
+                  gap: '0.45rem',
+                  boxShadow: '0 8px 24px rgba(16,185,129,0.45)'
+                }}
+              >
+                <ThumbsUp size={18} /> I Knew It (+10 XP)
+              </button>
+            </motion.div>
+          ) : (
+            /* Standard Fixed Next Button */
+            <button
+              onClick={handleNextClick}
+              style={{
+                width: '100%',
+                padding: '0.95rem 1.6rem',
+                borderRadius: 16,
+                background: 'linear-gradient(135deg, #10b981, #34d399)',
+                color: '#000',
+                border: '2px solid #6ee7b7',
+                fontWeight: 900,
+                fontSize: '1rem',
+                letterSpacing: '0.02em',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justify: 'center',
+                gap: '0.55rem',
+                boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)'
+              }}
+            >
+              Next ➔
+            </button>
+          )}
         </div>
       )}
 
