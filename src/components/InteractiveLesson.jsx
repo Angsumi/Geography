@@ -47,21 +47,6 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
     Quiz: { Question: `Which statement is accurate regarding ${topicName}?`, Options: { A: 'Option A', B: 'Option B' }, CorrectAnswer: 'A', Explanation: 'Official syllabus fact.' }
   };
 
-  // Helper: Exam Relevance Callout Generator
-  const getExamRelevance = (factStr = '', name = '') => {
-    const fStr = (factStr || '').toLowerCase();
-    if (fStr.includes('tributar') || fStr.includes('river')) {
-      return "Frequently tested in ADRE exams through river origins, bank classification (North vs South bank), and confluence locations.";
-    }
-    if (fStr.includes('district') || fStr.includes('boundary') || fStr.includes('area')) {
-      return "High-yield ADRE topic: Regional boundaries and district-level geographical facts are directly asked in Grade III & IV papers.";
-    }
-    if (fStr.includes('national park') || fStr.includes('wildlife') || fStr.includes('rhino')) {
-      return "Critical Environmental Science section: UNESCO heritage status, endemic fauna, and sanctuary coordinates appear regularly.";
-    }
-    return `Essential ADRE Geography concept: Understanding ${name || 'this topic'} builds foundational clarity for conceptual & matching MCQs.`;
-  };
-
   // Phase Transition Handlers
   const handleStartExploration = () => {
     setUnitStep('explore');
@@ -367,7 +352,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
       {/* SINGLE UNIFIED ANIMATE PRESENCE CONTAINER FOR ZERO TRANSITION FREEZE */}
       <AnimatePresence mode="wait">
         
-        {/* STEP 1: MISSION BRIEFING (Orient - Clean Minimalist View) */}
+        {/* STEP 1: MISSION BRIEFING (Orient) */}
         {unitStep === 'briefing' && (
           <motion.div key="step-briefing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.92)', border: '1.5px solid rgba(16,185,129,0.3)', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
@@ -420,16 +405,6 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               </h3>
               <p style={{ margin: 0, fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6, fontWeight: 500 }}>
                 {currentConcept.Fact}
-              </p>
-            </div>
-
-            {/* "Why This Matters for ADRE Exam" Callout Box */}
-            <div style={{ background: 'rgba(245, 158, 11, 0.08)', border: '1px solid rgba(245, 158, 11, 0.25)', borderRadius: 14, padding: '1rem' }}>
-              <strong style={{ color: '#fb923c', fontSize: '0.82rem', display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.2rem' }}>
-                💡 Why This Matters for ADRE Exam:
-              </strong>
-              <p style={{ margin: 0, fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.5 }}>
-                {getExamRelevance(currentConcept.Fact, topicName)}
               </p>
             </div>
           </motion.div>
