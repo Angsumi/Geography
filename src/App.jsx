@@ -889,8 +889,10 @@ export default function App() {
         ) : null}
       </main>
 
-      {/* 📱 Mobile-First Fixed Bottom Navigation Bar */}
-      <MobileNavBar currentTab={currentNavTab} onTabChange={handleMobileTabChange} />
+      {/* 📱 Mobile-First Fixed Bottom Navigation Bar (Home Page Only) */}
+      {viewMode === 'home' && (
+        <MobileNavBar currentTab={currentNavTab} onTabChange={handleMobileTabChange} />
+      )}
     </div>
   );
 }
