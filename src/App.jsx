@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Layers, GraduationCap, ChevronRight, ChevronDown, X, PlayCircle, Sparkles, Compass, BookOpen, Search, Clock, CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
-import indiaGeo from './data/india/GEography.json';
-import assamGeo from './data/assam/GEography.json';
-import neGeo from './data/northeast/GEography.json';
+import syllabusData from './data/unifiedGeography.json';
 
 import './index.css';
 import Flashcard from './components/Flashcard';
@@ -17,15 +14,6 @@ import { PracticeHub } from './components/PracticeHub';
 import { ProgressDashboard } from './components/ProgressDashboard';
 
 import { generateSectionPlayerData } from './utils/lessonGenerator.jsx';
-
-// Combine regional JSON files into unified syllabus array
-const syllabusData = {
-  GeographySyllabus: [
-    ...(assamGeo.GeographySyllabus || []),
-    ...(indiaGeo.GeographySyllabus || []),
-    ...(neGeo.GeographySyllabus || [])
-  ]
-};
 
 function loadState(key, fallback) {
   try {
