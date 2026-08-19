@@ -1,13 +1,13 @@
 # 📐 PLAYER_DESIGN_GUIDELINES.md — Project-Wide Player UI/UX Architecture Standard
 
-> **Version**: 2.0 (Calm Nature / Zen UI Architecture Edition)  
+> **Version**: 2.2 (Calm Nature UI & Unified Data Architecture Edition)  
 > **Scope**: Mandatory for all Interactive Lesson Views, Quiz Engines, Flashcard Players, Match Games, and Diagram Visualizers.
 
-This document defines the strict UI/UX design standards, ergonomic control placements, state machine flow, and visual guidelines for the interactive player across all subject learning repositories.
+This document defines the strict UI/UX design standards, ergonomic control placements, state machine flow, audio feedback, and unified data architecture for the interactive player across all subject learning repositories.
 
 ---
 
-## 1. 🎨 Color Palette: Calm Nature / Zen Style (Zero Eye Fatigue)
+## 🎨 1. Color Palette: Calm Nature / Zen Style (Zero Eye Fatigue)
 
 The player utilizes a soothing **Zen Slate & Soft Teal** palette designed for multi-hour study sessions without visual fatigue.
 
@@ -120,3 +120,13 @@ Integrated sound effects via `useSound.js` MUST be triggered on specific user ac
 * `playWrong()`: Triggered on incorrect MCQ selection or `I Didn't Know` self-assessment.
 * `playFlip()`: Triggered on flashcard flip.
 * `playComplete()`: Triggered on topic completion scorecard.
+
+---
+
+## 💾 8. Unified Data Layer Standard
+
+All syllabus data MUST be imported directly from a single master JSON file:
+```javascript
+import syllabusData from './data/unifiedGeography.json';
+```
+This guarantees uniform 4-tier navigation (`Chapter ➔ Unit ➔ Lesson ➔ Topic`) without requiring runtime array concatenation.

@@ -1,10 +1,10 @@
 # 📐 Universal Interactive Learning Platform Specification
 ### *A Blueprint for Replicating Brilliant.org-Style Subject Learning Apps*
 
-> **Version**: 2.1 (Calm Nature / Zen UI Architecture & Sound Integration Edition)  
+> **Version**: 2.2 (Unified Single-Data Architecture Edition)  
 > **Status**: Production Standard
 
-This document contains the complete design system, UI/UX guidelines, state machine architecture, 4-tier data schemas, color palettes, component hierarchy, utility functions, audio feedback specifications, and setup guide required to replicate this platform for any subject in a standalone repository.
+This document contains the complete design system, UI/UX guidelines, state machine architecture, unified 4-tier data schema, color palettes, component hierarchy, utility functions, audio feedback specifications, and setup guide required to replicate this platform for any subject in a standalone repository.
 
 ---
 
@@ -147,70 +147,69 @@ The player relies on low-latency Web Audio API synthesizers for micro-interactio
 
 ---
 
-## 🌲 7. 4-Tier Curriculum JSON Schema
+## 🌲 7. Unified 4-Tier Curriculum JSON Schema
 
-All subject content follows this 4-tier JSON hierarchy:
+All subject content is served from a single unified file: [`src/data/unifiedGeography.json`](file:///home/angsuman/extra_spac/GEOGRAPHY/src/data/unifiedGeography.json).
 
 ```
-CHAPTER (e.g., QUANTITATIVE APTITUDE / PHYSICS / ANCIENT HISTORY)
- └── UNIT (e.g., Unit 1: Mechanics & Motion)
-      └── LESSON (e.g., Lesson 1: Newton's Laws)
-           └── TOPIC (e.g., Topic 1: Third Law & Momentum)
-                ├── Facts: [ Array of Core Syllabus Bullet Points ]
-                ├── VisualisationIdea: String (Identifies visualizer component)
-                ├── ConceptUnits: [ Array of { Fact, Flashcard, Quiz } ]
-                └── PracticeMatching: [ Array of { Term, Definition } ]
+GeographySyllabus (Root Array)
+ ├── Chapter: "ASSAM"
+ │    └── Unit: "Physiographic Divisions & Conservation"
+ ├── Chapter: "INDIA"
+ │    ├── Unit: "Physiographic Divisions of India"
+ │    ├── Unit: "Major River Systems"
+ │    └── Unit: "Ecological Markers & Conservation"
+ └── Chapter: "NE"
+      ├── Units: ["Arunachal Pradesh", "Assam", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Tripura"]
+      ├── Unit: "World Natural Heritage Sites (WNHS)"
+      └── Unit: "Biosphere Reserves (BR)"
 ```
 
-### JSON Structure (`src/data/subject.json`):
+### Complete Topic Node Structure (`src/data/unifiedGeography.json`):
 
 ```json
 {
   "GeographySyllabus": [
     {
-      "Chapter": "PHYSICS",
+      "Chapter": "ASSAM",
       "Units": [
         {
-          "UnitName": "Unit 1: Mechanics & Motion",
+          "UnitName": "Physiographic Divisions & Conservation",
           "Lessons": [
             {
-              "LessonName": "Lesson 1: Laws of Motion",
+              "LessonName": "Brahmaputra Valley",
               "Topics": [
                 {
-                  "TopicName": "Topic 1: Action & Reaction",
+                  "TopicName": "North Bank Tributaries (Brahmaputra)",
                   "Facts": [
-                    "For every action, there is an equal and opposite reaction.",
-                    "Action and reaction forces act on different bodies."
+                    "Alluvial plain from Sadiya to Dhubri, annual monsoonal floods."
                   ],
-                  "VisualisationIdea": "NewtonCradleVisualizer",
+                  "VisualisationIdea": "BrahmaputraValleyVisual",
                   "ConceptUnits": [
                     {
-                      "Fact": "Newton's Third Law states forces act in equal & opposite pairs.",
+                      "Id": "assam-1",
+                      "Fact": "Alluvial plain from Sadiya to Dhubri, annual monsoonal floods.",
                       "Flashcard": {
-                        "Front": "What is Newton's Third Law of Motion?",
-                        "Back": "For every action, there is an equal and opposite reaction."
+                        "Front": "What is a key geographical feature of North Bank Tributaries?",
+                        "Back": "Subansiri River."
                       },
                       "Quiz": {
-                        "Question": "When a gun fires a bullet, why does the gun recoil backward?",
+                        "Question": "Which is the largest North Bank tributary of the Brahmaputra River?",
                         "Options": {
-                          "A": "Equal and opposite reaction force",
-                          "B": "Gravity pulling the gun backward",
-                          "C": "Friction between bullet and barrel",
-                          "D": "Magnetic repulsion"
+                          "A": "Pagladiya",
+                          "B": "Manas",
+                          "C": "Jia Bharali",
+                          "D": "Subansiri"
                         },
-                        "CorrectAnswer": "A",
-                        "Explanation": "The reaction force exerted by the expanding gas pushes the gun backward with equal momentum."
+                        "CorrectAnswer": "D",
+                        "Explanation": "Official Syllabus Fact: Alluvial plain from Sadiya to Dhubri."
                       }
                     }
                   ],
                   "PracticeMatching": [
                     {
-                      "Term": "Action Force",
-                      "Definition": "Initial force exerted by body A on body B"
-                    },
-                    {
-                      "Term": "Reaction Force",
-                      "Definition": "Equal & opposite force exerted back by body B on body A"
+                      "Term": "Subansiri Sub-tributaries",
+                      "Definition": "Ranganadi and Dikrong."
                     }
                   ]
                 }
@@ -226,15 +225,19 @@ CHAPTER (e.g., QUANTITATIVE APTITUDE / PHYSICS / ANCIENT HISTORY)
 
 ---
 
-## ⚡ 8. Core Parser Utility (`parseSyllabus`)
+## ⚡ 8. Core Parser Utility & Direct Import
+
+In `src/App.jsx`, import the unified JSON directly:
 
 ```javascript
+import syllabusData from './data/unifiedGeography.json';
+
 export function parseSyllabus(json) {
   const chaptersList = [];
   const syllabusHierarchy = [];
   const studyDb = { flashcards: [], mcqs: [], matchPairs: [] };
 
-  const rawChapters = json.GeographySyllabus || json.SubjectSyllabus || [];
+  const rawChapters = json.GeographySyllabus || [];
 
   rawChapters.forEach((chapterObj) => {
     const chapterName = chapterObj.Chapter || 'General Chapter';
@@ -306,7 +309,7 @@ PROJECT_ROOT/
 │   │   ├── MobileNavBar.jsx         # Mobile navigation footer
 │   │   └── visualizers/             # Subject-specific SVG visualizers
 │   ├── data/
-│   │   └── subject.json             # 4-Tier Subject Curriculum JSON
+│   │   └── unifiedGeography.json    # Master Unified 4-Tier Subject JSON
 │   ├── hooks/
 │   │   └── useSound.js              # Sound effect triggers
 │   ├── utils/
@@ -338,7 +341,7 @@ PROJECT_ROOT/
    - Place `PLAYER_DESIGN_GUIDELINES.md` into the project root.
    - Copy `.gemini/rules.md` to enforce UI consistency.
 
-3. **Populate Subject Data & Launch**:
-   - Replace `src/data/subject.json` with your new subject's content.
-   - Update `src/index.css` with Section 1 tokens.
+3. **Populate Unified Subject Data & Launch**:
+   - Save your subject's unified content to `src/data/unifiedGeography.json`.
+   - Import it in `src/App.jsx`: `import syllabusData from './data/unifiedGeography.json'`.
    - Run `npm run dev`.
