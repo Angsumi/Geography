@@ -45,7 +45,7 @@ function parseSyllabus(json) {
   const rawSubjects = json.GeographySyllabus || [];
 
   rawSubjects.forEach((chapterObj) => {
-    const chapterName = chapterObj.Chapter || chapterObj.Subject || 'Geography';
+    const chapterName = chapterObj.Chapter || chapterObj.ChapterName || chapterObj.Subject || 'Geography';
     if (!chaptersList.includes(chapterName)) {
       chaptersList.push(chapterName);
     }
