@@ -1,10 +1,10 @@
 # 📐 Universal Interactive Learning Platform Specification
 ### *A Blueprint for Replicating Brilliant.org-Style Subject Learning Apps*
 
-> **Version**: 2.0 (Calm Nature / Zen UI Architecture Edition)  
+> **Version**: 2.1 (Calm Nature / Zen UI Architecture & Sound Integration Edition)  
 > **Status**: Production Standard
 
-This document contains the complete design system, UI/UX guidelines, state machine architecture, 4-tier data schemas, color palettes, component hierarchy, utility functions, and setup guide required to replicate this platform for any subject in a standalone repository.
+This document contains the complete design system, UI/UX guidelines, state machine architecture, 4-tier data schemas, color palettes, component hierarchy, utility functions, audio feedback specifications, and setup guide required to replicate this platform for any subject in a standalone repository.
 
 ---
 
@@ -137,7 +137,17 @@ The player operates on a deterministic 7-phase state machine:
 
 ---
 
-## 🌲 6. 4-Tier Curriculum JSON Schema
+## 🔊 6. Audio & Haptic Feedback System (`src/hooks/useSound.js`)
+
+The player relies on low-latency Web Audio API synthesizers for micro-interactions:
+* `playCorrect()`: Triggered on correct MCQ choice or `I Knew It` self-assessment.
+* `playWrong()`: Triggered on incorrect MCQ selection or `I Didn't Know` self-assessment.
+* `playFlip()`: Triggered on active recall card flip.
+* `playComplete()`: Triggered on topic completion scorecard.
+
+---
+
+## 🌲 7. 4-Tier Curriculum JSON Schema
 
 All subject content follows this 4-tier JSON hierarchy:
 
@@ -216,7 +226,7 @@ CHAPTER (e.g., QUANTITATIVE APTITUDE / PHYSICS / ANCIENT HISTORY)
 
 ---
 
-## ⚡ 7. Core Parser Utility (`parseSyllabus`)
+## ⚡ 8. Core Parser Utility (`parseSyllabus`)
 
 ```javascript
 export function parseSyllabus(json) {
@@ -277,7 +287,7 @@ export function parseSyllabus(json) {
 
 ---
 
-## 📁 8. Complete Repository Architecture
+## 📁 9. Complete Repository Architecture
 
 ```
 PROJECT_ROOT/
@@ -314,7 +324,7 @@ PROJECT_ROOT/
 
 ---
 
-## 🚀 9. Quickstart to Replicate in a New Subject Repo
+## 🚀 10. Quickstart to Replicate in a New Subject Repo
 
 1. **Initialize Vite React Project**:
    ```bash
