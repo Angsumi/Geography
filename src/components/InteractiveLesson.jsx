@@ -156,30 +156,30 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
   };
 
   /* ─────────────────────────────────────────────────────────────
-     PHASE: COMPLETED SCORECARD (Reflect)
+     PHASE: COMPLETED SCORECARD (Reflect) - Soothing Emerald Palette
      ───────────────────────────────────────────────────────────── */
   if (unitStep === 'completed') {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 160px)', padding: '1rem 0' }}>
-        <motion.div key="step-completed" initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.25rem', textAlign: 'center', width: '100%', maxWidth: 640 }}>
-          <Award size={58} color="#34d399" style={{ margin: '0 auto 0.85rem' }} />
-          <span style={{ color: '#10b981', fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+        <motion.div key="step-completed" initial={{ scale: 0.94, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem 2rem', textAlign: 'center', width: '100%', maxWidth: 620, background: 'rgba(15, 23, 42, 0.92)', border: '1.5px solid rgba(52, 211, 153, 0.25)', boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)' }}>
+          <Award size={56} color="#34d399" style={{ margin: '0 auto 0.85rem' }} />
+          <span style={{ color: '#34d399', fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
             TOPIC MASTERED
           </span>
-          <h1 style={{ fontSize: '2rem', fontWeight: 900, margin: '0.2rem 0 0.4rem', color: '#fff' }}>
+          <h1 style={{ fontSize: '2rem', fontWeight: 900, margin: '0.2rem 0 0.4rem', color: '#f8fafc' }}>
             {topicName} Mastered!
           </h1>
 
           {/* Student Mindset Breadcrumb Location */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#94a3b8', fontWeight: 700, margin: '0 0 1.25rem', flexWrap: 'wrap' }}>
-            <span style={{ color: '#10b981', fontWeight: 900 }}>📍 {chapterName}</span>
+            <span style={{ color: '#34d399', fontWeight: 900 }}>📍 {chapterName}</span>
             <span>➔</span>
             <span style={{ color: '#cbd5e1' }}>Unit: {unitName}</span>
             <span>➔</span>
             <span style={{ color: '#cbd5e1' }}>Lesson: {lessonName}</span>
           </div>
 
-          <div style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: 16, padding: '1.1rem', marginBottom: '1.5rem' }}>
+          <div style={{ background: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(52, 211, 153, 0.25)', borderRadius: 16, padding: '1.1rem', marginBottom: '1.5rem' }}>
             <span style={{ fontSize: '0.78rem', color: '#94a3b8' }}>Total XP Awarded</span>
             <h2 style={{ fontSize: '2.5rem', fontWeight: 900, color: '#34d399', margin: '0.1rem 0' }}>
               +{earnedXp} XP
@@ -192,23 +192,22 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               onClick={handleRelearnTopic}
               style={{
                 width: '100%',
-                padding: '1rem 1.5rem',
+                padding: '0.95rem 1.5rem',
                 borderRadius: 16,
-                background: 'linear-gradient(135deg, #10b981, #34d399, #059669)',
-                color: '#000',
-                border: '2px solid #6ee7b7',
-                fontWeight: 900,
-                fontSize: '1.05rem',
-                letterSpacing: '0.02em',
+                background: 'linear-gradient(135deg, #10b981, #059669)',
+                color: '#ecfdf5',
+                border: '1px solid rgba(110, 231, 183, 0.4)',
+                fontWeight: 800,
+                fontSize: '1.02rem',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justify: 'center',
-                gap: '0.65rem',
-                boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)'
+                gap: '0.6rem',
+                boxShadow: '0 6px 24px rgba(16, 185, 129, 0.35)'
               }}
             >
-              <BookMarked size={22} /> 💡 Learn This (Re-Play Topic)
+              <BookMarked size={20} /> 💡 Learn This (Re-Play Topic)
             </button>
           </div>
 
@@ -222,7 +221,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               {navTargets?.nextTopic && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(16,185,129,0.15)', border: '1px solid #10b981', color: '#34d399', fontWeight: 900, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(52, 211, 153, 0.3)', color: '#34d399', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
                 >
                   <PlayCircle size={15} /> Next Topic ▶
                 </button>
@@ -231,7 +230,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               {navTargets?.nextLesson && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextLesson)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38bdf8', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(56, 189, 248, 0.12)', border: '1px solid rgba(56, 189, 248, 0.3)', color: '#38bdf8', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
                 >
                   <FastForward size={15} /> Next Lesson ▶▶
                 </button>
@@ -240,7 +239,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               {navTargets?.nextUnit && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextUnit)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(192, 132, 252, 0.15)', border: '1px solid rgba(192, 132, 252, 0.4)', color: '#c084fc', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(167, 139, 250, 0.12)', border: '1px solid rgba(167, 139, 250, 0.3)', color: '#c084fc', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
                 >
                   <ChevronsRight size={15} /> Next Unit ⏭
                 </button>
@@ -249,7 +248,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               {navTargets?.nextChapter && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextChapter)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(245, 158, 11, 0.15)', border: '1px solid rgba(245, 158, 11, 0.4)', color: '#fb923c', fontWeight: 900, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
+                  style={{ padding: '0.75rem 0.85rem', borderRadius: 12, background: 'rgba(251, 146, 60, 0.12)', border: '1px solid rgba(251, 146, 60, 0.3)', color: '#fb923c', fontWeight: 800, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
                 >
                   <Flag size={15} /> Next Chapter 🏁
                 </button>
@@ -263,10 +262,10 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               width: '100%',
               padding: '0.7rem 1.25rem',
               borderRadius: 14,
-              background: 'rgba(255,255,255,0.06)',
+              background: 'rgba(255,255,255,0.04)',
               color: '#cbd5e1',
-              border: '1px solid rgba(255,255,255,0.1)',
-              fontWeight: 800,
+              border: '1px solid rgba(255,255,255,0.08)',
+              fontWeight: 700,
               fontSize: '0.85rem',
               cursor: 'pointer'
             }}
@@ -283,7 +282,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
 
   return (
     <div style={{
-      maxWidth: 800,
+      maxWidth: 780,
       margin: '0 auto',
       display: 'flex',
       flexDirection: 'column',
@@ -307,9 +306,9 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               right: '25px',
               color: '#34d399',
               fontWeight: 900,
-              fontSize: '1.5rem',
+              fontSize: '1.4rem',
               zIndex: 100,
-              textShadow: '0 0 14px rgba(16,185,129,0.8)'
+              textShadow: '0 0 12px rgba(16,185,129,0.7)'
             }}
           >
             {floatingXp}
@@ -317,17 +316,17 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
         )}
       </AnimatePresence>
 
-      {/* Clean Top Navigation Bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.2rem 0.25rem', width: '100%', marginBottom: '0.75rem' }}>
+      {/* Soothing Clean Top Navigation Bar */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.2rem 0.25rem', width: '100%', marginBottom: '0.85rem' }}>
         <button
           onClick={onBack}
           style={{
-            background: 'rgba(255,255,255,0.04)',
+            background: 'rgba(30, 41, 59, 0.6)',
             border: '1px solid rgba(255,255,255,0.08)',
             color: '#cbd5e1',
-            padding: '0.45rem 0.85rem',
+            padding: '0.4rem 0.8rem',
             borderRadius: '12px',
-            fontSize: '0.8rem',
+            fontSize: '0.78rem',
             fontWeight: 700,
             cursor: 'pointer',
             display: 'flex',
@@ -335,32 +334,32 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
             gap: '0.35rem'
           }}
         >
-          <ArrowLeft size={16} /> Exit
+          <ArrowLeft size={15} /> Exit
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <button
             onClick={() => setIsMapModalOpen(true)}
             style={{
-              background: 'rgba(56, 189, 248, 0.15)',
-              border: '1px solid rgba(56, 189, 248, 0.35)',
+              background: 'rgba(56, 189, 248, 0.12)',
+              border: '1px solid rgba(56, 189, 248, 0.3)',
               color: '#38bdf8',
               padding: '0.35rem 0.75rem',
               borderRadius: 10,
-              fontSize: '0.75rem',
-              fontWeight: 800,
+              fontSize: '0.74rem',
+              fontWeight: 700,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               gap: '0.3rem'
             }}
           >
-            <Map size={14} /> Open Map Reference 🌐
+            <Map size={13} /> Open Map Reference 🌐
           </button>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: 'rgba(16,185,129,0.15)', padding: '0.35rem 0.65rem', borderRadius: 12, border: '1px solid rgba(16,185,129,0.3)' }}>
-            <Trophy size={14} color="#34d399" />
-            <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#34d399' }}>{earnedXp} XP</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', background: 'rgba(16,185,129,0.12)', padding: '0.35rem 0.65rem', borderRadius: 10, border: '1px solid rgba(52,211,153,0.25)' }}>
+            <Trophy size={13} color="#34d399" />
+            <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#34d399' }}>{earnedXp} XP</span>
           </div>
         </div>
       </div>
@@ -378,23 +377,23 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           
           {/* STEP 1: MISSION BRIEFING (Orient) */}
           {unitStep === 'briefing' && (
-            <motion.div key="step-briefing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem 1.5rem', borderRadius: 20, background: 'rgba(15,23,42,0.92)', border: '1.5px solid rgba(16,185,129,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
+            <motion.div key="step-briefing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem 1.6rem', borderRadius: 20, background: 'rgba(15, 23, 42, 0.88)', border: '1px solid rgba(52, 211, 153, 0.2)', boxShadow: '0 12px 40px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                <div style={{ width: 42, height: 42, borderRadius: 12, background: 'linear-gradient(135deg, #10b981, #34d399)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', flexShrink: 0 }}>
-                  <Target size={22} />
+                <div style={{ width: 40, height: 40, borderRadius: 12, background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(52, 211, 153, 0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#34d399', flexShrink: 0 }}>
+                  <Target size={20} />
                 </div>
                 <div>
-                  <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <span style={{ fontSize: '0.72rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     {chapterName} ➔ {lessonName}
                   </span>
-                  <h2 style={{ margin: '0.1rem 0 0', fontSize: '1.5rem', fontWeight: 900, color: '#fff', lineHeight: 1.3 }}>
+                  <h2 style={{ margin: '0.1rem 0 0', fontSize: '1.45rem', fontWeight: 800, color: '#f8fafc', lineHeight: 1.3 }}>
                     {topicName}
                   </h2>
                 </div>
               </div>
 
-              <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', borderRadius: 14, padding: '1.25rem' }}>
-                <p style={{ margin: 0, fontSize: '1rem', color: '#e2e8f0', lineHeight: 1.6 }}>
+              <div style={{ background: 'rgba(30, 41, 59, 0.5)', borderLeft: '3px solid #34d399', borderRadius: 12, padding: '1.1rem 1.25rem' }}>
+                <p style={{ margin: 0, fontSize: '0.98rem', color: '#cbd5e1', lineHeight: 1.6 }}>
                   In this session, you will explore <strong>{topicName}</strong>, understand its geographical landforms, and master key facts required for ADRE competitive examinations.
                 </p>
               </div>
@@ -403,28 +402,28 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
 
           {/* STEP 2: MAP EXPLORATION (Explore) */}
           {unitStep === 'explore' && (
-            <motion.div key="step-explore" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.5rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
-              <div style={{ background: 'rgba(56,189,248,0.1)', borderLeft: '4px solid #38bdf8', padding: '0.75rem 1rem', borderRadius: '0 12px 12px 0' }}>
-                <strong style={{ color: '#38bdf8', fontSize: '0.85rem' }}>
+            <motion.div key="step-explore" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.5rem', borderRadius: 20, background: 'rgba(15, 23, 42, 0.88)', border: '1px solid rgba(56, 189, 248, 0.25)', boxShadow: '0 12px 40px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <div style={{ background: 'rgba(56, 189, 248, 0.08)', borderLeft: '3px solid #38bdf8', padding: '0.75rem 1rem', borderRadius: '0 10px 10px 0' }}>
+                <strong style={{ color: '#38bdf8', fontSize: '0.84rem' }}>
                   Explore Map Model: {topicName}
                 </strong>
-                <p style={{ margin: '0.15rem 0 0', fontSize: '0.85rem', color: '#e2e8f0', lineHeight: 1.4 }}>
+                <p style={{ margin: '0.15rem 0 0', fontSize: '0.84rem', color: '#cbd5e1', lineHeight: 1.4 }}>
                   Explore features and boundaries on the map below before learning individual concepts.
                 </p>
               </div>
 
               {/* Visualizer Canvas */}
-              <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
                 <SectionVisualizer sectionName={topicName} facts={conceptUnits.map(u => u.Fact)} />
               </div>
             </motion.div>
           )}
 
-          {/* STEP 3: CONCEPT LOOP - LEARN (Learn) */}
+          {/* STEP 3: CONCEPT LOOP - LEARN (Learn - Soothing Readable Card) */}
           {unitStep === 'learn' && (
-            <motion.div key={`step-learn-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem 1.5rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
-              <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 16, padding: '1.5rem' }}>
-                <p style={{ margin: 0, fontSize: '1.1rem', color: '#e2e8f0', lineHeight: 1.6, fontWeight: 500 }}>
+            <motion.div key={`step-learn-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem 1.6rem', borderRadius: 20, background: 'rgba(15, 23, 42, 0.88)', border: '1px solid rgba(255, 255, 255, 0.08)', boxShadow: '0 12px 40px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
+              <div style={{ background: 'rgba(30, 41, 59, 0.5)', borderLeft: '3px solid #34d399', border: '1px solid rgba(255,255,255,0.04)', borderRadius: 14, padding: '1.35rem 1.5rem' }}>
+                <p style={{ margin: 0, fontSize: '1.08rem', color: '#f1f5f9', lineHeight: 1.65, fontWeight: 500 }}>
                   {currentConcept.Fact}
                 </p>
               </div>
@@ -433,7 +432,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
 
           {/* STEP 3: CONCEPT LOOP - RECALL (Flashcard) */}
           {unitStep === 'recall' && (
-            <motion.div key={`step-recall-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
+            <motion.div key={`step-recall-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15, 23, 42, 0.88)', border: '1px solid rgba(167, 139, 250, 0.25)', boxShadow: '0 12px 40px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }}>
               {/* Flip Canvas Card */}
               <div style={{ perspective: '1000px', minHeight: '260px', cursor: 'pointer', width: '100%' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
                 <motion.div
@@ -445,12 +444,12 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                   <div className="glass-panel" style={{
                     position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
                     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                    padding: '1.5rem', textAlign: 'center', border: '1px solid rgba(192,132,252,0.3)', borderRadius: 16
+                    padding: '1.5rem', textAlign: 'center', border: '1px solid rgba(167, 139, 250, 0.25)', borderRadius: 16, background: 'rgba(30, 41, 59, 0.4)'
                   }}>
-                    <span style={{ fontSize: '0.72rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.85rem' }}>
+                    <span style={{ fontSize: '0.7rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.85rem' }}>
                       TAP CARD TO FLIP
                     </span>
-                    <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
+                    <h2 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#f8fafc', margin: 0, lineHeight: 1.5 }}>
                       {currentConcept.Flashcard?.Front || `What is a key feature of ${topicName}?`}
                     </h2>
                   </div>
@@ -460,12 +459,12 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                     position: 'absolute', inset: 0, backfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',
                     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                    padding: '1.5rem', textAlign: 'center', background: 'rgba(16,185,129,0.12)', border: '1.5px solid #10b981', borderRadius: 16
+                    padding: '1.5rem', textAlign: 'center', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(52, 211, 153, 0.35)', borderRadius: 16
                   }}>
-                    <span style={{ fontSize: '0.72rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.65rem' }}>
+                    <span style={{ fontSize: '0.7rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.65rem' }}>
                       KEY RECALL ANSWER
                     </span>
-                    <h2 style={{ fontSize: '1.15rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
+                    <h2 style={{ fontSize: '1.12rem', fontWeight: 800, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
                       {currentConcept.Flashcard?.Back || currentConcept.Fact}
                     </h2>
                   </div>
@@ -476,8 +475,8 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
 
           {/* STEP 3: CONCEPT LOOP - CHECK (MCQ Quiz) */}
           {unitStep === 'check' && (
-            <motion.div key={`step-check-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.1rem', width: '100%' }}>
-              <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#fff', fontWeight: 800, lineHeight: 1.5 }}>
+            <motion.div key={`step-check-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15, 23, 42, 0.88)', border: '1px solid rgba(251, 113, 133, 0.25)', boxShadow: '0 12px 40px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '1.1rem', width: '100%' }}>
+              <h3 style={{ margin: 0, fontSize: '1.12rem', color: '#f8fafc', fontWeight: 700, lineHeight: 1.5 }}>
                 {currentConcept.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
               </h3>
 
@@ -488,18 +487,18 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                   const isCorrect = key === currentConcept.Quiz?.CorrectAnswer;
 
                   let btnBg = 'rgba(255,255,255,0.02)';
-                  let btnBorder = '1px solid rgba(255,255,255,0.08)';
-                  let textColor = '#e2e8f0';
+                  let btnBorder = '1px solid rgba(255,255,255,0.06)';
+                  let textColor = '#cbd5e1';
 
                   if (isQuizAnswered) {
                     if (isCorrect) {
-                      btnBg = 'rgba(16,185,129,0.2)';
+                      btnBg = 'rgba(16, 185, 129, 0.16)';
                       btnBorder = '1.5px solid #10b981';
                       textColor = '#34d399';
                     } else if (isSelected) {
-                      btnBg = 'rgba(244,63,94,0.2)';
+                      btnBg = 'rgba(244, 63, 94, 0.16)';
                       btnBorder = '1.5px solid #f43f5e';
-                      textColor = '#f43f5e';
+                      textColor = '#fb7185';
                     }
                   }
 
@@ -514,7 +513,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                         padding: '0.75rem 1rem',
                         borderRadius: 14,
                         fontSize: '0.88rem',
-                        fontWeight: isSelected ? 800 : 500,
+                        fontWeight: isSelected ? 700 : 500,
                         textAlign: 'left',
                         cursor: isQuizAnswered ? 'default' : 'pointer',
                         display: 'flex',
@@ -526,8 +525,8 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                         width: 26,
                         height: 26,
                         borderRadius: 8,
-                        background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.06)',
-                        color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#fff',
+                        background: isQuizAnswered && isCorrect ? '#10b981' : isQuizAnswered && isSelected ? '#f43f5e' : 'rgba(255,255,255,0.05)',
+                        color: isQuizAnswered && (isCorrect || isSelected) ? '#000' : '#e2e8f0',
                         display: 'flex',
                         alignItems: 'center',
                         justify: 'center',
@@ -538,8 +537,8 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                         {key}
                       </span>
                       <span style={{ flex: 1, lineHeight: 1.4 }}>{label}</span>
-                      {isQuizAnswered && isCorrect && <Check size={17} color="#34d399" />}
-                      {isQuizAnswered && isSelected && !isCorrect && <X size={17} color="#f43f5e" />}
+                      {isQuizAnswered && isCorrect && <Check size={16} color="#34d399" />}
+                      {isQuizAnswered && isSelected && !isCorrect && <X size={16} color="#fb7185" />}
                     </button>
                   );
                 })}
@@ -547,8 +546,8 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
 
               {/* Explanation Rationale Box */}
               {isQuizAnswered && (
-                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30,41,59,0.7)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: 14, padding: '0.85rem 1rem' }}>
-                  <span style={{ fontSize: '0.7rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ background: 'rgba(30, 41, 59, 0.6)', border: '1px solid rgba(52, 211, 153, 0.25)', borderRadius: 14, padding: '0.85rem 1rem' }}>
+                  <span style={{ fontSize: '0.68rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>
                     SYLLABUS RATIONALE & EXPLANATION
                   </span>
                   <p style={{ margin: '0.25rem 0 0', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.45 }}>
@@ -561,9 +560,9 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
 
           {/* STEP 4: CONNECT THE DOTS (Match Game Recap) */}
           {unitStep === 'matching_recap' && (
-            <motion.div key="step-matching" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.1rem', width: '100%' }}>
+            <motion.div key="step-matching" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '1.75rem 1.25rem', borderRadius: 20, background: 'rgba(15, 23, 42, 0.88)', border: '1px solid rgba(56, 189, 248, 0.25)', boxShadow: '0 12px 40px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column', gap: '1.1rem', width: '100%' }}>
               <div>
-                <h2 style={{ margin: 0, fontSize: '1.3rem', color: '#fff', fontWeight: 900 }}>
+                <h2 style={{ margin: 0, fontSize: '1.3rem', color: '#f8fafc', fontWeight: 900 }}>
                   {topicName} Term Matching Recap
                 </h2>
                 <p style={{ color: '#94a3b8', fontSize: '0.85rem', margin: '0.2rem 0 0' }}>
@@ -590,7 +589,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           left: '50%',
           transform: 'translateX(-50%)',
           width: 'calc(100% - 2rem)',
-          maxWidth: '800px',
+          maxWidth: '780px',
           zIndex: 95
         }}>
           {unitStep === 'recall' && isFlipped ? (
@@ -602,20 +601,20 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                   flex: 1,
                   padding: '0.9rem 1rem',
                   borderRadius: 16,
-                  background: 'rgba(244,63,94,0.2)',
-                  border: '1.5px solid #f43f5e',
-                  color: '#f43f5e',
-                  fontWeight: 900,
+                  background: 'rgba(244, 63, 94, 0.15)',
+                  border: '1px solid rgba(244, 63, 94, 0.4)',
+                  color: '#fb7185',
+                  fontWeight: 800,
                   fontSize: '0.92rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'center',
                   gap: '0.4rem',
-                  boxShadow: '0 4px 16px rgba(244,63,94,0.3)'
+                  boxShadow: '0 4px 16px rgba(244, 63, 94, 0.25)'
                 }}
               >
-                <ThumbsDown size={18} /> I Didn't Know
+                <ThumbsDown size={17} /> I Didn't Know
               </button>
 
               <button
@@ -624,9 +623,9 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                   flex: 1,
                   padding: '0.9rem 1rem',
                   borderRadius: 16,
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  border: '2px solid #6ee7b7',
-                  color: '#000',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  border: '1px solid rgba(110, 231, 183, 0.4)',
+                  color: '#ecfdf5',
                   fontWeight: 900,
                   fontSize: '0.92rem',
                   cursor: 'pointer',
@@ -634,32 +633,32 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                   alignItems: 'center',
                   justify: 'center',
                   gap: '0.4rem',
-                  boxShadow: '0 8px 24px rgba(16,185,129,0.45)'
+                  boxShadow: '0 6px 24px rgba(16, 185, 129, 0.35)'
                 }}
               >
-                <ThumbsUp size={18} /> I Knew It (+10 XP)
+                <ThumbsUp size={17} /> I Knew It (+10 XP)
               </button>
             </motion.div>
           ) : (
-            /* Standard Fixed Next Button */
+            /* Standard Soothing Fixed Next Button */
             <button
               onClick={handleNextClick}
               style={{
                 width: '100%',
                 padding: '0.9rem 1.5rem',
                 borderRadius: 16,
-                background: 'linear-gradient(135deg, #10b981, #34d399)',
-                color: '#000',
-                border: '2px solid #6ee7b7',
-                fontWeight: 900,
-                fontSize: '1rem',
+                background: 'linear-gradient(135deg, #10b981, #059669)',
+                color: '#ecfdf5',
+                border: '1px solid rgba(110, 231, 183, 0.4)',
+                fontWeight: 800,
+                fontSize: '0.98rem',
                 letterSpacing: '0.02em',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justify: 'center',
                 gap: '0.5rem',
-                boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)'
+                boxShadow: '0 6px 24px rgba(16, 185, 129, 0.35)'
               }}
             >
               Next ➔
@@ -681,12 +680,12 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           gap: '0.35rem',
           flexWrap: 'nowrap',
           padding: '0.35rem 0.85rem',
-          background: 'rgba(15, 23, 42, 0.92)',
-          border: '1px solid rgba(255, 255, 255, 0.12)',
+          background: 'rgba(11, 19, 41, 0.92)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
           backdropFilter: 'blur(12px)',
           borderRadius: 100,
           zIndex: 90,
-          boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
           width: 'fit-content'
         }}>
           <span style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', marginRight: '0.15rem' }}>
@@ -696,7 +695,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextTopic && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <SkipForward size={11} /> Next Topic
             </button>
@@ -705,7 +704,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextLesson && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextLesson)}
-              style={{ background: 'rgba(56,189,248,0.12)', border: '1px solid rgba(56,189,248,0.3)', color: '#38bdf8', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(56,189,248,0.12)', border: '1px solid rgba(56,189,248,0.25)', color: '#38bdf8', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <FastForward size={11} /> Next Lesson
             </button>
@@ -714,7 +713,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextUnit && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextUnit)}
-              style={{ background: 'rgba(192,132,252,0.12)', border: '1px solid rgba(192,132,252,0.3)', color: '#c084fc', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.25)', color: '#c084fc', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <ChevronsRight size={11} /> Next Unit
             </button>
@@ -723,7 +722,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextChapter && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextChapter)}
-              style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.3)', color: '#fb923c', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 800, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(251,146,60,0.12)', border: '1px solid rgba(251,146,60,0.25)', color: '#fb923c', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 800, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <Flag size={11} /> Next Chapter
             </button>
@@ -757,7 +756,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
               className="glass-panel"
               style={{
                 width: '100%',
-                maxWidth: '780px',
+                maxWidth: '760px',
                 background: '#0f172a',
                 border: '1.5px solid #38bdf8',
                 borderRadius: '20px',
@@ -809,10 +808,10 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 style={{
                   padding: '0.75rem 1.25rem',
                   borderRadius: 12,
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  color: '#000',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  color: '#ecfdf5',
                   border: 'none',
-                  fontWeight: 900,
+                  fontWeight: 800,
                   fontSize: '0.88rem',
                   cursor: 'pointer',
                   width: 'fit-content',
