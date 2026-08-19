@@ -88,6 +88,7 @@ function parseSyllabus(json) {
           units.forEach((u) => {
             if (u.Flashcard) {
               flashcards.push({
+                id: u.Id,
                 q: u.Flashcard.Front,
                 a: u.Flashcard.Back,
                 img: u.Flashcard.Image || null,
@@ -95,7 +96,10 @@ function parseSyllabus(json) {
               });
             }
             if (u.Quiz) {
-              mcqs.push(u.Quiz);
+              mcqs.push({
+                id: u.Id,
+                ...u.Quiz
+              });
             }
           });
 
@@ -286,6 +290,7 @@ export default function App() {
         top.ConceptUnits.forEach(u => {
           if (u.Flashcard) {
             flashcards.push({
+              id: u.Id,
               q: u.Flashcard.Front,
               a: u.Flashcard.Back,
               img: u.Flashcard.Image || null,
@@ -293,7 +298,10 @@ export default function App() {
             });
           }
           if (u.Quiz) {
-            mcqs.push(u.Quiz);
+            mcqs.push({
+              id: u.Id,
+              ...u.Quiz
+            });
           }
         });
       }
