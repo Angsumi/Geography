@@ -231,7 +231,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
             {navTargets?.nextLesson && (
               <button
                 onClick={() => onNavigateToTarget(navTargets.nextLesson)}
-                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38bdf8', fontWeight: 800, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
+                style={{ padding: '0.8rem 1rem', borderRadius: 12, background: 'rgba(56, 189, 248, 0.15)', border: '1px solid rgba(56, 189, 248, 0.4)', color: '#38bdf8', fontWeight: 900, fontSize: '0.82rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}
               >
                 <FastForward size={16} /> Next Lesson ▶▶
               </button>
@@ -402,14 +402,11 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           </motion.div>
         )}
 
-        {/* STEP 3: CONCEPT LOOP - LEARN (Learn) */}
+        {/* STEP 3: CONCEPT LOOP - LEARN (Learn - Clean Fact Display) */}
         {unitStep === 'learn' && (
-          <motion.div key={`step-learn-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: '1.25rem' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.1rem', color: '#34d399', fontWeight: 800 }}>
-                Concept Fact ({conceptIndex + 1} of {conceptUnits.length}):
-              </h3>
-              <p style={{ margin: 0, fontSize: '1.05rem', color: '#e2e8f0', lineHeight: 1.6, fontWeight: 500 }}>
+          <motion.div key={`step-learn-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2.25rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 16, padding: '1.5rem' }}>
+              <p style={{ margin: 0, fontSize: '1.15rem', color: '#e2e8f0', lineHeight: 1.6, fontWeight: 500 }}>
                 {currentConcept.Fact}
               </p>
             </div>
