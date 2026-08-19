@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Layers, GraduationCap, ChevronRight, ChevronDown, X, PlayCircle, Sparkles, Compass, BookOpen, Search, Clock, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import syllabusData from './data/unifiedGeography.json';
 
 import './index.css';
@@ -18,7 +19,9 @@ import { generateSectionPlayerData } from './utils/lessonGenerator.jsx';
 function loadState(key, fallback) {
   try {
     const val = localStorage.getItem(key);
-    return val !== null ? JSON.parse(val) : fallback;
+    if (val === null || val === 'null' || val === 'undefined') return fallback;
+    const parsed = JSON.parse(val);
+    return parsed !== null && parsed !== undefined ? parsed : fallback;
   } catch { return fallback; }
 }
 
@@ -42,7 +45,7 @@ function parseSyllabus(json) {
   const syllabusHierarchy = [];
   const studyDb = {};
 
-  const rawSubjects = json.GeographySyllabus || [];
+  const rawSubjects = (json && json.GeographySyllabus) || [];
 
   rawSubjects.forEach((chapterObj) => {
     const chapterName = chapterObj.Chapter || chapterObj.ChapterName || chapterObj.Subject || 'Geography';
@@ -132,7 +135,7 @@ export default function App() {
   const [activeActivity, setActiveActivity] = useState(null);
   const [activeActivityData, setActiveActivityData] = useState(null);
 
-  // Accordion Open States (all collapsed by default)
+  // Accordion Open States
   const [openChapters, setOpenChapters] = useState({});
   const [openUnits, setOpenUnits] = useState({});
   const [openLessons, setOpenLessons] = useState({});
@@ -146,18 +149,20 @@ export default function App() {
   const markTopicCompleted = (topName) => {
     if (!topName) return;
     setCompletedTopics(prev => {
-      const next = { ...prev, [topName]: true };
+      const next = { ...(prev && typeof prev === 'object' ? prev : {}), [topName]: true };
       saveState('adre_completed_topics', next);
       return next;
     });
   };
 
+  const safeCompletedTopics = completedTopics && typeof completedTopics === 'object' ? completedTopics : {};
+
   let quickButtons = [];
-  const currentCh = syllabusHierarchy.find(s => s.chapterName === activeChapter);
+  const currentCh = (syllabusHierarchy || []).find(s => s.chapterName === activeChapter);
   if (currentCh) {
-    currentCh.units.forEach(u => {
-      u.lessons.forEach(les => {
-        quickButtons.push({ name: les.lessonName, label: les.lessonName, unitName: u.unitName, topicsCount: les.topics.length });
+    (currentCh.units || []).forEach(u => {
+      (u.lessons || []).forEach(les => {
+        quickButtons.push({ name: les.lessonName, label: les.lessonName, unitName: u.unitName, topicsCount: (les.topics || []).length });
       });
     });
   }
@@ -189,11 +194,11 @@ export default function App() {
 
   const getLessonTopics = () => {
     if (!selectedLesson) return { unitName: 'Overview', topics: [] };
-    for (const ch of syllabusHierarchy) {
+    for (const ch of (syllabusHierarchy || [])) {
       if (ch.chapterName === activeChapter) {
-        for (const u of ch.units) {
-          for (const les of u.lessons) {
-            if (les.lessonName === selectedLesson) return { unitName: u.unitName, topics: les.topics };
+        for (const u of (ch.units || [])) {
+          for (const les of (u.lessons || [])) {
+            if (les.lessonName === selectedLesson) return { unitName: u.unitName, topics: les.topics || [] };
           }
         }
       }
@@ -203,10 +208,10 @@ export default function App() {
 
   const getNavigationTargets = (currentChapter, currentUnit, currentLesson, currentTopic) => {
     const allTopics = [];
-    syllabusHierarchy.forEach(ch => {
-      ch.units.forEach(u => {
-        u.lessons.forEach(l => {
-          l.topics.forEach(t => {
+    (syllabusHierarchy || []).forEach(ch => {
+      (ch.units || []).forEach(u => {
+        (u.lessons || []).forEach(l => {
+          (l.topics || []).forEach(t => {
             allTopics.push({
               chapterName: ch.chapterName,
               unitName: u.unitName,
@@ -259,9 +264,9 @@ export default function App() {
     const targetName = lessonName || selectedLesson;
     let foundLes = null;
 
-    for (const ch of syllabusHierarchy) {
-      for (const u of ch.units) {
-        for (const les of u.lessons) {
+    for (const ch of (syllabusHierarchy || [])) {
+      for (const u of (ch.units || [])) {
+        for (const les of (u.lessons || [])) {
           if (les.lessonName === targetName || les.lessonName.toLowerCase().includes((targetName || '').toLowerCase())) {
             foundLes = les;
             break;
@@ -276,7 +281,7 @@ export default function App() {
     const match = [];
     const mcqs = [];
 
-    foundLes.topics.forEach((top) => {
+    (foundLes.topics || []).forEach((top) => {
       if (top.ConceptUnits && Array.isArray(top.ConceptUnits)) {
         top.ConceptUnits.forEach(u => {
           if (u.Flashcard) {
@@ -350,9 +355,9 @@ export default function App() {
     let foundUnitName = 'General Unit';
     let foundChapterName = activeChapter;
 
-    for (const ch of syllabusHierarchy) {
-      for (const u of ch.units) {
-        for (const les of u.lessons) {
+    for (const ch of (syllabusHierarchy || [])) {
+      for (const u of (ch.units || [])) {
+        for (const les of (u.lessons || [])) {
           if (les.lessonName === targetLessonName || les.lessonName.toLowerCase().includes((targetLessonName || '').toLowerCase())) {
             foundLes = les;
             foundUnitName = u.unitName;
@@ -386,7 +391,7 @@ export default function App() {
     }
   };
 
-  const getChapterShortName = (name) => name.replace(/^\d+[._]\s*/, '');
+  const getChapterShortName = (name) => (name && typeof name === 'string' ? name.replace(/^\d+[._]\s*/, '') : 'CHAPTER');
 
   const currentNavTab = viewMode === 'home' || viewMode === 'chapter' ? 'learn'
     : viewMode === 'map_hub' ? 'explore'
@@ -437,7 +442,6 @@ export default function App() {
             onSelectChapter={(ch) => {
               setActiveChapter(ch);
               setViewMode('chapter');
-              setDetailedViewSubdivision(null);
               setActiveActivity(null);
             }}
             onStartLessonPlayer={startLessonPlayer}
@@ -501,8 +505,8 @@ export default function App() {
 
             {/* Student Curriculum Tree */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-              {syllabusHierarchy.map((chObj) => {
-                const chName = chObj.chapterName;
+              {(syllabusHierarchy || []).map((chObj) => {
+                const chName = chObj.chapterName || 'Geography';
                 const shortName = getChapterShortName(chName).toUpperCase();
                 const qLower = searchQuery.toLowerCase().trim();
                 const isChMatch = qLower && (chName.toLowerCase().includes(qLower) || JSON.stringify(chObj).toLowerCase().includes(qLower));
@@ -510,10 +514,11 @@ export default function App() {
 
                 let totalTopicsInCh = 0;
                 let completedTopicsInCh = 0;
-                chObj.units.forEach(u => {
-                  u.lessons.forEach(l => {
-                    totalTopicsInCh += l.topics.length;
-                    completedTopicsInCh += l.topics.filter(t => t.topicName && completedTopics[t.topicName]).length;
+                (chObj.units || []).forEach(u => {
+                  (u.lessons || []).forEach(l => {
+                    const topics = l.topics || [];
+                    totalTopicsInCh += topics.length;
+                    completedTopicsInCh += topics.filter(t => t && t.topicName && safeCompletedTopics[t.topicName]).length;
                   });
                 });
                 const chPct = totalTopicsInCh > 0 ? Math.round((completedTopicsInCh / totalTopicsInCh) * 100) : 0;
@@ -540,7 +545,7 @@ export default function App() {
                       >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
                           <BookOpen size={18} color="var(--primary)" />
-                          <span>CHAPTER: {shortName} ({chObj.units.length} Units)</span>
+                          <span>CHAPTER: {shortName} ({(chObj.units || []).length} Units)</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                           <span className="badge badge-sage" style={{ fontSize: '0.74rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
@@ -556,19 +561,20 @@ export default function App() {
                       </div>
                     </div>
 
-                    {/* Level 2: Units (Collapsed by Default) */}
+                    {/* Level 2: Units */}
                     {isChOpen && (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginTop: '0.25rem', paddingLeft: '0.75rem', borderLeft: '2px solid var(--primary-border)' }}>
-                        {chObj.units.map(unitObj => {
+                        {(chObj.units || []).map(unitObj => {
                           const uName = unitObj.unitName;
                           const isUnitMatch = qLower && (uName.toLowerCase().includes(qLower) || JSON.stringify(unitObj).toLowerCase().includes(qLower));
                           const isUnitOpen = isUnitMatch || !!openUnits[uName];
 
                           let totalTopicsInUnit = 0;
                           let completedTopicsInUnit = 0;
-                          unitObj.lessons.forEach(l => {
-                            totalTopicsInUnit += l.topics.length;
-                            completedTopicsInUnit += l.topics.filter(t => t.topicName && completedTopics[t.topicName]).length;
+                          (unitObj.lessons || []).forEach(l => {
+                            const topics = l.topics || [];
+                            totalTopicsInUnit += topics.length;
+                            completedTopicsInUnit += topics.filter(t => t && t.topicName && safeCompletedTopics[t.topicName]).length;
                           });
                           const unitPct = totalTopicsInUnit > 0 ? Math.round((completedTopicsInUnit / totalTopicsInUnit) * 100) : 0;
 
@@ -596,7 +602,7 @@ export default function App() {
                                 >
                                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
                                     <Layers size={15} color="var(--primary)" />
-                                    <span>UNIT: {uName} ({unitObj.lessons.length} Lessons)</span>
+                                    <span>UNIT: {uName} ({(unitObj.lessons || []).length} Lessons)</span>
                                   </div>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                                     <span className="badge badge-sage" style={{ fontSize: '0.72rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
@@ -612,16 +618,17 @@ export default function App() {
                                 </div>
                               </div>
 
-                              {/* Level 3: Lessons & Subtopics (Collapsed by Default) */}
+                              {/* Level 3: Lessons & Subtopics */}
                               {isUnitOpen && (
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.35rem', paddingLeft: '0.5rem' }}>
-                                  {unitObj.lessons.map(les => {
+                                  {(unitObj.lessons || []).map(les => {
                                     const lesName = les.lessonName;
                                     const isLesMatch = qLower && (lesName.toLowerCase().includes(qLower) || JSON.stringify(les).toLowerCase().includes(qLower));
                                     const isLesOpen = isLesMatch || !!openLessons[lesName];
 
-                                    const totalTopicsInLes = les.topics.length;
-                                    const completedTopicsInLes = les.topics.filter(t => t.topicName && completedTopics[t.topicName]).length;
+                                    const topics = les.topics || [];
+                                    const totalTopicsInLes = topics.length;
+                                    const completedTopicsInLes = topics.filter(t => t && t.topicName && safeCompletedTopics[t.topicName]).length;
                                     const lesPct = totalTopicsInLes > 0 ? Math.round((completedTopicsInLes / totalTopicsInLes) * 100) : 0;
                                     const isLesDone = totalTopicsInLes > 0 && completedTopicsInLes === totalTopicsInLes;
 
@@ -674,8 +681,8 @@ export default function App() {
                                         {isLesOpen && (
                                           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.35rem', paddingTop: '0.35rem', borderTop: '1px dashed var(--border-subtle)' }}>
                                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                                              {les.topics.map((top, idx) => {
-                                                const isTopDone = top.topicName && !!completedTopics[top.topicName];
+                                              {topics.map((top, idx) => {
+                                                const isTopDone = top && top.topicName && !!safeCompletedTopics[top.topicName];
                                                 return (
                                                   <div
                                                     key={idx}
