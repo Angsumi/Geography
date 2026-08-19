@@ -1,89 +1,158 @@
 # 📐 Universal Interactive Learning Platform Specification
 ### *A Blueprint for Replicating Brilliant.org-Style Subject Learning Apps*
 
-This document contains the complete design system, architecture, data schemas, color palettes, component hierarchy, utility functions, and setup guide needed to replicate this platform for any subject in a standalone repository.
+> **Version**: 2.0 (Calm Nature / Zen UI Architecture Edition)  
+> **Status**: Production Standard
+
+This document contains the complete design system, UI/UX guidelines, state machine architecture, 4-tier data schemas, color palettes, component hierarchy, utility functions, and setup guide required to replicate this platform for any subject in a standalone repository.
 
 ---
 
-## 🎯 1. Core Philosophy & Design System
+## 🎨 1. Color Palette: Calm Nature / Zen Style (Zero Eye Fatigue)
 
-The platform is designed around **Visual, Active Learning** (learning by doing) rather than passive reading.
+The application enforces a soothing, high-contrast yet non-fatiguing **Calm Nature / Zen Slate** color scheme across all interactive player views.
 
-### Design Principles:
-1. **Mobile-First**: Optimized for smartphone touch interactions with large touch targets, single-column focus, and minimal clutter.
-2. **Zero Nested Cards**: Clean paper aesthetic using flat surface containers (`--bg-surface: #ffffff`) and subtle borders without cards inside cards.
-3. **Typography Hierarchy**: Distinct fonts for headers (`Outfit`) and body text (`Inter`).
-4. **Immediate Feedback**: Instant visual/sound responses on answer selections, card flips, and line connections.
-
----
-
-## 🎨 2. Color Palette & Typography Tokens
-
-Include this design system in your `src/index.css`:
+### Design Tokens (`src/index.css`):
 
 ```css
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Surface Colors */
-  --bg-main: #faf9f6;          /* Warm paper background */
-  --bg-surface: #ffffff;       /* Pure white card panel */
-  --bg-subtle: #f4f4f0;        /* Subtle secondary backgrounds */
-  --bg-hover: #ecece7;         /* Hover state */
+  /* Surface Colors & Backdrops */
+  --bg-main: #0b1320;                  /* Deep Obsidian Slate */
+  --bg-surface: rgba(20, 30, 45, 0.88); /* Deep Warm Zen Slate Card */
+  --bg-subtle: rgba(255, 255, 255, 0.04);
+  --bg-hover: rgba(255, 255, 255, 0.08);
   
   /* Borders */
-  --border-subtle: rgba(0, 0, 0, 0.07);
-  --border-medium: rgba(0, 0, 0, 0.12);
+  --border-subtle: rgba(45, 212, 191, 0.2);  /* Subtle Teal Hairline */
+  --border-medium: rgba(45, 212, 191, 0.35);
 
-  /* Primary Accent (Emerald / Learning State) */
-  --primary: #059669;
-  --primary-bright: #10b981;
-  --primary-bg: #ecfdf5;
-  --primary-border: #a7f3d0;
-  
-  /* Secondary Accent (Teal / Interactive Controls) */
-  --secondary: #0d9488;
-  --secondary-bg: #f0fdfa;
-  --secondary-border: #99f6e4;
-  
-  /* Warm Accent (Amber / Streaks & Badges) */
-  --accent-warm: #d97706;
-  --accent-warm-bg: #fffbeb;
-  
-  /* Danger (Rose / Errors & Quiz Incorrect) */
-  --danger: #e11d48;
-  --danger-bg: #fff1f2;
-  --danger-border: #fecdd3;
-  
-  /* Text Spectrum */
-  --text-main: #18181b;
-  --text-muted: #71717a;
-  --text-light: #a1a1aa;
-  
+  /* Primary Action Control (Teal-600/700 Gradient) */
+  --primary-gradient: linear-gradient(135deg, #0d9488, #0f766e);
+  --primary-border: rgba(45, 212, 191, 0.35);
+  --primary-text: #f0fdf4;
+  --primary-glow: 0 4px 18px rgba(13, 148, 136, 0.3);
+
+  /* Secondary / Negative Action Control (Soft Amber Sand) */
+  --secondary-bg: rgba(251, 191, 36, 0.12);
+  --secondary-border: rgba(251, 191, 36, 0.35);
+  --secondary-text: #fde68a;
+
+  /* Ambient Glass Cards & Shadows */
+  --card-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+
   /* Typography Families */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Outfit', 'Inter', sans-serif;
 }
 ```
 
+### ❌ Strict Color Prohibitions
+* **NO High-Contrast Neon Red/Green**: Avoid standard saturated green/red for right/wrong.
+* **NO Electric Purple/Cyan**: Avoid hyper-saturated gaming themes.
+* **NO Stark Monochromatic Cold Black/White**: Prefer warm slate and muted organic tones.
+
 ---
 
-## 🌲 3. The 4-Tier Curriculum Data Schema
+## 🎛️ 2. Action Controls & Ergonomics Architecture
 
-All subject data MUST follow this strict 4-tier JSON structure:
+### A. Compact Pill-Shaped Buttons
+All main action buttons (`Next ➔`, `I Knew It`, `I Didn't Know`, `Re-Play Mastered Topic`) MUST use compact, pill-shaped styling:
+* **Border Radius**: `100px`
+* **Padding**: `0.75rem 1.4rem`
+* **Font**: `fontSize: 0.92rem`, `fontWeight: 800`
+
+### B. Elevated Fixed Position (`bottom: 64px`)
+Primary interactive controls MUST float at a fixed coordinate in the lower center of the screen for effortless thumb reach on mobile:
+```css
+position: fixed;
+bottom: 64px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 95;
+```
+
+### C. Unified Action Spot
+The `Next ➔` button and self-assessment buttons (`I Didn't Know` & `I Knew It`) MUST share the exact same fixed bottom coordinate across phase transitions and card flips. This prevents visual jumping and enables muscle-memory tapping.
+
+### D. Centered Dark Glass Quick-Jump Toolbar (`bottom: 10px`)
+The bottom navigation bar MUST sit fixed at the very bottom center of the screen:
+```css
+position: fixed;
+bottom: 10px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 90;
+```
+* **Styling**: Translucent dark glass (`rgba(255, 255, 255, 0.03)` with `1px solid rgba(255, 255, 255, 0.06)` border).
+* **Text**: Minimalist silver-slate text (`#94a3b8`).
+* **Content**: Uniform jump pills (`Jump: Next Topic | Next Lesson | Next Unit | Next Chapter`). No multi-colored pills.
+
+---
+
+## 🎯 3. Vertical & Horizontal Centering Policy
+
+* **Screen Centering**: All step cards (*Mission Briefing*, *Explore Map/Visualizer*, *Learn Fact*, *Flashcard*, *Quiz MCQ*, *Match Game*) MUST be centered both vertically and horizontally within the viewport:
+  ```css
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ```
+* **Mobile Responsiveness**: Fluid width scaling (`maxWidth: 760px`, `width: 100%`) with scroll buffer protection (`paddingBottom: 150px`).
+
+---
+
+## 🧹 4. Zero-Clutter & Minimalist Content Policy
+
+To maintain high focus and zero visual fatigue, the player UI adheres to strict anti-clutter rules:
+1. ❌ **NO Debug Process Steppers**: Do NOT include process stepper bars (`✓ Orient ─ 2 Explore...`).
+2. ❌ **NO Technical Badges**: Do NOT include technical badges (`STEP 2: MAP EXPLORATION`, `CONCEPT 1 OF 3`).
+3. ❌ **NO Redundant Metadata Boxes**: Do NOT display time estimates, concept counts, XP reward boxes, or generic goal statements in the briefing.
+4. ❌ **NO Meta-Explanation Callouts**: Do NOT add callout boxes such as `"Why this matters for exam"`.
+5. ❌ **NO Technical Index Titles**: Do NOT prefix facts with `"Concept Fact (X of Y):"`.
+6. ❌ **NO Redundant Subtitles**: Keep flashcard faces clean without subtitle instructions (`"Tap card to flip..."`).
+7. ❌ **Clean Self-Assessment Labels**: Use clean labels (`I Didn't Know` & `I Knew It`) without inline XP counters on the button.
+
+---
+
+## 🔄 5. Topic Player State Machine Architecture
+
+The player operates on a deterministic 7-phase state machine:
+
+```
+[ briefing ] ➔ [ explore ] ➔ [ learn ] ➔ [ recall ] ➔ [ check ] ➔ [ matching_recap ] ➔ [ completed ]
+```
+
+| Phase | Screen Purpose | Key Interaction | Action Control |
+| :--- | :--- | :--- | :--- |
+| `briefing` | Topic Title & Overview | Read topic intro | `Start Learning ➔` |
+| `explore` | Interactive SVG / Map | Tap map regions / SVG nodes | `Continue to Fact ➔` |
+| `learn` | Syllabus Fact Presentation | Digest core concept fact | `Test Myself ➔` |
+| `recall` | Active Recall Flashcard | Flip card to reveal answer | `I Didn't Know` \| `I Knew It` |
+| `check` | Exam MCQ Quiz | Select correct option (A/B/C/D) | `Next Concept ➔` |
+| `matching_recap` | SVG Thread Connection Game | Drag/connect term to definition | `Complete Topic 🏆` |
+| `completed` | Scorecard & Progress | View XP earned & streak | `Proceed to Next Topic ▶` |
+
+---
+
+## 🌲 6. 4-Tier Curriculum JSON Schema
+
+All subject content follows this 4-tier JSON hierarchy:
 
 ```
 CHAPTER (e.g., QUANTITATIVE APTITUDE / PHYSICS / ANCIENT HISTORY)
  └── UNIT (e.g., Unit 1: Mechanics & Motion)
       └── LESSON (e.g., Lesson 1: Newton's Laws)
            └── TOPIC (e.g., Topic 1: Third Law & Momentum)
-                ├── Facts: [ Array of Syllabus Bullet Points ]
-                ├── VisualisationIdea: String (Identifies visualizer module)
-                ├── ConceptUnits: [ Fact ➔ Flashcard ➔ Quiz ]
-                └── PracticeMatching: [ Term ➔ Definition ]
+                ├── Facts: [ Array of Core Syllabus Bullet Points ]
+                ├── VisualisationIdea: String (Identifies visualizer component)
+                ├── ConceptUnits: [ Array of { Fact, Flashcard, Quiz } ]
+                └── PracticeMatching: [ Array of { Term, Definition } ]
 ```
 
-### Copy-Paste JSON Template (`src/data/subject.json`):
+### JSON Structure (`src/data/subject.json`):
 
 ```json
 {
@@ -101,37 +170,37 @@ CHAPTER (e.g., QUANTITATIVE APTITUDE / PHYSICS / ANCIENT HISTORY)
                   "TopicName": "Topic 1: Action & Reaction",
                   "Facts": [
                     "For every action, there is an equal and opposite reaction.",
-                    "Forces always occur in pairs."
+                    "Action and reaction forces act on different bodies."
                   ],
                   "VisualisationIdea": "NewtonCradleVisualizer",
                   "ConceptUnits": [
                     {
                       "Fact": "Newton's Third Law states forces act in equal & opposite pairs.",
                       "Flashcard": {
-                        "Front": "What is Newton's Third Law?",
-                        "Back": "Every action has an equal and opposite reaction."
+                        "Front": "What is Newton's Third Law of Motion?",
+                        "Back": "For every action, there is an equal and opposite reaction."
                       },
                       "Quiz": {
-                        "Question": "When a gun fires a bullet, why does the gun recoil?",
-                        "Options": [
-                          "Equal & opposite reaction force",
-                          "Gravity pulling backward",
-                          "Friction from the air",
-                          "Magnetic repulsion"
-                        ],
-                        "AnswerIndex": 0,
-                        "Explanation": "The backward momentum of recoil balances the forward momentum of the bullet."
+                        "Question": "When a gun fires a bullet, why does the gun recoil backward?",
+                        "Options": {
+                          "A": "Equal and opposite reaction force",
+                          "B": "Gravity pulling the gun backward",
+                          "C": "Friction between bullet and barrel",
+                          "D": "Magnetic repulsion"
+                        },
+                        "CorrectAnswer": "A",
+                        "Explanation": "The reaction force exerted by the expanding gas pushes the gun backward with equal momentum."
                       }
                     }
                   ],
                   "PracticeMatching": [
                     {
                       "Term": "Action Force",
-                      "Definition": "Force exerted by object A on object B"
+                      "Definition": "Initial force exerted by body A on body B"
                     },
                     {
                       "Term": "Reaction Force",
-                      "Definition": "Equal magnitude force exerted back by object B on object A"
+                      "Definition": "Equal & opposite force exerted back by body B on body A"
                     }
                   ]
                 }
@@ -147,10 +216,7 @@ CHAPTER (e.g., QUANTITATIVE APTITUDE / PHYSICS / ANCIENT HISTORY)
 
 ---
 
-## ⚡ 4. Core Utility Functions
-
-### A. Data Parser (`parseSyllabus`)
-Extracts flattened lists, 4-tier tree hierarchy, and searchable question databases:
+## ⚡ 7. Core Parser Utility (`parseSyllabus`)
 
 ```javascript
 export function parseSyllabus(json) {
@@ -182,12 +248,11 @@ export function parseSyllabus(json) {
           topicsList.push({
             topicName,
             facts: top.Facts || [],
-            ConceptUnits: top.ConceptUnits || [],
-            PracticeMatching: top.PracticeMatching || [],
+            conceptUnits: top.ConceptUnits || [],
+            practiceMatching: top.PracticeMatching || [],
             VisualisationIdea: top.VisualisationIdea || null
           });
 
-          // Populate study DB for practice hub
           (top.ConceptUnits || []).forEach((u) => {
             if (u.Flashcard) studyDb.flashcards.push({ ...u.Flashcard, topicName, lessonName, chapterName });
             if (u.Quiz) studyDb.mcqs.push({ ...u.Quiz, topicName, lessonName, chapterName });
@@ -210,133 +275,60 @@ export function parseSyllabus(json) {
 }
 ```
 
-### B. Topic Player Generator (`lessonGenerator.jsx`)
-Converts raw topic data into a multi-step slide deck:
-
-```javascript
-export function generateSectionPlayerData(topicObj, lessonName, unitName, chapterName, navTargets = {}) {
-  const steps = [];
-
-  // Step 1: Syllabus Facts + Visualizer
-  steps.push({
-    type: 'visual_fact',
-    title: topicObj.topicName,
-    facts: topicObj.facts || [],
-    visualIdea: topicObj.VisualisationIdea
-  });
-
-  // Step 2..N: Concept Units (Flashcard + Quiz)
-  (topicObj.ConceptUnits || []).forEach((unit, idx) => {
-    if (unit.Flashcard) {
-      steps.push({
-        type: 'flashcard',
-        title: `Active Recall #${idx + 1}`,
-        card: unit.Flashcard
-      });
-    }
-    if (unit.Quiz) {
-      steps.push({
-        type: 'quiz',
-        title: `Concept Test #${idx + 1}`,
-        quiz: unit.Quiz
-      });
-    }
-  });
-
-  // Step Last: Matching Recap
-  if (topicObj.PracticeMatching && topicObj.PracticeMatching.length > 0) {
-    steps.push({
-      type: 'match',
-      title: 'Term Matching Recap',
-      pairs: topicObj.PracticeMatching
-    });
-  }
-
-  return {
-    breadcrumb: { chapterName, unitName, lessonName, topicName: topicObj.topicName },
-    steps,
-    nextTopic: navTargets.nextTopic || null
-  };
-}
-```
-
 ---
 
-## 📁 5. Complete Repository Folder Structure
+## 📁 8. Complete Repository Architecture
 
 ```
 PROJECT_ROOT/
+├── .gemini/
+│   └── rules.md                     # System rules enforcing Calm Nature UI
 ├── src/
 │   ├── components/
-│   │   ├── HomePage.jsx             # Main syllabus directory & hero dashboard
-│   │   ├── InteractiveLesson.jsx    # Topic Player with Breadcrumb Header & Auto-Flow
-│   │   ├── SectionVisualizer.jsx    # Router for interactive SVG visualizers
+│   │   ├── HomePage.jsx             # 4-Tier Curriculum Tree Directory
+│   │   ├── InteractiveLesson.jsx    # Topic Player (State Machine & Fixed Controls)
+│   │   ├── SectionVisualizer.jsx    # SVG/Canvas interactive diagram router
 │   │   ├── Flashcard.jsx            # Active recall flip deck
 │   │   ├── MatchGame.jsx            # SVG thread connection game
-│   │   ├── ExamineMCQ.jsx           # Exam MCQ engine with explanations
-│   │   ├── PracticeHub.jsx          # Flashcards/MCQs revision hub
-│   │   ├── ProgressDashboard.jsx    # XP, Streak, Level, and Syllabus Completion tracker
-│   │   ├── MobileNavBar.jsx         # Bottom mobile navigation bar
-│   │   └── visualizers/             # Subject-specific interactive SVG diagrams
+│   │   ├── ExamineMCQ.jsx           # Exam MCQ quiz engine
+│   │   ├── PracticeHub.jsx          # Flashcard & Quiz revision hub
+│   │   ├── ProgressDashboard.jsx    # XP, Streak, and Mastery tracking
+│   │   ├── MobileNavBar.jsx         # Mobile navigation footer
+│   │   └── visualizers/             # Subject-specific SVG visualizers
 │   ├── data/
-│   │   └── subject.json             # 4-Tier Syllabus Content JSON
+│   │   └── subject.json             # 4-Tier Subject Curriculum JSON
 │   ├── hooks/
-│   │   └── useSound.js              # Web Audio API sound effect triggers
+│   │   └── useSound.js              # Sound effect triggers
 │   ├── utils/
-│   │   ├── lessonGenerator.jsx      # Topic player sequence pipeline generator
-│   │   └── stringMatcher.js         # Term match comparison utility
-│   ├── App.jsx                      # App root, state routing, 4-tier sidebar
-│   ├── main.jsx                     # Vite entry point
+│   │   ├── lessonGenerator.jsx      # Topic player slide deck generator
+│   │   └── stringMatcher.js         # Term matching utility
+│   ├── App.jsx                      # App root router & state manager
+│   ├── main.jsx                     # Entry point
 │   └── index.css                    # Design system tokens & global CSS
-├── exports/                         # Standardized CSV topic exports
-├── public/                          # Static assets and favicons
-├── package.json                     # Dependencies (React, Vite, Framer Motion, Lucide)
-└── vite.config.js                   # Vite configuration
+├── exports/                         # Standardized topic CSV exports
+├── PLAYER_DESIGN_GUIDELINES.md      # Player UI/UX Architecture Standard
+├── PLATFORM_SPECIFICATION.md        # Complete Replication Blueprint
+├── package.json
+└── vite.config.js
 ```
 
 ---
 
-## 📦 6. Package Dependencies (`package.json`)
+## 🚀 9. Quickstart to Replicate in a New Subject Repo
 
-```json
-{
-  "name": "interactive-learning-platform",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "framer-motion": "^12.4.3",
-    "lucide-react": "^0.475.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.1.0"
-  }
-}
-```
-
----
-
-## 🚀 7. Quickstart for New Subject Repository
-
-1. **Clone/Create standard Vite React app**:
+1. **Initialize Vite React Project**:
    ```bash
    npx create-vite@latest my-subject-app --template react
    cd my-subject-app
    npm install lucide-react framer-motion
    ```
-2. **Copy files into structure**:
-   - Save this file as `PLATFORM_SPECIFICATION.md`.
-   - Add your subject's JSON to `src/data/subject.json` following Section 3.
-   - Add CSS tokens to `src/index.css` following Section 2.
-3. **Run Dev Server**:
-   ```bash
-   npm run dev
-   ```
+
+2. **Copy Specs & Rules**:
+   - Place this file as `PLATFORM_SPECIFICATION.md`.
+   - Place `PLAYER_DESIGN_GUIDELINES.md` into the project root.
+   - Copy `.gemini/rules.md` to enforce UI consistency.
+
+3. **Populate Subject Data & Launch**:
+   - Replace `src/data/subject.json` with your new subject's content.
+   - Update `src/index.css` with Section 1 tokens.
+   - Run `npm run dev`.
