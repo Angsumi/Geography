@@ -111,12 +111,14 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
     }
   };
 
-  const handleRelearnTopic = () => {
-    setConceptIndex(0);
-    setUnitStep('briefing');
-    setIsFlipped(false);
-    setSelectedOption(null);
-    setIsQuizAnswered(false);
+  const handleLearnNextTopic = () => {
+    if (navTargets?.nextTopic) {
+      onNavigateToTarget(navTargets.nextTopic);
+    } else if (navTargets?.nextLesson) {
+      onNavigateToTarget(navTargets.nextLesson);
+    } else {
+      onComplete(earnedXp);
+    }
   };
 
   const handleMatchingComplete = (pts = 25) => {
@@ -162,7 +164,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 160px)', padding: '1rem 0' }}>
         <motion.div key="step-completed" initial={{ scale: 0.96, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="glass-panel" style={{ padding: '2.5rem 2rem', textAlign: 'center', width: '100%', maxWidth: 620, background: 'rgba(20, 30, 45, 0.9)', border: '1px solid rgba(45, 212, 191, 0.25)', boxShadow: '0 20px 48px rgba(0, 0, 0, 0.5)' }}>
-          <Award size={56} color="#2dd4bf" style={{ margin: '0 auto 0.85rem' }} />
+          <Award size={54} color="#2dd4bf" style={{ margin: '0 auto 0.85rem' }} />
           <span style={{ color: '#2dd4bf', fontSize: '0.78rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
             TOPIC MASTERED
           </span>
@@ -186,19 +188,19 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
             </h2>
           </div>
 
-          {/* ── HIGH PROMINENCE "LEARN THIS" RE-PLAY BUTTON ── */}
+          {/* ── HIGH PROMINENCE PRIMARY "LEARN NEXT TOPIC" BUTTON ── */}
           <div style={{ marginBottom: '1.25rem' }}>
             <button
-              onClick={handleRelearnTopic}
+              onClick={handleLearnNextTopic}
               style={{
                 width: '100%',
-                padding: '0.85rem 1.4rem',
+                padding: '0.9rem 1.4rem',
                 borderRadius: 100,
                 background: 'linear-gradient(135deg, #0d9488, #0f766e)',
                 color: '#f0fdf4',
                 border: '1px solid rgba(45, 212, 191, 0.35)',
                 fontWeight: 800,
-                fontSize: '0.95rem',
+                fontSize: '1rem',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -207,26 +209,17 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 boxShadow: '0 6px 20px rgba(13, 148, 136, 0.25)'
               }}
             >
-              <BookMarked size={19} /> 💡 Learn This (Re-Play Topic)
+              <PlayCircle size={20} /> 💡 Learn Next Topic ➔
             </button>
           </div>
 
           {/* ── Topic Completion Navigation Options ── */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.25rem' }}>
             <span style={{ fontSize: '0.72rem', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              Or Continue Curriculum Flow:
+              Or Jump Ahead in Curriculum Flow:
             </span>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.65rem' }}>
-              {navTargets?.nextTopic && (
-                <button
-                  onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-                  style={{ padding: '0.75rem 0.85rem', borderRadius: 100, background: 'rgba(45, 212, 191, 0.12)', border: '1px solid rgba(45, 212, 191, 0.3)', color: '#2dd4bf', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem' }}
-                >
-                  <PlayCircle size={15} /> Next Topic ▶
-                </button>
-              )}
-
               {navTargets?.nextLesson && (
                 <button
                   onClick={() => onNavigateToTarget(navTargets.nextLesson)}
