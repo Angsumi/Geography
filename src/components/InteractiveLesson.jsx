@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, BookOpen, Layers, HelpCircle, Trophy, Check, X, Award, Sparkles, PlayCircle, FastForward, ChevronsRight, Flag, ThumbsUp, ThumbsDown, BookMarked, Map, Compass, Target, Clock, ExternalLink, Eye, ChevronRight } from 'lucide-react';
 import MatchGame from './MatchGame';
 import { SectionVisualizer } from './SectionVisualizer';
 import { playCorrect, playWrong, playComplete, playFlip, toggleMute, getIsMuted } from '../hooks/useSound';
 
-export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateToTarget }) {
-  const chapterName = lessonData.chapterName || 'ASSAM';
-  const unitName = lessonData.unitName || 'Syllabus Unit';
-  const lessonName = lessonData.lessonName || 'Lesson';
-  const topicName = lessonData.topicName || lessonData.title || 'Topic';
+export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavigateToTarget }) {
+  const chapterName = lessonData?.chapterName || 'ASSAM';
+  const unitName = lessonData?.unitName || 'Syllabus Unit';
+  const lessonName = lessonData?.lessonName || 'Lesson';
+  const topicName = lessonData?.topicName || lessonData?.title || 'Topic';
 
-  const conceptUnits = lessonData.conceptUnits || [];
-  const practiceMatching = lessonData.practiceMatching || [];
-  const navTargets = lessonData.navTargets || {};
+  const conceptUnits = lessonData?.conceptUnits || [];
+  const practiceMatching = lessonData?.practiceMatching || [];
+  const navTargets = lessonData?.navTargets || {};
 
   // State Machine Phase: 'briefing' -> 'explore' -> 'learn' -> 'recall' -> 'check' -> 'matching_recap' -> 'completed'
   const [unitStep, setUnitStep] = useState('briefing');
@@ -29,24 +29,37 @@ export function InteractiveLesson({ lessonData, onComplete, onBack, onNavigateTo
   const [earnedXp, setEarnedXp] = useState(0);
   const [floatingXp, setFloatingXp] = useState(null);
 
+  // Reset player state whenever new lesson/topic data is loaded
+  useEffect(() => {
+    setUnitStep('briefing');
+    setConceptIndex(0);
+    setIsFlipped(false);
+    setSelectedOption(null);
+    setIsQuizAnswered(false);
+    setEarnedXp(0);
+    setFloatingXp(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [lessonData?.topicName, lessonData?.chapterName]);
+
   const currentConcept = conceptUnits[conceptIndex] || {
     Fact: `${topicName} key syllabus concept.`,
     Flashcard: { Front: `What is a key feature of ${topicName}?`, Back: `Key geography fact.` },
     Quiz: { Question: `Which statement is accurate regarding ${topicName}?`, Options: { A: 'Option A', B: 'Option B' }, CorrectAnswer: 'A', Explanation: 'Official syllabus fact.' }
   };
 
-  // Helper: Exam Relevance Callout Generator
-  const getExamRelevance = (factStr, name) => {
-    if (factStr.toLowerCase().includes('tributar') || factStr.toLowerCase().includes('river')) {
+  // Helper: Exam Relevance Callout Generator (Safely handles undefined/null Strings)
+  const getExamRelevance = (factStr = '', name = '') => {
+    const fStr = (factStr || '').toLowerCase();
+    if (fStr.includes('tributar') || fStr.includes('river')) {
       return "Frequently tested in ADRE exams through river origins, bank classification (North vs South bank), and confluence locations.";
     }
-    if (factStr.toLowerCase().includes('district') || factStr.toLowerCase().includes('boundary') || factStr.toLowerCase().includes('area')) {
+    if (fStr.includes('district') || fStr.includes('boundary') || fStr.includes('area')) {
       return "High-yield ADRE topic: Regional boundaries and district-level geographical facts are directly asked in Grade III & IV papers.";
     }
-    if (factStr.toLowerCase().includes('national park') || factStr.toLowerCase().includes('wildlife') || factStr.toLowerCase().includes('rhino')) {
+    if (fStr.includes('national park') || fStr.includes('wildlife') || fStr.includes('rhino')) {
       return "Critical Environmental Science section: UNESCO heritage status, endemic fauna, and sanctuary coordinates appear regularly.";
     }
-    return `Essential ADRE Geography concept: Understanding ${name} builds foundational clarity for conceptual & matching MCQs.`;
+    return `Essential ADRE Geography concept: Understanding ${name || 'this topic'} builds foundational clarity for conceptual & matching MCQs.`;
   };
 
   // Phase Transition Handlers
