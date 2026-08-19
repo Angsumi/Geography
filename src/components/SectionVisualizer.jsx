@@ -1,5 +1,5 @@
 import React from 'react';
-import vizData from '../data/unifiedViz.json';
+import vizData from '../data/unifiedGeography.json';
 import { isNameMatch } from '../utils/stringMatcher';
 import { Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
