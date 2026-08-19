@@ -144,6 +144,26 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
     }, 1200);
   };
 
+  // Handler for Next Button Click based on current unitStep
+  const handleNextClick = () => {
+    switch (unitStep) {
+      case 'briefing':
+        handleStartExploration();
+        break;
+      case 'explore':
+        handleStartLearning();
+        break;
+      case 'learn':
+        handleStartRecall();
+        break;
+      case 'check':
+        if (isQuizAnswered) handleAdvanceToNextConcept();
+        break;
+      default:
+        break;
+    }
+  };
+
   /* ─────────────────────────────────────────────────────────────
      PHASE: COMPLETED SCORECARD (Reflect)
      ───────────────────────────────────────────────────────────── */
@@ -266,8 +286,11 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
     );
   }
 
+  // Determine whether the fixed Next button should be enabled/visible
+  const showFixedNextButton = unitStep === 'briefing' || unitStep === 'explore' || unitStep === 'learn' || (unitStep === 'check' && isQuizAnswered);
+
   return (
-    <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative' }}>
+    <div style={{ maxWidth: 840, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'relative', paddingBottom: '140px' }}>
       
       {/* Floating XP Animation Banner */}
       <AnimatePresence>
@@ -393,38 +416,12 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 By the end of this session, you will be able to identify major geographical features, answer exam MCQs accurately, and connect related terms.
               </span>
             </div>
-
-            {/* Static Position Next Button Right Above Footer */}
-            <div style={{ marginTop: '0.5rem' }}>
-              <button
-                onClick={handleStartExploration}
-                style={{
-                  width: '100%',
-                  padding: '1rem 1.75rem',
-                  borderRadius: 16,
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  color: '#000',
-                  border: 'none',
-                  fontWeight: 900,
-                  fontSize: '1.05rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  gap: '0.55rem',
-                  boxShadow: '0 6px 24px rgba(16, 185, 129, 0.45)'
-                }}
-              >
-                Next ➔
-              </button>
-            </div>
           </motion.div>
         )}
 
         {/* STEP 2: MAP EXPLORATION (Explore) */}
         {unitStep === 'explore' && (
           <motion.div key="step-explore" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(56,189,248,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            
             <div style={{ background: 'rgba(56,189,248,0.1)', borderLeft: '4px solid #38bdf8', padding: '0.85rem 1.1rem', borderRadius: '0 12px 12px 0' }}>
               <strong style={{ color: '#38bdf8', fontSize: '0.88rem' }}>
                 Explore Map Model: {topicName}
@@ -438,38 +435,12 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
             <div style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
               <SectionVisualizer sectionName={topicName} facts={conceptUnits.map(u => u.Fact)} />
             </div>
-
-            {/* Static Position Next Button Right Above Footer */}
-            <div style={{ marginTop: '0.5rem' }}>
-              <button
-                onClick={handleStartLearning}
-                style={{
-                  width: '100%',
-                  padding: '0.95rem 1.6rem',
-                  borderRadius: 14,
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  color: '#000',
-                  border: 'none',
-                  fontWeight: 900,
-                  fontSize: '1rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  gap: '0.45rem',
-                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
-                }}
-              >
-                Next ➔
-              </button>
-            </div>
           </motion.div>
         )}
 
         {/* STEP 3: CONCEPT LOOP - LEARN (Learn) */}
         {unitStep === 'learn' && (
           <motion.div key={`step-learn-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(255,255,255,0.08)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            
             <div style={{ background: 'rgba(30,41,59,0.6)', borderLeft: '4px solid #10b981', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 14, padding: '1.25rem' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.1rem', color: '#34d399', fontWeight: 800 }}>
                 Concept Fact ({conceptIndex + 1} of {conceptUnits.length}):
@@ -488,38 +459,12 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 {getExamRelevance(currentConcept.Fact, topicName)}
               </p>
             </div>
-
-            {/* Static Position Next Button Right Above Footer */}
-            <div style={{ marginTop: '0.5rem' }}>
-              <button
-                onClick={handleStartRecall}
-                style={{
-                  width: '100%',
-                  padding: '0.85rem 1.5rem',
-                  borderRadius: 14,
-                  background: 'linear-gradient(135deg, #10b981, #34d399)',
-                  color: '#000',
-                  border: 'none',
-                  fontWeight: 900,
-                  fontSize: '0.95rem',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justify: 'center',
-                  gap: '0.45rem',
-                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
-                }}
-              >
-                Next ➔
-              </button>
-            </div>
           </motion.div>
         )}
 
         {/* STEP 3: CONCEPT LOOP - RECALL (Flashcard) */}
         {unitStep === 'recall' && (
           <motion.div key={`step-recall-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(192,132,252,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            
             {/* Flip Canvas Card */}
             <div style={{ perspective: '1000px', minHeight: '260px', cursor: 'pointer' }} onClick={() => { playFlip(); setIsFlipped(!isFlipped); }}>
               <motion.div
@@ -615,7 +560,6 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
         {/* STEP 3: CONCEPT LOOP - CHECK (MCQ Quiz) */}
         {unitStep === 'check' && (
           <motion.div key={`step-check-${conceptIndex}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.25 }} className="glass-panel" style={{ padding: '2rem', borderRadius: 20, background: 'rgba(15,23,42,0.9)', border: '1px solid rgba(244,63,94,0.3)', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            
             <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: 800, lineHeight: 1.5 }}>
               {currentConcept.Quiz?.Question || `Which statement is accurate regarding ${topicName}?`}
             </h3>
@@ -694,33 +638,6 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 </p>
               </motion.div>
             )}
-
-            {/* Static Position Next Button Right Above Footer */}
-            {isQuizAnswered && (
-              <div style={{ marginTop: '0.5rem' }}>
-                <button
-                  onClick={handleAdvanceToNextConcept}
-                  style={{
-                    width: '100%',
-                    padding: '0.85rem 1.5rem',
-                    borderRadius: 14,
-                    background: 'linear-gradient(135deg, #10b981, #34d399)',
-                    color: '#000',
-                    border: 'none',
-                    fontWeight: 900,
-                    fontSize: '0.95rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justify: 'center',
-                    gap: '0.45rem',
-                    boxShadow: '0 4px 16px rgba(16, 185, 129, 0.4)'
-                  }}
-                >
-                  Next ➔
-                </button>
-              </div>
-            )}
           </motion.div>
         )}
 
@@ -746,29 +663,71 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
 
       </AnimatePresence>
 
-      {/* ── SMALL & CENTERED BOTTOM FOOTER QUICK-JUMP TOOLBAR ── */}
+      {/* ── FIXED POSITION NEXT BUTTON RIGHT ABOVE FOOTER ── */}
+      {showFixedNextButton && (
+        <div style={{
+          position: 'fixed',
+          bottom: '54px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: 'calc(100% - 2rem)',
+          maxWidth: '840px',
+          zIndex: 95
+        }}>
+          <button
+            onClick={handleNextClick}
+            style={{
+              width: '100%',
+              padding: '0.95rem 1.6rem',
+              borderRadius: 16,
+              background: 'linear-gradient(135deg, #10b981, #34d399)',
+              color: '#000',
+              border: '2px solid #6ee7b7',
+              fontWeight: 900,
+              fontSize: '1rem',
+              letterSpacing: '0.02em',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justify: 'center',
+              gap: '0.55rem',
+              boxShadow: '0 8px 32px rgba(16, 185, 129, 0.55)'
+            }}
+          >
+            Next ➔
+          </button>
+        </div>
+      )}
+
+      {/* ── FIXED BOTTOM FOOTER QUICK-JUMP TOOLBAR ── */}
       {unitStep !== 'completed' && (
         <div style={{
+          position: 'fixed',
+          bottom: '10px',
+          left: '50%',
+          transform: 'translateX(-50%)',
           display: 'flex',
           alignItems: 'center',
           justify: 'center',
           gap: '0.35rem',
-          flexWrap: 'wrap',
-          padding: '0.45rem 0.85rem',
-          background: 'rgba(15, 23, 42, 0.65)',
-          border: '1px solid rgba(255, 255, 255, 0.06)',
-          borderRadius: 12,
-          margin: '0 auto',
-          maxWidth: 'fit-content'
+          flexWrap: 'nowrap',
+          padding: '0.35rem 0.85rem',
+          background: 'rgba(15, 23, 42, 0.92)',
+          border: '1px solid rgba(255, 255, 255, 0.12)',
+          backdropFilter: 'blur(12px)',
+          borderRadius: 100,
+          zIndex: 90,
+          boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
+          width: 'fit-content'
         }}>
-          <span style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', marginRight: '0.2rem' }}>
+          <span style={{ fontSize: '0.65rem', color: '#64748b', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', marginRight: '0.15rem' }}>
             Jump:
           </span>
 
           {navTargets?.nextTopic && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextTopic)}
-              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', padding: '0.25rem 0.5rem', borderRadius: 6, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#cbd5e1', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <SkipForward size={11} /> Next Topic
             </button>
@@ -777,7 +736,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextLesson && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextLesson)}
-              style={{ background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.25)', color: '#38bdf8', padding: '0.25rem 0.5rem', borderRadius: 6, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(56,189,248,0.12)', border: '1px solid rgba(56,189,248,0.3)', color: '#38bdf8', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <FastForward size={11} /> Next Lesson
             </button>
@@ -786,7 +745,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextUnit && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextUnit)}
-              style={{ background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.25)', color: '#c084fc', padding: '0.25rem 0.5rem', borderRadius: 6, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(192,132,252,0.12)', border: '1px solid rgba(192,132,252,0.3)', color: '#c084fc', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <ChevronsRight size={11} /> Next Unit
             </button>
@@ -795,7 +754,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
           {navTargets?.nextChapter && (
             <button
               onClick={() => onNavigateToTarget(navTargets.nextChapter)}
-              style={{ background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.25)', color: '#fb923c', padding: '0.25rem 0.5rem', borderRadius: 6, fontSize: '0.68rem', fontWeight: 800, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
+              style={{ background: 'rgba(245,158,11,0.12)', border: '1px solid rgba(245,158,11,0.3)', color: '#fb923c', padding: '0.22rem 0.5rem', borderRadius: 20, fontSize: '0.68rem', fontWeight: 800, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.2rem' }}
             >
               <Flag size={11} /> Next Chapter
             </button>
