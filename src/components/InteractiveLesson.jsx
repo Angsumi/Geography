@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, BookOpen, Layers, HelpCircle, Trophy, Check, X, Award, Sparkles, PlayCircle, FastForward, ChevronsRight, Flag, ThumbsUp, ThumbsDown, BookMarked, Map, Compass, Target, Clock, SkipForward } from 'lucide-react';
 import MatchGame from './MatchGame';
 import { SectionVisualizer } from './SectionVisualizer';
+import { CourseTreeVisual } from './visualizers/CourseTreeVisual';
 import { playCorrect, playWrong, playComplete, playFlip } from '../hooks/useSound';
 
 export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavigateToTarget }) {
@@ -389,6 +390,18 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                   In this session, you will explore <strong>{topicName}</strong>, understand its geographical landforms, and master key facts required for ADRE competitive examinations.
                 </p>
               </div>
+
+              {/* Course Tree Visualization at Player Briefing Start */}
+              <CourseTreeVisual
+                chapterName={chapterName}
+                unitName={unitName}
+                lessonName={lessonName}
+                topicName={topicName}
+                conceptUnits={conceptUnits}
+                onStartLessonPlayer={() => setUnitStep('explore')}
+                onSelectChapter={onBack}
+                onExploreTopics={onBack}
+              />
             </motion.div>
           )}
 
