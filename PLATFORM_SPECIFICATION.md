@@ -127,7 +127,7 @@ The player operates on a deterministic 7-phase state machine:
 
 | Phase | Screen Purpose | Key Interaction | Action Control |
 | :--- | :--- | :--- | :--- |
-| `briefing` | Topic Title & Overview | Read topic intro | `Start Learning ➔` |
+| `briefing` | Topic Overview & Course Tree Visualizer (`CourseTreeVisual`) | Read topic intro & tap progress-aware course tree nodes | `Start Learning ➔` |
 | `explore` | Interactive SVG / Map | Tap map regions / SVG nodes | `Continue to Fact ➔` |
 | `learn` | Syllabus Fact Presentation | Digest core concept fact | `Test Myself ➔` |
 | `recall` | Active Recall Flashcard | Flip card to reveal answer | `I Didn't Know` \| `I Knew It` |

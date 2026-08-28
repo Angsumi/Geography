@@ -34,7 +34,12 @@ CHAPTER (e.g. ASSAM GEOGRAPHY, NORTHEAST 7 SISTERS, INDIAN GEOGRAPHY)
 - 🔄 **Automatic Sequential Flow**:
   Upon completing a Topic Player (*Fact Read + SVG Visualizer ➔ Flashcard Recall ➔ Exam Quiz ➔ Term Matching Recap*), the completion scorecard presents a high-prominence **"Automatic Flow: Proceed to Next Topic ▶"** button. Students can continuously flow from Topic 1 ➔ Topic 2 ➔ Topic 3 without having to return to the directory!
 
-- 🌲 **4-Tier Curriculum Tree Sidebar**:
+- 🌲 **Interactive & Progress-Aware Course Structure Tree (`CourseTreeVisual`)**:
+  - **Player Entry Integration**: When students click **Start Learning** or **Continue Learning**, the player briefing screen displays an interactive 4-tier visual hierarchy tree (**Chapter ➔ Unit ➔ Lesson ➔ Target Topic ➔ Core Concepts**).
+  - **Dynamic Student Progress Updates**: Reads student progress (`completedTopics` / `adre_completed_topics` in `localStorage`). Mastered topics and completed lessons dynamically transition into green success nodes (`#34d399`), checkmark badges (`✓ MASTERED`), and `REVIEW TOPIC ➔` buttons.
+  - **Interactive Node Navigation**: Every node (Chapter, Unit, Lesson, Target Topic) is fully interactive with hover scale animations and direct click actions.
+
+- 🌲 **4-Tier Curriculum Tree Sidebar & Directory**:
   - **Tier 1 (Chapter)**: `ASSAM`, `NE`, `INDIA`
   - **Tier 2 (Unit)**: Curricular modules (e.g. *Unit 1: Physiographic Divisions*)
   - **Tier 3 (Lesson)**: Learning units (e.g. *Lesson 1: Brahmaputra Valley*)

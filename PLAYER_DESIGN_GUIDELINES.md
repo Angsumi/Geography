@@ -103,7 +103,7 @@ z-index: 90;
 
 The player MUST strictly transition through 7 state machine phases:
 
-1. `briefing`: Topic introduction & scope overview.
+1. `briefing`: Topic introduction, scope overview, and interactive **Course Tree Visualizer** (`CourseTreeVisual`) dynamically reflecting student mastery progress (`✓ MASTERED` vs target nodes).
 2. `explore`: Interactive SVG / Map visualizer node exploration.
 3. `learn`: Digest core concept fact bullet points.
 4. `recall`: Active recall flashcard flip.
