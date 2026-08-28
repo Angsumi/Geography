@@ -432,6 +432,7 @@ export default function App() {
         ) : viewMode === 'lesson' && activeLesson ? (
           <InteractiveLesson
             lessonData={activeLesson}
+            completedTopics={completedTopics}
             onComplete={(gainedXp) => {
               addXp(gainedXp);
               if (activeLesson?.topicName) markTopicCompleted(activeLesson.topicName);

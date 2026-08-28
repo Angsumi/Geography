@@ -6,7 +6,7 @@ import { SectionVisualizer } from './SectionVisualizer';
 import { CourseTreeVisual } from './visualizers/CourseTreeVisual';
 import { playCorrect, playWrong, playComplete, playFlip } from '../hooks/useSound';
 
-export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavigateToTarget }) {
+export function InteractiveLesson({ lessonData = {}, completedTopics = {}, onComplete, onBack, onNavigateToTarget }) {
   const chapterName = lessonData?.chapterName || 'ASSAM';
   const unitName = lessonData?.unitName || 'Syllabus Unit';
   const lessonName = lessonData?.lessonName || 'Lesson';
@@ -398,6 +398,7 @@ export function InteractiveLesson({ lessonData = {}, onComplete, onBack, onNavig
                 lessonName={lessonName}
                 topicName={topicName}
                 conceptUnits={conceptUnits}
+                completedTopics={completedTopics}
                 onStartLessonPlayer={() => setUnitStep('explore')}
                 onSelectChapter={onBack}
                 onExploreTopics={onBack}
