@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlayCircle, ArrowRight, Compass, Layers, HelpCircle, CheckCircle2, Sparkles, BookOpen, MapPin, Zap, ChevronRight, Heart } from 'lucide-react';
 import { GamusaIcon } from './icons/GamusaIcon';
+import { CourseTreeVisual } from './visualizers/CourseTreeVisual';
 
 export function HomePage({
   syllabusHierarchy,
@@ -213,6 +214,16 @@ export function HomePage({
             <span>Map Viewer</span>
           </button>
         </div>
+      </section>
+
+      {/* ── COURSE TREE VISUALIZATION AT THE VERY BEGINNING ── */}
+      <section style={{ width: '100%' }}>
+        <CourseTreeVisual
+          chapterName={nextRec.chapterName}
+          unitName={nextRec.unitName}
+          lessonName={nextRec.lessonName}
+          topicName={nextRec.lessonName}
+        />
       </section>
 
       {/* ── 2. MINIMAL CORE JOURNEY: Learn → Explore → Practice → Master ── */}
