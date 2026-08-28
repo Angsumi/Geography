@@ -223,6 +223,9 @@ export function HomePage({
           unitName={nextRec.unitName}
           lessonName={nextRec.lessonName}
           topicName={nextRec.lessonName}
+          onSelectChapter={onSelectChapter}
+          onStartLessonPlayer={onStartLessonPlayer}
+          onExploreTopics={handleExploreClick}
         />
       </section>
 
