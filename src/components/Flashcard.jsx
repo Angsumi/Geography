@@ -11,6 +11,11 @@ export default function Flashcard({ data, onComplete, isEmbedded = false }) {
   const [floatingXp, setFloatingXp] = useState(null);
 
   const currentCard = data[currentIndex] || {};
+  const imageUrl = currentCard.img
+    ? (currentCard.img.startsWith('/')
+      ? `${import.meta.env.BASE_URL || ''}${currentCard.img.slice(1)}`
+      : currentCard.img)
+    : null;
 
   const handleFlip = () => {
     playFlip();
@@ -134,6 +139,20 @@ export default function Flashcard({ data, onComplete, isEmbedded = false }) {
             <span style={{ fontSize: '0.75rem', color: '#c084fc', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '1rem' }}>
               TAP TO FLIP FLASHCARD
             </span>
+            {imageUrl && (
+              <img
+                src={imageUrl}
+                alt="Flashcard Visual"
+                style={{
+                  width: '100%',
+                  maxHeight: '140px',
+                  objectFit: 'cover',
+                  borderRadius: '12px',
+                  marginBottom: '1rem',
+                  border: '1px solid rgba(255,255,255,0.1)'
+                }}
+              />
+            )}
             <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', margin: 0, lineHeight: 1.5 }}>
               {currentCard.q}
             </h2>
@@ -149,6 +168,20 @@ export default function Flashcard({ data, onComplete, isEmbedded = false }) {
             <span style={{ fontSize: '0.75rem', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '1rem' }}>
               KEY ANSWER RECALL
             </span>
+            {imageUrl && (
+              <img
+                src={imageUrl}
+                alt="Flashcard Visual"
+                style={{
+                  width: '100%',
+                  maxHeight: '140px',
+                  objectFit: 'cover',
+                  borderRadius: '12px',
+                  marginBottom: '1rem',
+                  border: '1px solid rgba(255,255,255,0.1)'
+                }}
+              />
+            )}
             <h2 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#34d399', margin: 0, lineHeight: 1.5 }}>
               {currentCard.a}
             </h2>

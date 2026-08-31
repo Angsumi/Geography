@@ -455,6 +455,20 @@ export function InteractiveLesson({ lessonData = {}, completedTopics = {}, onCom
                     <span style={{ fontSize: '0.7rem', color: '#2dd4bf', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, marginBottom: '0.85rem' }}>
                       TAP CARD TO FLIP
                     </span>
+                    {currentConcept.Flashcard?.Image && (
+                      <img
+                        src={currentConcept.Flashcard.Image.startsWith('/') ? `${import.meta.env.BASE_URL || ''}${currentConcept.Flashcard.Image.slice(1)}` : currentConcept.Flashcard.Image}
+                        alt="Concept Visual"
+                        style={{
+                          width: '100%',
+                          maxHeight: '130px',
+                          objectFit: 'cover',
+                          borderRadius: '12px',
+                          marginBottom: '1rem',
+                          border: '1px solid rgba(255,255,255,0.1)'
+                        }}
+                      />
+                    )}
                     <h2 style={{ fontSize: '1.18rem', fontWeight: 700, color: '#f0fdf4', margin: 0, lineHeight: 1.5 }}>
                       {currentConcept.Flashcard?.Front || `What is a key feature of ${topicName}?`}
                     </h2>
@@ -470,6 +484,20 @@ export function InteractiveLesson({ lessonData = {}, completedTopics = {}, onCom
                     <span style={{ fontSize: '0.7rem', color: '#2dd4bf', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, marginBottom: '0.65rem' }}>
                       KEY RECALL ANSWER
                     </span>
+                    {currentConcept.Flashcard?.Image && (
+                      <img
+                        src={currentConcept.Flashcard.Image.startsWith('/') ? `${import.meta.env.BASE_URL || ''}${currentConcept.Flashcard.Image.slice(1)}` : currentConcept.Flashcard.Image}
+                        alt="Concept Visual"
+                        style={{
+                          width: '100%',
+                          maxHeight: '130px',
+                          objectFit: 'cover',
+                          borderRadius: '12px',
+                          marginBottom: '1rem',
+                          border: '1px solid rgba(255,255,255,0.1)'
+                        }}
+                      />
+                    )}
                     <h2 style={{ fontSize: '1.12rem', fontWeight: 700, color: '#2dd4bf', margin: 0, lineHeight: 1.5 }}>
                       {currentConcept.Flashcard?.Back || currentConcept.Fact}
                     </h2>

@@ -45,7 +45,7 @@ function parseSyllabus(json) {
   const syllabusHierarchy = [];
   const studyDb = {};
 
-  const rawSubjects = (json && json.GeographySyllabus) || [];
+  const rawSubjects = (json && (json.GeographySyllabus || json.HistorySyllabus || json.PolitySyllabus || json.Syllabus || (Array.isArray(json) ? json : Object.values(json)[0]))) || [];
 
   rawSubjects.forEach((chapterObj) => {
     const chapterName = chapterObj.Chapter || chapterObj.ChapterName || chapterObj.Subject || 'Geography';
