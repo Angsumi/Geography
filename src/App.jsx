@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Layers, GraduationCap, ChevronRight, ChevronDown, X, PlayCircle, Sparkles, Compass, BookOpen, Search, Clock, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import syllabusData from './data/unifiedGeography.json';
+import syllabusData from './data/Geography.json';
 
 import './index.css';
 import Flashcard from './components/Flashcard';
